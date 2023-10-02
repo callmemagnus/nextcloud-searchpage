@@ -5,13 +5,13 @@
 # SPDX-FileCopyrightText: Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: Lint
+name: Lint (info.xml)
 
 on:
   pull_request:
   push:
     branches:
-      - master
+      - main
       - stable*
 
 jobs:
@@ -21,7 +21,10 @@ jobs:
     name: info.xml lint
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Get wget
+        run: apt update && apt install -y wget
 
       - name: Download schema
         run: wget https://raw.githubusercontent.com/nextcloud/appstore/master/nextcloudappstore/api/v1/release/info.xsd

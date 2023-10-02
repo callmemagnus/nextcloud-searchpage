@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -9,10 +10,12 @@ use OCA\TheSearchPage\AppInfo\Application;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
-use OCP\Util;
 
-class PageController extends Controller {
-	public function __construct(IRequest $request) {
+
+class PageController extends Controller
+{
+	public function __construct(IRequest $request)
+	{
 		parent::__construct(Application::APP_ID, $request);
 	}
 
@@ -20,8 +23,8 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function index(): TemplateResponse {
-		Util::addScript(Application::APP_ID, 'thesearchpage-main');
+	public function index(): TemplateResponse
+	{
 
 		return new TemplateResponse(Application::APP_ID, 'main');
 	}

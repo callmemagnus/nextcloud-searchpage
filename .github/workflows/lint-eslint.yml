@@ -5,15 +5,11 @@
 # SPDX-FileCopyrightText: Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: Lint
+name: Lint (browser)
 
 on:
   pull_request:
   push:
-    branches:
-      - main
-      - master
-      - stable*
 
 jobs:
   lint:
@@ -23,14 +19,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Read package.json node and npm engines version
-        uses: skjnldsv/read-package-engines-version-actions@v1.2
+        uses: skjnldsv/read-package-engines-version-actions@v2
         id: versions
         with:
-          fallbackNode: '^16'
-          fallbackNpm: '^7'
+          fallbackNode: "18"
+          fallbackNpm: "9"
 
       - name: Set up node ${{ steps.versions.outputs.nodeVersion }}
         uses: actions/setup-node@v3

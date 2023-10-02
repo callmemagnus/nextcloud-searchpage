@@ -9,35 +9,37 @@
   },
   "license": "agpl",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "webpack --node-env production --progress",
-    "dev": "webpack --node-env development --progress",
-    "watch": "webpack --node-env development --progress --watch",
-    "serve": "webpack --node-env development serve --progress",
-    "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix",
-    "stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
-    "stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
-  },
-  "dependencies": {
-    "@nextcloud/axios": "^1.10.0",
-    "@nextcloud/dialogs": "^3.1.4",
-    "@nextcloud/router": "^2.0.0",
-    "@nextcloud/vue": "^5.4.0",
-    "vue": "^2.7.0"
-  },
-  "browserslist": [
-    "extends @nextcloud/browserslist-config"
-  ],
-  "engines": {
-    "node": "^16.0.0",
-    "npm": "^7.0.0 || ^8.0.0"
+    "dev": "vite build --mode dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "lint": "eslint --config .eslintrc.cjs src/**/*.ts src/**/*.svelte"
   },
   "devDependencies": {
-    "@nextcloud/babel-config": "^1.0.0",
-    "@nextcloud/browserslist-config": "^2.2.0",
-    "@nextcloud/eslint-config": "^8.0.0",
-    "@nextcloud/stylelint-config": "^2.1.2",
-    "@nextcloud/webpack-vue-config": "^5.2.1"
+    "@sveltejs/vite-plugin-svelte": "2.4.6",
+    "@tsconfig/svelte": "5.0.2",
+    "@typescript-eslint/eslint-plugin": "6.7.5",
+    "@typescript-eslint/parser": "6.7.5",
+    "eslint": "8.51.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.1",
+    "eslint-plugin-svelte": "2.34.0",
+    "prettier": "3.0.3",
+    "prettier-plugin-svelte": "3.0.3",
+    "sass": "1.69.2",
+    "svelte": "4.2.1",
+    "svelte-check": "3.4.6",
+    "tslib": "2.6.2",
+    "typescript": "5.0.2",
+    "vite": "4.4.11",
+    "vite-plugin-css-injected-by-js": "3.3.0",
+    "vite-plugin-html": "3.2.0"
+  },
+  "dependencies": {
+    "@nextcloud/axios": "2.4.0",
+    "@nextcloud/l10n": "2.2.0",
+    "@nextcloud/router": "2.1.2"
   }
 }

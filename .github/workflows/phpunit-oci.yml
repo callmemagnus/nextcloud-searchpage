@@ -6,7 +6,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
       - stable*
 
 env:
@@ -20,8 +20,8 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ['8.0']
-        server-versions: ['master']
+        php-versions: ["8.0"]
+        server-versions: ["master"]
 
     services:
       oracle:
@@ -36,14 +36,14 @@ jobs:
           echo "APP_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
       - name: Checkout server
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           repository: nextcloud/server
           ref: ${{ matrix.server-versions }}
 
       - name: Checkout app
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: apps/${{ env.APP_NAME }}
 

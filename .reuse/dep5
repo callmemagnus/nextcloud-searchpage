@@ -3,7 +3,7 @@ Upstream-Name: The Search Page
 Upstream-Contact: Magnus Anderssen <magnus@magooweb.com>
 Source: https://github.com/nextcloud/profiler
 
-Files: package-lock.json package.json composer.json composer.lock
+Files: package-lock.json package.json composer.json composer.lock src/.prettierrc src/global.d.ts
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
