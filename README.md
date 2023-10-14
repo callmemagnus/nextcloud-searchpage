@@ -5,7 +5,9 @@ SPDX-License-Identifier: CC0-1.0
 
 # The Search Page
 
-Place this app in **nextcloud/apps/**
+The idea behind this app is to prpovide a proper search page to Nextcloud. I know about the on provided by `fulltextsearch` but wasn't convinced.
+
+Place this app in one of the application folders of your nextcloud server (e.g. **nextcloud/apps/**).
 
 ## Building the app
 
@@ -19,19 +21,13 @@ This requires the following things to be present:
 - which
 - tar: for building the archive
 - curl: used if phpunit and composer are not installed to fetch them from the web
-- npm: for building and testing everything JS, only required if a package.json is placed inside the **js/** folder
+- npm: for building and testing everything JS
 
-The make command will install or update Composer dependencies if a composer.json is present and also **npm run build** if a package.json is present in the **js/** folder. The npm **build** script should use local paths for build systems and package managers, so people that simply want to build the app won't need to install npm libraries globally, e.g.:
+### Backend (`lib/`)
 
-**package.json**:
+This app only provide a controller to serve the main page
 
-```json
-"scripts": {
-    "test": "node node_modules/gulp-cli/bin/gulp.js karma",
-    "prebuild": "npm install && node_modules/bower/bin/bower install && node_modules/bower/bin/bower update",
-    "build": "node node_modules/gulp-cli/bin/gulp.js"
-}
-```
+### Front-end (`src/`)
 
 ## Publish to App Store
 
@@ -47,7 +43,7 @@ You can use the provided Makefile to run all tests by using:
 
     make test
 
-This will run the PHP unit and integration tests and if a package.json is present in the **js/** folder will execute **npm run test**
+This will run the PHP unit and integration tests and if a package.json is present will execute **npm run test**
 
 Of course you can also install [PHPUnit](http://phpunit.de/getting-started.html) and use the configurations directly:
 
