@@ -13,10 +13,13 @@
 	let userProviderId = get(providerId);
 
 	const dispatch = createEventDispatcher();
+	let input: HTMLInputElement;
 
 	onMount(() => {
 		if (get(terms) !== '' && get(providerId)) {
 			search();
+		} else {
+			input.focus();
 		}
 	});
 
@@ -36,7 +39,7 @@
 </script>
 
 <form method="get" on:submit|preventDefault={search}>
-	<input type="text" name="terms" bind:value={userQuery} />
+	<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
 	<select name="provider" bind:value={userProviderId}>
 		<option value={PROVIDER_ALL} selected={userProviderId === PROVIDER_ALL}>
 			{_t(PROVIDER_ALL_LABEL)}
