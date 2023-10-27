@@ -29,6 +29,7 @@
 		userQuery = '';
 		userProviderId = PROVIDER_ALL;
 		dispatch('clear');
+		input.focus();
 	}
 
 	function search() {
@@ -56,7 +57,7 @@
 	</button>
 </form>
 
-<style lang="scss">
+<style>
 	input {
 		width: 200px;
 	}
