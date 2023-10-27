@@ -7,4 +7,4 @@ missing_lib() {
 
 which entr > /dev/null || missing_lib entr
 
-find src lib templates | entr npm run dev
+find src | entr npm run dev
