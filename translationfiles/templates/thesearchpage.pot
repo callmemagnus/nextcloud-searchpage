@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2023-10-26 18:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "The Search Page"
+msgstr ""
+
+#: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:3
+msgid "Provides a proper search page"
+msgstr ""
+
+#: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:4
+msgid "Provides a search page to your Nextcloud instance."
+msgstr ""
+
+msgid "All providers"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "There was an error loading the providers."
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "No results"
+msgstr ""
+
+msgid "Load more..."
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Show only"
+msgstr ""
