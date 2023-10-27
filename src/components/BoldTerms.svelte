@@ -19,7 +19,7 @@
 
 {#each tokenized as token}
 	{#if token.bold}
-		<b class="bold">{token.value}</b>
+		<b>{token.value}</b>
 	{:else}
 		{token.value}
 	{/if}

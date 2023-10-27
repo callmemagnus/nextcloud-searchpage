@@ -12,6 +12,7 @@
 	export let provider: Provider;
 	export let query: string;
 	export let isAlone = false;
+	export let showBack = false;
 
 	let hasMore = true;
 	let loading = true;
@@ -19,8 +20,6 @@
 	let searchResults: SearchEntry[] | null = null;
 	let button: HTMLButtonElement;
 	const dispatch = createEventDispatcher();
-
-	$: showMe = loading || (searchResults ? Boolean(searchResults.length) || isAlone : isAlone);
 
 	async function load(oldCursor: number) {
 		loading = true;
@@ -47,7 +46,7 @@
 	const observer = new IntersectionObserver(
 		(entries, observer) => {
 			entries.forEach((entry) => {
-				if (entry.isIntersecting && isAlone && !loading && hasMore) {
+				if (entry.isIntersecting && !loading && hasMore) {
 					load(cursor);
 				}
 				if (!hasMore) {
@@ -56,7 +55,7 @@
 			});
 		},
 		{
-			rootMargin: '0px',
+			rootMargin: '10px',
 			threshold: 1.0
 		}
 	);
@@ -71,21 +70,36 @@
 	afterUpdate(() => {
 		observer.disconnect();
 
-		if (button && hasMore && isAlone) {
+		if (button && hasMore) {
 			observer.observe(button);
 		}
 	});
 </script>
 
-{#if showMe}
-	<div class="mwb-result-loader mwb-margin-bottom">
-		<h2 class="mwb-margin-bottom">{provider.name}</h2>
-
-		{#if !searchResults}
-			<p>{_t('Loading...')}</p>
-		{:else}
+<div class="mwb-provider-results" class:mwb-is-alone={isAlone}>
+	<div class="mwb-header">
+		<h2>{provider.name}</h2>
+		{#if !isAlone}
+			<small>
+				<button
+					type="button"
+					on:click={() => dispatch('only-me')}
+					title="See only results for this provider">{_t('Show only')}</button>
+			</small>
+		{/if}
+		{#if showBack}
+			<small>
+				<button type="button" on:click={() => dispatch('back')} title="See all providers"
+					>{_t('Back')}</button>
+			</small>
+		{/if}
+	</div>
+	{#if !searchResults}
+		<p>{_t('Loading...')}</p>
+	{:else}
+		<div class="mwb-result-scroll">
 			{#each searchResults as result}
-				<div class="mwb-margin-bottom">
+				<div class="mwb-result-item">
 					<Result {result} />
 				</div>
 			{:else}
@@ -98,12 +112,37 @@
 					</button>
 				</div>
 			{/if}
-		{/if}
-	</div>
-{/if}
+		</div>
+	{/if}
+</div>
 
-<style lang="scss">
+<style>
+	.mwb-provider-results {
+		@apply p-4 shadow-xl h-full flex flex-col rounded-xl;
+		background-color: var(--color-main-background);
+	}
+	.mwb-is-alone {
+		@apply h-auto shadow-none pl-2 py-4;
+	}
 	h2 {
-		margin-top: 5px;
+		@apply mb-4 mt-1;
+	}
+	.mwb-is-alone h2 {
+		@apply text-2xl;
+	}
+	.mwb-result-scroll {
+		@apply overflow-y-scroll h-full flex-grow;
+	}
+	.mwb-is-alone .mwb-result-scroll {
+		@apply h-auto overflow-auto;
+	}
+	.mwb-header {
+		@apply flex justify-between;
+	}
+	small {
+		@apply text-xs;
+	}
+	.mwb-result-item {
+		@apply mb-1;
 	}
 </style>
