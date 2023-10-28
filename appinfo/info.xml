@@ -14,7 +14,9 @@
     <author mail="magnus@magooweb.com" homepage="https://magnus.anderssen.ch">Magnus Anderssen</author>
     <namespace>TheSearchPage</namespace>
     <category>search</category>
+	<repository type="git">https://github.com/callmemagnus/nextcloud-searchpage.git</repository>
     <bugs>https://github.com/callmemagnus/nextcloud-searchpage/issues</bugs>
+	<screenshot>https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/screenshots/main.png</screenshot>
     <dependencies>
         <nextcloud min-version="27" max-version="28"/>
     </dependencies>
