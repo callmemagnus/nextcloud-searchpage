@@ -63,9 +63,6 @@
 </script>
 
 {#if displayedProviders.length}
-	{#if providersWithNoResults.length === displayedProviders.length && providersWithNoResults.length !== 1}
-		<p>{_t('No results')}</p>
-	{/if}
 	<DynamicGrid items={displayedProviders} {minCellHeight} {minCellWidth} let:item={provider}>
 		{#key `${provider.id}-${displayedProviders.length}`}
 			<ProviderResults
@@ -78,4 +75,12 @@
 				on:no-result={() => updateNoResult(provider.id)} />
 		{/key}
 	</DynamicGrid>
+{:else if providersWithNoResults.length > 0}
+	<p>{_t('No results')}</p>
 {/if}
+
+<style>
+	p {
+		@apply pl-2;
+	}
+</style>

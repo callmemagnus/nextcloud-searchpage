@@ -36,7 +36,8 @@
 			}
 
 			cursor = result.cursor;
-			if (searchResults.length < cursor || !result.isPaginated) {
+
+			if (result.entries.length === 0 || !result.isPaginated) {
 				hasMore = false;
 			}
 		}
