@@ -37,7 +37,20 @@
 		terms.set(userQuery);
 		dispatch('search');
 	}
+
+	function onkeydown(e: KeyboardEvent) {
+		if (e.ctrlKey && e.code === 'KeyF') {
+			// avoid Nextcloud page search
+			e.stopPropagation();
+			// avoid browser in-page search
+			e.preventDefault();
+
+			input.select();
+		}
+	}
 </script>
+
+<svelte:body on:keydown={onkeydown} />
 
 <form method="get" on:submit|preventDefault={search}>
 	<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
