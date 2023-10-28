@@ -41,3 +41,6 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Svelte checks
+        run: npm run check

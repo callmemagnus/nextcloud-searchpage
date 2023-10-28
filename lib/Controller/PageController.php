@@ -13,51 +13,52 @@ use OCP\AppFramework\Services\IInitialState;
 use OCP\IL10N;
 use OCP\IRequest;
 
-
 class PageController extends Controller
 {
+    /** @var IL10N */
+    private $l;
+    /** @var IInitialState */
+    private $state;
 
-	/** @var IL10N */
-	private $l;
-	/** @var IInitialState */
-	private $state;
+    private $labels;
 
-	private $labels;
+    public function __construct(IRequest $request, IL10N $l, IInitialState $state)
+    {
+        $this->l = $l;
+        parent::__construct(Application::APP_ID, $request);
+        $this->labels = [
+            "All providers",
+            "Search",
+            "There was an error loading the providers.",
+            "Loading...",
+            "No results",
+            "Load more...",
+            "Clear",
+            "Show only"
 
-	public function __construct(IRequest $request, IL10N $l, IInitialState $state)
-	{
-		$this->l = $l;
-		parent::__construct(Application::APP_ID, $request);
-		$this->labels = [
-			"All providers",
-			"Search",
-			"There was an error loading the providers.",
-			"Loading...",
-			"No results",
-			"Load more...",
-			"Clear",
-			"Show only"
+        ];
+        $this->state = $state;
+    }
 
-		];
-		$this->state = $state;
-	}
+    /**
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
+    public function index(): TemplateResponse
+    {
+        $this->state->provideInitialState('labels', $this->getLabels());
+        return new TemplateResponse(Application::APP_ID, 'main');
+    }
 
-	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 */
-	public function index(): TemplateResponse
-	{
-		$this->state->provideInitialState('labels', $this->getLabels());
-		return new TemplateResponse(Application::APP_ID, 'main');
-	}
-
-	private function getLabels()
-	{
-		return array_reduce($this->labels, function ($carry, $label) {
-			$carry[$label] = $this->l->t($label);
-			return $carry;
-		}, array()
-		);
-	}
+    private function getLabels()
+    {
+        return array_reduce(
+            $this->labels,
+            function ($carry, $label) {
+                $carry[$label] = $this->l->t($label);
+                return $carry;
+            },
+            array()
+        );
+    }
 }
