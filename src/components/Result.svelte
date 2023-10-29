@@ -33,9 +33,6 @@
 </script>
 
 <div class="mwb-result">
-	<!-- <div style="display: none">
-    {JSON.stringify(result, null, 2)}
-  </div> -->
 	<div class="mwb-result__image">
 		{#if showIcon}
 			<div class="{result.icon} mwb-result__icon" />
@@ -55,34 +52,28 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	.mwb-result {
-		display: flex;
+		@apply flex;
 	}
+
 	.mwb-result__image {
-		width: 32px;
-		height: 32px;
-		margin-right: 10px;
-		flex-shrink: 0;
-		flex-grow: 0;
+		@apply w-8 h-8 mr-3 flex-grow-0 flex-shrink-0;
+	}
 
-		.mwb-result__icon {
-			height: 100%;
-		}
+	.mwb-result__icon {
+		@apply h-full;
+	}
 
-		img {
-			width: 100%;
-		}
+	img {
+		@apply w-full;
 	}
 
 	h3 {
-		font-size: 1em;
-		line-height: 120%;
-		margin-top: 5px;
-		margin-bottom: 5px;
+		@apply my-1;
 	}
+
 	p {
-		font-size: 0.7rem;
-		line-height: 120%;
+		@apply text-sm;
 	}
 </style>

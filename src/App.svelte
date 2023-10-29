@@ -13,24 +13,12 @@
 
 	let error = false;
 	let lastSearch = 0;
-	let me: HTMLDivElement;
+	let resultsContainer: HTMLDivElement;
+	let resultsContainerHeight = 'auto';
 
 	const selectedProviders = derived([providers, providerId], ([$providers, $providerId]) =>
 		$providers.filter(({ id }) => $providerId === PROVIDER_ALL || id === $providerId)
 	);
-
-	const observer = new MutationObserver(() => resize);
-
-	let resultsContainer: HTMLDivElement;
-	let resultsContainerHeight: string = 'auto';
-
-	function resize() {
-		if (resultsContainer) {
-			const box = resultsContainer.getBoundingClientRect();
-			const availableHeight = window.innerHeight;
-			resultsContainerHeight = `${availableHeight - box.top - 15}px`;
-		}
-	}
 
 	function search() {
 		lastSearch = Date.now();
@@ -41,28 +29,28 @@
 		providerId.set(PROVIDER_ALL);
 	}
 
+	function resize() {
+		if (resultsContainer) {
+			const box = resultsContainer.getBoundingClientRect();
+			const availableHeight = window.innerHeight;
+			resultsContainerHeight = `${availableHeight - box.top - 10}px`;
+		}
+	}
+
 	onMount(() => {
 		providers.load();
-		observer.observe(me, {
-			subtree: true,
-			childList: true,
-			characterData: true,
-			attributes: true
-		});
-		window.addEventListener('resize', resize);
-		resize();
 		if (get(terms) && get(providerId)) {
 			lastSearch = Date.now();
 		}
-
+		resize();
+		window.addEventListener('resize', resize);
 		return () => {
-			observer.disconnect();
 			window.removeEventListener('resize', resize);
 		};
 	});
 </script>
 
-<div class="mwb-thesearchpage" bind:this={me}>
+<div class="mwb-thesearchpage">
 	<h1>{_t('Search')}</h1>
 	{#if error}
 		<p>{_t('There was an error loading the providers.')}</p>
@@ -82,30 +70,18 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	.mwb-thesearchpage {
-		z-index: 10;
-		width: 100%;
-		padding: 10px;
+		@apply w-full pt-2 px-2 h-full;
 		color: var(--color-main-text);
 		background-color: var(--color-main-background-blur, var(--color-main-background));
 	}
 
 	.mwb-thesearchpage__search-box {
-		margin-bottom: 20px;
-		padding: 0 5px;
+		@apply mb-4 py-0 px-1;
 	}
 
 	h1 {
-		font-size: 2rem;
-		font-weight: bold;
-		margin-top: 10px;
-		margin-bottom: 20px;
-	}
-
-	.mwb-thesearchpage-results {
-		overflow-x: scroll;
-		padding: 5px;
-		background-color: var(--color-main-background-blur, var(--color-main-background));
+		@apply text-3xl font-bold mt-2 ml-2 mb-2;
 	}
 </style>

@@ -1,0 +1,23 @@
+msgid "All providers"
+msgstr "Toutes les sources"
+
+msgid "Search"
+msgstr "Recherche"
+
+msgid "There was an error loading the providers."
+msgstr "Il y a eu une erreur en récupérant les fournisseurs."
+
+msgid "Loading..."
+msgstr "Chargement..."
+
+msgid "No results"
+msgstr "Pas de résultats"
+
+msgid "Load more..."
+msgstr "Charger plus..."
+
+msgid "Clear"
+msgstr "Effacer"
+
+msgid "Show only"
+msgstr "Isoler"

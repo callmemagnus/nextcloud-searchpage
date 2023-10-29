@@ -13,19 +13,19 @@ use PHPUnit\Framework\TestCase;
 
 class PageControllerTest extends TestCase
 {
-	private PageController $controller;
+    private PageController $controller;
 
-	public function setUp(): void
-	{
-		$request = $this->getMockBuilder(\OCP\IRequest::class)->getMock();
-		$this->controller = new PageController($request);
-	}
+    public function setUp(): void
+    {
+        $request = $this->getMockBuilder(\OCP\IRequest::class)->getMock();
+        $this->controller = new PageController($request);
+    }
 
-	public function testIndex(): void
-	{
-		$result = $this->controller->index();
+    public function testIndex(): void
+    {
+        $result = $this->controller->index();
 
-		$this->assertEquals('main', $result->getTemplateName());
-		$this->assertTrue($result instanceof TemplateResponse);
-	}
+        $this->assertEquals('main', $result->getTemplateName());
+        $this->assertTrue($result instanceof TemplateResponse);
+    }
 }

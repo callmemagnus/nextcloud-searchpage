@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -12,7 +13,7 @@ declare(strict_types=1);
  * it's instantiated in there
  */
 return [
-	'routes' => [
-		['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-	]
+    'routes' => [
+        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+    ]
 ];

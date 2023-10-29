@@ -16,7 +16,7 @@ export function saveInSession(terms: string, providerId: string) {
 		history.pushState(
 			null,
 			'',
-			newState.size ? location.pathname + '?' + newState : location.pathname
+			(newState.size ? location.pathname + '?' + newState : location.pathname) + location.hash
 		);
 	} catch (e) {
 		// ignore

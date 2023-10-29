@@ -3,6 +3,7 @@
 
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
+import TimedCache from './TimedCache';
 
 export type SearchEntry = {
 	thumbnailUrl: string;
@@ -22,6 +23,8 @@ export type SearchResult = {
 export const PROVIDER_ALL = 'All';
 export const PROVIDER_ALL_LABEL = 'All providers';
 
+const cache = new TimedCache<Promise<SearchResult | null>>(30_000);
+
 export async function searchOnProvider(
 	providerId: string,
 	query: string,
@@ -35,15 +38,22 @@ export async function searchOnProvider(
 
 	const url = generateOcsUrl(`search/providers/${providerId}/search?${searchParam}`);
 
-	const result = await axios.get(url);
-
-	if (result.data.ocs?.meta?.statuscode === 200) {
-		return {
-			...result.data.ocs.data,
-			providerId
-		};
+	if (!cache.has(url)) {
+		cache.set(
+			url,
+			axios.get(url).then((result) => {
+				if (result.data.ocs?.meta?.statuscode === 200) {
+					return {
+						...result.data.ocs.data,
+						providerId
+					} as SearchResult;
+				}
+				return null;
+			})
+		);
 	}
-	return null;
+
+	return cache.get(url)!;
 }
 
 export async function fetchProviders() {
