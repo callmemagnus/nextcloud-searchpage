@@ -55,12 +55,12 @@
 <svelte:body on:keydown={onkeydown} />
 
 <form method="get" on:submit|preventDefault={search}>
-	<div class="flex">
-		<div class="mwb-input group">
+	<div class="mwb-line">
+		<div class="mwb-input">
 			<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
 
 			<button
-				class="mwb-form__clear group-hover:text-gray-600"
+				class="mwb-form__clear mwb-unstyled"
 				type="button"
 				on:click={clear}
 				disabled={!userQuery && userProviderId === PROVIDER_ALL}>
@@ -70,7 +70,13 @@
 		<button type="submit" disabled={!userQuery}>
 			{_t('Search')}
 		</button>
+		<button
+			class="mwb-unstyled mwb-as-link"
+			type="button"
+			on:click={() => (showProviderSelection = !showProviderSelection)}>Filters</button>
 	</div>
+	<div style="display: {showProviderSelection ? 'block' : 'unset'}"></div>
+
 	{#if showProviderSelection}
 		<select name="provider" bind:value={userProviderId}>
 			<option value={PROVIDER_ALL} selected={userProviderId === PROVIDER_ALL}>
@@ -84,14 +90,40 @@
 	{/if}
 </form>
 
-<style>
+<style lang="less">
+	.mwb-line {
+		@apply flex gap-1;
+	}
+
 	input {
 		width: 200px;
 		padding-right: 35px;
 	}
 
+	button.mwb-unstyled,
+	button.mwb-unstyled:focus,
+	button.mwb-unstyled:active {
+		background: none !important;
+		color: inherit !important;
+		border: none !important;
+		padding: 0 !important;
+		line-height: 1 !important;
+		font: inherit !important;
+		cursor: pointer !important;
+		outline: inherit !important;
+	}
+
+	button.mwb-as-link,
+	button.mwb-as-link:active {
+		@apply hover:underline !text-blue-400;
+	}
+
 	.mwb-form__clear {
-		@apply relative bg-transparent border-none text-gray-300;
-		margin-left: -42px !important;
+		@apply relative bg-transparent border-none text-gray-300 !p-1;
+		margin-left: -28px !important;
+	}
+
+	.mwb-input:hover .mwb-form__clear {
+		@apply text-gray-800;
 	}
 </style>

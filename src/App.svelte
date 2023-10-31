@@ -78,7 +78,7 @@
 	}
 
 	.mwb-thesearchpage__search-box {
-		@apply mb-4 py-0 px-1;
+		@apply mb-2 py-0 px-1;
 	}
 
 	h1 {
