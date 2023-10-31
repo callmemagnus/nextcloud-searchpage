@@ -125,18 +125,18 @@
 
 <style>
 	.mwb-provider-results {
-		@apply p-4 shadow-xl h-full flex flex-col rounded-xl;
+		@apply px-4 py-2 shadow-xl h-full w-full flex flex-col rounded-xl;
 		background-color: var(--color-main-background);
 	}
 	.mwb-is-alone {
-		@apply h-auto shadow-none pl-2 py-4;
+		@apply shadow-none px-2;
 	}
 	h2 {
-		@apply mb-4 mt-1;
+		@apply mb-4;
 	}
-	.mwb-is-alone h2 {
+	/* .mwb-is-alone h2 {
 		@apply text-2xl;
-	}
+	} */
 	.mwb-result-scroll {
 		@apply overflow-y-scroll h-full flex-grow;
 	}

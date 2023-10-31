@@ -62,11 +62,8 @@
 
 	onMount(() => {
 		resize();
-		me.style.display = 'grid';
-		me.style.gap = '10px';
-		me.style.justifyItems = 'stretch';
-		me.style.alignItems = 'stretch';
 		me.style.paddingBottom = `${paddingBottom}px`;
+		me.style.gridTemplateColumns = '1fr';
 		window.addEventListener('resize', resize);
 		return () => {
 			window.removeEventListener('resize', resize);
@@ -84,7 +81,7 @@
 
 <style>
 	.mwb-dynamic-grid {
-		@apply h-full;
+		@apply h-full w-full grid justify-stretch items-stretch gap-2;
 		min-height: 0;
 		min-width: 0;
 	}
