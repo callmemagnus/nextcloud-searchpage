@@ -85,5 +85,11 @@
 <style>
 	.mwb-dynamic-grid {
 		@apply h-full;
+		min-height: 0;
+		min-width: 0;
+	}
+	.mwb-dynamic-grid-cell {
+		overflow: hidden;
+		min-width: 0;
 	}
 </style>
