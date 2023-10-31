@@ -37,7 +37,13 @@
 
 			cursor = result.cursor;
 
-			if (result.entries.length === 0 || !result.isPaginated) {
+			/**
+			 * 3 reasons to decide there are no more results
+			 * 1. no entries in present response
+			 * 2. service says it's not paginated
+			 * 3. cursor is = 0 (e.g. quicknotes)
+			 */
+			if (result.entries.length === 0 || !result.isPaginated || cursor === 0) {
 				hasMore = false;
 			}
 		}
