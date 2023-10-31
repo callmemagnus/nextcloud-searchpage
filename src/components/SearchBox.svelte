@@ -15,6 +15,8 @@
 	const dispatch = createEventDispatcher();
 	let input: HTMLInputElement;
 
+	let showProviderSelection = false;
+
 	onMount(() => {
 		if (get(terms) !== '' && get(providerId)) {
 			search();
@@ -53,25 +55,43 @@
 <svelte:body on:keydown={onkeydown} />
 
 <form method="get" on:submit|preventDefault={search}>
-	<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
-	<select name="provider" bind:value={userProviderId}>
-		<option value={PROVIDER_ALL} selected={userProviderId === PROVIDER_ALL}>
-			{_t(PROVIDER_ALL_LABEL)}
-		</option>
-		{#each $providers as provider}
-			<option value={provider.id} selected={userProviderId === provider.id}>{provider.name}</option>
-		{/each}
-	</select>
-	<button type="button" on:click={clear} disabled={!userQuery && userProviderId === PROVIDER_ALL}>
-		{_t('Clear')}
-	</button>
-	<button type="submit" disabled={!userQuery}>
-		{_t('Search')}
-	</button>
+	<div class="flex">
+		<div class="mwb-input group">
+			<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
+
+			<button
+				class="mwb-form__clear group-hover:text-gray-600"
+				type="button"
+				on:click={clear}
+				disabled={!userQuery && userProviderId === PROVIDER_ALL}>
+				x
+			</button>
+		</div>
+		<button type="submit" disabled={!userQuery}>
+			{_t('Search')}
+		</button>
+	</div>
+	{#if showProviderSelection}
+		<select name="provider" bind:value={userProviderId}>
+			<option value={PROVIDER_ALL} selected={userProviderId === PROVIDER_ALL}>
+				{_t(PROVIDER_ALL_LABEL)}
+			</option>
+			{#each $providers as provider}
+				<option value={provider.id} selected={userProviderId === provider.id}
+					>{provider.name}</option>
+			{/each}
+		</select>
+	{/if}
 </form>
 
 <style>
 	input {
 		width: 200px;
+		padding-right: 35px;
+	}
+
+	.mwb-form__clear {
+		@apply relative bg-transparent border-none text-gray-300;
+		margin-left: -42px !important;
 	}
 </style>
