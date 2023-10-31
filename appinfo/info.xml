@@ -9,7 +9,7 @@
     <name>The Search Page</name>
     <summary>Provides a proper search page</summary>
     <description><![CDATA[Provides a search page to your Nextcloud instance.]]></description>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <licence>agpl</licence>
     <author mail="magnus@magooweb.com" homepage="https://magnus.anderssen.ch">Magnus Anderssen</author>
     <namespace>TheSearchPage</namespace>
