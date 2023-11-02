@@ -51,4 +51,10 @@ msgid "Clear"
 msgstr "Очистити"
 
 msgid "Show only"
-msgstr "Окремо"
+msgstr "Перейти"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "See all providers"
+msgstr "Розширені результати пошуку"
