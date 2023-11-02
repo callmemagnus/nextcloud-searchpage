@@ -11,6 +11,6 @@ Files: l10n/*.js l10n/*.json bin/tools/translationtool.phar
 Copyright: Nextcloud translators <https://www.transifex.com/nextcloud/>
 License: AGPL-3.0-or-later
 
-Files: bin/*.sh translationfiles/*/*.po translationfiles/templates/thesearchpage.pot
+Files: .github/* bin/*.sh translationfiles/*/*.po translationfiles/templates/thesearchpage.pot
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
