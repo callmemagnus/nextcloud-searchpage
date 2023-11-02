@@ -5,9 +5,27 @@ SPDX-License-Identifier: CC0-1.0
 
 # The Search Page
 
-The idea behind this app is to prpovide a proper search page to Nextcloud. I know about the on provided by `fulltextsearch` but wasn't convinced.
+The idea behind this app is to provide a proper search page to Nextcloud. I know about the on provided by `fulltextsearch` but wasn't convinced.
 
 Place this app in one of the application folders of your nextcloud server (e.g. **nextcloud/apps/**).
+
+## Philosophy of this application
+
+This application only uses official APIs provided by Nextcloud.
+
+It works as described below (fresh arrival on page):
+
+1. User arrives on the application page
+2. Page fetches list of provider of the Nextcloud instance
+3. User types a search query
+4. Page fetches the result of each provider for the given search query
+
+If the URL contains predefined values, the step 3 is not necessary.
+
+The application must not depend on other applications (except the core Nextcloud). This brings the following caveats
+
+- not possible (yet) to fetch more information on results as the existing search API is quite light
+- not possible to make specific behaviors for a given provider
 
 ## Building the app
 
