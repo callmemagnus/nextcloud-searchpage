@@ -24,3 +24,9 @@ msgstr "Isoler"
 
 msgid "Back"
 msgstr "Retour"
+
+msgid "See only results for this provider"
+msgstr "Voir seulement les résultats de cette source"
+
+msgid "See all providers"
+msgstr "Voir toutes les sources"

@@ -40,21 +40,21 @@
 			<img src={imageUrl} alt="" on:error={onError} />
 		{/if}
 	</div>
-	<div class="mwb-result__text">
-		<a href={result.resourceUrl}>
-			<h3 class="mwb-ellipsis">
-				<BoldTerms original={result.title} terms={$terms} />
-			</h3>
+	<a href={result.resourceUrl}>
+		<h3 class="mwb-ellipsis">
+			<BoldTerms original={result.title} terms={$terms} />
+		</h3>
+		{#if result.subline}
 			<p class="mwb-ellipsis">
 				<BoldTerms original={result.subline} terms={$terms} />
 			</p>
-		</a>
-	</div>
+		{/if}
+	</a>
 </div>
 
 <style>
 	.mwb-result {
-		@apply flex w-full;
+		@apply flex w-full items-start;
 	}
 
 	.mwb-result__image {
@@ -70,15 +70,16 @@
 	}
 
 	h3 {
-		@apply my-1;
+		@apply mt-1 mb-0;
 	}
 
 	p {
-		@apply text-sm;
+		@apply mt-1 text-sm;
 	}
 
-	.mwb-result__text {
-		@apply overflow-hidden;
+	a {
+		@apply block overflow-hidden;
+		min-height: 2rem;
 	}
 
 	.mwb-ellipsis {

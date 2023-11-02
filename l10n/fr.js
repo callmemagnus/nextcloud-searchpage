@@ -9,6 +9,8 @@ OC.L10N.register(
     "Load more..." : "Charger plus...",
     "Clear" : "Effacer",
     "Show only" : "Isoler",
-    "Back" : "Retour"
+    "Back" : "Retour",
+    "See only results for this provider" : "Voir seulement les résultats de cette source",
+    "See all providers" : "Voir toutes les sources"
 },
 "");

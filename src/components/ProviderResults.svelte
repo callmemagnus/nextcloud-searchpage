@@ -91,12 +91,12 @@
 				<button
 					type="button"
 					on:click={() => dispatch('only-me')}
-					title="See only results for this provider">{_t('Show only')}</button>
+					title={_t('See only results for this provider')}>{_t('Show only')}</button>
 			</small>
 		{/if}
 		{#if showBack}
 			<small>
-				<button type="button" on:click={() => dispatch('back')} title="See all providers"
+				<button type="button" on:click={() => dispatch('back')} title={_t('See all providers')}
 					>{_t('Back')}</button>
 			</small>
 		{/if}
@@ -150,6 +150,9 @@
 		@apply text-xs;
 	}
 	.mwb-result-item {
-		@apply mb-1;
+		@apply py-2 mb-2;
+	}
+	.mwb-result-item:hover {
+		background-color: var(--color-background-hover);
 	}
 </style>

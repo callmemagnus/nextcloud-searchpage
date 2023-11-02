@@ -26,6 +26,7 @@ class PageController extends Controller
     {
         $this->l = $l;
         parent::__construct(Application::APP_ID, $request);
+
         $this->labels = [
             "All providers",
             "Search",
@@ -35,8 +36,9 @@ class PageController extends Controller
             "Load more...",
             "Clear",
             "Show only",
-            "Back"
-
+            "Back",
+            "See only results for this provider",
+            "See all providers"
         ];
         $this->state = $state;
     }

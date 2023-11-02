@@ -72,6 +72,6 @@
 
 <style>
 	input {
-		width: 200px;
+		min-width: 300px;
 	}
 </style>

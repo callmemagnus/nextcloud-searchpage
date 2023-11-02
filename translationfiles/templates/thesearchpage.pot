@@ -55,3 +55,9 @@ msgstr ""
 
 msgid "Back"
 msgstr ""
+
+msgid "See only results for this provider"
+msgstr ""
+
+msgid "See all providers"
+msgstr ""

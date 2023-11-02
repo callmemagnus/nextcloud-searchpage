@@ -81,7 +81,7 @@
 
 <style>
 	.mwb-dynamic-grid {
-		@apply h-full w-full grid justify-stretch items-stretch gap-2;
+		@apply h-full w-full grid justify-stretch items-stretch gap-4;
 		min-height: 0;
 		min-width: 0;
 	}
