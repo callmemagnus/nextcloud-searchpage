@@ -27,7 +27,7 @@ msgstr "Надає результати пошуку"
 
 #: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:4
 msgid "Provides a search page to your Nextcloud instance."
-msgstr "Виводить результати пошуку у хмарі Nextcloud на окремій сторінці"
+msgstr "Виводить результати пошуку у хмарі Nextcloud на окремій сторінці."
 
 msgid "All providers"
 msgstr "Всюди"
