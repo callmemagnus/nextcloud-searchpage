@@ -52,3 +52,6 @@ msgstr ""
 
 msgid "Show only"
 msgstr ""
+
+msgid "Back"
+msgstr ""

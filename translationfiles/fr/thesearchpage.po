@@ -21,3 +21,6 @@ msgstr "Effacer"
 
 msgid "Show only"
 msgstr "Isoler"
+
+msgid "Back"
+msgstr "Retour"
