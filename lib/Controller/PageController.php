@@ -34,7 +34,8 @@ class PageController extends Controller
             "No results",
             "Load more...",
             "Clear",
-            "Show only"
+            "Show only",
+            "Back"
 
         ];
         $this->state = $state;
