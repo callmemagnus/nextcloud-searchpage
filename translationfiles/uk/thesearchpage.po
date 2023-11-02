@@ -57,4 +57,7 @@ msgid "Back"
 msgstr "Назад"
 
 msgid "See all providers"
-msgstr "Розширені результати пошуку"
+msgstr "Показати розширені результати пошуку"
+
+msgin "See only results for this provider"
+msgstr "Показати результати пошуку лише від цього постачальника"
