@@ -4,21 +4,24 @@
 
 	import { onMount } from 'svelte';
 	import { derived, get } from 'svelte/store';
-	import SearchBox from './components/SearchBox.svelte';
+	import SearchBox from './components/Header/SearchBox.svelte';
 	import SearchResults from './components/SearchResults.svelte';
 	import { PROVIDER_ALL } from './lib/search';
 	import { _t } from './lib/translate';
 	import providers from './states/providers';
-	import { providerId, terms } from './states/query';
+	import { providerIds, terms } from './states/query';
 
 	let error = false;
 	let lastSearch = 0;
 	let resultsContainer: HTMLDivElement;
 	let resultsContainerHeight = 'auto';
 
-	const selectedProviders = derived([providers, providerId], ([$providers, $providerId]) =>
-		$providers.filter(({ id }) => $providerId === PROVIDER_ALL || id === $providerId)
-	);
+	const selectedProviders = derived([providers, providerIds], ([$providers, $providerIds]) => {
+		if ($providerIds.includes(PROVIDER_ALL)) {
+			return $providers;
+		}
+		return $providers.filter(({ id }) => $providerIds.includes(id));
+	});
 
 	function search() {
 		lastSearch = Date.now();
@@ -26,7 +29,6 @@
 
 	function clear() {
 		lastSearch = 0;
-		providerId.set(PROVIDER_ALL);
 	}
 
 	function resize() {
@@ -39,7 +41,7 @@
 
 	onMount(() => {
 		providers.load();
-		if (get(terms) && get(providerId)) {
+		if (get(terms) && get(providerIds).length) {
 			lastSearch = Date.now();
 		}
 		resize();
@@ -51,7 +53,7 @@
 </script>
 
 <div class="mwb-thesearchpage">
-	<h1>{_t('Search')}</h1>
+	<h1 class="mwb-screenreader">{_t('Search Page')}</h1>
 	{#if error}
 		<p>{_t('There was an error loading the providers.')}</p>
 	{/if}
@@ -72,16 +74,12 @@
 
 <style>
 	.mwb-thesearchpage {
-		@apply w-full pt-2 px-2 h-full;
+		@apply w-full pt-3 px-2 h-full;
 		color: var(--color-main-text);
 		background-color: var(--color-main-background-blur, var(--color-main-background));
 	}
 
 	.mwb-thesearchpage__search-box {
-		@apply mb-4 py-0 px-1;
-	}
-
-	h1 {
-		@apply text-3xl font-bold mt-2 ml-2 mb-2;
+		@apply mb-2 py-0 px-1;
 	}
 </style>

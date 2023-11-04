@@ -15,32 +15,32 @@ use OCP\IRequest;
 
 class PageController extends Controller
 {
-    /** @var IL10N */
-    private $l;
-    /** @var IInitialState */
-    private $state;
-
+    /**
+     * @var string[]
+     */
     private $labels;
 
-    public function __construct(IRequest $request, IL10N $l, IInitialState $state)
+
+    public function __construct(IRequest $request, private IL10N $l, private IInitialState $state,
+    )
     {
-        $this->l = $l;
         parent::__construct(Application::APP_ID, $request);
 
         $this->labels = [
-            "All providers",
-            "Search",
+            "Search Page",
             "There was an error loading the providers.",
+            "See only results for this provider",
+            "Show only",
+            "See all providers",
+            "Back",
             "Loading...",
             "No results",
             "Load more...",
-            "Clear",
-            "Show only",
-            "Back",
-            "See only results for this provider",
-            "See all providers"
+            "Clear current query",
+            "Search",
+            "Click to change providers",
+            "Filters",            
         ];
-        $this->state = $state;
     }
 
     /**

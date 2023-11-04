@@ -3,13 +3,15 @@
 
 import { PROVIDER_ALL } from './search';
 
-export function saveInSession(terms: string, providerId: string) {
+export function saveInSession(terms: string, providerIds: string[]) {
 	const newState = new URLSearchParams();
 	if (terms) {
 		newState.append('terms', terms);
 	}
-	if (providerId) {
-		newState.append('provider', providerId);
+	if (providerIds) {
+		providerIds.forEach(p => {
+			newState.append('provider', p);
+		})
 	}
 
 	try {
@@ -30,8 +32,8 @@ export function loadFromSession() {
 		const state = new URLSearchParams(search);
 		return {
 			terms: state.get('terms') || '',
-			provider: state.get('provider') || PROVIDER_ALL
+			providers: state.getAll('provider') || [PROVIDER_ALL]
 		};
 	}
-	return { terms: '', provider: PROVIDER_ALL };
+	return { terms: '', providers: [PROVIDER_ALL] };
 }

@@ -12,8 +12,7 @@
     "phpunit/phpunit": "^9",
     "psalm/phar": "^4.10",
     "nextcloud/coding-standard": "^v1.1",
-    "nextcloud/ocp":"dev-master"
-
+    "nextcloud/ocp": "@stable"
   },
   "scripts": {
     "lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
@@ -35,8 +34,8 @@
   },
   "autoload": {
     "psr-4": {
-        "OCP\\": "vendor/nextcloud/ocp/OCP",
-        "OCA\\TheSearchPage\\": "lib/"
+      "OCP\\": "vendor/nextcloud/ocp/OCP",
+      "OCA\\TheSearchPage\\": "lib/"
     }
   }
 }

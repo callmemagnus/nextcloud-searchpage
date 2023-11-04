@@ -8,6 +8,35 @@
 
 @tailwind utilities;
 
+.mwb-screenreader {
+	@apply sr-only ;
+}
+
+
+.mwb-flex {
+	@apply flex;
+}
+
+button.mwb-unstyled,
+button.mwb-unstyled:focus,
+button.mwb-unstyled:active {
+	background: none !important;
+	color: inherit !important;
+	border: none !important;
+	padding: 0 !important;
+	line-height: 1 !important;
+	font: inherit !important;
+	cursor: pointer !important;
+	outline: inherit !important;
+	min-height: unset !important;
+	height: unset !important;
+}
+
+button.mwb-as-link,
+button.mwb-as-link:active {
+	@apply hover:underline;
+}
+
 #mwb-thesearchpage {
 	@apply w-full;
 }

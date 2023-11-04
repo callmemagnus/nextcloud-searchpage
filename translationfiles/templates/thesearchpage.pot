@@ -1,63 +1,80 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Nextcloud package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: Nextcloud 3.14159\n"
-"Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2023-10-26 18:03+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-11-04T17-48-30"
+"Language: "
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
 
-#: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:2
+# info.xml
 msgid "The Search Page"
 msgstr ""
 
-#: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:3
+# info.xml
 msgid "Provides a proper search page"
 msgstr ""
 
-#: /home/magnus/src/nextcloud-docker-dev/workspace/server/apps-extra/thesearchpage/specialAppInfoFakeDummyForL10nScript.php:4
+# info.xml
 msgid "Provides a search page to your Nextcloud instance."
 msgstr ""
 
 msgid "All providers"
 msgstr ""
-
-msgid "Search"
+# src/App.svelte
+msgid "Search Page"
 msgstr ""
 
+# src/App.svelte
 msgid "There was an error loading the providers."
 msgstr ""
 
-msgid "Loading..."
-msgstr ""
-
-msgid "No results"
-msgstr ""
-
-msgid "Load more..."
-msgstr ""
-
-msgid "Clear"
-msgstr ""
-
-msgid "Show only"
-msgstr ""
-
-msgid "Back"
-msgstr ""
-
+# src/components/ProviderResults.svelte
 msgid "See only results for this provider"
 msgstr ""
 
+# src/components/ProviderResults.svelte
+msgid "Show only"
+msgstr ""
+
+# src/components/ProviderResults.svelte
 msgid "See all providers"
 msgstr ""
+
+# src/components/ProviderResults.svelte
+msgid "Back"
+msgstr ""
+
+# src/components/ProviderResults.svelte
+msgid "Loading..."
+msgstr ""
+
+# src/components/ProviderResults.svelte
+msgid "No results"
+msgstr ""
+
+# src/components/ProviderResults.svelte
+msgid "Loading..."
+msgstr ""
+
+# src/components/ProviderResults.svelte
+msgid "Load more..."
+msgstr ""
+
+# src/components/Header/SearchBox.svelte
+msgid "Clear current query"
+msgstr ""
+
+# src/components/Header/SearchBox.svelte
+msgid "Search"
+msgstr ""
+
+# src/components/Header/SearchBox.svelte
+msgid "Click to change providers"
+msgstr ""
+
+# src/components/Header/SearchBox.svelte
+msgid "Filters"
+msgstr ""
+
+# src/components/SearchResults.svelte
+msgid "No results"
+msgstr ""
+

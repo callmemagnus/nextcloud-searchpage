@@ -19,6 +19,7 @@
 	let cursor = 0;
 	let searchResults: SearchEntry[] | null = null;
 	let button: HTMLButtonElement;
+
 	const dispatch = createEventDispatcher();
 
 	async function load(oldCursor: number) {
