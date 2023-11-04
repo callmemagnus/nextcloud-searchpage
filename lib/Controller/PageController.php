@@ -21,9 +21,11 @@ class PageController extends Controller
     private $labels;
 
 
-    public function __construct(IRequest $request, private IL10N $l, private IInitialState $state,
-    )
-    {
+    public function __construct(
+        IRequest $request,
+        private IL10N $l,
+        private IInitialState $state,
+    ) {
         parent::__construct(Application::APP_ID, $request);
 
         $this->labels = [
@@ -39,7 +41,7 @@ class PageController extends Controller
             "Clear current query",
             "Search",
             "Click to change providers",
-            "Filters",            
+            "Filters",
         ];
     }
 

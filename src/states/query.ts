@@ -8,7 +8,7 @@ const session = loadFromSession();
 
 export const terms = writable(session.terms);
 export const providerId = writable(session.providers[0]);
-export const providerIds = writable(session.providers)
+export const providerIds = writable(session.providers);
 
 terms.subscribe((t) => {
 	saveInSession(t.trim(), [get(providerId)]);
@@ -17,5 +17,5 @@ providerId.subscribe((p) => {
 	saveInSession(get(terms), [p]);
 });
 providerIds.subscribe((pIds) => {
-	saveInSession(get(terms), pIds)
-})
+	saveInSession(get(terms), pIds);
+});

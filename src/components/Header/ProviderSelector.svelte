@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import type { ChangeEventHandler } from 'svelte/elements';
 	import { writable } from 'svelte/store';
 	import { PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../lib/search';
 	import { _t } from '../../lib/translate';
@@ -28,14 +29,14 @@
 		}
 	});
 
-	function updateAll(event: InputEvent) {
+	const updateAll: ChangeEventHandler<HTMLInputElement> = (event) => {
 		const target = event.target as HTMLInputElement;
 		if (target.checked) {
 			displayedSelection.set(providers.map(({ id }) => id));
 		} else {
 			displayedSelection.set([]);
 		}
-	}
+	};
 </script>
 
 <div class="mwb-checkboxes-container">

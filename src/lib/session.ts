@@ -9,9 +9,9 @@ export function saveInSession(terms: string, providerIds: string[]) {
 		newState.append('terms', terms);
 	}
 	if (providerIds) {
-		providerIds.forEach(p => {
+		providerIds.forEach((p) => {
 			newState.append('provider', p);
-		})
+		});
 	}
 
 	try {
