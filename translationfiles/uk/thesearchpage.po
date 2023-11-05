@@ -6,68 +6,68 @@
 
 # info.xml
 msgid "The Search Page"
-msgstr "La page de recherche"
+msgstr "Сторінка пошуку"
 
 # info.xml
 msgid "Provides a proper search page"
-msgstr "Fournit une vraie page de recherche"
+msgstr "Надає результати пошуку"
 
 # info.xml
 msgid "Provides a search page to your Nextcloud instance."
-msgstr "Fournit une page de recherche pour votre instance Nextcloud"
+msgstr "Виводить результати пошуку у хмарі Nextcloud на окремій сторінці."
 
 msgid "All providers"
-msgstr "Toutes les sources"
+msgstr "Всюди"
 
 # src/App.svelte
 msgid "Search Page"
-msgstr "La page de recherche"
+msgstr "Сторінка пошуку"
 
 # src/App.svelte
 msgid "There was an error loading the providers."
-msgstr "Une erreur s'est produite en chargeant les sources."
+msgstr "Помилка під час завантаження постачальників даних."
 
 # src/components/ProviderResults.svelte
 msgid "See only results for this provider"
-msgstr "Voir seulement les résultats de cette source"
+msgstr "Показати результати пошуку лише від цього постачальника"
 
 # src/components/ProviderResults.svelte
 msgid "Show only"
-msgstr "Isoler"
+msgstr "Перейти"
 
 # src/components/ProviderResults.svelte
 msgid "See all providers"
-msgstr "Voir toutes les sources"
+msgstr "Показати розширені результати пошуку"
 
 # src/components/ProviderResults.svelte
 msgid "Back"
-msgstr "Retour"
+msgstr "Назад"
 
 # src/components/ProviderResults.svelte
 msgid "Loading..."
-msgstr "Chargement..."
+msgstr "Завантаження..."
 
 # src/components/ProviderResults.svelte
 msgid "No results"
-msgstr "Pas de résultats"
+msgstr "Нічого не знайдено"
 
 # src/components/ProviderResults.svelte
 msgid "Load more..."
-msgstr "Charger plus..."
+msgstr "Більше..."
 
 # src/components/Header/SearchBox.svelte
 msgid "Clear current query"
-msgstr "Effacer la recherche courante"
+msgstr "Очистити поточний запит"
 
 # src/components/Header/SearchBox.svelte
 msgid "Search"
-msgstr "Chercher"
+msgstr "Пошук"
 
 # src/components/Header/SearchBox.svelte
 msgid "Click to change providers"
-msgstr "Cliquer pour changer les sources"
+msgstr "Натисніть, щоб змінити постачальника"
 
 # src/components/Header/SearchBox.svelte
 msgid "Filters"
-msgstr "Filtres"
+msgstr "Фільтри"
 

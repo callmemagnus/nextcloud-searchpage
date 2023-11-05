@@ -1,7 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "The Search Page" : "La page de recherch",
+    "The Search Page" : "La page de recherche",
     "Provides a proper search page" : "Fournit une vraie page de recherche",
     "Provides a search page to your Nextcloud instance." : "Fournit une page de recherche pour votre instance Nextcloud",
     "All providers" : "Toutes les sources",
