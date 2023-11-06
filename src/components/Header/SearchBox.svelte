@@ -35,10 +35,30 @@
 		input.focus();
 	}
 
-	function search() {
+	function search(event?: SubmitEvent) {
 		providerIds.set(userProviderIds);
 		terms.set(userQuery);
 		dispatch('search');
+
+		if (event) {
+			// for mobile phone
+			hideKeyboard(input);
+		}
+	}
+
+	/**
+	 * Make mobile browsers hide the keyboard
+	 *
+	 * https://stackoverflow.com/a/11160055
+	 * @param element
+	 */
+	function hideKeyboard(element: HTMLInputElement) {
+		element.inputMode = 'none';
+		setTimeout(function () {
+			element.blur();
+			// Remove readonly attribute after keyboard is hidden.
+			element.inputMode = 'text';
+		}, 100);
 	}
 
 	function onkeydown(e: KeyboardEvent) {
@@ -68,10 +88,8 @@
 				class="mwb-form__clear mwb-unstyled"
 				type="button"
 				on:click={clear}
-				aria-labelledby="mwb-clear-button-label"
+				title={_t('Clear current query')}
 				disabled={!userQuery}>
-				<span id="mwb-clear-button-label" class="mwb-screenreader"
-					>{_t('Clear current query')}</span>
 				⨯
 			</button>
 		</div>
@@ -113,7 +131,7 @@
 
 <style lang="less">
 	.mwb-line {
-		@apply flex flex-wrap gap-x-1;
+		@apply flex flex-wrap gap-x-1 items-baseline;
 	}
 
 	input[type='text'] {
@@ -138,7 +156,7 @@
 
 	.mwb-filters {
 		@apply flex gap-1;
-		margin-top: 10px;
+		padding: 8px 10px 8px 10px !important;
 	}
 
 	.mwb-selected-provider-list {
