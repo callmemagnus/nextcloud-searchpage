@@ -72,18 +72,20 @@
 	label {
 		@apply flex items-center gap-1;
 
-		&:focus-within {
-			box-shadow: 0 0 0 4px var(--color-main-background) !important;
-			outline: 2px solid var(--color-main-text) !important;
-			border-radius: var(--border-radius-pill);
-		}
-
 		input[type='checkbox'] {
 			@apply p-0 m-0 h-4 w-4;
 		}
 
 		span {
 			@apply whitespace-nowrap cursor-pointer;
+		}
+	}
+	/* mwb-tabbed is set on the app container */
+	:global(.mwb-tabbed) {
+		label:focus-within {
+			box-shadow: 0 0 0 4px var(--color-main-background) !important;
+			outline: 2px solid var(--color-main-text) !important;
+			border-radius: 2px;
 		}
 	}
 </style>

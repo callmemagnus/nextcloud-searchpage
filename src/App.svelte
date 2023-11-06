@@ -10,6 +10,7 @@
 	import { _t } from './lib/translate';
 	import providers from './states/providers';
 	import { providerIds, terms } from './states/query';
+	import { clog } from './lib/log';
 
 	let error = false;
 	let lastSearch = 0;
@@ -50,9 +51,19 @@
 			window.removeEventListener('resize', resize);
 		};
 	});
+
+	let hasTabbed = false;
+
+	function onKeydown(event: KeyboardEvent) {
+		if (event.code === 'Tab' && !hasTabbed) {
+			hasTabbed = true;
+		}
+	}
 </script>
 
-<div class="mwb-thesearchpage">
+<svelte:body on:keydown={onKeydown} />
+
+<div class="mwb-thesearchpage {hasTabbed ? 'mwb-tabbed' : ''}">
 	<h1 class="mwb-screenreader">{_t('Search Page')}</h1>
 	{#if error}
 		<p>{_t('There was an error loading the providers.')}</p>
