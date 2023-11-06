@@ -6,7 +6,7 @@
 	import { derived, get } from 'svelte/store';
 	import SearchBox from './components/Header/SearchBox.svelte';
 	import SearchResults from './components/SearchResults.svelte';
-	import { PROVIDER_ALL } from './lib/search';
+	import { PROVIDER_ALL } from './constants';
 	import { _t } from './lib/translate';
 	import providers from './states/providers';
 	import { providerIds, terms } from './states/query';

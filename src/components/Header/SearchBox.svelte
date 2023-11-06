@@ -4,7 +4,7 @@
 
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../lib/search';
+	import { PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../constants';
 	import { _t } from '../../lib/translate';
 	import providers from '../../states/providers';
 	import { providerId, providerIds, terms } from '../../states/query';

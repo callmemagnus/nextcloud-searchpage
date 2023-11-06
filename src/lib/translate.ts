@@ -5,14 +5,24 @@ import { get } from 'svelte/store';
 import { labels } from '../states/initialStates';
 import { cwarn } from './log';
 
-export function _t(label: string) {
+export function _t(label: string, ...rest: string[]) {
 	const translations = get(labels);
 	if (translations[label]) {
-		return translations[label];
+		let l = translations[label];
+		rest.forEach((text) => {
+			l = l.replace('%s', text);
+		});
+		return l;
 	}
 
 	cwarn(
 		`Missing label "${label}" in used language: please help translate: https://github.com/callmemagnus/nextcloud-searchpage`
 	);
-	return label;
+
+	let l = label;
+	rest.forEach((text) => {
+		l = l.replace('%s', text);
+	});
+
+	return l;
 }

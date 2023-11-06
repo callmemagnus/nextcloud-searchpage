@@ -26,4 +26,7 @@
             <route>thesearchpage.page.index</route>
         </navigation>
     </navigations>
+    <settings>
+        <admin>OCA\TheSearchPage\Controller\AdminController</admin>
+    </settings>
 </info>

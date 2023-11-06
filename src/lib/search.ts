@@ -20,9 +20,6 @@ export type SearchResult = {
 	entries: SearchEntry[];
 };
 
-export const PROVIDER_ALL = 'All';
-export const PROVIDER_ALL_LABEL = 'All providers';
-
 const cache = new TimedCache<Promise<SearchResult | null>>(30_000);
 
 export async function searchOnProvider(

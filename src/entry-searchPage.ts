@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import App from './App.svelte';
+import App from './SearchPage.svelte';
 import './app.postcss';
 
 const app = new App({

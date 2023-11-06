@@ -16,10 +16,11 @@ export default defineConfig((config) => {
     build: {
       sourcemap: devMode,
       minify: !devMode,
+      emptyOutDir: false,
       outDir: "js",
       lib: {
         formats: ["iife"],
-        entry: "src/main.ts",
+        entry: "src/entry-searchPage.ts",
         name: "main",
       },
     },
