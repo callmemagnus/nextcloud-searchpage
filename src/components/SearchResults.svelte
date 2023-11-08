@@ -1,14 +1,15 @@
 <script lang="ts">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
+	import { translate } from '@nextcloud/l10n';
+	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { _t } from '../lib/translate';
+	import { APP_NAME } from '../constants';
+	import { addToHash, readFromHash, removeFromHash } from '../lib/hash';
 	import type { Provider } from '../states/providers';
 	import { terms } from '../states/query';
-	import ProviderResults from './ProviderResults.svelte';
-	import { onMount } from 'svelte';
-	import { addToHash, readFromHash, removeFromHash } from '../lib/hash';
 	import DynamicGrid from './DynamicGrid.svelte';
+	import ProviderResults from './ProviderResults.svelte';
 
 	export let providers: Provider[];
 
@@ -76,7 +77,7 @@
 		{/key}
 	</DynamicGrid>
 {:else if providersWithNoResults.length > 0}
-	<p>{_t('No results')}</p>
+	<p>{translate(APP_NAME, 'No results')}</p>
 {/if}
 
 <style>

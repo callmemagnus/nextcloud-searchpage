@@ -15,34 +15,10 @@ use OCP\IRequest;
 
 class PageController extends Controller
 {
-    /**
-     * @var string[]
-     */
-    private $labels;
-
-
     public function __construct(
         IRequest $request,
-        private IL10N $l,
-        private IInitialState $state,
     ) {
         parent::__construct(Application::APP_ID, $request);
-
-        $this->labels = [
-            "Search Page",
-            "There was an error loading the providers.",
-            "See only results for this provider",
-            "Show only",
-            "See all providers",
-            "Back",
-            "Loading...",
-            "No results",
-            "Load more...",
-            "Clear current query",
-            "Search",
-            "Click to change providers",
-            "Filters",
-        ];
     }
 
     /**
@@ -51,19 +27,6 @@ class PageController extends Controller
      */
     public function index(): TemplateResponse
     {
-        $this->state->provideInitialState('labels', $this->getLabels());
         return new TemplateResponse(Application::APP_ID, 'main');
-    }
-
-    private function getLabels()
-    {
-        return array_reduce(
-            $this->labels,
-            function ($carry, $label) {
-                $carry[$label] = $this->l->t($label);
-                return $carry;
-            },
-            array()
-        );
     }
 }

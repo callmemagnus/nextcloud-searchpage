@@ -2,10 +2,12 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
+	import { translate } from '@nextcloud/l10n';
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { searchOnProvider, type SearchEntry } from '../lib/search';
 
-	import { _t } from '../lib/translate';
+	import { APP_NAME } from '../constants';
+
 	import type { Provider } from '../states/providers';
 	import Result from './Result.svelte';
 
@@ -92,18 +94,21 @@
 				<button
 					type="button"
 					on:click={() => dispatch('only-me')}
-					title={_t('See only results for this provider')}>{_t('Show only')}</button>
+					title={translate(APP_NAME, 'See only results for this provider')}
+					>{translate(APP_NAME, 'Show only')}</button>
 			</small>
 		{/if}
 		{#if showBack}
 			<small>
-				<button type="button" on:click={() => dispatch('back')} title={_t('See all providers')}
-					>{_t('Back')}</button>
+				<button
+					type="button"
+					on:click={() => dispatch('back')}
+					title={translate(APP_NAME, 'See all providers')}>{translate(APP_NAME, 'Back')}</button>
 			</small>
 		{/if}
 	</div>
 	{#if !searchResults}
-		<p>{_t('Loading...')}</p>
+		<p>{translate(APP_NAME, 'Loading...')}</p>
 	{:else}
 		<div class="mwb-result-scroll">
 			{#each searchResults as result}
@@ -111,12 +116,12 @@
 					<Result {result} />
 				</div>
 			{:else}
-				<p>{_t('No results')}</p>
+				<p>{translate(APP_NAME, 'No results')}</p>
 			{/each}
 			{#if searchResults.length && hasMore}
 				<div>
 					<button bind:this={button} disabled={loading} on:click={() => load(cursor)}>
-						{loading ? _t('Loading...') : _t('Load more...')}
+						{loading ? translate(APP_NAME, 'Loading...') : translate(APP_NAME, 'Load more...')}
 					</button>
 				</div>
 			{/if}

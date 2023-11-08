@@ -2,10 +2,10 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
+	import { translate } from '@nextcloud/l10n';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../lib/search';
-	import { _t } from '../../lib/translate';
+	import { APP_NAME, PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../constants';
 	import providers from '../../states/providers';
 	import { providerId, providerIds, terms } from '../../states/query';
 	import ProviderSelector from './ProviderSelector.svelte';
@@ -88,20 +88,20 @@
 				class="mwb-form__clear mwb-unstyled"
 				type="button"
 				on:click={clear}
-				title={_t('Clear current query')}
+				title={translate(APP_NAME, 'Clear current query')}
 				disabled={!userQuery}>
 				⨯
 			</button>
 		</div>
 		<button type="submit" disabled={!isSearchEnabled}>
-			{_t('Search')}
+			{translate(APP_NAME, 'Search')}
 		</button>
 		<button
 			class="mwb-unstyled mwb-as-link mwb-filters"
 			type="button"
-			title={_t('Click to change providers')}
+			title={translate(APP_NAME, 'Click to change providers')}
 			on:click={() => (showProviderSelection = !showProviderSelection)}>
-			<span> {_t('Filters')}</span>
+			<span> {translate(APP_NAME, 'Filters')}</span>
 			{#if !showProviderSelection}
 				<span class="mwb-flex">
 					<span>(</span>
@@ -112,7 +112,7 @@
 								.map(({ name }) => name)
 								.join(', ')}</span>
 					{:else if userProviderIds.includes(PROVIDER_ALL)}
-						{_t(PROVIDER_ALL_LABEL)}
+						{translate(APP_NAME, PROVIDER_ALL_LABEL)}
 					{/if}
 					<span>)</span>
 				</span>

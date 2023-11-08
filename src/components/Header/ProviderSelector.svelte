@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { translate } from '@nextcloud/l10n';
 	import { createEventDispatcher } from 'svelte';
 	import type { ChangeEventHandler } from 'svelte/elements';
 	import { writable } from 'svelte/store';
-	import { PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../lib/search';
-	import { _t } from '../../lib/translate';
+	import { APP_NAME, PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../constants';
 	import type { Provider } from '../../states/providers';
 
 	export let providers: Provider[];
@@ -42,7 +42,7 @@
 <div class="mwb-checkboxes-container">
 	<label>
 		<input type="checkbox" name="providers" checked={allProvidersChecked} on:change={updateAll} />
-		<span>{_t(PROVIDER_ALL_LABEL)}</span>
+		<span>{translate(APP_NAME, PROVIDER_ALL_LABEL)}</span>
 	</label>
 	<div class="mwb-checkboxes">
 		{#each providers as provider}

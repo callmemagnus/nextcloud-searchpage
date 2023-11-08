@@ -1,3 +1,6 @@
+# magnus anderssen <magnus@magooweb.com>, 2023
+msgid ""
+msgstr ""
 "POT-Creation-Date: 2023-11-04T17-48-30"
 "Language: "
 "MIME-Version: 1.0"
@@ -51,10 +54,6 @@ msgid "No results"
 msgstr ""
 
 # src/components/ProviderResults.svelte
-msgid "Loading..."
-msgstr ""
-
-# src/components/ProviderResults.svelte
 msgid "Load more..."
 msgstr ""
 
@@ -72,9 +71,5 @@ msgstr ""
 
 # src/components/Header/SearchBox.svelte
 msgid "Filters"
-msgstr ""
-
-# src/components/SearchResults.svelte
-msgid "No results"
 msgstr ""
 

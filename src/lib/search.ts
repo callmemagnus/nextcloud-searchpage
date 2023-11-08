@@ -3,6 +3,7 @@
 
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
+import type { Provider } from '../states/providers';
 import TimedCache from './TimedCache';
 
 export type SearchEntry = {
@@ -19,9 +20,6 @@ export type SearchResult = {
 	isPaginated: boolean;
 	entries: SearchEntry[];
 };
-
-export const PROVIDER_ALL = 'All';
-export const PROVIDER_ALL_LABEL = 'All providers';
 
 const cache = new TimedCache<Promise<SearchResult | null>>(30_000);
 
@@ -56,17 +54,23 @@ export async function searchOnProvider(
 	return cache.get(url)!;
 }
 
+const disfunctionalProviders = [
+	// Is broken, always returns []
+	'users'
+];
+
 export async function fetchProviders() {
 	try {
 		const url = generateOcsUrl('search/providers');
 		const result = await axios.get(url);
 
 		if (result.data.ocs.meta.statuscode === 200) {
-			return result.data.ocs.data;
+			const providers: Provider[] = result.data.ocs.data;
+			return providers.filter(({ id }) => !disfunctionalProviders.includes(id));
 		}
-		return null;
+		return [];
 	} catch (e) {
 		console.error((e as Error).message || e);
-		return null;
+		return [];
 	}
 }

@@ -18,18 +18,18 @@
     "lint": "eslint --config .eslintrc.cjs src/**/*.ts src/**/*.svelte"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "@sveltejs/vite-plugin-svelte": "2.4.2",
     "@tsconfig/svelte": "5.0.2",
     "@typescript-eslint/eslint-plugin": "6.7.5",
     "@typescript-eslint/parser": "6.7.5",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "10.4.14",
     "eslint": "8.51.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-svelte": "2.34.0",
     "less": "4.2.0",
-    "postcss": "^8.4.24",
-    "postcss-load-config": "^4.0.1",
+    "postcss": "8.4.24",
+    "postcss-load-config": "4.0.1",
     "prettier": "3.0.3",
     "prettier-plugin-svelte": "3.0.3",
     "svelte": "4.2.1",
@@ -43,8 +43,7 @@
   },
   "dependencies": {
     "@nextcloud/axios": "2.4.0",
-    "@nextcloud/browserslist-config": "^3.0.0",
-    "@nextcloud/initial-state": "^2.1.0",
+    "@nextcloud/l10n": "2.2.0",
     "@nextcloud/router": "2.1.2"
   }
 }
