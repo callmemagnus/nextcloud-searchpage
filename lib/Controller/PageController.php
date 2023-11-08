@@ -42,6 +42,7 @@ class PageController extends Controller
             "Search",
             "Click to change providers",
             "Filters",
+            "All providers"
         ];
     }
 
