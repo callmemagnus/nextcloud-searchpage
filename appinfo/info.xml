@@ -8,7 +8,35 @@
     <id>thesearchpage</id>
     <name>The Search Page</name>
     <summary>Provides a proper search page</summary>
-    <description><![CDATA[Provides a search page to your Nextcloud instance.]]></description>
+    <description><![CDATA[🔎 A Search Page for your Nextcloud instance
+    
+It works like the existing search widget, uses the same sources to query BUT 
+displays the results in a more readable and browsable fashion.
+
+The content of the results depends on the other applications installed on 
+your Nextcloud instance. Every Nextcloud application can become a search 
+provider and get its results displayed by this application.
+
+Out of the Nextcloud box, you usually get the following providers:
+
+- Apps -- searches for match for in installed application names
+- Files -- searches on path and filename
+- Tags
+- Comments
+- Settings
+
+Because of its design, the results depend on the implementation of the providers
+in respective application.
+
+Known issues with other applications: 
+
+- users -- [by design(?), it always returns an empty array](https://github.com/nextcloud/server/issues/41274) (it is hidden/disabled in this application)
+- fulltextsearch -- does not seem to AND the query terms, OR is usually less relevant
+- news -- does not provide a direct link to a feed item.
+
+Don't hesitate to leave a comment here or a rating!
+
+    ]]></description>
     <version>1.3.0-pre</version>
     <licence>agpl</licence>
     <author mail="magnus@magooweb.com" homepage="https://magnus.anderssen.ch">Magnus Anderssen</author>
