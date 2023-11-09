@@ -15,10 +15,10 @@ Files: l10n/*.js l10n/*.json
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
-Files:*.svelte *.ts
+Files: *.svelte *.ts
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
-Files: .tx/* .github/* bin/*.sh translationfiles/*/*.po translationfiles/templates/thesearchpage.pot
+Files: *.md .tx/* .github/* bin/*.sh translationfiles/*/*.po translationfiles/templates/thesearchpage.pot
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
