@@ -3,4 +3,3 @@
 
 export const APP_NAME = 'thesearchpage';
 export const PROVIDER_ALL = 'All';
-export const PROVIDER_ALL_LABEL = 'All providers';

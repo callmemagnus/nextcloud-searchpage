@@ -3,8 +3,8 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { ChangeEventHandler } from 'svelte/elements';
 	import { writable } from 'svelte/store';
-	import { APP_NAME, PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../constants';
 	import type { Provider } from '../../states/providers';
+	import { APP_NAME, PROVIDER_ALL } from '../../constants';
 
 	export let providers: Provider[];
 	/**
@@ -41,8 +41,8 @@
 
 <div class="mwb-checkboxes-container">
 	<label>
-		<input type="checkbox" name="providers" checked={allProvidersChecked} on:change={updateAll} />
-		<span>{translate(APP_NAME, PROVIDER_ALL_LABEL)}</span>
+		<input checked={allProvidersChecked} name="providers" on:change={updateAll} type="checkbox" />
+		<span>{translate(APP_NAME, 'All providers')}</span>
 	</label>
 	<div class="mwb-checkboxes">
 		{#each providers as provider}
