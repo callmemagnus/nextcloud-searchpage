@@ -45,6 +45,7 @@
   "dependencies": {
     "@nextcloud/axios": "2.4.0",
     "@nextcloud/l10n": "2.2.0",
-    "@nextcloud/router": "2.1.2"
+    "@nextcloud/router": "2.1.2",
+    "@nextcloud/typings": "1.7.0"
   }
 }
