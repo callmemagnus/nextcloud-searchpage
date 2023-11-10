@@ -7,18 +7,14 @@ Files: package-lock.json package.json composer.json composer.lock src/.prettierr
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
-Files: bin/tools/translationtool.phar
+Files: .l10ignore l10n/*.js l10n/*.json translationfiles/*
 Copyright: Nextcloud translators <https://www.transifex.com/nextcloud/>
-License: AGPL-3.0-or-later
-
-Files: l10n/*.js l10n/*.json
-Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
 Files: *.svelte *.ts
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
-Files: *.md .tx/* .github/* bin/*.sh translationfiles/*/*.po translationfiles/templates/thesearchpage.pot
+Files: *.md .tx/* .github/* bin/*.sh
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
