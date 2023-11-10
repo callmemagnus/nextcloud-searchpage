@@ -11,10 +11,10 @@ Files: .l10nignore l10n/*.js l10n/*.json translationfiles/*
 Copyright: Nextcloud translators <https://www.transifex.com/nextcloud/>
 License: AGPL-3.0-or-later
 
-Files: *.svelte *.ts
+Files: *.svelte *.ts *.js
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
-Files: *.md .tx/* .github/* bin/*.sh
+Files: *.md .tx/* .github/* bin/*
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later

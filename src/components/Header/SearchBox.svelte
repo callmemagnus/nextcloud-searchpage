@@ -5,7 +5,7 @@
 	import { translate } from '@nextcloud/l10n';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { APP_NAME, PROVIDER_ALL, PROVIDER_ALL_LABEL } from '../../constants';
+	import { APP_NAME, PROVIDER_ALL } from '../../constants';
 	import providers from '../../states/providers';
 	import { providerId, providerIds, terms } from '../../states/query';
 	import ProviderSelector from './ProviderSelector.svelte';
@@ -112,7 +112,7 @@
 								.map(({ name }) => name)
 								.join(', ')}</span>
 					{:else if userProviderIds.includes(PROVIDER_ALL)}
-						{translate(APP_NAME, PROVIDER_ALL_LABEL)}
+						{translate(APP_NAME, 'All providers')}
 					{/if}
 					<span>)</span>
 				</span>
