@@ -15,8 +15,15 @@
      */
     "allowJs": true,
     "checkJs": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "$/*": ["./src/*"],
+      "$lib/*": ["./src/lib/*"],
+      "$states/*": ["./src/states/*"],
+      "$components/*": ["./src/components/*"]
+    }
   },
+
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "references": [
     {

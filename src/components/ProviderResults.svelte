@@ -2,13 +2,13 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
+	import { searchOnProvider, type SearchEntry } from '$lib/search';
 	import { translate } from '@nextcloud/l10n';
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
-	import { searchOnProvider, type SearchEntry } from '../lib/search';
 
-	import { APP_NAME } from '../constants';
+	import { APP_NAME } from '$/constants';
 
-	import type { Provider } from '../states/providers';
+	import type { Provider } from '$states/providers';
 	import Result from './Result.svelte';
 
 	export let provider: Provider;

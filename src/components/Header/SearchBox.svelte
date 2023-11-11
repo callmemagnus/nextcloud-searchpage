@@ -2,12 +2,12 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
+	import { APP_NAME, PROVIDER_ALL } from '$/constants';
+	import { providers } from '$states/providers';
+	import { providerIds, terms } from '$states/query';
 	import { translate } from '@nextcloud/l10n';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { APP_NAME, PROVIDER_ALL } from '../../constants';
-	import providers from '../../states/providers';
-	import { providerId, providerIds, terms } from '../../states/query';
 	import ProviderSelector from './ProviderSelector.svelte';
 
 	let userQuery = get(terms);
@@ -21,7 +21,7 @@
 	let showProviderSelection = false;
 
 	onMount(() => {
-		if (get(terms) !== '' && get(providerId)) {
+		if (get(terms) !== '' && get(providerIds).length) {
 			search();
 		} else {
 			setTimeout(() => input.focus(), 200);
@@ -82,25 +82,26 @@
 <form method="get" on:submit|preventDefault={search}>
 	<div class="mwb-line">
 		<div class="mwb-input">
-			<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
+			<input bind:this={input} bind:value={userQuery} name="terms" type="text" />
 
 			<button
 				class="mwb-form__clear mwb-unstyled"
-				type="button"
+				disabled={!userQuery}
 				on:click={clear}
 				title={translate(APP_NAME, 'Clear current query')}
-				disabled={!userQuery}>
+				type="button">
 				⨯
 			</button>
 		</div>
-		<button type="submit" disabled={!isSearchEnabled}>
+		<button disabled={!isSearchEnabled} type="submit">
 			{translate(APP_NAME, 'Search')}
 		</button>
 		<button
 			class="mwb-unstyled mwb-as-link mwb-filters"
-			type="button"
+			disabled={!$providers.length}
+			on:click={() => (showProviderSelection = !showProviderSelection)}
 			title={translate(APP_NAME, 'Click to change providers')}
-			on:click={() => (showProviderSelection = !showProviderSelection)}>
+			type="button">
 			<span> {translate(APP_NAME, 'Filters')}</span>
 			{#if !showProviderSelection}
 				<span class="mwb-flex">
@@ -119,7 +120,6 @@
 			{/if}
 		</button>
 	</div>
-	<div style="display: {showProviderSelection ? 'block' : 'unset'}"></div>
 
 	{#if showProviderSelection && $providers.length}
 		<ProviderSelector

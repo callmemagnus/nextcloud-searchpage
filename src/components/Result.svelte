@@ -2,8 +2,8 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	import type { SearchEntry } from '../lib/search';
-	import { terms } from '../states/query';
+	import type { SearchEntry } from '$lib/search';
+	import { terms } from '$states/query';
 	import BoldTerms from './BoldTerms.svelte';
 
 	export let result: SearchEntry;

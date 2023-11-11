@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import { loadFromSession, saveInSession } from '$lib/session';
 import { get, writable } from 'svelte/store';
-import { loadFromSession, saveInSession } from '../lib/session';
 
 const session = loadFromSession();
 

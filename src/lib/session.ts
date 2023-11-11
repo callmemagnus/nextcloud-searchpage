@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { PROVIDER_ALL } from '../constants';
+import { PROVIDER_ALL } from '$/constants';
 
 export function saveInSession(terms: string, providerIds: string[]) {
 	const newState = new URLSearchParams();

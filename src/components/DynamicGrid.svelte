@@ -1,8 +1,8 @@
 <script lang="ts">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
+	import { generateArray } from '$lib/array-utils';
 	import { afterUpdate, onMount } from 'svelte';
-	import { generateArray } from '../lib/array-utils';
 
 	// eslint-disable-next-line no-undef
 	type T = $$Generic;
@@ -71,7 +71,7 @@
 	});
 </script>
 
-<div class="mwb-dynamic-grid" bind:this={me} data-columns={columns} data-rows={rows}>
+<div bind:this={me} class="mwb-dynamic-grid" data-columns={columns} data-rows={rows}>
 	{#each items as item}
 		<div class="mwb-dynamic-grid-cell">
 			<slot {item} />

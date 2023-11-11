@@ -8,8 +8,8 @@
 	import SearchBox from './components/Header/SearchBox.svelte';
 	import SearchResults from './components/SearchResults.svelte';
 	import { APP_NAME, PROVIDER_ALL } from './constants';
-	import providers from './states/providers';
-	import { providerIds, terms } from './states/query';
+	import { providers } from '$states/providers';
+	import { providerIds, terms } from '$states/query';
 
 	let error = false;
 	let lastSearch = 0;

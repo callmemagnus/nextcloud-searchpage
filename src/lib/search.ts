@@ -3,7 +3,7 @@
 
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
-import type { Provider } from '../states/providers';
+import type { Provider } from '$states/providers';
 import TimedCache from './TimedCache';
 
 export type SearchEntry = {

@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { APP_NAME, PROVIDER_ALL } from '$/constants';
+	import type { Provider } from '$states/providers';
 	import { translate } from '@nextcloud/l10n';
 	import { createEventDispatcher } from 'svelte';
 	import type { ChangeEventHandler } from 'svelte/elements';
 	import { writable } from 'svelte/store';
-	import type { Provider } from '../../states/providers';
-	import { APP_NAME, PROVIDER_ALL } from '../../constants';
 
 	export let providers: Provider[];
 	/**
@@ -66,7 +66,7 @@
 	}
 
 	.mwb-checkboxes {
-		@apply flex  flex-wrap gap-x-6;
+		@apply flex flex-wrap gap-x-6;
 	}
 
 	label {
@@ -80,6 +80,7 @@
 			@apply whitespace-nowrap cursor-pointer;
 		}
 	}
+
 	/* mwb-tabbed is set on the app container */
 	:global(.mwb-tabbed) {
 		label:focus-within {

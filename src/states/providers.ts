@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import { fetchProviders } from '$lib/search';
 import { writable } from 'svelte/store';
-import { fetchProviders } from '../lib/search';
 
 export type Provider = {
 	id: string;
@@ -18,4 +18,4 @@ async function load() {
 	}
 }
 
-export default { subscribe, load };
+export const providers = { subscribe, load };
