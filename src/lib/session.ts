@@ -4,6 +4,10 @@
 import { PROVIDER_ALL } from '$/constants';
 
 export function saveInSession(terms: string, providerIds: string[]) {
+	if (!terms.length || !providerIds.length) {
+		return;
+	}
+
 	const newState = new URLSearchParams();
 	if (terms) {
 		newState.append('terms', terms);

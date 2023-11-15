@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.0-pre
+
+- New admin screen in (additional settings) to configure (mostly hide) providers globally or per user group
+- Integrated application with Nextcloud's Transifex
+
 ## [v1.2.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.0...v1.2.1)
 
 - Preparing for Transifex integration

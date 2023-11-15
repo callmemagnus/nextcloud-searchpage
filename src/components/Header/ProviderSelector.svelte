@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { APP_NAME, PROVIDER_ALL } from '$/constants';
+	import { PROVIDER_ALL } from '$/constants';
+	import { t } from '$lib/translate';
 	import type { Provider } from '$states/providers';
-	import { translate } from '@nextcloud/l10n';
-	import { createEventDispatcher } from 'svelte';
+	import { afterUpdate, createEventDispatcher } from 'svelte';
 	import type { ChangeEventHandler } from 'svelte/elements';
 	import { writable } from 'svelte/store';
 
@@ -13,52 +13,79 @@
 	 */
 	export let selection: string[];
 
+	let shouldDispatch = false;
 	const dispatch = createEventDispatcher();
 
-	let displayedSelection = writable(
+	let displayedSelection = writable<string[]>(
+		// []
 		selection.includes(PROVIDER_ALL) ? providers.map(({ id }) => id) : selection
 	);
+
+	afterUpdate(() => {
+		displayedSelection.set(
+			selection.includes(PROVIDER_ALL) ? providers.map(({ id }) => id) : selection
+		);
+	});
+
 	let allProvidersChecked = false;
 	displayedSelection.subscribe((value) => {
-		if (value.length === providers.length) {
+		if (value.length === 0) {
+			return;
+		} else if (value.length === providers.length) {
 			allProvidersChecked = true;
-			dispatch('update', [PROVIDER_ALL]);
+			if (shouldDispatch) {
+				dispatch('update', [PROVIDER_ALL]);
+			}
 		} else {
 			allProvidersChecked = false;
-			dispatch('update', value);
+			if (shouldDispatch) {
+				dispatch('update', value);
+			}
 		}
+
+		shouldDispatch = false;
 	});
 
 	const updateAll: ChangeEventHandler<HTMLInputElement> = (event) => {
 		const target = event.target as HTMLInputElement;
 		if (target.checked) {
 			displayedSelection.set(providers.map(({ id }) => id));
-		} else {
-			displayedSelection.set([]);
 		}
+	};
+
+	const userUpdate: ChangeEventHandler<HTMLInputElement> = (event) => {
+		shouldDispatch = true;
 	};
 </script>
 
-<div class="mwb-checkboxes-container">
-	<label>
-		<input checked={allProvidersChecked} name="providers" on:change={updateAll} type="checkbox" />
-		<span>{translate(APP_NAME, 'All providers')}</span>
-	</label>
-	<div class="mwb-checkboxes">
-		{#each providers as provider}
-			<label>
-				<input
-					type="checkbox"
-					name="providers"
-					value={provider.id}
-					bind:group={$displayedSelection} />
-				<span>
-					{provider.name}
-				</span>
-			</label>
-		{/each}
+{#if $displayedSelection.length}
+	<div class="mwb-checkboxes-container">
+		<label>
+			<input
+				checked={allProvidersChecked}
+				name="providers"
+				on:click={userUpdate}
+				on:change={updateAll}
+				type="checkbox" />
+			<span>{t('All providers')}</span>
+		</label>
+		<fieldset class="mwb-checkboxes">
+			{#each providers as provider}
+				<label>
+					<input
+						type="checkbox"
+						name="providers"
+						value={provider.id}
+						bind:group={$displayedSelection}
+						on:click={userUpdate} />
+					<span>
+						{provider.name}
+					</span>
+				</label>
+			{/each}
+		</fieldset>
 	</div>
-</div>
+{/if}
 
 <style lang="less">
 	.mwb-checkboxes-container {

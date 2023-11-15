@@ -10,7 +10,9 @@
     <summary>Provides a proper search page</summary>
     <description><![CDATA[🔎 A Search Page for your Nextcloud instance
     
-[Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
+- [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
+- [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)
+
 
 It works like the existing search widget, uses the same sources to query BUT 
 displays the results in a more readable and browsable fashion.
@@ -58,4 +60,7 @@ Don't hesitate to leave a comment here or a rating!
             <route>thesearchpage.page.index</route>
         </navigation>
     </navigations>
+    <settings>
+        <admin>OCA\TheSearchPage\Controller\AdminController</admin>
+    </settings>
 </info>

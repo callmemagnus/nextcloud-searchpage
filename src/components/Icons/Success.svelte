@@ -1,0 +1,10 @@
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	viewBox="0 0 20 20"
+	><g fill="none"
+		><path
+			d="M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16zm0 1a7 7 0 1 0 0 14a7 7 0 0 0 0-14zm3.358 4.646a.5.5 0 0 1 .058.638l-.058.07l-4.004 4.004a.5.5 0 0 1-.638.058l-.07-.058l-2-2a.5.5 0 0 1 .638-.765l.07.058L9 11.298l3.651-3.652a.5.5 0 0 1 .707 0z"
+			fill="currentColor"></path
+		></g
+	></svg>

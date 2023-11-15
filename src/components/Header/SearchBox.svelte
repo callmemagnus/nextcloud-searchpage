@@ -2,10 +2,10 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	import { APP_NAME, PROVIDER_ALL } from '$/constants';
-	import { providers } from '$states/providers';
+	import { PROVIDER_ALL } from '$/constants';
+	import { t } from '$/lib/translate';
+	import { providers, type Provider } from '$states/providers';
 	import { providerIds, terms } from '$states/query';
-	import { translate } from '@nextcloud/l10n';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import ProviderSelector from './ProviderSelector.svelte';
@@ -13,12 +13,30 @@
 	let userQuery = get(terms);
 	let userProviderIds = get(providerIds);
 
+	$: filterSummary =
+		get(providers)
+			.filter(({ id }) => userProviderIds.includes(id))
+			.map(({ name }) => name)
+			.join(', ') || t('All providers');
+
 	$: isSearchEnabled = userQuery.trim() !== '' && userProviderIds.length;
 
 	const dispatch = createEventDispatcher();
 	let input: HTMLInputElement;
 
 	let showProviderSelection = false;
+
+	function updateUserSelection(allProviders: Provider[], candidateSelection: string[]) {
+		if (allProviders.length) {
+			const ids = allProviders.map(({ id }) => id);
+			const newSelection = candidateSelection.filter((id) => ids.includes(id));
+			userProviderIds = newSelection.length ? newSelection : [PROVIDER_ALL];
+		}
+	}
+
+	providers.subscribe((p) => {
+		updateUserSelection(p, userProviderIds);
+	});
 
 	onMount(() => {
 		if (get(terms) !== '' && get(providerIds).length) {
@@ -88,37 +106,35 @@
 				class="mwb-form__clear mwb-unstyled"
 				disabled={!userQuery}
 				on:click={clear}
-				title={translate(APP_NAME, 'Clear current query')}
+				title={t('Clear current query')}
 				type="button">
 				⨯
 			</button>
 		</div>
 		<button disabled={!isSearchEnabled} type="submit">
-			{translate(APP_NAME, 'Search')}
+			{t('Search')}
 		</button>
-		<button
-			class="mwb-unstyled mwb-as-link mwb-filters"
-			disabled={!$providers.length}
-			on:click={() => (showProviderSelection = !showProviderSelection)}
-			title={translate(APP_NAME, 'Click to change providers')}
-			type="button">
-			<span> {translate(APP_NAME, 'Filters')}</span>
-			{#if !showProviderSelection}
-				<span class="mwb-flex">
-					<span>(</span>
-					{#if $providers.length && !userProviderIds.includes(PROVIDER_ALL)}
-						<span class="mwb-selected-provider-list"
-							>{$providers
-								.filter(({ id }) => userProviderIds.includes(id))
-								.map(({ name }) => name)
-								.join(', ')}</span>
-					{:else if userProviderIds.includes(PROVIDER_ALL)}
-						{translate(APP_NAME, 'All providers')}
-					{/if}
-					<span>)</span>
-				</span>
-			{/if}
-		</button>
+		{#if $providers.length > 1}
+			<button
+				class="mwb-unstyled mwb-as-link mwb-filters"
+				disabled={!$providers.length}
+				on:click={() => (showProviderSelection = !showProviderSelection)}
+				title={t('Click to change providers')}
+				type="button">
+				<span> {t('Filters')}</span>
+				{#if !showProviderSelection}
+					<span class="mwb-flex">
+						<span>(</span>
+						{#if $providers.length && !userProviderIds.includes(PROVIDER_ALL)}
+							<span class="mwb-selected-provider-list">{filterSummary}</span>
+						{:else if userProviderIds.includes(PROVIDER_ALL)}
+							{t('All providers')}
+						{/if}
+						<span>)</span>
+					</span>
+				{/if}
+			</button>
+		{/if}
 	</div>
 
 	{#if showProviderSelection && $providers.length}

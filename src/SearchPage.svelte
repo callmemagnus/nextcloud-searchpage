@@ -1,15 +1,12 @@
 <script lang="ts">
-	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
-	// SPDX-License-Identifier: AGPL-3.0-or-later
-
-	import { translate } from '@nextcloud/l10n';
+	import { t } from '$lib/translate';
+	import { providers } from '$states/providers';
+	import { providerIds, terms } from '$states/query';
 	import { onMount } from 'svelte';
 	import { derived, get } from 'svelte/store';
 	import SearchBox from './components/Header/SearchBox.svelte';
 	import SearchResults from './components/SearchResults.svelte';
-	import { APP_NAME, PROVIDER_ALL } from './constants';
-	import { providers } from '$states/providers';
-	import { providerIds, terms } from '$states/query';
+	import { PROVIDER_ALL } from './constants';
 
 	let error = false;
 	let lastSearch = 0;
@@ -63,9 +60,9 @@
 <svelte:body on:keydown={onKeydown} />
 
 <div class="mwb-thesearchpage {hasTabbed ? 'mwb-tabbed' : ''}">
-	<h1 class="mwb-screenreader">{translate(APP_NAME, 'Search Page')}</h1>
+	<h1 class="mwb-screenreader">{t('Search Page')}</h1>
 	{#if error}
-		<p>{translate(APP_NAME, 'There was an error loading the providers.')}</p>
+		<p>{t('There was an error loading the providers.')}</p>
 	{/if}
 	<div class="mwb-thesearchpage__search-box">
 		<SearchBox on:search={search} on:clear={clear} />

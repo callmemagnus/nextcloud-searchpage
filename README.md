@@ -1,13 +1,31 @@
-<!--
-SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
-SPDX-License-Identifier: CC0-1.0
--->
+## A Search Page for your Nextcloud instance
 
-# The Search Page
+- [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
+- [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)
 
-The idea behind this app is to provide a proper search page to Nextcloud. I know about the on provided by `fulltextsearch` but wasn't convinced.
+It works like the existing search widget, uses the same sources to query BUT
+displays the results in a more readable and browsable fashion.
 
-Place this app in one of the application folders of your nextcloud server (e.g. **nextcloud/apps/**).
+The content of the results depends on the other applications installed on
+your Nextcloud instance. Every Nextcloud application can become a search
+provider and get its results displayed by this application.
+
+Out of the Nextcloud box, you usually get the following providers:
+
+- Apps -- searches for match for in installed application names
+- Files -- searches on path and filename
+- Tags
+- Comments
+- Settings
+
+Because of its design, the results depend on the implementation of the providers
+in respective application.
+
+Known issues with other applications:
+
+- users -- [by design(?), it always returns an empty array](https://github.com/nextcloud/server/issues/41274) (it is hidden/disabled in this application)
+- fulltextsearch -- does not seem to AND the query terms, OR is usually less relevant
+- news -- does not provide a direct link to a feed item.
 
 ## Philosophy of this application
 

@@ -12,6 +12,7 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IL10N;
 use OCP\IRequest;
+use OCP\Util;
 
 class PageController extends Controller
 {
@@ -27,6 +28,7 @@ class PageController extends Controller
      */
     public function index(): TemplateResponse
     {
+        Util::addScript(Application::APP_ID, 'thesearchpage.iife');
         return new TemplateResponse(Application::APP_ID, 'main');
     }
 }
