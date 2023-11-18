@@ -7,7 +7,7 @@
 	<span class="mwb-icon">
 		<Loading />
 	</span>
-	<span>{t('Loading...')}</span>
+	<span>{t('Loading…')}</span>
 </p>
 
 <style lang="less">

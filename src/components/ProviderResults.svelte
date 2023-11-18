@@ -121,7 +121,7 @@
 						{#if loading}
 							<Loading />
 						{:else}
-							{t('Load more...')}
+							{t('Load more…')}
 						{/if}
 					</button>
 				</div>
