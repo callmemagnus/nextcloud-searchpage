@@ -87,7 +87,7 @@ export async function fetchUsableProviders() {
 	]);
 
 	const enabledProviders = [settings, ...groupSettings].reduce((acc, settings) => {
-		settings.enabledProviders.forEach((provider) => acc.add(provider));
+		settings.enabledProviders?.forEach((provider) => acc.add(provider));
 		return acc;
 	}, new Set<string>());
 

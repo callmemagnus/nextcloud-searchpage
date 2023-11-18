@@ -1,4 +1,5 @@
 import { USER_GROUPS_URL } from '$/constants';
+import { getCurrentUser } from '@nextcloud/auth';
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
 
@@ -14,7 +15,7 @@ export async function readGroups(): Promise<string[]> {
 }
 
 export async function userGroups(): Promise<string[]> {
-	const currentUser = OC.getCurrentUser();
+	const currentUser = getCurrentUser();
 	if (!currentUser?.uid) {
 		return [];
 	}
