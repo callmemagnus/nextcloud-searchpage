@@ -9,6 +9,9 @@ The idea behind this app is to provide a proper search page to Nextcloud. I know
 
 Place this app in one of the application folders of your nextcloud server (e.g. **nextcloud/apps/**).
 
+- [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
+- [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)
+
 ## Philosophy of this application
 
 This application only uses official APIs provided by Nextcloud.
