@@ -10,29 +10,51 @@
 
 	let imageUrl: string | null;
 	let showIcon = false;
-	let imageLoadError = false;
 
-	$: iconIsClass = !/^\//.test(result.icon);
+	let iconIsClass = !/^\//.test(result.icon);
+	let hasThumbnail = result.thumbnailUrl?.length > 0;
+
+	let imageSteps: 'thumbnail' | 'icon' | 'class-icon' = (function () {
+		if (hasThumbnail) {
+			return 'thumbnail';
+		}
+		if (iconIsClass) {
+			return 'class-icon';
+		}
+		return 'icon';
+	})();
+
 	$: {
-		if (!imageLoadError) {
-			if (!iconIsClass) {
-				imageUrl = result.icon;
-			} else if (result.thumbnailUrl) {
+		switch (imageSteps) {
+			case 'thumbnail':
 				imageUrl = result.thumbnailUrl;
-			} else {
+				break;
+			case 'icon':
+				imageUrl = result.icon;
+				break;
+			default:
+			case 'class-icon':
 				showIcon = true;
-			}
-		} else {
-			showIcon = true;
+				break;
 		}
 	}
 
 	function onError() {
-		imageLoadError = true;
+		switch (imageSteps) {
+			case 'thumbnail':
+				imageSteps = iconIsClass ? 'class-icon' : 'icon';
+				break;
+			case 'icon':
+				imageSteps = 'class-icon';
+				break;
+			case 'class-icon':
+			default:
+				imageSteps = 'class-icon';
+		}
 	}
 </script>
 
-<div class="mwb-result">
+<a href={result.resourceUrl} class="mwb-result">
 	<div class="mwb-result__image">
 		{#if showIcon}
 			<div class="{result.icon} mwb-result__icon" />
@@ -40,7 +62,7 @@
 			<img src={imageUrl} alt="" on:error={onError} />
 		{/if}
 	</div>
-	<a href={result.resourceUrl}>
+	<div class="mwb-text">
 		<h3 class="mwb-ellipsis">
 			<BoldTerms original={result.title} terms={$terms} />
 		</h3>
@@ -49,24 +71,28 @@
 				<BoldTerms original={result.subline} terms={$terms} />
 			</p>
 		{/if}
-	</a>
-</div>
+	</div>
+</a>
 
-<style>
+<style lang="less">
 	.mwb-result {
-		@apply flex w-full items-start;
+		@apply flex w-full items-start cursor-pointer;
+
+		&:hover {
+			@apply bg-slate-100;
+		}
 	}
 
 	.mwb-result__image {
-		@apply w-8 h-8 mr-3 flex-grow-0 flex-shrink-0;
+		@apply w-8 h-8 ml-1 mr-3 flex-grow-0 flex-shrink-0;
+
+		img {
+			@apply mt-2 w-full;
+		}
 	}
 
 	.mwb-result__icon {
 		@apply h-full;
-	}
-
-	img {
-		@apply w-full;
 	}
 
 	h3 {
@@ -77,7 +103,7 @@
 		@apply mt-1 text-sm;
 	}
 
-	a {
+	.mwb-text {
 		@apply block overflow-hidden;
 		min-height: 2rem;
 	}

@@ -27,6 +27,9 @@ Known issues with other applications:
 - fulltextsearch -- does not seem to AND the query terms, OR is usually less relevant
 - news -- does not provide a direct link to a feed item.
 
+- [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
+- [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)
+
 ## Philosophy of this application
 
 This application only uses official APIs provided by Nextcloud.

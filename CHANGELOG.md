@@ -5,6 +5,11 @@
 - New admin screen in (additional settings) to configure (mostly hide) providers globally or per user group
 - Integrated application with Nextcloud's Transifex
 
+## [v1.2.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.1...v1.2.2)
+
+- Fix preview rendering of result
+- Updated translation from Transifex - existing translations may disappear :-(
+
 ## [v1.2.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.0...v1.2.1)
 
 - Preparing for Transifex integration
