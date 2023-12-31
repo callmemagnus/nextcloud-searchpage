@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.2.3](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.2...v1.2.3)
+
+- Manually added some languages (uk, fr, tr, zh_HK)
+- Manually updated de_DE
+
 ## [v1.2.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.1...v1.2.2)
 
 - Fix preview rendering of result
