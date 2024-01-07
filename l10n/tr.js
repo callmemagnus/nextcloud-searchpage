@@ -1,0 +1,22 @@
+
+OC.L10N.register(
+    "thesearchpage",
+    {
+    "The Search Page": "Arama sayfası",
+    "Provides a proper search page": "Düzgün bir arama sayfası sağlar",
+    "All providers": "Tüm hizmet sağlayıcıları",
+    "Back": "Geri",
+    "Clear current query": "Geçerli sorguyu temizle",
+    "Click to change providers": "Hizmet sağlayıcıları değiştirmek için tıklayın",
+    "Filters": "Süzgeçler",
+    "Load more...": "Diğerlerini yükle...",
+    "Loading...": "Yükleniyor...",
+    "No results": "Herhangi bir sonuç bulunamadı",
+    "Search": "Ara",
+    "Search Page": "Arama sayfası",
+    "See all providers": "Tüm hizmet sağlayıcıları görüntüle",
+    "See only results for this provider": "Yalnızca bu hizmet sağlayıcının sonuçlarını görüntüle",
+    "Show only": "Yalnızca şunlar görüntülensin",
+    "There was an error loading the providers.": "Hizmet sağlayıcılar yüklenirken sorun çıktı."
+},
+"nplurals=2; plural=(n != 1);");

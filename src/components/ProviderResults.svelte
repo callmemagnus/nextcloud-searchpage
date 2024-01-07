@@ -130,7 +130,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="less">
 	.mwb-provider-results {
 		@apply px-4 py-2 shadow-xl h-full w-full flex flex-col rounded-xl;
 		background-color: var(--color-main-background);
@@ -158,8 +158,10 @@
 	}
 	.mwb-result-item {
 		@apply py-2 mb-2;
-	}
-	.mwb-result-item:hover {
-		background-color: var(--color-background-hover);
+
+		&:hover {
+			border-radius: var(--border-radius-large);
+			background-color: var(--color-background-hover);
+		}
 	}
 </style>
