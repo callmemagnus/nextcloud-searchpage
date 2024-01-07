@@ -77,10 +77,6 @@
 <style lang="less">
 	.mwb-result {
 		@apply flex w-full items-start cursor-pointer;
-
-		&:hover {
-			@apply bg-slate-100;
-		}
 	}
 
 	.mwb-result__image {

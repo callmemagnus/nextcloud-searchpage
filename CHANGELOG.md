@@ -1,5 +1,15 @@
 # Changelog
 
+## [v1.2.4](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.3...v1.2.4)
+
+- Fix the result presentation in dark-mode
+- Updated dependencies
+
+From 1.2.3 because version number was not incremented in info.xml
+
+- Manually added some languages (uk, fr, tr, zh_HK)
+- Manually updated de_DE
+
 ## [v1.2.3](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.2...v1.2.3)
 
 - Manually added some languages (uk, fr, tr, zh_HK)
