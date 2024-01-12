@@ -13,12 +13,7 @@
 - [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
 - [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)
 
-<<<<<<< HEAD
-
 It works like the existing search widget, uses the same sources to query BUT
-=======
-It works like the existing search widget, uses the same sources to query BUT
->>>>>>> origin/main
 displays the results in a more readable and browsable fashion.
 
 The content of the results depends on the other applications installed on
