@@ -1,0 +1,8 @@
+{ "translations": {
+    "Back" : "Atrás",
+    "Filters" : "Filtros",
+    "No results" : "Ensin resultaos",
+    "Search" : "Guetar",
+    "Loading..." : "Cargando..."
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

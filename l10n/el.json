@@ -1,0 +1,10 @@
+{ "translations": {
+    "Back" : "Επιστροφή",
+    "Filters" : "Φίλτρα",
+    "Loading…" : "Γίνεται φόρτωση…",
+    "No results" : "Κανένα αποτέλεσμα",
+    "Saved" : "Αποθηκεύτηκε",
+    "Search" : "Αναζήτηση",
+    "Loading..." : "Γίνεται φόρτωση..."
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

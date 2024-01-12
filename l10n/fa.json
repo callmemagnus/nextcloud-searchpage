@@ -1,0 +1,10 @@
+{ "translations": {
+    "Back" : "Back",
+    "Filters" : "Filters",
+    "Global settings" : "تنظیمات عمومی",
+    "Loading…" : "درحال بارگیری…",
+    "No results" : "بدون نتیجه",
+    "Saved" : "ذخیره شد",
+    "Search" : "جستجو"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}
