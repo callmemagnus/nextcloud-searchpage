@@ -1,0 +1,7 @@
+{ "translations": {
+    "No results" : "შედეგები არაა",
+    "Saved" : "შენახულია",
+    "Search" : "ძიება",
+    "Loading..." : "იტვირთება…"
+},"pluralForm" :"nplurals=2; plural=(n!=1);"
+}
