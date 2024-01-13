@@ -1,12 +1,15 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "The Search Page" : "Hakusivu",
     "All providers" : "Kaikki palveluntarjoajat",
     "Back" : "Takaisin",
     "Clear current query" : "Tyhjennä nykyinen kysely",
     "Click to change providers" : "Napsauta vaihtaaksesi palveluntarjoajia",
     "Filters" : "Suodattimet",
     "Global settings" : "Yleiset asetukset",
+    "Group settings" : "Ryhmäasetukset",
+    "Load more…" : "Lataa lisää…",
     "Loading…" : "Ladataan…",
     "No results" : "Ei tuloksia",
     "Saved" : "Tallennettu",
@@ -14,7 +17,10 @@ OC.L10N.register(
     "Search Page" : "Hakusivu",
     "See all providers" : "Näytä kaikki palveluntarjoajat",
     "See only results for this provider" : "Näytä vain tämän palveluntarjoajan tulokset",
+    "Select the providers that will be available to all the users:" : "Valitse kaikille käyttäjille saatavilla olevat palveluntarjoajat:",
+    "Select the providers that will be available to the users in group \"{group}\":" : "Valitse ryhmän \"{group}\" käyttäjille saatavilla olevat palveluntarjoajat:",
     "Show only" : "Näytä vain",
+    "Unable to save" : "Tallentaminen ei onnistu",
     "Load more..." : "Lataa lisää...",
     "Loading..." : "Ladataan..."
 },

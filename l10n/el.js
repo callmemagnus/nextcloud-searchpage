@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Επιστροφή",
     "Filters" : "Φίλτρα",
+    "Global settings" : "Γενικές ρυθμίσεις",
     "Loading…" : "Γίνεται φόρτωση…",
     "No results" : "Κανένα αποτέλεσμα",
     "Saved" : "Αποθηκεύτηκε",

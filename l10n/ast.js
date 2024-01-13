@@ -3,7 +3,9 @@ OC.L10N.register(
     {
     "Back" : "Atrás",
     "Filters" : "Filtros",
+    "Loading…" : "Cargando…",
     "No results" : "Ensin resultaos",
+    "Saved" : "Guardóse",
     "Search" : "Guetar",
     "Loading..." : "Cargando..."
 },

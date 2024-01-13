@@ -8,6 +8,7 @@ OC.L10N.register(
     "Clear current query" : "Clear current query",
     "Click to change providers" : "Click to change providers",
     "Filters" : "Filters",
+    "Global settings" : "Global settings",
     "Loading…" : "Loading…",
     "No results" : "No results",
     "Saved" : "Saved",

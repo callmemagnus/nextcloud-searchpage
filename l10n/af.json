@@ -1,4 +1,6 @@
 { "translations": {
+    "Loading…" : "Laai…",
+    "Saved" : "Bewaar",
     "Search" : "Soek"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

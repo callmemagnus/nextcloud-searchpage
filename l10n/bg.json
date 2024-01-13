@@ -1,6 +1,9 @@
 { "translations": {
     "Filters" : "Филтри",
+    "Global settings" : "Глобални настройки",
+    "Loading…" : "Зареждане…",
     "No results" : "Няма резултат",
+    "Saved" : "Записано",
     "Search" : "Търсене"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
