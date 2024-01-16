@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "뒤로",
     "Filters" : "필터",
     "Global settings" : "전역 설정",
     "Loading…" : "불러오는 중…",
