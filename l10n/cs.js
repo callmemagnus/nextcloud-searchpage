@@ -9,6 +9,8 @@ OC.L10N.register(
     "Click to change providers" : "Poskytovatele změníte kliknutím",
     "Filters" : "Filtry",
     "Global settings" : "Globální nastavení",
+    "Group settings" : "Nastavení skupiny",
+    "Load more…" : "Načíst více…",
     "Loading…" : "Načítání…",
     "No results" : "Žádné výsledky",
     "Saved" : "Uloženo",
@@ -18,6 +20,8 @@ OC.L10N.register(
     "See only results for this provider" : "Zobrazit výsledky pouze pro tohoto poskytovatele",
     "Show only" : "Pouze zobrazit",
     "There was an error loading the providers." : "Při načítání poskytovatelů došlo k chybě.",
+    "This is not a security configuration." : "Toto není nastavení zabezpečení.",
+    "Unable to save" : "Není možné uložit",
     "Load more..." : "Načíst další…",
     "Loading..." : "Načítání…"
 },
