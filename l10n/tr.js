@@ -9,6 +9,9 @@ OC.L10N.register(
     "Click to change providers" : "Hizmet sağlayıcıları değiştirmek için tıklayın",
     "Filters" : "Süzgeçler",
     "Global settings" : "Genel ayarlar",
+    "Group settings" : "Grup ayarları",
+    "If a user is part of multiple groups, the union of the groups configurations will be applied." : "Bir kullanıcı birden fazla grubun parçasıysa grupların birleşik yapılandırmaları uygulanır.",
+    "Load more…" : "Diğerlerini yükle…",
     "Loading…" : "Yükleniyor…",
     "No results" : "Herhangi bir sonuç bulunamadı",
     "Saved" : "Kaydedildi",
@@ -18,6 +21,8 @@ OC.L10N.register(
     "See only results for this provider" : "Yalnızca bu hizmet sağlayıcının sonuçlarını görüntüle",
     "Show only" : "Yalnızca şunlar görüntülensin",
     "There was an error loading the providers." : "Hizmet sağlayıcılar yüklenirken sorun çıktı.",
+    "This is not a security configuration." : "Bu bir güvenlik yapılandırması değil.",
+    "Unable to save" : "Kaydedilemedi",
     "Load more..." : "Diğerlerini yükle...",
     "Loading..." : "Yükleniyor..."
 },
