@@ -4,6 +4,7 @@ OC.L10N.register(
     "Back" : "Tilbake",
     "Filters" : "Filtere",
     "Global settings" : "Globale innstillinger",
+    "Loading…" : "Laster...",
     "No results" : "Ingen resultater",
     "Saved" : "Lagret",
     "Search" : "Søk",
