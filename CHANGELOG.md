@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.6](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.5...v1.2.6)
+
+- translations updates as sync with Transifex is back !
+
 ## [v1.2.5](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.4...v1.2.5)
 
 - translations updates as sync with Transifex is back !
