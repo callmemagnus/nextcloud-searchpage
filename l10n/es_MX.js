@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "Atrás",
     "Loading…" : "Cargando...",
     "No results" : "Sin resultados",
     "Saved" : "Guardado",
