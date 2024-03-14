@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.2.7](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.6...v1.2.7)
+
+- translations updates
+- change Nextcloud compatibility to 26 ➙ 29
+
 ## [v1.2.6](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.5...v1.2.6)
 
 - translations updates as sync with Transifex is back !
