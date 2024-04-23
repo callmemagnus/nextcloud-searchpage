@@ -15,7 +15,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "lint": "eslint --config .eslintrc.cjs src/**/*.ts src/**/*.svelte"
+    "lint": "eslint --config .eslintrc.cjs src/**/*.ts src/**/*.svelte",
+    "doctor": "npm run lint && npm run build && npx playwright test"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "2.5.3",
@@ -46,6 +47,7 @@
     "@nextcloud/axios": "2.4.0",
     "@nextcloud/browserslist-config": "3.0.0",
     "@nextcloud/l10n": "2.2.0",
-    "@nextcloud/router": "2.2.0"
+    "@nextcloud/router": "2.2.0",
+    "@playwright/test": "1.43.1"
   }
 }
