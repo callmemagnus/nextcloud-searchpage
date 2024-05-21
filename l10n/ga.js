@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "Ar ais",
     "Saved" : "Shábháil",
     "Search" : "Cuardach"
 },
