@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Ar ais",
+    "Filters" : "Scagairí",
     "No results" : "Gan torthaí",
     "Saved" : "Shábháil",
     "Search" : "Cuardach"
