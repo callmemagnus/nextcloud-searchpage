@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Ar ais",
     "Filters" : "Scagairí",
+    "Loading…" : "Á lódáil…",
     "No results" : "Gan torthaí",
     "Saved" : "Shábháil",
     "Search" : "Cuardach"
