@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Filters" : "Filtri",
     "Global settings" : "Globālie iestatījumi",
     "Loading…" : "Ielādē …",
     "No results" : "Nav rezultātu",
