@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "戻る",
     "Filters" : "フィルター",
     "Global settings" : "グローバル設定",
     "Loading…" : "読み込み中…",
