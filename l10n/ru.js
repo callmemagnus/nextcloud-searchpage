@@ -5,6 +5,7 @@ OC.L10N.register(
     "Back" : "Назад",
     "Filters" : "Фильтры",
     "Global settings" : "Общие настройки",
+    "Group settings" : "Настройки группы",
     "Loading…" : "Загрузка…",
     "No results" : "Нет результатов",
     "Saved" : "Сохранённые",
