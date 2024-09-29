@@ -25,5 +25,16 @@ export default defineConfig({
   testDir: "./tests/e2e",
   timeout: 30_000,
 
-  projects: [setup(27), tests(27), setup(28), tests(28), setup(29), tests(29)],
+  projects: [
+    setup(26),
+    tests(26),
+    setup(27),
+    tests(27),
+    setup(28),
+    tests(28),
+    setup(29),
+    tests(29),
+    setup(30),
+    tests(30),
+  ],
 });
