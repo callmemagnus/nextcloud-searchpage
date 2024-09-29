@@ -20,6 +20,7 @@ export function saveInSession(terms: string, providerIds: string[]) {
 			'',
 			(newState.size ? location.pathname + '?' + newState : location.pathname) + location.hash
 		);
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (e) {
 		// ignore
 	}
