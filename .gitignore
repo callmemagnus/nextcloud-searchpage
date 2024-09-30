@@ -12,3 +12,4 @@ js
 /.php-cs-fixer.cache
 .direnv
 .playwright
+test-results
