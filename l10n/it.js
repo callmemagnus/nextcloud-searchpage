@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "The Search Page" : "La pagina di ricerca",
     "Provides a proper search page" : "Fornisce una pagina di ricerca adeguata",
+    "Back" : "Indietro",
     "Filters" : "Filtri",
     "Global settings" : "Impostazioni globali",
     "Loading…" : "Caricamento…",
