@@ -13,7 +13,7 @@ OC.L10N.register(
     "Group settings" : "إعدادات المجموعة",
     "If a user is part of multiple groups, the union of the groups configurations will be applied." : "إذا كان المستخدِم عضواً في مجموعات متعددة، سيتم تطبيق اتحاد الإعدادات لكل تلك المجموعات.",
     "Load more…" : "رفع المزيد ...",
-    "Loading…" : "جاري التحميل…",
+    "Loading…" : "التحميل جارٍ ...",
     "No results" : "لا نتائج",
     "Saved" : "تمّ الحفظ",
     "Search" : "بحث",
