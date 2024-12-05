@@ -5,6 +5,8 @@ OC.L10N.register(
     "Back" : "Itzuli",
     "Filters" : "Iragazkiak",
     "Global settings" : "Ezarpen orokorrak",
+    "Group settings" : "Taldearen ezarpenak",
+    "Load more…" : "Kargatu gehiago...",
     "Loading…" : "Kargatzen…",
     "No results" : "Emaitzarik ez",
     "Saved" : "Gordeta",
