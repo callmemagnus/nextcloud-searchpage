@@ -20,7 +20,7 @@
     "See all providers" : "بارلىق تەمىنلىگۈچىلەرنى كۆرۈڭ",
     "See only results for this provider" : "بۇ تەمىنلىگۈچىنىڭ نەتىجىسىنىلا كۆرۈڭ",
     "Select the providers that will be available to all the users:" : "بارلىق ئىشلەتكۈچىلەر تەمىنلىيەلەيدىغان تەمىنلىگۈچىلەرنى تاللاڭ:",
-    "Select the providers that will be available to the users in group \"{group}\":" : "«{گۇرۇپپا}» گۇرۇپپىسىدىكى ئىشلەتكۈچىلەر تەمىنلىيەلەيدىغان تەمىنلىگۈچىلەرنى تاللاڭ:",
+    "Select the providers that will be available to the users in group \"{group}\":" : "«{group}» گۇرۇپپىسىدىكى ئىشلەتكۈچىلەر تەمىنلىيەلەيدىغان تەمىنلىگۈچىلەرنى تاللاڭ:",
     "Show only" : "پەقەت كۆرسەت",
     "There was an error loading the providers." : "تەمىنلىگۈچىلەرنى يۈكلەشتە خاتالىق كۆرۈلدى.",
     "This is not a security configuration." : "بۇ بىخەتەرلىك سەپلىمىسى ئەمەس.",
