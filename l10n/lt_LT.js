@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Atgal",
+    "Filters" : "Filtrai",
     "Global settings" : "Visuotiniai nustatymai",
     "Loading…" : "Įkeliama…",
     "No results" : "Nieko nerasta",
