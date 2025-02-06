@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Filters" : "Filtrid",
     "Loading…" : "Laadimine…",
     "No results" : "Vasteid ei leitud",
     "Saved" : "Salvestatud",
