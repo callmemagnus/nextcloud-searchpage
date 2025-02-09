@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "Tilbage",
     "Global settings" : "Globale indstillinger",
     "Loading…" : "Indlæser…",
     "No results" : "Ingen resultater",
