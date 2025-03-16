@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Orqaga",
     "Loading…" : "Loading…",
-    "Saved" : "Saved",
-    "Search" : "Search"
+    "Saved" : "Saqlandi",
+    "Search" : "Qidirish"
 },
 "nplurals=1; plural=0;");
