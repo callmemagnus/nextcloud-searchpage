@@ -16,7 +16,7 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint src/**/*.ts src/**/*.svelte",
-    "doctor": "npm run lint && npm run build && npx playwright test"
+    "doctor": "npm run lint && npm run build && ./bin/run-playwright.sh"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.1.0",

@@ -1,8 +1,14 @@
 #!/bin/sh
 
 pwd=$(dirname `readlink -f $0`)
+ip=$(ip route get 1 | head -1 | cut -d' ' -f7)
 image83=ghcr.io/juliusknorr/nextcloud-dev-php83:latest
 image82=ghcr.io/juliusknorr/nextcloud-dev-php82:latest
+
+if test "$ip" = ""
+then
+    echo "no ip found"
+fi
 
 echo $pwd
 
@@ -79,6 +85,12 @@ echo "Trying to install the application..."
 #     fi
 # done
 
+
+echo "let's wait for the instances to settle"
+sleep 10
+
+
+
 for i in 31 30 29 28; # 27 26;
 do
     echo Enabling on $i
@@ -89,6 +101,8 @@ do
         echo "$i: $result"
         if [[ "$result" =~ "enabled" ]];
         then
+            count=$(docker exec -u 33 nextcloud$i php occ config:system:get trusted_domains | wc -l)
+            docker exec -u 33 nextcloud$i php occ config:system:set trusted_domains $count --value=$ip
             break
         else
             sleep 1
