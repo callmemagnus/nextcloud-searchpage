@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.2.9](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.8...v1.2.9)
+
+- translation updates
+- change Nextcloud compatibility to 26 ➙ 31
+
 ## [v1.2.8](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.7...v1.2.8)
 
 - translations updates
