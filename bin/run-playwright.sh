@@ -9,12 +9,12 @@ PLAYWRIGHT_VERSION=$(cat "$root/package.json" | jq -r '.devDependencies["@playwr
 if test "$PLAYWRIGHT_VERSION" = ""
 then
     echo "Cannot get playwright version"
+    exit 1
 else
     docker run \
         -w /app \
         -e TARGET_HOST=$ip \
         -v $root:/app mcr.microsoft.com/playwright:v$PLAYWRIGHT_VERSION \
         npx playwright test
+    exit $?
 fi
-
-chown $user $root/test-results
