@@ -1,8 +1,20 @@
 #!/bin/sh
 
 pwd=$(dirname `readlink -f $0`)
+image83=ghcr.io/juliusknorr/nextcloud-dev-php83:latest
+image82=ghcr.io/juliusknorr/nextcloud-dev-php82:latest
 
 echo $pwd
+
+docker run                  \
+    --rm                    \
+    -d                      \
+    --name nextcloud31      \
+    -p 8031:80              \
+    -v /tmp/nextcloud/30:/var/www/html \
+    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
+    -e SERVER_BRANCH=v31.0.1 \
+    $image83
 
 docker run                  \
     --rm                    \
@@ -12,7 +24,7 @@ docker run                  \
     -v /tmp/nextcloud/30:/var/www/html \
     -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
     -e SERVER_BRANCH=v30.0.0 \
-    ghcr.io/juliushaertl/nextcloud-dev-php83:latest
+    $image83
 
 docker run                  \
     --rm                    \
@@ -22,7 +34,7 @@ docker run                  \
     -v /tmp/nextcloud/29:/var/www/html \
     -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
     -e SERVER_BRANCH=v29.0.6 \
-    ghcr.io/juliushaertl/nextcloud-dev-php83:latest
+    $image83
 
 docker run                  \
     --rm                    \
@@ -32,27 +44,27 @@ docker run                  \
     -v /tmp/nextcloud/28:/var/www/html \
     -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
     -e SERVER_BRANCH=v28.0.10 \
-    ghcr.io/juliushaertl/nextcloud-dev-php83:latest
+    $image83
 
-docker run                  \
-    --rm                    \
-     -d                     \
-    --name nextcloud27      \
-    -p 8027:80              \
-    -v /tmp/nextcloud/27:/var/www/html \
-    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-    -e SERVER_BRANCH=v27.1.11 \
-    ghcr.io/juliushaertl/nextcloud-dev-php82:latest
-
-docker run                  \
-    --rm                    \
-     -d                     \
-    --name nextcloud26      \
-    -p 8026:80              \
-    -v /tmp/nextcloud/26:/var/www/html \
-    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-    -e SERVER_BRANCH=v26.0.13 \
-    ghcr.io/juliushaertl/nextcloud-dev-php82:latest
+#docker run                  \
+#    --rm                    \
+#     -d                     \
+#    --name nextcloud27      \
+#    -p 8027:80              \
+#    -v /tmp/nextcloud/27:/var/www/html \
+#    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
+#    -e SERVER_BRANCH=v27.1.11 \
+#    $image82
+#
+#docker run                  \
+#    --rm                    \
+#     -d                     \
+#    --name nextcloud26      \
+#    -p 8026:80              \
+#    -v /tmp/nextcloud/26:/var/www/html \
+#    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
+#    -e SERVER_BRANCH=v26.0.13 \
+#    $image82
 
 echo "Trying to install the application..."
 
@@ -67,7 +79,7 @@ echo "Trying to install the application..."
 #     fi
 # done
 
-for i in 30 29 28 27 26;
+for i in 31 30 29 28; # 27 26;
 do
     echo Enabling on $i
     while true
