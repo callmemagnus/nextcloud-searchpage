@@ -1,157 +1,80 @@
 #!/bin/sh
 
+cache=$HOME/.cache/magnus/nextcloud
+if test ! -d "$cache"; then
+    mkdir -p "$cache"
+fi
+
+all_releases=$cache/all_releases.json
+if test ! -e "$all_releases"; then
+    gh api /repos/nextcloud/server/releases > "$all_releases"
+fi
+
+if test ! -e "$all_releases"; then
+    exit 1
+fi
+
+releases=$cache/releases.json
+cat "$all_releases" | \
+    jq -r '.[] | .tag_name' | \
+    grep -v rc | \
+    grep -v beta | \
+    sort -n -r \
+    > "$releases"
+
 pwd=$(dirname `readlink -f $0`)
 ip=$(ip route get 1 | head -1 | cut -d' ' -f7)
-image83=ghcr.io/juliusknorr/nextcloud-dev-php83:latest
-image82=ghcr.io/juliusknorr/nextcloud-dev-php82:latest
 
 if test "$ip" = ""
 then
     echo "no ip found"
 fi
 
-echo $pwd
+echo ip=$ip
 
-docker run                  \
-    --rm                    \
-    -d                      \
-    --name nextcloud31      \
-    -p 8031:80              \
-    -v /tmp/nextcloud/30:/var/www/html \
-    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-    -e SERVER_BRANCH=v31.0.1 \
-    $image83
+# php 8.3
+image83=ghcr.io/juliusknorr/nextcloud-dev-php83:latest
+for i in 32 31 30 29 28;
+do
+    latest=$(cat "$releases" | grep $i | head -1)
+    if test "$latest" = ""; then
+        echo "$i not available"
+        continue
+    fi
+    echo Starting Nextcloud $latest
 
-docker run                  \
-    --rm                    \
-    -d                      \
-    --name nextcloud30      \
-    -p 8030:80              \
-    -v /tmp/nextcloud/30:/var/www/html \
-    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-    -e SERVER_BRANCH=v30.0.0 \
-    $image83
+    docker run \
+        --rm \
+        -d \
+        --name nextcloud$i \
+        -p 80$i:80              \
+        -v /tmp/nextcloud/$latest:/var/www/html \
+        -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
+        -e SERVER_BRANCH=$latest \
+        $image83
+done
 
-docker run                  \
-    --rm                    \
-    -d                      \
-    --name nextcloud29      \
-    -p 8029:80              \
-    -v /tmp/nextcloud/29:/var/www/html \
-    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-    -e SERVER_BRANCH=v29.0.6 \
-    $image83
+#image82=ghcr.io/juliusknorr/nextcloud-dev-php82:latest
 
-docker run                  \
-    --rm                    \
-    -d                      \
-    --name nextcloud28      \
-    -p 8028:80              \
-    -v /tmp/nextcloud/28:/var/www/html \
-    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-    -e SERVER_BRANCH=v28.0.10 \
-    $image83
-
-#docker run                  \
-#    --rm                    \
-#     -d                     \
-#    --name nextcloud27      \
-#    -p 8027:80              \
-#    -v /tmp/nextcloud/27:/var/www/html \
-#    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-#    -e SERVER_BRANCH=v27.1.11 \
-#    $image82
-#
-#docker run                  \
-#    --rm                    \
-#     -d                     \
-#    --name nextcloud26      \
-#    -p 8026:80              \
-#    -v /tmp/nextcloud/26:/var/www/html \
-#    -v $pwd/..:/var/www/html/apps-extra/thesearchpage \
-#    -e SERVER_BRANCH=v26.0.13 \
-#    $image82
-
-echo "Trying to install the application..."
-
-# while true
-# do
-#     sleep 1s
-#     result=$(docker exec -u 33 nextcloud30 php occ app:enable thesearchpage)
-#     if [[ "$result" =~ enabled ]]
-#     then
-#         echo "30 - $result" 
-#         break
-#     fi
-# done
-
-
-echo "let's wait for the instances to settle"
+echo "Trying to install the application... let's wait for the instances to settle"
 sleep 10
 
-
-
-for i in 31 30 29 28; # 27 26;
+for i in 31 30 29 28;
 do
     echo Enabling on $i
     while true
     do
         echo "Testing $i..."
         result=$(docker exec -u 33 nextcloud$i php occ app:enable thesearchpage)
-        echo "$i: $result"
+        #echo "$i: $result"
         if [[ "$result" =~ "enabled" ]];
         then
             count=$(docker exec -u 33 nextcloud$i php occ config:system:get trusted_domains | wc -l)
             docker exec -u 33 nextcloud$i php occ config:system:set trusted_domains $count --value=$ip
             break
         else
-            sleep 1
+            sleep 5
         fi
     done
 done
 
-# while true
-# do
-#     sleep 1s
-#     result=$(docker exec -u 33 nextcloud29 php occ app:enable thesearchpage)
-#     if [[ "$result" =~ enabled ]]
-#     then
-#         echo "29 - $result" 
-#         break
-#     fi
-# done
-
-# while true
-# do
-#     sleep 1s
-#     docker exec -u 33 nextcloud28 php occ app:enable thesearchpage
-#     if [[ "$result" =~ enabled ]] 
-#     then
-#         echo "28 - $result" 
-#         break
-#     fi
-# done
-
-# while true
-# do
-#     sleep 1s
-#     docker exec -u 33 nextcloud27 php occ app:enable thesearchpage
-#     if [[ "$result" =~ enabled ]]
-#     then
-#         echo "27 - $result" 
-#         break
-#     fi
-# done
-
-
-
-# while true
-# do
-#     sleep 1s
-#     docker exec -u 33 nextcloud26 php occ app:enable thesearchpage
-#     if [[ "$result" =~ enabled ]]
-#     then
-#         echo "26 - $result" 
-#         break
-#     fi
-# done
