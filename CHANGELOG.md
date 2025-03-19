@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.10](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.9...v1.2.10)
+
+- replace main div by main (for 31)
+
 ## [v1.2.9](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.8...v1.2.9)
 
 - translation updates
