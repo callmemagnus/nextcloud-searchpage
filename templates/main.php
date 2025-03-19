@@ -6,4 +6,4 @@ declare(strict_types=1);
 script('thesearchpage', 'thesearchpage.iife');
 
 ?>
-<div id="mwb-thesearchpage"></div>
+<main id="mwb-thesearchpage"></main>
