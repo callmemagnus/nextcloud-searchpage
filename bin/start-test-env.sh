@@ -1,6 +1,7 @@
 #!/bin/sh
 
-cache=$HOME/.cache/magnus/nextcloud
+today=$(date "+%Y-%m-%d")
+cache=$HOME/.cache/magnus/nextcloud/$today
 if test ! -d "$cache"; then
     mkdir -p "$cache"
 fi
