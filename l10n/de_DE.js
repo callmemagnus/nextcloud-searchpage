@@ -7,7 +7,7 @@ OC.L10N.register(
     "All providers" : "Alle Anbieter​",
     "Back" : "Zurück",
     "Clear current query" : "Aktuelle Abfrage löschen",
-    "Click to change providers" : "Hier klicken um Anbieter zu wechseln",
+    "Click to change providers" : "Hier klicken, um Anbieter zu wechseln",
     "Filters" : "Filter",
     "Global settings" : "Globale Einstellungen",
     "Group settings" : "Gruppeneinstellungen",
