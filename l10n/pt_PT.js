@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Voltar",
+    "Filters" : "Filtros",
     "Global settings" : "Definições globais",
     "Loading…" : "A carregar…",
     "No results" : "Sem resultados",
