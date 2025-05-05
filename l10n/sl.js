@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "Nazaj",
     "Filters" : "Filtri",
     "Global settings" : "Splošne nastavitve",
     "Loading…" : "Poteka nalaganje …",
