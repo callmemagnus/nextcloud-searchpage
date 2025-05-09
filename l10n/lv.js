@@ -4,7 +4,7 @@ OC.L10N.register(
     "Filters" : "Filtri",
     "Global settings" : "Globālie iestatījumi",
     "Loading…" : "Ielādē …",
-    "No results" : "Nav rezultātu",
+    "No results" : "Nav iznākuma",
     "Saved" : "Saglabāts",
     "Search" : "Meklēt",
     "Security is applied by the search providers." : "Drošību piemēro meklēšanas nodrošinātāji.",
