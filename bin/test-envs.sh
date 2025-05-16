@@ -15,7 +15,7 @@ function start() {
 
     all_releases=$cache/all_releases.json
     if test ! -e "$all_releases"; then
-        gh api /repos/nextcloud/server/releases >"$all_releases"
+        gh api '/repos/nextcloud/server/releases?per_page=100' >"$all_releases"
     fi
 
     if test ! -e "$all_releases"; then
@@ -62,8 +62,8 @@ function start() {
 
     #image82=ghcr.io/juliusknorr/nextcloud-dev-php82:latest
 
-    echo "Trying to install the application... let's wait for the instances to settle"
-    sleep 10
+    echo "Trying to install the application... let's wait (20 seconds) for the instances to settle"
+    sleep 20
 
     for i in 31 30 29 28; do
         echo Enabling on $i
