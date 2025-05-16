@@ -38,10 +38,10 @@
 		input?.focus();
 	}
 
-	function doSearch(event?: SubmitEvent) {
+	function doSearch() {
 		terms.set(userQuery);
 		searchStore.startSearch(userQuery);
-		if (event && input) {
+		if (input) {
 			// for mobile phone
 			hideKeyboard(input);
 		}

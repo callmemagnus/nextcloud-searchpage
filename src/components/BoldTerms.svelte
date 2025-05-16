@@ -32,10 +32,10 @@
 	});
 </script>
 
-{#each tokenized as token}
-	{#if token.bold}
-		<b>{token.value}</b>
-	{:else}
-		{token.value}
-	{/if}
+{#each tokenized as token, i (`${i}-${token.value}`)}
+		{#if token.bold}
+			<b>{token.value}</b>
+		{:else}
+			{token.value}
+		{/if}
 {/each}

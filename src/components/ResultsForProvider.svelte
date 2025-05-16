@@ -107,12 +107,10 @@
 		</div>
 		{#if items.length}
 			<div class="mwb-result-scroll">
-				{#each items as result}
-					{#key JSON.stringify(result)}
-						<div class="mwb-result-item">
-							<Result {result} />
-						</div>
-					{/key}
+				{#each items as result (JSON.stringify(result))}
+					<div class="mwb-result-item">
+						<Result {result} />
+					</div>
 				{:else}
 					<p>{translate(APP_NAME, 'No results')}</p>
 				{/each}
