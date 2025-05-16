@@ -7,9 +7,13 @@
 	let tokenized: { bold: boolean; value: string }[];
 	$: {
 		let result = original;
-		terms.split(' ').forEach((term) => {
-			result = result.replaceAll(new RegExp(`(${term})`, 'ig'), '-%b%$1%b%-');
-		});
+		terms
+			// remove non simple characters...
+			.replaceAll(/[^a-zA-Z0-9]/g, '')
+			.split(' ')
+			.forEach((term) => {
+				result = result.replaceAll(new RegExp(`(${term})`, 'ig'), '-%b%$1%b%-');
+			});
 		tokenized = result.split('-').map((token) => ({
 			bold: token.startsWith('%b%') && token.endsWith('%b%'),
 			value: token.replaceAll(new RegExp('%b%', 'g'), '')

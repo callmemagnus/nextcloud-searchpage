@@ -6,7 +6,7 @@ import { PROVIDER_ALL } from '../constants';
 export function saveInSession(terms: string, providerIds: string[]) {
 	const newState = new URLSearchParams();
 	if (terms) {
-		newState.append('terms', terms);
+		newState.append('terms', encodeURI(terms));
 	}
 	if (providerIds) {
 		providerIds.forEach((p) => {
@@ -32,7 +32,7 @@ export function loadFromSession() {
 	if (search) {
 		const state = new URLSearchParams(search);
 		return {
-			terms: state.get('terms') || '',
+			terms: decodeURI(state.get('terms') || ''),
 			providers: state.getAll('provider') || [PROVIDER_ALL]
 		};
 	}
