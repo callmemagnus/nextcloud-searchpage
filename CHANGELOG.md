@@ -1,4 +1,8 @@
 # Changelog
+## [v1.2.11](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.10...v1.2.11)
+
+- fix freeze when using magic characters supported by fulltext-search
+- translation updates
 
 ## [v1.2.10](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.9...v1.2.10)
 
