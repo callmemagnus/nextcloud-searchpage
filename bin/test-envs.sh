@@ -15,7 +15,7 @@ function start() {
 
     all_releases=$cache/all_releases.json
     if test ! -e "$all_releases"; then
-        gh api '/repos/nextcloud/server/releases?per_page=100' >"$all_releases"
+        gh api '/repos/nextcloud/server/releases?per_page=300' >"$all_releases"
     fi
 
     if test ! -e "$all_releases"; then
@@ -74,6 +74,7 @@ function start() {
             if [[ "$result" =~ "enabled" ]]; then
                 count=$(docker exec -u 33 nextcloud$i php occ config:system:get trusted_domains | wc -l)
                 docker exec -u 33 nextcloud$i php occ config:system:set trusted_domains $count --value=$ip
+                docker exec -u 33 nextcloud$i php occ config:system:set force_language --value en
                 break
             else
                 sleep 5

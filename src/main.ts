@@ -3,8 +3,9 @@
 
 import App from './App.svelte';
 import './app.postcss';
+import { mount } from "svelte";
 
-const app = new App({
+const app = mount(App, {
 	target: document.getElementById('mwb-thesearchpage')!
 });
 

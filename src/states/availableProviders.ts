@@ -18,4 +18,8 @@ async function load() {
 	}
 }
 
-export default { subscribe, load };
+load();
+
+const availableProviders = { subscribe };
+
+export default availableProviders;

@@ -3,44 +3,45 @@
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
 	import { translate } from '@nextcloud/l10n';
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { APP_NAME, PROVIDER_ALL } from '../../constants';
-	import providers from '../../states/providers';
-	import { providerId, providerIds, terms } from '../../states/query';
+	import { APP_NAME } from '../../constants';
+	import providers from '../../states/availableProviders';
+	import availableProviders from '../../states/availableProviders';
+	import { isAllSelected, providerIds, terms } from '../../states/query';
 	import ProviderSelector from './ProviderSelector.svelte';
+	import searchStore from '../../states/searchStore';
+	import { clog } from '../../lib/log';
+	import { preventDefault } from '../../lib/events';
 
-	let userQuery = get(terms);
-	let userProviderIds = get(providerIds);
+	let userQuery = $state(get(terms));
 
-	$: isSearchEnabled = userQuery.trim() !== '' && userProviderIds.length;
+	let isSearchEnabled = $derived(userQuery.trim() !== '');
 
-	const dispatch = createEventDispatcher();
-	let input: HTMLInputElement;
+	let input: HTMLInputElement | undefined = $state();
 
-	let showProviderSelection = false;
+	let showProviderSelection = $state(false);
 
 	onMount(() => {
-		if (get(terms) !== '' && get(providerId)) {
-			search();
+		if (get(terms) !== '') {
+			clog('Auto-launching search', terms);
+			searchStore.startSearch(get(terms));
 		} else {
-			setTimeout(() => input.focus(), 200);
+			setTimeout(() => input?.focus(), 200);
 		}
 	});
 
-	function clear() {
+	function doClear() {
 		terms.set('');
 		userQuery = '';
-		dispatch('clear');
-		input.focus();
+		searchStore.clearSearch();
+		input?.focus();
 	}
 
-	function search(event?: SubmitEvent) {
-		providerIds.set(userProviderIds);
+	function doSearch(event?: SubmitEvent) {
 		terms.set(userQuery);
-		dispatch('search');
-
-		if (event) {
+		searchStore.startSearch(userQuery);
+		if (event && input) {
 			// for mobile phone
 			hideKeyboard(input);
 		}
@@ -68,50 +69,47 @@
 			// avoid browser in-page search
 			e.preventDefault();
 
-			input.select();
+			input?.select();
 		}
-	}
-
-	function updateProviders(v: CustomEvent) {
-		userProviderIds = v.detail;
 	}
 </script>
 
-<svelte:body on:keydown={onkeydown} />
+<svelte:body {onkeydown} />
 
-<form method="get" on:submit|preventDefault={search}>
+<form method="get" onsubmit={preventDefault(doSearch)}>
 	<div class="mwb-line">
 		<div class="mwb-input">
-			<input bind:this={input} type="text" name="terms" bind:value={userQuery} />
+			<input bind:this={input} bind:value={userQuery} name="terms" type="text" />
 
 			<button
 				class="mwb-form__clear mwb-unstyled"
-				type="button"
-				on:click={clear}
+				inputmode="text"
+				onclick={doClear}
+				style={`visibility: ${userQuery.trim().length === 0 ? 'hidden' : 'visible'}`}
 				title={translate(APP_NAME, 'Clear current query')}
-				disabled={!userQuery}>
+				type="button">
 				⨯
 			</button>
 		</div>
-		<button type="submit" disabled={!isSearchEnabled}>
+		<button disabled={!isSearchEnabled} type="submit">
 			{translate(APP_NAME, 'Search')}
 		</button>
 		<button
 			class="mwb-unstyled mwb-as-link mwb-filters"
-			type="button"
+			onclick={() => (showProviderSelection = !showProviderSelection)}
 			title={translate(APP_NAME, 'Click to change providers')}
-			on:click={() => (showProviderSelection = !showProviderSelection)}>
+			type="button">
 			<span> {translate(APP_NAME, 'Filters')}</span>
-			{#if !showProviderSelection}
+			{#if !showProviderSelection && $availableProviders.length && $providerIds.length}
 				<span class="mwb-flex">
 					<span>(</span>
-					{#if $providers.length && !userProviderIds.includes(PROVIDER_ALL)}
+					{#if !isAllSelected($providerIds)}
 						<span class="mwb-selected-provider-list"
 							>{$providers
-								.filter(({ id }) => userProviderIds.includes(id))
+								.filter(({ id }) => $providerIds.includes(id))
 								.map(({ name }) => name)
 								.join(', ')}</span>
-					{:else if userProviderIds.includes(PROVIDER_ALL)}
+					{:else if isAllSelected($providerIds)}
 						{translate(APP_NAME, 'All providers')}
 					{/if}
 					<span>)</span>
@@ -119,13 +117,10 @@
 			{/if}
 		</button>
 	</div>
-	<div style="display: {showProviderSelection ? 'block' : 'unset'}"></div>
-
-	{#if showProviderSelection && $providers.length}
-		<ProviderSelector
-			providers={$providers}
-			selection={userProviderIds}
-			on:update={updateProviders} />
+	{#if showProviderSelection && $availableProviders}
+		<div class="mwb-line">
+			<ProviderSelector />
+		</div>
 	{/if}
 </form>
 
@@ -150,7 +145,7 @@
 	}
 
 	.mwb-form__clear {
-		@apply relative bg-transparent border-none text-gray-300 !p-1;
+		@apply relative bg-transparent border-none text-gray-300 p-1;
 		margin-left: -28px !important;
 	}
 

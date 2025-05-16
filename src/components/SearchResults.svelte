@@ -5,48 +5,20 @@
 	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import { APP_NAME } from '../constants';
-	import { addToHash, readFromHash, removeFromHash } from '../lib/hash';
-	import type { Provider } from '../states/providers';
-	import { terms } from '../states/query';
+	import type { Provider } from '../states/availableProviders';
+	import availableProviders from '../states/availableProviders';
+	import searchStore, { type ByProvider } from '../states/searchStore';
 	import DynamicGrid from './DynamicGrid.svelte';
-	import ProviderResults from './ProviderResults.svelte';
+	import ResultsForProvider from './ResultsForProvider.svelte';
+	import { readFromHash, removeFromHash } from '../lib/hash';
+	import { isolatedProvider } from '../states/query';
 
-	export let providers: Provider[];
+	let displayedProviders: Provider[] = $state([]);
 
-	let displayedProviders: Provider[] = [];
-	$: {
-		displayedProviders = providers.filter(({ id }) => {
-			if (focusedProvider) {
-				return focusedProvider === id;
-			}
-			return !providersWithNoResults.includes(id);
-		});
-	}
+	let focusedProvider: string | null = $state(null);
+	let providersWithNoResults: string[] = $state([]);
 
-	let focusedProvider: string | null = null;
-	let providersWithNoResults: string[] = [];
-	let query = get(terms);
-
-	function updateFocusedProvider(id: string | null) {
-		if (id) {
-			addToHash('providerId', id);
-		} else {
-			removeFromHash('providerId');
-		}
-		focusedProvider = id;
-	}
-
-	function updateNoResult(id: string) {
-		providersWithNoResults = [...providersWithNoResults, id];
-	}
-
-	function isProviderAlone(id: string) {
-		return (
-			displayedProviders.length === 1 ||
-			focusedProvider == id ||
-			providersWithNoResults.length === 1
-		);
-	}
+	let noResult = $state(false);
 
 	onMount(() => {
 		const providerIdInHash = readFromHash('providerId');
@@ -57,30 +29,73 @@
 				removeFromHash('providerId');
 			}
 		}
+
+		const unsubscribe = searchStore.subscribe((state) => {
+			if (state.asList.length === 0) {
+				noResult = false;
+			} else if (state.searching) {
+				noResult = false;
+			} else if (state.asList.some((b) => b.searching)) {
+				noResult = false;
+			} else if (state.asList.some((b) => b.results?.entries.length)) {
+				noResult = false;
+			} else {
+				noResult = true;
+			}
+		});
+
+		return () => {
+			unsubscribe();
+		};
 	});
 
 	const minCellWidth = 400;
 	const minCellHeight = 450;
+
+	displayedProviders = get(availableProviders).filter(({ id }) => {
+		if (focusedProvider) {
+			return focusedProvider === id;
+		}
+		return !providersWithNoResults.includes(id);
+	});
+
+	function shoudWeShow(by: ByProvider) {
+		if (by.searching) {
+			return true;
+		}
+		if (by.results?.entries.length) {
+			return true;
+		}
+		return false;
+	}
 </script>
 
-{#if displayedProviders.length}
-	<DynamicGrid items={displayedProviders} {minCellHeight} {minCellWidth} let:item={provider}>
-		{#key `${provider.id}-${displayedProviders.length}`}
-			<ProviderResults
-				{query}
-				{provider}
-				isAlone={isProviderAlone(provider.id)}
-				showBack={Boolean(focusedProvider)}
-				on:only-me={() => updateFocusedProvider(provider.id)}
-				on:back={() => updateFocusedProvider(null)}
-				on:no-result={() => updateNoResult(provider.id)} />
-		{/key}
-	</DynamicGrid>
-{:else if providersWithNoResults.length > 0}
-	<p>{translate(APP_NAME, 'No results')}</p>
-{/if}
+<div class="mwb-search-results">
+	{#if noResult}
+		<p class="pl-4">{translate(APP_NAME, 'No results')}</p>
+	{:else if $searchStore.asList.length}
+		<DynamicGrid
+			items={$searchStore.asList
+				.filter((by) => $isolatedProvider === by.providerId || !$isolatedProvider)
+				.filter((by) => shoudWeShow(by))}
+			{minCellHeight}
+			{minCellWidth}>
+			{#snippet item(byProvider: ByProvider)}
+				{#key byProvider.providerId}
+					{#if $isolatedProvider === byProvider.providerId || !$isolatedProvider}
+						<ResultsForProvider {...byProvider} />
+					{/if}
+				{/key}
+			{/snippet}
+		</DynamicGrid>
+	{/if}
+</div>
 
 <style>
+	.mwb-search-results {
+		@apply mr-0 md:mr-4;
+	}
+
 	p {
 		@apply pl-2;
 	}

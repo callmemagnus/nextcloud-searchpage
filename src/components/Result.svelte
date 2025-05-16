@@ -6,25 +6,31 @@
 	import { terms } from '../states/query';
 	import BoldTerms from './BoldTerms.svelte';
 
-	export let result: SearchEntry;
+	interface Props {
+		result: SearchEntry;
+	}
 
-	let imageUrl: string | null;
-	let showIcon = false;
+	let { result }: Props = $props();
+
+	let imageUrl: string | undefined = $state();
+	let showIcon = $state(false);
 
 	let iconIsClass = !/^\//.test(result.icon);
 	let hasThumbnail = result.thumbnailUrl?.length > 0;
 
-	let imageSteps: 'thumbnail' | 'icon' | 'class-icon' = (function () {
-		if (hasThumbnail) {
-			return 'thumbnail';
-		}
-		if (iconIsClass) {
-			return 'class-icon';
-		}
-		return 'icon';
-	})();
+	let imageSteps: 'thumbnail' | 'icon' | 'class-icon' = $state(
+		(function () {
+			if (hasThumbnail) {
+				return 'thumbnail';
+			}
+			if (iconIsClass) {
+				return 'class-icon';
+			}
+			return 'icon';
+		})()
+	);
 
-	$: {
+	$effect.pre(() => {
 		switch (imageSteps) {
 			case 'thumbnail':
 				imageUrl = result.thumbnailUrl;
@@ -37,7 +43,7 @@
 				showIcon = true;
 				break;
 		}
-	}
+	});
 
 	function onError() {
 		switch (imageSteps) {
@@ -54,12 +60,12 @@
 	}
 </script>
 
-<a href={result.resourceUrl} class="mwb-result">
+<a class="mwb-result" href={result.resourceUrl}>
 	<div class="mwb-result__image">
 		{#if showIcon}
-			<div class="{result.icon} mwb-result__icon" />
+			<div class="{result.icon} mwb-result__icon"></div>
 		{:else}
-			<img src={imageUrl} alt="" on:error={onError} />
+			<img src={imageUrl} alt="" onerror={onError} />
 		{/if}
 	</div>
 	<div class="mwb-text">
@@ -80,7 +86,7 @@
 	}
 
 	.mwb-result__image {
-		@apply w-8 h-8 ml-1 mr-3 flex-grow-0 flex-shrink-0;
+		@apply w-8 h-8 mt-1 ml-1 mr-1 flex-grow-0 flex-shrink-0;
 
 		img {
 			@apply mt-2 w-full;
@@ -92,7 +98,7 @@
 	}
 
 	h3 {
-		@apply mt-1 mb-0;
+		@apply mt-0 mb-0;
 	}
 
 	p {

@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import { PROVIDER_ALL } from '../constants';
+import { isAllSelected } from '../states/query';
+import { clog } from './log';
 
 export function saveInSession(terms: string, providerIds: string[]) {
 	const newState = new URLSearchParams();
@@ -9,9 +11,13 @@ export function saveInSession(terms: string, providerIds: string[]) {
 		newState.append('terms', encodeURI(terms));
 	}
 	if (providerIds) {
-		providerIds.forEach((p) => {
-			newState.append('provider', p);
-		});
+		if (isAllSelected(providerIds)) {
+			newState.append('provider', PROVIDER_ALL);
+		} else {
+			for (const id of providerIds) {
+				newState.append('provider', id);
+			}
+		}
 	}
 
 	try {
@@ -31,10 +37,16 @@ export function loadFromSession() {
 
 	if (search) {
 		const state = new URLSearchParams(search);
+		let providers = state.getAll('provider') || [];
+		if (providers.length === 1 && providers[0] === PROVIDER_ALL) {
+			providers = [];
+		}
+		const terms = decodeURI(state.get('terms') || '');
+		clog('Reading from session (url)', terms, providers);
 		return {
-			terms: decodeURI(state.get('terms') || ''),
-			providers: state.getAll('provider') || [PROVIDER_ALL]
+			terms,
+			providers
 		};
 	}
-	return { terms: '', providers: [PROVIDER_ALL] };
+	return { terms: '', providers: [] };
 }

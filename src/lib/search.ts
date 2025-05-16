@@ -3,8 +3,9 @@
 
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
-import type { Provider } from '../states/providers';
+import type { Provider } from '../states/availableProviders';
 import TimedCache from './TimedCache';
+import { clog } from './log';
 
 export type SearchEntry = {
 	thumbnailUrl: string;
@@ -20,6 +21,25 @@ export type SearchResult = {
 	isPaginated: boolean;
 	entries: SearchEntry[];
 };
+
+export function computeHasMore(results: SearchResult | null): boolean {
+	if (!results) {
+		return false;
+	}
+	/**
+	 * 3 reasons to decide there are no more results
+	 * 1. no entries in present response
+	 * 2. service says it's not paginated
+	 * 3. cursor is = 0 (e.g. quicknotes)
+	 */
+	if (results.entries.length === 0 || !results.isPaginated || results.cursor === 0) {
+		return false;
+	}
+	if (results.entries.length < results.cursor) {
+		return false;
+	}
+	return true;
+}
 
 const cache = new TimedCache<Promise<SearchResult | null>>(30_000);
 
@@ -41,6 +61,9 @@ export async function searchOnProvider(
 			url,
 			axios.get(url).then((result) => {
 				if (result.data.ocs?.meta?.statuscode === 200) {
+					clog(
+						`${providerId} result search: count=${result.data.ocs.data.entries.length}`
+					);
 					return {
 						...result.data.ocs.data,
 						providerId
@@ -49,6 +72,8 @@ export async function searchOnProvider(
 				return null;
 			})
 		);
+	} else {
+		clog(`${providerId} result search in cache`);
 	}
 
 	return cache.get(url)!;
