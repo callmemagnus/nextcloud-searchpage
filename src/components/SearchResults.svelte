@@ -80,7 +80,7 @@
 				.filter((by) => shoudWeShow(by))}
 			{minCellHeight}
 			{minCellWidth}>
-			{#snippet item(byProvider: ByProvider)}
+			{#snippet itemSnippet(byProvider: ByProvider)}
 				{#key byProvider.providerId}
 					{#if $isolatedProvider === byProvider.providerId || !$isolatedProvider}
 						<ResultsForProvider {...byProvider} />

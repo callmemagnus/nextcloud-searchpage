@@ -1,11 +1,8 @@
-<script lang="ts">
+<script lang="ts" generics="T extends {providerId: string}">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 	import { onMount, type Snippet } from 'svelte';
 	import { generateArray } from '../lib/array-utils';
-
-	// eslint-disable-next-line no-undef
-	type T = $$Generic;
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	interface $$Slots {
@@ -15,12 +12,12 @@
 
 	type Props = {
 		items: T[];
-		toto: Snippet<[T]>;
+		itemSnippet: Snippet<[T]>;
 		minCellWidth: number;
 		minCellHeight: number;
 	};
 
-	let { items, minCellHeight, minCellWidth, item }: Props = $props();
+	let { items, minCellHeight, minCellWidth, itemSnippet: item }: Props = $props();
 
 	const paddingBottom = 30;
 
@@ -85,7 +82,7 @@
 </script>
 
 <div bind:this={me} class="mwb-dynamic-grid" data-columns={columns} data-rows={rows}>
-	{#each items as i}
+	{#each items as i (i.providerId) }
 		<div class="mwb-dynamic-grid-cell">
 			{@render item(i)}
 		</div>

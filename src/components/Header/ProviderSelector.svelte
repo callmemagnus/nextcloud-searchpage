@@ -48,7 +48,7 @@
 		<span>{translate(APP_NAME, 'All providers')}</span>
 	</label>
 	<div class="mwb-checkboxes">
-		{#each $availableProviders as provider}
+		{#each $availableProviders as provider (provider.id)}
 			<label>
 				<input
 					type="checkbox"
