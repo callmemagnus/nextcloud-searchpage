@@ -60,7 +60,7 @@
 	}
 </script>
 
-<a class="mwb-result" href={result.resourceUrl}>
+<a class="mwb-result ml-4" href={result.resourceUrl}>
 	<div class="mwb-result__image">
 		{#if showIcon}
 			<div class="{result.icon} mwb-result__icon"></div>

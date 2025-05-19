@@ -65,7 +65,7 @@
 
 <style lang="postcss">
 	@reference "tailwindcss";
-	
+
 	.mwb-checkboxes-container {
 		@apply flex gap-5 items-start;
 	}

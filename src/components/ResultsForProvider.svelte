@@ -48,13 +48,14 @@
 		const unsubscribeSearchStore = searchStore.subscribe((state) => {
 			const isolated = get(isolatedProvider);
 			showIsolate = !isolated && state.providerHavingResultsCount > 1;
-			showBack = !showIsolate && state.asList.length > 1;
+			isAlone = isolated === providerId || state.providerHavingResultsCount === 1;
+			showBack = isAlone && state.providerHavingResultsCount > 1;
 		});
 		const unsubscribeIsolated = isolatedProvider.subscribe((iProvider) => {
 			const state = get(searchStore);
 			showIsolate = !iProvider && state.providerHavingResultsCount > 1;
-			isAlone = iProvider === providerId;
-			showBack = state.asList.length > 1 && isAlone;
+			isAlone = iProvider === providerId || state.providerHavingResultsCount === 1;
+			showBack = state.providerHavingResultsCount > 1 && isAlone;
 		});
 
 		return () => {
@@ -128,7 +129,7 @@
 				{/if}
 			</div>
 		{:else if searching}
-			<p class="ml-4">{translate(APP_NAME, 'Loading...')}</p>
+			<p class="mwb-loading">{translate(APP_NAME, 'Loading...')}</p>
 		{/if}
 	</div>
 {/if}
@@ -139,6 +140,10 @@
 	.mwb-results-for-provider {
 		@apply px-0 py-2 shadow-xl h-full w-full flex flex-col rounded-xl;
 		background-color: var(--color-main-background);
+	}
+
+	.mwb-loading {
+		@apply ml-4;
 	}
 
 	.mwb-is-alone {
