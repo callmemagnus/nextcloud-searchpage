@@ -42,12 +42,12 @@
 	});
 </script>
 
-<div class="mwb-checkboxes-container">
+<div class="mwb-checkboxes-container flex gap-5 items-start">
 	<label>
 		<input checked={allSelected} name="providers" onchange={toggleAll} type="checkbox"/>
 		<span>{translate(APP_NAME, 'All providers')}</span>
 	</label>
-	<div class="mwb-checkboxes">
+	<div class="flex flex-wrap gap-x-6">
 		{#each $availableProviders as provider (provider.id)}
 			<label>
 				<input
@@ -65,13 +65,9 @@
 
 <style lang="postcss">
 	@reference "tailwindcss";
-	
+
 	.mwb-checkboxes-container {
 		@apply flex gap-5 items-start;
-	}
-
-	.mwb-checkboxes {
-		@apply flex flex-wrap gap-x-6;
 	}
 
 	label {

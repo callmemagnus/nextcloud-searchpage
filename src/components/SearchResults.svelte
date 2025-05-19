@@ -70,9 +70,9 @@
 	}
 </script>
 
-<div class="mwb-search-results">
+<div class="mwb-search-results mr-0 md:mr-4">
 	{#if noResult}
-		<p class="pl-4">{translate(APP_NAME, 'No results')}</p>
+		<p class="pl-2">{translate(APP_NAME, 'No results')}</p>
 	{:else if $searchStore.asList.length}
 		<DynamicGrid
 			items={$searchStore.asList
@@ -90,15 +90,3 @@
 		</DynamicGrid>
 	{/if}
 </div>
-
-<style lang="postcss">
-	@reference "tailwindcss";
-
-	.mwb-search-results {
-		@apply mr-0 md:mr-4;
-	}
-
-	p {
-		@apply pl-2;
-	}
-</style>

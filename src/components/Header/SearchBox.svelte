@@ -77,7 +77,7 @@
 <svelte:body {onkeydown}/>
 
 <form method="get" onsubmit={preventDefault(doSearch)}>
-	<div class="mwb-line">
+	<div class="flex flex-wrap gap-x-1 items-baseline">
 		<div class="mwb-input">
 			<input bind:this={input} bind:value={userQuery} name="terms" type="text"/>
 
@@ -118,7 +118,7 @@
 		</button>
 	</div>
 	{#if showProviderSelection && $availableProviders}
-		<div class="mwb-line">
+		<div class="flex flex-wrap gap-x-1 items-baseline">
 			<ProviderSelector/>
 		</div>
 	{/if}
@@ -126,10 +126,6 @@
 
 <style lang="postcss">
 	@reference "tailwindcss";
-
-	.mwb-line {
-		@apply flex flex-wrap gap-x-1 items-baseline;
-	}
 
 	input[type='text'] {
 		min-width: 300px;

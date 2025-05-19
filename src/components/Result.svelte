@@ -60,20 +60,20 @@
 	}
 </script>
 
-<a class="mwb-result" href={result.resourceUrl}>
-	<div class="mwb-result__image">
+<a class="mwb-result flex w-full items-start cursor-pointer" href={result.resourceUrl}>
+	<div class="w-8 h-8 mt-1 ml-1 mr-2 flex-grow-0 flex-shrink-0">
 		{#if showIcon}
-			<div class="{result.icon} mwb-result__icon"></div>
+			<div class="h-full {result.icon} mwb-result__icon"></div>
 		{:else}
-			<img src={imageUrl} alt="" onerror={onError}/>
+			<img class="mt-2 w-full" src={imageUrl} alt="" onerror={onError}/>
 		{/if}
 	</div>
 	<div class="mwb-text">
-		<h3 class="mwb-ellipsis">
+		<h3 class="overflow-hidden text-ellipsis mt-0 mb-0">
 			<BoldTerms original={result.title} terms={$terms}/>
 		</h3>
 		{#if result.subline}
-			<p class="mwb-ellipsis">
+			<p class="overflow-hidden text-ellipsis mt-1 text-sm">
 				<BoldTerms original={result.subline} terms={$terms}/>
 			</p>
 		{/if}
@@ -83,36 +83,8 @@
 <style lang="postcss">
 	@reference "tailwindcss";
 
-	.mwb-result {
-		@apply flex w-full items-start cursor-pointer;
-	}
-
-	.mwb-result__image {
-		@apply w-8 h-8 mt-1 ml-1 mr-1 flex-grow-0 flex-shrink-0;
-
-		img {
-			@apply mt-2 w-full;
-		}
-	}
-
-	.mwb-result__icon {
-		@apply h-full;
-	}
-
-	h3 {
-		@apply mt-0 mb-0;
-	}
-
-	p {
-		@apply mt-1 text-sm;
-	}
-
 	.mwb-text {
 		@apply block overflow-hidden;
 		min-height: 2rem;
-	}
-
-	.mwb-ellipsis {
-		@apply overflow-hidden text-ellipsis;
 	}
 </style>
