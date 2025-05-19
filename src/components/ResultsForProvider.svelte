@@ -1,20 +1,20 @@
 <script lang="ts">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
-	import type { ByProvider } from '../states/searchStore';
+	import type {ByProvider} from '../states/searchStore';
 	import searchStore from '../states/searchStore';
-	import { isolatedProvider } from '../states/query';
-	import { translate } from '@nextcloud/l10n';
-	import { APP_NAME } from '../constants';
+	import {isolatedProvider} from '../states/query';
+	import {translate} from '@nextcloud/l10n';
+	import {APP_NAME} from '../constants';
 	import Result from './Result.svelte';
-	import availableProviders, { type Provider } from '../states/availableProviders';
-	import { get } from 'svelte/store';
-	import { computeHasMore } from '../lib/search';
-	import { onMount } from 'svelte';
+	import availableProviders, {type Provider} from '../states/availableProviders';
+	import {get} from 'svelte/store';
+	import {computeHasMore} from '../lib/search';
+	import {onMount} from 'svelte';
 
 	type Props = ByProvider;
 
-	let { searching, results, providerId }: Props = $props();
+	let {searching, results, providerId}: Props = $props();
 
 	let provider = $state<Provider | undefined>();
 	let isAlone = $state(false);
@@ -43,7 +43,7 @@
 
 	onMount(() => {
 		const unsubscribeAvailable = availableProviders.subscribe((aProvider) => {
-			provider = aProvider.find(({ id }) => id === providerId);
+			provider = aProvider.find(({id}) => id === providerId);
 		});
 		const unsubscribeSearchStore = searchStore.subscribe((state) => {
 			const isolated = get(isolatedProvider);
@@ -92,7 +92,7 @@
 						type="button"
 						onclick={() => onlyMe()}
 						title={translate(APP_NAME, 'See only results for this provider')}
-						>{translate(APP_NAME, 'Show only')}</button>
+					>{translate(APP_NAME, 'Show only')}</button>
 				</span>
 			{/if}
 			{#if showBack}
@@ -101,7 +101,7 @@
 						type="button"
 						onclick={() => back()}
 						title={translate(APP_NAME, 'See all providers')}
-						>{translate(APP_NAME, 'Back')}</button>
+					>{translate(APP_NAME, 'Back')}</button>
 				</span>
 			{/if}
 		</div>
@@ -109,7 +109,7 @@
 			<div class="mwb-result-scroll">
 				{#each items as result (JSON.stringify(result))}
 					<div class="mwb-result-item">
-						<Result {result} />
+						<Result {result}/>
 					</div>
 				{:else}
 					<p>{translate(APP_NAME, 'No results')}</p>
@@ -133,7 +133,9 @@
 	</div>
 {/if}
 
-<style lang="less">
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	.mwb-results-for-provider {
 		@apply px-0 py-2 shadow-xl h-full w-full flex flex-col rounded-xl;
 		background-color: var(--color-main-background);

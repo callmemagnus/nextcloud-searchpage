@@ -55,7 +55,9 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	.mwb-thesearchpage {
 		@apply w-full pt-3 px-2 h-full scroll-m-3 overflow-y-scroll;
 		color: var(--color-main-text);

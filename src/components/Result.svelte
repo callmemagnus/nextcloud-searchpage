@@ -2,15 +2,15 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	import type { SearchEntry } from '../lib/search';
-	import { terms } from '../states/query';
+	import type {SearchEntry} from '../lib/search';
+	import {terms} from '../states/query';
 	import BoldTerms from './BoldTerms.svelte';
 
 	interface Props {
 		result: SearchEntry;
 	}
 
-	let { result }: Props = $props();
+	let {result}: Props = $props();
 
 	let imageUrl: string | undefined = $state();
 	let showIcon = $state(false);
@@ -65,22 +65,24 @@
 		{#if showIcon}
 			<div class="{result.icon} mwb-result__icon"></div>
 		{:else}
-			<img src={imageUrl} alt="" onerror={onError} />
+			<img src={imageUrl} alt="" onerror={onError}/>
 		{/if}
 	</div>
 	<div class="mwb-text">
 		<h3 class="mwb-ellipsis">
-			<BoldTerms original={result.title} terms={$terms} />
+			<BoldTerms original={result.title} terms={$terms}/>
 		</h3>
 		{#if result.subline}
 			<p class="mwb-ellipsis">
-				<BoldTerms original={result.subline} terms={$terms} />
+				<BoldTerms original={result.subline} terms={$terms}/>
 			</p>
 		{/if}
 	</div>
 </a>
 
-<style lang="less">
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	.mwb-result {
 		@apply flex w-full items-start cursor-pointer;
 	}

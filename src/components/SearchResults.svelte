@@ -1,17 +1,17 @@
 <script lang="ts">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
-	import { translate } from '@nextcloud/l10n';
-	import { onMount } from 'svelte';
-	import { get } from 'svelte/store';
-	import { APP_NAME } from '../constants';
-	import type { Provider } from '../states/availableProviders';
+	import {translate} from '@nextcloud/l10n';
+	import {onMount} from 'svelte';
+	import {get} from 'svelte/store';
+	import {APP_NAME} from '../constants';
+	import type {Provider} from '../states/availableProviders';
 	import availableProviders from '../states/availableProviders';
-	import searchStore, { type ByProvider } from '../states/searchStore';
+	import searchStore, {type ByProvider} from '../states/searchStore';
 	import DynamicGrid from './DynamicGrid.svelte';
 	import ResultsForProvider from './ResultsForProvider.svelte';
-	import { readFromHash, removeFromHash } from '../lib/hash';
-	import { isolatedProvider } from '../states/query';
+	import {readFromHash, removeFromHash} from '../lib/hash';
+	import {isolatedProvider} from '../states/query';
 
 	let displayedProviders: Provider[] = $state([]);
 
@@ -23,7 +23,7 @@
 	onMount(() => {
 		const providerIdInHash = readFromHash('providerId');
 		if (providerIdInHash) {
-			if (displayedProviders.some(({ id }) => id === providerIdInHash)) {
+			if (displayedProviders.some(({id}) => id === providerIdInHash)) {
 				focusedProvider = providerIdInHash;
 			} else {
 				removeFromHash('providerId');
@@ -52,7 +52,7 @@
 	const minCellWidth = 400;
 	const minCellHeight = 450;
 
-	displayedProviders = get(availableProviders).filter(({ id }) => {
+	displayedProviders = get(availableProviders).filter(({id}) => {
 		if (focusedProvider) {
 			return focusedProvider === id;
 		}
@@ -83,7 +83,7 @@
 			{#snippet itemSnippet(byProvider: ByProvider)}
 				{#key byProvider.providerId}
 					{#if $isolatedProvider === byProvider.providerId || !$isolatedProvider}
-						<ResultsForProvider {...byProvider} />
+						<ResultsForProvider {...byProvider}/>
 					{/if}
 				{/key}
 			{/snippet}
@@ -91,7 +91,9 @@
 	{/if}
 </div>
 
-<style>
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	.mwb-search-results {
 		@apply mr-0 md:mr-4;
 	}

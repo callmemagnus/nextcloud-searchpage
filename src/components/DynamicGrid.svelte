@@ -89,7 +89,9 @@
 	{/each}
 </div>
 
-<style>
+<style lang="postcss">
+	@reference "tailwindcss";
+
 	.mwb-dynamic-grid {
 		@apply h-full w-full grid justify-stretch items-stretch gap-4;
 		min-height: 0;
