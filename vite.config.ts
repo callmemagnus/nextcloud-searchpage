@@ -12,7 +12,11 @@ export default defineConfig((config) => {
 
 	return {
 		...config,
-		plugins: [tailwindcss(), svelte(), cssInjectedByJsPlugin()],
+		plugins: [
+			tailwindcss(), 
+			svelte(), 
+			cssInjectedByJsPlugin()
+		],
 
 		build: {
 			sourcemap: devMode,

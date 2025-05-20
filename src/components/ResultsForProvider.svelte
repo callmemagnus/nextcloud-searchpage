@@ -48,13 +48,14 @@
 		const unsubscribeSearchStore = searchStore.subscribe((state) => {
 			const isolated = get(isolatedProvider);
 			showIsolate = !isolated && state.providerHavingResultsCount > 1;
-			showBack = !showIsolate && state.asList.length > 1;
+			isAlone = isolated === providerId || state.providerHavingResultsCount === 1;
+			showBack = isAlone && state.providerHavingResultsCount > 1;
 		});
 		const unsubscribeIsolated = isolatedProvider.subscribe((iProvider) => {
 			const state = get(searchStore);
 			showIsolate = !iProvider && state.providerHavingResultsCount > 1;
-			isAlone = iProvider === providerId;
-			showBack = state.asList.length > 1 && isAlone;
+			isAlone = iProvider === providerId || state.providerHavingResultsCount === 1;
+			showBack = state.providerHavingResultsCount > 1 && isAlone;
 		});
 
 		return () => {
@@ -85,7 +86,7 @@
 {#if provider}
 	<div class="mwb-results-for-provider" class:mwb-is-alone={isAlone}>
 		<div class="mwb-header">
-			<h2>{provider.name}</h2>
+			<h2 class="ml-4 mb-2 mt-0">{provider.name}</h2>
 			{#if showIsolate}
 				<span class="mwb-header-button">
 					<button
@@ -145,13 +146,6 @@
 		@apply shadow-none px-2;
 	}
 
-	h2 {
-		@apply ml-4 mb-2 mt-0;
-	}
-
-	/* .mwb-is-alone h2 {
-		@apply text-2xl;
-	} */
 	.mwb-result-scroll {
 		@apply overflow-y-scroll h-full flex-grow;
 	}

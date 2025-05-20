@@ -69,7 +69,7 @@
 		{/if}
 	</div>
 	<div class="mwb-text">
-		<h3 class="overflow-hidden text-ellipsis mt-0 mb-0">
+		<h3 class="overflow-hidden text-ellipsis mt-0 mb-0 mt-">
 			<BoldTerms original={result.title} terms={$terms}/>
 		</h3>
 		{#if result.subline}
