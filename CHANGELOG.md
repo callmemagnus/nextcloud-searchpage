@@ -1,4 +1,9 @@
 # Changelog
+## [v1.2.12](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.11...v1.2.12)
+
+- fix characters escaping when presenting the results
+- technical upgrades
+
 ## [v1.2.11](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.10...v1.2.11)
 
 - fix freeze when using magic characters supported by fulltext-search

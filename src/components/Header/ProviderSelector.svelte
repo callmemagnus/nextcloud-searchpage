@@ -2,19 +2,19 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	import {translate} from '@nextcloud/l10n';
-	import {get, writable} from 'svelte/store';
-	import {APP_NAME} from '../../constants';
-	import availableProviders, {type Provider} from '../../states/availableProviders';
-	import {isAllSelected, providerIds} from '../../states/query';
-	import {onMount} from 'svelte';
+	import { translate } from '@nextcloud/l10n';
+	import { get, writable } from 'svelte/store';
+	import { APP_NAME } from '../../constants';
+	import availableProviders, { type Provider } from '../../states/availableProviders';
+	import { isAllSelected, providerIds } from '../../states/query';
+	import { onMount } from 'svelte';
 
 	let displayedSelection = writable<string[]>(get(providerIds));
 	let allSelected = $state(true);
 
 	function update(available: Provider[], selected: string[]) {
 		allSelected = isAllSelected(selected);
-		displayedSelection.set(isAllSelected(selected) ? available.map(({id}) => id) : selected);
+		displayedSelection.set(isAllSelected(selected) ? available.map(({ id }) => id) : selected);
 	}
 
 	availableProviders.subscribe((available) => {
@@ -26,14 +26,14 @@
 		allSelected = isAllSelected(values);
 		providerIds.set(
 			available.length === values.length || !values.length
-				? available.map(({id}) => id)
+				? available.map(({ id }) => id)
 				: values
 		);
 	});
 
 	function toggleAll() {
 		if (!isAllSelected(get(displayedSelection))) {
-			displayedSelection.set(get(availableProviders).map(({id}) => id));
+			displayedSelection.set(get(availableProviders).map(({ id }) => id));
 		}
 	}
 
@@ -44,7 +44,7 @@
 
 <div class="mwb-checkboxes-container">
 	<label>
-		<input checked={allSelected} name="providers" onchange={toggleAll} type="checkbox"/>
+		<input checked={allSelected} name="providers" onchange={toggleAll} type="checkbox" />
 		<span>{translate(APP_NAME, 'All providers')}</span>
 	</label>
 	<div class="mwb-checkboxes">
@@ -54,7 +54,7 @@
 					type="checkbox"
 					name="providers"
 					value={provider.id}
-					bind:group={$displayedSelection}/>
+					bind:group={$displayedSelection} />
 				<span>
 					{provider.name}
 				</span>
