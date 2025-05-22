@@ -19,45 +19,45 @@
 
 	let { items, minCellHeight, minCellWidth, itemSnippet }: Props = $props();
 
-	const paddingBottom = 30;
+	const paddingBottom = 50;
 
 	let me = $state<HTMLDivElement | undefined>();
 	let availableWidth = $state<number>(800);
 	let count = $derived(items.length);
 	let columns = $derived(me ? Math.min(Math.round(availableWidth / minCellWidth), count) : 1);
 	let rows = $derived(Math.ceil(count / columns));
-
+	let cellHeight = $derived(
+		rows === 1
+			? `${window.innerHeight - (me?.getBoundingClientRect().top || 0) - paddingBottom}px`
+			: 'auto'
+	);
+	let gridTemplateRows = $derived(
+		rows === 1
+			? `${window.innerHeight - (me?.getBoundingClientRect().top || 0) - paddingBottom}px`
+			: generateArray(rows, `${minCellHeight}px`).join(' ')
+	);
 	function updateContainer(rows: number, columns: number) {
 		if (me) {
 			me.style.display = rows === 1 && columns === 1 ? 'block' : 'grid';
 			me.style.overflowY = 'scroll';
-			if (rows > 1) {
-				me.style.gridTemplateRows = generateArray(rows, `${minCellHeight}px`).join(' ');
-			} else {
-				me.style.gridTemplateRows = `${me.getBoundingClientRect().height - paddingBottom}px`;
-			}
+			me.style.gridTemplateRows = gridTemplateRows;
 			me.style.gridTemplateColumns = generateArray(columns, '1fr').join(' ');
 		}
 	}
 
-	function updateCells(rows: number) {
+	function updateCells() {
 		if (me) {
 			const cells = Array.from(me.getElementsByClassName('mwb-dynamic-grid-cell'));
 			for (const cell of cells) {
 				const hElement = cell as HTMLElement;
-				if (rows === 1) {
-					const top = me.getBoundingClientRect().top;
-					hElement.style.height = `${window.innerHeight - top - paddingBottom}px`;
-				} else {
-					hElement.style.height = 'auto';
-				}
+				hElement.style.minHeight = cellHeight;
 			}
 		}
 	}
 
 	$effect(() => {
 		updateContainer(rows, columns);
-		updateCells(rows);
+		updateCells();
 	});
 
 	function resize() {
@@ -71,8 +71,9 @@
 		if (me) {
 			me.style.paddingBottom = `${paddingBottom}px`;
 			me.style.gridTemplateColumns = '1fr';
-			window.addEventListener('resize', resize);
 		}
+		window.addEventListener('resize', resize);
+
 		return () => {
 			clearTimeout(timer);
 			window.removeEventListener('resize', resize);
