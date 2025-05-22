@@ -16,7 +16,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint src/**/*.ts src/**/*.svelte",
-    "doctor": "npm run lint && npm run build && ./bin/run-playwright.sh"
+    "doctor": "npm run lint && npm run build && ./bin/run-playwright.sh",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
@@ -35,6 +36,7 @@
     "eslint-plugin-svelte": "3.8.1",
     "glob": "11.0.2",
     "globals": "16.1.0",
+    "husky": "9.1.7",
     "less": "4.3.0",
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.4.0",

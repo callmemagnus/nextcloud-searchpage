@@ -9,15 +9,25 @@
 	import Result from './Result.svelte';
 	import availableProviders from '../states/availableProviders';
 	import { derived } from 'svelte/store';
-	import { computeHasMore } from '../lib/search';
+	import { computeHasMore, type SearchEntry } from '../lib/search';
 
 	type Props = ByProvider;
 
 	let { searching, results, providerId }: Props = $props();
 
 	let button = $state<HTMLButtonElement | undefined>();
-	let hasMore = $derived(computeHasMore(results));
-	let items = $derived(results?.entries ?? []);
+
+	// As we use `derived` below, we can't use $derived here...
+	// let hasMore = $derived(computeHasMore(results));
+	// let items = $derived(results?.entries ?? []);
+
+	let hasMore = $state(false);
+	let items = $state<SearchEntry[]>([]);
+
+	$effect(() => {
+		items = results?.entries ?? [];
+		hasMore = computeHasMore(results);
+	});
 
 	const observer = new IntersectionObserver(
 		(entries, observer) => {
