@@ -1,28 +1,23 @@
 <script lang="ts">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
-	import type {ByProvider} from '../states/searchStore';
+	import type { ByProvider } from '../states/searchStore';
 	import searchStore from '../states/searchStore';
-	import {isolatedProvider} from '../states/query';
-	import {translate} from '@nextcloud/l10n';
-	import {APP_NAME} from '../constants';
+	import { isolatedProvider } from '../states/query';
+	import { translate } from '@nextcloud/l10n';
+	import { APP_NAME } from '../constants';
 	import Result from './Result.svelte';
-	import availableProviders, {type Provider} from '../states/availableProviders';
-	import {get} from 'svelte/store';
-	import {computeHasMore} from '../lib/search';
-	import {onMount} from 'svelte';
+	import availableProviders from '../states/availableProviders';
+	import { derived } from 'svelte/store';
+	import { computeHasMore } from '../lib/search';
 
 	type Props = ByProvider;
 
-	let {searching, results, providerId}: Props = $props();
+	let { searching, results, providerId }: Props = $props();
 
-	let provider = $state<Provider | undefined>();
-	let isAlone = $state(false);
-	let showIsolate = $state(false);
-	let showBack = $state(false);
-	let hasMore = $derived(computeHasMore(results));
 	let button = $state<HTMLButtonElement | undefined>();
-	let items = $derived(results?.entries || []);
+	let hasMore = $derived(computeHasMore(results));
+	let items = $derived(results?.entries ?? []);
 
 	const observer = new IntersectionObserver(
 		(entries, observer) => {
@@ -41,30 +36,16 @@
 		}
 	);
 
-	onMount(() => {
-		const unsubscribeAvailable = availableProviders.subscribe((aProvider) => {
-			provider = aProvider.find(({id}) => id === providerId);
-		});
-		const unsubscribeSearchStore = searchStore.subscribe((state) => {
-			const isolated = get(isolatedProvider);
-			showIsolate = !isolated && state.providerHavingResultsCount > 1;
-			isAlone = isolated === providerId || state.providerHavingResultsCount === 1;
-			showBack = isAlone && state.providerHavingResultsCount > 1;
-		});
-		const unsubscribeIsolated = isolatedProvider.subscribe((iProvider) => {
-			const state = get(searchStore);
-			showIsolate = !iProvider && state.providerHavingResultsCount > 1;
-			isAlone = iProvider === providerId || state.providerHavingResultsCount === 1;
-			showBack = state.providerHavingResultsCount > 1 && isAlone;
-		});
-
-		return () => {
-			unsubscribeAvailable();
-			unsubscribeSearchStore();
-			unsubscribeIsolated();
-			observer.disconnect();
-		};
+	const flags = derived([searchStore, isolatedProvider], ([state, isolatedProvider]) => {
+		const showIsolate = !isolatedProvider && state.providerHavingResultsCount > 1;
+		const isAlone = isolatedProvider === providerId || state.providerHavingResultsCount === 1;
+		const showBack = isAlone && state.providerHavingResultsCount > 1;
+		return { showIsolate, isAlone, showBack };
 	});
+
+	const provider = derived(availableProviders, (providers) =>
+		providers.find(({ id }) => id === providerId)
+	);
 
 	$effect(() => {
 		observer.disconnect();
@@ -72,6 +53,9 @@
 		if (button) {
 			observer.observe(button);
 		}
+		return () => {
+			observer.disconnect();
+		};
 	});
 
 	function onlyMe() {
@@ -83,55 +67,57 @@
 	}
 </script>
 
-{#if provider}
-	<div class="mwb-results-for-provider" class:mwb-is-alone={isAlone}>
-		<div class="mwb-header">
-			<h2>{provider.name}</h2>
-			{#if showIsolate}
-				<span class="mwb-header-button">
-					<button
-						type="button"
-						onclick={() => onlyMe()}
-						title={translate(APP_NAME, 'See only results for this provider')}
-					>{translate(APP_NAME, 'Show only')}</button>
-				</span>
-			{/if}
-			{#if showBack}
-				<span class="mwb-header-button">
-					<button
-						type="button"
-						onclick={() => back()}
-						title={translate(APP_NAME, 'See all providers')}
-					>{translate(APP_NAME, 'Back')}</button>
-				</span>
-			{/if}
-		</div>
-		{#if items.length}
-			<div class="mwb-result-scroll">
-				{#each items as result (JSON.stringify(result))}
-					<div class="mwb-result-item">
-						<Result {result}/>
-					</div>
-				{:else}
-					<p>{translate(APP_NAME, 'No results')}</p>
-				{/each}
-				{#if hasMore}
-					<div>
+{#if $provider}
+	{#if searching || items.length > 0}
+		<div class="mwb-results-for-provider" class:mwb-is-alone={$flags.isAlone}>
+			<div class="mwb-header">
+				<h2>{$provider.name}</h2>
+				{#if $flags.showIsolate}
+					<span class="mwb-header-button">
 						<button
-							bind:this={button}
-							disabled={searching}
-							onclick={() => searchStore.loadMore(providerId)}>
-							{searching
-								? translate(APP_NAME, 'Loading...')
-								: translate(APP_NAME, 'Load more...')}
-						</button>
-					</div>
+							type="button"
+							onclick={() => onlyMe()}
+							title={translate(APP_NAME, 'See only results for this provider')}
+							>{translate(APP_NAME, 'Show only')}</button>
+					</span>
+				{/if}
+				{#if $flags.showBack}
+					<span class="mwb-header-button">
+						<button
+							type="button"
+							onclick={() => back()}
+							title={translate(APP_NAME, 'See all providers')}
+							>{translate(APP_NAME, 'Back')}</button>
+					</span>
 				{/if}
 			</div>
-		{:else if searching}
-			<p class="mwb-loading">{translate(APP_NAME, 'Loading...')}</p>
-		{/if}
-	</div>
+			{#if items.length}
+				<div class="mwb-result-scroll">
+					{#each items as result (JSON.stringify(result))}
+						<div class="mwb-result-item">
+							<Result {result} />
+						</div>
+					{:else}
+						<p>{translate(APP_NAME, 'No results')}</p>
+					{/each}
+					{#if hasMore}
+						<div>
+							<button
+								bind:this={button}
+								disabled={searching}
+								onclick={() => searchStore.loadMore(providerId)}>
+								{searching
+									? translate(APP_NAME, 'Loading...')
+									: translate(APP_NAME, 'Load more...')}
+							</button>
+						</div>
+					{/if}
+				</div>
+			{:else if searching}
+				<p class="mwb-loading">{translate(APP_NAME, 'Loading...')}</p>
+			{/if}
+		</div>
+	{/if}
 {/if}
 
 <style lang="postcss">

@@ -2,17 +2,17 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	import {translate} from '@nextcloud/l10n';
-	import {onMount} from 'svelte';
-	import {get} from 'svelte/store';
-	import {APP_NAME} from '../../constants';
+	import { translate } from '@nextcloud/l10n';
+	import { onMount } from 'svelte';
+	import { get } from 'svelte/store';
+	import { APP_NAME } from '../../constants';
 	import providers from '../../states/availableProviders';
 	import availableProviders from '../../states/availableProviders';
-	import {isAllSelected, providerIds, terms} from '../../states/query';
+	import { isAllSelected, providerIds, terms } from '../../states/query';
 	import ProviderSelector from './ProviderSelector.svelte';
 	import searchStore from '../../states/searchStore';
-	import {clog} from '../../lib/log';
-	import {preventDefault} from '../../lib/events';
+	import { clog } from '../../lib/log';
+	import { preventDefault } from '../../lib/events';
 
 	let userQuery = $state(get(terms));
 
@@ -74,12 +74,12 @@
 	}
 </script>
 
-<svelte:body {onkeydown}/>
+<svelte:body {onkeydown} />
 
 <form method="get" onsubmit={preventDefault(doSearch)}>
 	<div class="mwb-line">
 		<div class="mwb-input">
-			<input bind:this={input} bind:value={userQuery} name="terms" type="text"/>
+			<input bind:this={input} bind:value={userQuery} name="terms" type="text" />
 
 			<button
 				class="mwb-form__clear mwb-unstyled"
@@ -105,10 +105,10 @@
 					<span>(</span>
 					{#if !isAllSelected($providerIds)}
 						<span class="mwb-selected-provider-list"
-						>{$providers
-							.filter(({id}) => $providerIds.includes(id))
-							.map(({name}) => name)
-							.join(', ')}</span>
+							>{$providers
+								.filter(({ id }) => $providerIds.includes(id))
+								.map(({ name }) => name)
+								.join(', ')}</span>
 					{:else if isAllSelected($providerIds)}
 						{translate(APP_NAME, 'All providers')}
 					{/if}
@@ -119,7 +119,7 @@
 	</div>
 	{#if showProviderSelection && $availableProviders}
 		<div class="mwb-line">
-			<ProviderSelector/>
+			<ProviderSelector />
 		</div>
 	{/if}
 </form>

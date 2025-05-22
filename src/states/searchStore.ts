@@ -15,27 +15,27 @@ export type ByProvider = {
 	terms: string;
 };
 
-type Store = {
+export type SearchStoreState = {
 	providerHavingResultsCount: number;
 	searching: boolean;
 	byProvider: Record<string, ByProvider>;
 	asList: ByProvider[];
 };
 
-const INITIAL_VALUE: Store = {
+const INITIAL_VALUE: SearchStoreState = {
 	searching: false,
 	byProvider: {},
 	asList: [],
 	providerHavingResultsCount: 0
 };
-const INITIAL_LOADING: Store = {
+const INITIAL_LOADING: SearchStoreState = {
 	searching: true,
 	byProvider: {},
 	asList: [],
 	providerHavingResultsCount: 0
 };
 
-const store = writable<Store>(INITIAL_VALUE);
+const store = writable<SearchStoreState>(INITIAL_VALUE);
 const { subscribe, set, update } = store;
 
 function addResults(providerId: string, terms: string, results: SearchResult | null) {
@@ -133,7 +133,7 @@ async function waitForProviders() {
 	});
 }
 
-export function countProviderHavingResults(state: Store) {
+export function countProviderHavingResults(state: SearchStoreState) {
 	return state.asList.reduce((count, by) => {
 		if (by.results?.entries.length) {
 			return count + 1;

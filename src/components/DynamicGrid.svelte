@@ -21,11 +21,11 @@
 
 	const paddingBottom = 30;
 
-	let columns = $state<number | undefined>();
-	let rows = $state<number | undefined>();
-
 	let me = $state<HTMLDivElement | undefined>();
+	let availableWidth = $state<number>(800);
 	let count = $derived(items.length);
+	let columns = $derived(me ? Math.min(Math.round(availableWidth / minCellWidth), count) : 1);
+	let rows = $derived(Math.ceil(count / columns));
 
 	function updateContainer(rows: number, columns: number) {
 		if (me) {
@@ -55,38 +55,39 @@
 		}
 	}
 
-	function resize() {
-		if (!me) return;
-		const availableWidth = me.clientWidth;
-		columns = Math.min(Math.round(availableWidth / minCellWidth), count);
-		rows = Math.ceil(count / columns);
-
+	$effect(() => {
 		updateContainer(rows, columns);
 		updateCells(rows);
-	}
-
-	$effect(() => {
-		resize();
 	});
 
+	function resize() {
+		if (me) {
+			availableWidth = me.clientWidth;
+		}
+	}
+
 	onMount(() => {
+		const timer = setTimeout(() => resize());
 		if (me) {
 			me.style.paddingBottom = `${paddingBottom}px`;
 			me.style.gridTemplateColumns = '1fr';
 			window.addEventListener('resize', resize);
 		}
 		return () => {
+			clearTimeout(timer);
 			window.removeEventListener('resize', resize);
 		};
 	});
 </script>
 
 <div bind:this={me} class="mwb-dynamic-grid" data-columns={columns} data-rows={rows}>
-	{#each items as i (i.providerId) }
-		<div class="mwb-dynamic-grid-cell">
-			{@render itemSnippet(i)}
-		</div>
-	{/each}
+	{#if count}
+		{#each items as i (i.providerId)}
+			<div class="mwb-dynamic-grid-cell">
+				{@render itemSnippet(i)}
+			</div>
+		{/each}
+	{/if}
 </div>
 
 <style lang="postcss">
