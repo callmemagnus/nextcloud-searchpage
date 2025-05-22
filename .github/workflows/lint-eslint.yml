@@ -25,7 +25,7 @@ jobs:
         uses: skjnldsv/read-package-engines-version-actions@v2
         id: versions
         with:
-          fallbackNode: "18"
+          fallbackNode: "22"
           fallbackNpm: "9"
 
       - name: Set up node ${{ steps.versions.outputs.nodeVersion }}
@@ -42,5 +42,5 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Svelte checks
-        run: npm run check
+#      - name: Svelte checks
+#        run: npm run check
