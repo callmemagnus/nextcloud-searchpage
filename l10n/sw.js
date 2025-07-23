@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Rudi",
     "Filters" : "Filters",
+    "Global settings" : "Global settings",
     "Loading…" : "Inapakia",
     "Saved" : "Imehifadhiwa",
     "Search" : "Tafuta"
