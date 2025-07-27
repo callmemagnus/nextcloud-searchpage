@@ -5,6 +5,7 @@ OC.L10N.register(
     "Filters" : "Filters",
     "Global settings" : "Global settings",
     "Loading…" : "Inapakia",
+    "No results" : "No results",
     "Saved" : "Imehifadhiwa",
     "Search" : "Tafuta"
 },
