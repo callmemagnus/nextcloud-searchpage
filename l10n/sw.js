@@ -7,6 +7,7 @@ OC.L10N.register(
     "Loading…" : "Inapakia",
     "No results" : "No results",
     "Saved" : "Imehifadhiwa",
-    "Search" : "Tafuta"
+    "Search" : "Tafuta",
+    "Loading..." : "Loading..."
 },
 "nplurals=2; plural=(n != 1);");
