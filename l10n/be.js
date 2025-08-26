@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Назад",
+    "Clear current query" : "Ачысціць бягучы запыт",
     "Filters" : "Фільтры",
     "Loading…" : "Загрузка…",
     "No results" : "Няма вынікаў",
