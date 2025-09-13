@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Orqaga",
     "Loading…" : "Loading…",
+    "No results" : "Natija yo'q",
     "Saved" : "Saqlandi",
     "Search" : "Qidirish"
 },
