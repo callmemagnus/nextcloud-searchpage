@@ -1,4 +1,10 @@
 # Changelog
+
+## [v1.2.13](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.11...v1.2.13)
+
+- change Nextcloud compatibility to 26 ➙ 32
+- translation updates - Many thanks to all the translators
+
 ## [v1.2.12](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.11...v1.2.12)
 
 - fix characters escaping when presenting the results

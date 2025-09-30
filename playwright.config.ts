@@ -40,5 +40,7 @@ export default defineConfig({
     tests(30),
     setup(31),
     tests(31),
+    setup(32)
+    , tests(32)
   ],
 });

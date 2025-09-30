@@ -65,7 +65,7 @@ function start() {
     echo "Trying to install the application... let's wait (20 seconds) for the instances to settle"
     sleep 20
 
-    for i in 31 30 29 28; do
+    for i in 32 31 30 29 28; do
         echo Enabling on $i
         while true; do
             echo "Testing $i..."
