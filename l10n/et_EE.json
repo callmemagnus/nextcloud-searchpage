@@ -1,9 +1,30 @@
 { "translations": {
+    "The Search Page" : "Otsinguleht",
+    "Provides a proper search page" : "Võimaldab kasutada korralikku otsingulehte",
+    "All providers" : "Kõik teenusepakkujad",
     "Back" : "Tagasi",
+    "Clear current query" : "Kustuta praegune päring",
+    "Click to change providers" : "Klõpsi teenusepakkujate muutmiseks",
     "Filters" : "Filtrid",
-    "Loading…" : "Laadimine…",
-    "No results" : "Vasteid ei leitud",
+    "Global settings" : "Üldised seadistused",
+    "Group settings" : "Grupi seadistused",
+    "If a user is part of multiple groups, the union of the groups configurations will be applied." : "Kui kasutaja on mitme grupi liige, siis kehtib gruppide seadistuste ühisosa.",
+    "Load more…" : "Laadi veel…",
+    "Loading…" : "Laadin...",
+    "No results" : "Vasteid ei leidu",
     "Saved" : "Salvestatud",
-    "Search" : "Otsi"
+    "Search" : "Otsi",
+    "Search Page" : "Otsinguleht",
+    "Security is applied by the search providers." : "Otsinguteenuse pakkujad  tagavad turvalisuse.",
+    "See all providers" : "Vaata kõiki teenusepakkujaid",
+    "See only results for this provider" : "Vaata vaid selle teenusepakkuja tulemusi",
+    "Select the providers that will be available to all the users:" : "Vali teenusepakkujad, mida kõik kasutajad võivad kasutada:",
+    "Select the providers that will be available to the users in group \"{group}\":" : "Vali teenusepakkujad, mida „{group}“ grupi liikmed võivad kasutada:",
+    "Show only" : "Näita vaid",
+    "There was an error loading the providers." : "Teenusepakkujate laadimisel tekkis viga.",
+    "This is not a security configuration." : "See pole turvaseadistus",
+    "Unable to save" : "Salvestamine ei õnnestunud",
+    "Load more..." : "Laadi veel...",
+    "Loading..." : "Laadin..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
