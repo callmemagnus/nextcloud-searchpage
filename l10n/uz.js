@@ -2,9 +2,9 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Orqaga",
-    "Loading…" : "Loading…",
+    "Loading…" : "Yuklanmoqda...",
     "No results" : "Natija yo'q",
-    "Saved" : "Saqlandi",
+    "Saved" : "Saqlangan",
     "Search" : "Qidirish"
 },
 "nplurals=1; plural=0;");
