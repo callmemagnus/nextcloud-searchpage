@@ -1,6 +1,7 @@
 OC.L10N.register(
     "thesearchpage",
     {
+    "Back" : "ກັບຄືນ",
     "Loading…" : "ກຳລັງໂຫຼດ",
     "No results" : "ບໍ່ມີຜົນ",
     "Search" : "ຄົ້ນຫາ"
