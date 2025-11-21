@@ -8,15 +8,13 @@
 	import { APP_NAME } from '../../constants';
 	import providers from '../../states/availableProviders';
 	import availableProviders from '../../states/availableProviders';
-	import { isAllSelected, providerIds, terms } from '../../states/query';
+	import { checkIsAllSelected, providerIds, terms } from '../../states/query';
 	import ProviderSelector from './ProviderSelector.svelte';
 	import searchStore from '../../states/searchStore';
 	import { clog } from '../../lib/log';
 	import { preventDefault } from '../../lib/events';
 
 	let userQuery = $state(get(terms));
-
-	let isSearchEnabled = $derived(userQuery.trim() !== '');
 
 	let input: HTMLInputElement | undefined = $state();
 
@@ -91,7 +89,9 @@
 				⨯
 			</button>
 		</div>
-		<button disabled={!isSearchEnabled} type="submit">
+		<button
+			disabled={userQuery.trim() === '' || $availableProviders.length === 0}
+			type="submit">
 			{translate(APP_NAME, 'Search')}
 		</button>
 		<button
@@ -103,13 +103,13 @@
 			{#if !showProviderSelection && $availableProviders.length && $providerIds.length}
 				<span class="mwb-flex">
 					<span>(</span>
-					{#if !isAllSelected($providerIds)}
+					{#if !checkIsAllSelected($providerIds)}
 						<span class="mwb-selected-provider-list"
 							>{$providers
 								.filter(({ id }) => $providerIds.includes(id))
 								.map(({ name }) => name)
 								.join(', ')}</span>
-					{:else if isAllSelected($providerIds)}
+					{:else if checkIsAllSelected($providerIds)}
 						{translate(APP_NAME, 'All providers')}
 					{/if}
 					<span>)</span>
@@ -151,7 +151,9 @@
 		margin-left: -28px !important;
 	}
 
-	.mwb-filters {
+	.mwb-filters,
+	.mwb-filters:focus,
+	.mwb-filters:active {
 		@apply flex gap-1;
 		padding: 8px 10px 8px 10px !important;
 	}

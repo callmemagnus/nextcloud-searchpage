@@ -30,6 +30,6 @@ availableProviders.subscribe((providers) => {
 	}
 });
 
-export function isAllSelected(arr: string[]) {
+export function checkIsAllSelected(arr: string[]) {
 	return get(availableProviders).length === arr.length;
 }

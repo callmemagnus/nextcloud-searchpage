@@ -6,15 +6,17 @@
 	import { get, writable } from 'svelte/store';
 	import { APP_NAME } from '../../constants';
 	import availableProviders, { type Provider } from '../../states/availableProviders';
-	import { isAllSelected, providerIds } from '../../states/query';
+	import { checkIsAllSelected, providerIds } from '../../states/query';
 	import { onMount } from 'svelte';
 
 	let displayedSelection = writable<string[]>(get(providerIds));
 	let allSelected = $state(true);
 
 	function update(available: Provider[], selected: string[]) {
-		allSelected = isAllSelected(selected);
-		displayedSelection.set(isAllSelected(selected) ? available.map(({ id }) => id) : selected);
+		allSelected = checkIsAllSelected(selected);
+		displayedSelection.set(
+			checkIsAllSelected(selected) ? available.map(({ id }) => id) : selected
+		);
 	}
 
 	availableProviders.subscribe((available) => {
@@ -23,7 +25,7 @@
 
 	displayedSelection.subscribe((values) => {
 		const available = get(availableProviders);
-		allSelected = isAllSelected(values);
+		allSelected = checkIsAllSelected(values);
 		providerIds.set(
 			available.length === values.length || !values.length
 				? available.map(({ id }) => id)
@@ -32,8 +34,11 @@
 	});
 
 	function toggleAll() {
-		if (!isAllSelected(get(displayedSelection))) {
+		const isAllSelected = checkIsAllSelected(get(displayedSelection));
+		if (!isAllSelected) {
 			displayedSelection.set(get(availableProviders).map(({ id }) => id));
+		} else {
+			displayedSelection.set([]);
 		}
 	}
 
