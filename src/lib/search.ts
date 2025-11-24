@@ -50,6 +50,7 @@ export async function searchOnProvider(
 ): Promise<SearchResult | null> {
 	const searchParam = new URLSearchParams();
 	searchParam.append('term', query);
+	searchParam.append('limit', '10');
 	if (cursor) {
 		searchParam.append('cursor', String(cursor));
 	}
