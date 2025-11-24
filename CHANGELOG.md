@@ -1,8 +1,13 @@
 # Changelog
 
+## [v1.2.16](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.15...v1.2.16)
+
+- add limit to provider's queries
+
 ## [v1.2.15](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.14...v1.2.15)
 
-- change Nextcloud compatibility to 26 ➙ 32
+- fix the moving button css bug
+- fix the deselect all provider issue that has no effects
 - translation updates - Many thanks to all the translators
 
 ## [v1.2.14](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.13...v1.2.14)
