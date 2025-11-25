@@ -11,8 +11,8 @@ OC.L10N.register(
     "Global settings" : "Globální nastavení",
     "Group settings" : "Nastavení skupiny",
     "If a user is part of multiple groups, the union of the groups configurations will be applied." : "Pokud je uživatel členem vícero skupin, bude uplatněno spojení všech nastavení skupin.",
-    "Load more…" : "Načíst více…",
-    "Loading…" : "Načítání…",
+    "Load more…" : "Načíst více …",
+    "Loading…" : "Načítání …",
     "No results" : "Žádné výsledky",
     "Saved" : "Uloženo",
     "Search" : "Hledat",
@@ -26,7 +26,7 @@ OC.L10N.register(
     "There was an error loading the providers." : "Při načítání poskytovatelů došlo k chybě.",
     "This is not a security configuration." : "Toto není nastavení zabezpečení.",
     "Unable to save" : "Není možné uložit",
-    "Load more..." : "Načíst další…",
-    "Loading..." : "Načítání…"
+    "Load more..." : "Načíst další …",
+    "Loading..." : "Načítání …"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");
