@@ -7,6 +7,7 @@ OC.L10N.register(
     "Loading…" : "درحال بارگیری…",
     "No results" : "بدون نتیجه",
     "Saved" : "ذخیره شد",
-    "Search" : "جستجو"
+    "Search" : "جستجو",
+    "Loading..." : "در حال بارگذاری..."
 },
 "nplurals=2; plural=(n > 1);");
