@@ -5,6 +5,7 @@
     "Loading…" : "درحال بارگیری…",
     "No results" : "بدون نتیجه",
     "Saved" : "ذخیره شد",
-    "Search" : "جستجو"
+    "Search" : "جستجو",
+    "Loading..." : "در حال بارگذاری..."
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }
