@@ -3,63 +3,38 @@
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
 	import { translate } from '@nextcloud/l10n';
-	import { get, writable } from 'svelte/store';
 	import { APP_NAME } from '../../constants';
-	import availableProviders, { type Provider } from '../../states/availableProviders';
-	import { checkIsAllSelected, providerIds } from '../../states/query';
-	import { onMount } from 'svelte';
+	import availableProviders from '../../states/availableProviders.svelte';
+	import queryState from '../../states/query.svelte';
 
-	let displayedSelection = writable<string[]>(get(providerIds));
-	let allSelected = $state(true);
+	let displayedSelection = $state<string[]>(queryState.providerIds);
 
-	function update(available: Provider[], selected: string[]) {
-		allSelected = checkIsAllSelected(selected);
-		displayedSelection.set(
-			checkIsAllSelected(selected) ? available.map(({ id }) => id) : selected
-		);
-	}
-
-	availableProviders.subscribe((available) => {
-		update(available, get(providerIds));
-	});
-
-	displayedSelection.subscribe((values) => {
-		const available = get(availableProviders);
-		allSelected = checkIsAllSelected(values);
-		providerIds.set(
-			available.length === values.length || !values.length
-				? available.map(({ id }) => id)
-				: values
-		);
+	$effect(() => {
+		queryState.providerIds = displayedSelection;
 	});
 
 	function toggleAll() {
-		const isAllSelected = checkIsAllSelected(get(displayedSelection));
-		if (!isAllSelected) {
-			displayedSelection.set(get(availableProviders).map(({ id }) => id));
+		if (!queryState.isAllSelected) {
+			displayedSelection = availableProviders.providers.map(({ id }) => id);
 		} else {
-			displayedSelection.set([]);
+			displayedSelection = [];
 		}
 	}
-
-	onMount(() => {
-		update(get(availableProviders), get(providerIds));
-	});
 </script>
 
 <div class="mwb-checkboxes-container">
 	<label>
-		<input checked={allSelected} name="providers" onchange={toggleAll} type="checkbox" />
+		<input checked={queryState.isAllSelected} onchange={() => toggleAll()} type="checkbox" />
 		<span>{translate(APP_NAME, 'All providers')}</span>
 	</label>
 	<div class="mwb-checkboxes">
-		{#each $availableProviders as provider (provider.id)}
+		{#each availableProviders.providers as provider (provider.id)}
 			<label>
 				<input
 					type="checkbox"
 					name="providers"
 					value={provider.id}
-					bind:group={$displayedSelection} />
+					bind:group={displayedSelection} />
 				<span>
 					{provider.name}
 				</span>

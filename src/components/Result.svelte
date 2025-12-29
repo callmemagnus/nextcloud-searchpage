@@ -3,7 +3,7 @@
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
 	import type { SearchEntry } from '../lib/search';
-	import { terms } from '../states/query';
+	import queryState from '../states/query.svelte';
 	import BoldTerms from './BoldTerms.svelte';
 
 	interface Props {
@@ -70,11 +70,11 @@
 	</div>
 	<div class="mwb-text">
 		<h3 class="mwb-ellipsis">
-			<BoldTerms original={result.title} terms={$terms} />
+			<BoldTerms original={result.title} terms={queryState.terms} />
 		</h3>
 		{#if result.subline}
 			<p class="mwb-ellipsis">
-				<BoldTerms original={result.subline} terms={$terms} />
+				<BoldTerms original={result.subline} terms={queryState.terms} />
 			</p>
 		{/if}
 	</div>

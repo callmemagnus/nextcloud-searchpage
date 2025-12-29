@@ -41,7 +41,7 @@ start() {
 
 	# php 8.3
 	image83=ghcr.io/juliusknorr/nextcloud-dev-php83:latest
-	for i in 32 31 30 29 28; do
+	for i in 32 31 30; do
 		latest=$(cat "$releases" | grep $i | head -1)
 		if test "$latest" = ""; then
 			echo "$i not available"
@@ -65,7 +65,7 @@ start() {
 	echo "Trying to install the application... let's wait (20 seconds) for the instances to settle"
 	sleep 20
 
-	for i in 32 31 30 29 28; do
+	for i in 32 31 30; do
 		echo Enabling on $i
 		while true; do
 			echo "Testing $i..."

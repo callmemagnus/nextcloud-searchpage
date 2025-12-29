@@ -4,40 +4,39 @@
 
 	import { translate } from '@nextcloud/l10n';
 	import { onMount } from 'svelte';
-	import { get } from 'svelte/store';
 	import { APP_NAME } from '../../constants';
-	import providers from '../../states/availableProviders';
-	import availableProviders from '../../states/availableProviders';
-	import { checkIsAllSelected, providerIds, terms } from '../../states/query';
+	import availableProviders from '../../states/availableProviders.svelte';
+	import queryState from '../../states/query.svelte';
 	import ProviderSelector from './ProviderSelector.svelte';
-	import searchStore from '../../states/searchStore';
+	import searchStore from '../../states/searchStore.svelte';
 	import { clog } from '../../lib/log';
 	import { preventDefault } from '../../lib/events';
 
-	let userQuery = $state(get(terms));
+	let userQuery = $state(queryState.terms);
 
 	let input: HTMLInputElement | undefined = $state();
 
 	let showProviderSelection = $state(false);
 
 	onMount(() => {
-		if (get(terms) !== '') {
-			clog('Auto-launching search', terms);
-			searchStore.startSearch(get(terms));
+		if (queryState.terms !== '') {
+			clog('Auto-launching search', queryState.terms);
+			searchStore.startSearch(queryState.terms);
 		} else {
 			setTimeout(() => input?.focus(), 200);
 		}
 	});
 
 	function doClear() {
-		terms.set('');
+		queryState.terms = '';
 		userQuery = '';
 		searchStore.clearSearch();
 		input?.focus();
 	}
 
 	function doSearch() {
-		terms.set(userQuery);
+		queryState.terms = userQuery;
+		queryState.isolatedProvider = null;
 		searchStore.startSearch(userQuery);
 		if (input) {
 			// for mobile phone
@@ -90,7 +89,9 @@
 			</button>
 		</div>
 		<button
-			disabled={userQuery.trim() === '' || $availableProviders.length === 0}
+			disabled={userQuery.trim() === '' ||
+				availableProviders.providers.length === 0 ||
+				queryState.providerIds.length === 0}
 			type="submit">
 			{translate(APP_NAME, 'Search')}
 		</button>
@@ -100,16 +101,16 @@
 			title={translate(APP_NAME, 'Click to change providers')}
 			type="button">
 			<span> {translate(APP_NAME, 'Filters')}</span>
-			{#if !showProviderSelection && $availableProviders.length && $providerIds.length}
+			{#if !showProviderSelection && availableProviders.providers.length && queryState.providerIds.length}
 				<span class="mwb-flex">
 					<span>(</span>
-					{#if !checkIsAllSelected($providerIds)}
+					{#if !queryState.isAllSelected}
 						<span class="mwb-selected-provider-list"
-							>{$providers
-								.filter(({ id }) => $providerIds.includes(id))
+							>{availableProviders.providers
+								.filter(({ id }) => queryState.providerIds.includes(id))
 								.map(({ name }) => name)
 								.join(', ')}</span>
-					{:else if checkIsAllSelected($providerIds)}
+					{:else}
 						{translate(APP_NAME, 'All providers')}
 					{/if}
 					<span>)</span>
@@ -117,7 +118,7 @@
 			{/if}
 		</button>
 	</div>
-	{#if showProviderSelection && $availableProviders}
+	{#if showProviderSelection && availableProviders.providers}
 		<div class="mwb-line">
 			<ProviderSelector />
 		</div>

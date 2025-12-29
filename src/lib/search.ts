@@ -3,9 +3,16 @@
 
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
-import type { Provider } from '../states/availableProviders';
+import type { Provider } from '../states/availableProviders.svelte';
+import availableProviders from '../states/availableProviders.svelte';
 import TimedCache from './TimedCache';
 import { clog } from './log';
+
+// Build limits map from available providers
+function getLimit(providerId: string): number {
+	const provider = availableProviders.providers.find((p) => p.id === providerId);
+	return provider?.limit ?? 10;
+}
 
 export type SearchEntry = {
 	thumbnailUrl: string;
@@ -50,7 +57,9 @@ export async function searchOnProvider(
 ): Promise<SearchResult | null> {
 	const searchParam = new URLSearchParams();
 	searchParam.append('term', query);
-	searchParam.append('limit', '10');
+	// Use provider-specific limit from settings, fallback to 10
+	const limit = getLimit(providerId);
+	searchParam.append('limit', String(limit));
 	if (cursor) {
 		searchParam.append('cursor', String(cursor));
 	}

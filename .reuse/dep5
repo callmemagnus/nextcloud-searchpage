@@ -15,6 +15,6 @@ Files: *.svelte *.ts *.js
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later
 
-Files: *.md .tx/* .github/* bin/*
+Files: *.md .tx/* .github/* bin/* img/*
 Copyright: Magnus Anderssen <magnus@magooweb.com>
 License: AGPL-3.0-or-later

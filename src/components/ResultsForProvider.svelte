@@ -1,14 +1,13 @@
 <script lang="ts">
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
-	import type { ByProvider } from '../states/searchStore';
-	import searchStore from '../states/searchStore';
-	import { isolatedProvider } from '../states/query';
+	import type { ByProvider } from '../states/searchStore.svelte';
+	import searchStore from '../states/searchStore.svelte';
+	import queryState from '../states/query.svelte';
 	import { translate } from '@nextcloud/l10n';
 	import { APP_NAME } from '../constants';
 	import Result from './Result.svelte';
-	import availableProviders from '../states/availableProviders';
-	import { derived } from 'svelte/store';
+	import availableProviders from '../states/availableProviders.svelte';
 	import { computeHasMore, type SearchEntry } from '../lib/search';
 
 	type Props = ByProvider;
@@ -16,10 +15,6 @@
 	let { searching, results, providerId }: Props = $props();
 
 	let button = $state<HTMLButtonElement | undefined>();
-
-	// As we use `derived` below, we can't use $derived here...
-	// let hasMore = $derived(computeHasMore(results));
-	// let items = $derived(results?.entries ?? []);
 
 	let hasMore = $state(false);
 	let items = $state<SearchEntry[]>([]);
@@ -46,16 +41,16 @@
 		}
 	);
 
-	const flags = derived([searchStore, isolatedProvider], ([state, isolatedProvider]) => {
-		const showIsolate = !isolatedProvider && state.providerHavingResultsCount > 1;
-		const isAlone = isolatedProvider === providerId || state.providerHavingResultsCount === 1;
-		const showBack = isAlone && state.providerHavingResultsCount > 1;
+	// Derive flags from reactive state
+	let flags = $derived(() => {
+		const isolated = queryState.isolatedProvider;
+		const showIsolate = !isolated && searchStore.providerHavingResultsCount > 1;
+		const isAlone = isolated === providerId || searchStore.providerHavingResultsCount === 1;
+		const showBack = isAlone && searchStore.providerHavingResultsCount > 1;
 		return { showIsolate, isAlone, showBack };
 	});
 
-	const provider = derived(availableProviders, (providers) =>
-		providers.find(({ id }) => id === providerId)
-	);
+	let provider = $derived(availableProviders.providers.find(({ id }) => id === providerId));
 
 	$effect(() => {
 		observer.disconnect();
@@ -69,20 +64,20 @@
 	});
 
 	function onlyMe() {
-		isolatedProvider.set(providerId);
+		queryState.isolatedProvider = providerId;
 	}
 
 	function back() {
-		isolatedProvider.set(null);
+		queryState.isolatedProvider = null;
 	}
 </script>
 
-{#if $provider}
+{#if provider}
 	{#if searching || items.length > 0}
-		<div class="mwb-results-for-provider" class:mwb-is-alone={$flags.isAlone}>
+		<div class="mwb-results-for-provider" class:mwb-is-alone={flags().isAlone}>
 			<div class="mwb-header">
-				<h2>{$provider.name}</h2>
-				{#if $flags.showIsolate}
+				<h2>{provider.name}</h2>
+				{#if flags().showIsolate}
 					<span class="mwb-header-button">
 						<button
 							type="button"
@@ -91,7 +86,7 @@
 							>{translate(APP_NAME, 'Show only')}</button>
 					</span>
 				{/if}
-				{#if $flags.showBack}
+				{#if flags().showBack}
 					<span class="mwb-header-button">
 						<button
 							type="button"

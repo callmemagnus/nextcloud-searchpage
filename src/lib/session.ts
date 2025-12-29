@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import { PROVIDER_ALL } from '../constants';
-import { checkIsAllSelected } from '../states/query';
+import queryState from '../states/query.svelte';
 import { clog } from './log';
 
 export function saveInSession(terms: string, providerIds: string[]) {
@@ -11,7 +11,7 @@ export function saveInSession(terms: string, providerIds: string[]) {
 		newState.append('terms', encodeURI(terms));
 	}
 	if (providerIds) {
-		if (checkIsAllSelected(providerIds)) {
+		if (queryState.isAllSelected) {
 			newState.append('provider', PROVIDER_ALL);
 		} else {
 			for (const id of providerIds) {
