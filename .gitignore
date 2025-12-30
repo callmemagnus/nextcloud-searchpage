@@ -6,6 +6,7 @@
 /vendor/
 /build/
 node_modules/
+*.cache
 /.php_cs.cache
 js/*hot-update.*
 js

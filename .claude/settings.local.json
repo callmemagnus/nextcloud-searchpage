@@ -3,7 +3,9 @@
     "allow": [
       "Bash(cat:*)",
       "Bash(npm run build:*)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(../vendor/bin/phpunit:*)",
+      "Bash(composer test:*)"
     ]
   }
 }

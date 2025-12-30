@@ -18,6 +18,7 @@
     "lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
     "cs:check": "php-cs-fixer fix --dry-run --diff -- .",
     "cs:fix": "php-cs-fixer fix -- . ",
+    "test": "phpunit --configuration tests/phpunit.xml",
     "psalm": "psalm.phar --threads=1",
     "psalm:update-baseline": "psalm.phar --threads=1 --update-baseline",
     "psalm:update-baseline:force": "psalm.phar --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",

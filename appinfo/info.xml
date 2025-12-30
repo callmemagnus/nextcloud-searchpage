@@ -53,14 +53,14 @@ Don't hesitate to leave a comment here or a rating!
     <dependencies>
         <nextcloud min-version="30" max-version="32"/>
     </dependencies>
+    <settings>
+        <admin>OCA\TheSearchPage\Settings\Admin</admin>
+        <admin-section>OCA\TheSearchPage\Settings\AdminSection</admin-section>
+    </settings>
     <navigations>
         <navigation>
             <name>The Search Page</name>
             <route>thesearchpage.page.index</route>
         </navigation>
     </navigations>
-    <settings>
-        <admin>OCA\TheSearchPage\Settings\Admin</admin>
-        <admin-section>OCA\TheSearchPage\Settings\AdminSection</admin-section>
-    </settings>
 </info>

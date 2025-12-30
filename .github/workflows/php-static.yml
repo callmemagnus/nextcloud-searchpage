@@ -1,0 +1,27 @@
+name: Static analysis
+
+on: [ push ]
+
+jobs:
+  static-psalm-analysis:
+    name: Static
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nextcloud-version: [ 'v30.0.0' ]
+        database: [ "sqlite" ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Set up php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: none
+      - name: Install dependencies
+        run: composer i
+      - name: Install dependencies
+        run: composer require --dev christophwurst/nextcloud:${{ matrix.nextcloud-version }}
+      - name: Run coding standards check
+        run: composer run psalm
