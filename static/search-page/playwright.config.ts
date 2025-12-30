@@ -1,0 +1,31 @@
+import { defineConfig, devices } from '@playwright/test';
+import { authFileFromUrl } from './tests/e2e/helpers';
+
+const host = process.env.TARGET_HOST ? process.env.TARGET_HOST : 'localhost';
+
+const setup = (id: number) => ({
+	name: `setup-${id}`,
+	testMatch: 'auth.setup.ts',
+	use: {
+		baseURL: `http://${host}:80${id}`
+	}
+});
+
+const tests = (id: number) => ({
+	name: `tests-${id}`,
+	testMatch: /.*\.tests\.ts/,
+	use: {
+		...devices['Desktop Chrome'],
+		baseURL: `http://${host}:80${id}`,
+		storageState: authFileFromUrl(`http://${host}:80${id}`)
+	},
+	dependencies: [`setup-${id}`]
+});
+
+export default defineConfig({
+	workers: 1,
+	testDir: './tests/e2e',
+	timeout: 30_000,
+
+	projects: [setup(30), tests(30), setup(31), tests(31), setup(32), tests(32)]
+});

@@ -8,6 +8,6 @@
     "moduleResolution": "bundler"
   },
   "include": [
-    "vite.config.ts"
+    "static/search-page/vite.config.ts"
   ]
 }

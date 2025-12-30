@@ -15,8 +15,8 @@
 	let imageUrl: string | undefined = $state();
 	let showIcon = $state(false);
 
-	let iconIsClass = !/^\//.test(result.icon);
-	let hasThumbnail = result.thumbnailUrl?.length > 0;
+	let iconIsClass = $derived(!/^\//.test(result.icon));
+	let hasThumbnail = $derived(result.thumbnailUrl?.length > 0);
 
 	let imageSteps: 'thumbnail' | 'icon' | 'class-icon' = $state(
 		(function () {
@@ -88,7 +88,7 @@
 	}
 
 	.mwb-result__image {
-		@apply w-8 h-8 mt-1 ml-1 mr-1 flex-grow-0 flex-shrink-0;
+		@apply w-8 h-8 mt-1 ml-1 mr-1 grow-0 shrink-0;
 
 		img {
 			@apply mt-2 w-full;
