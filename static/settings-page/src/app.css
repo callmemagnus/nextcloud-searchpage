@@ -1,0 +1,46 @@
+/* SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com> */
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+
+.mwb-screenreader {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.mwb-flex {
+    display: flex;
+}
+
+button.mwb-unstyled,
+button.mwb-unstyled:focus,
+button.mwb-unstyled:active {
+    background: none !important;
+    color: inherit !important;
+    border: none !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    font: inherit !important;
+    cursor: pointer !important;
+    outline: inherit !important;
+    min-height: unset !important;
+    height: unset !important;
+}
+
+button.mwb-as-link,
+button.mwb-as-link:active {
+    text-decoration: none;
+}
+
+button.mwb-as-link:hover {
+    text-decoration: underline;
+}
+
+#mwb-thesearchpage-settings {
+    width: 100%;
+}

@@ -21,15 +21,15 @@ jobs:
     name: "Release: build, sign and upload the app"
     strategy:
       matrix:
-        php-versions: ["8.1"]
-        nextcloud: ["stable27"]
+        php-versions: ["8.2"]
+        nextcloud: ["stable31"]
         database: ["sqlite"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.26.0
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: pdo_sqlite,pdo_mysql,pdo_pgsql,gd,zip

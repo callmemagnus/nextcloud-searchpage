@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 // SPDX-FileCopyrightText: Benjamin Brahmer <info@b-brahmer.de>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /**

@@ -20,14 +20,14 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ["8.3"]
-        server-versions: ["master"]
+        php-versions: ["8.2"]
+        server-versions: ["v31.0.9"]
 
-    services:
-      oracle:
-        image: deepdiver/docker-oracle-xe-11g # 'wnameless/oracle-xe-11g-r2'
-        ports:
-          - 1521:1521/tcp
+#    services:
+#      oracle:
+#        image: deepdiver/docker-oracle-xe-11g # 'wnameless/oracle-xe-11g-r2'
+#        ports:
+#          - 1521:1521/tcp
 
     steps:
       - name: Set app env
@@ -60,11 +60,9 @@ jobs:
         run: composer i
 
       - name: Set up Nextcloud
-        env:
-          DB_PORT: 1521
         run: |
           mkdir data
-          ./occ maintenance:install --verbose --database=oci --database-name=XE --database-host=127.0.0.1 --database-port=$DB_PORT --database-user=autotest --database-pass=owncloud --admin-user admin --admin-pass admin
+          ./occ maintenance:install --verbose --database=oci --database-name=XE --database-host=127.0.0.1 --database-user=autotest --database-pass=owncloud --admin-user admin --admin-pass admin
           ./occ app:enable ${{ env.APP_NAME }}
 
       - name: Check PHPUnit config file existence

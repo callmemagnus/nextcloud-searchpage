@@ -1,0 +1,13 @@
+{
+	"name": "@shared/libs",
+	"version": "1.0.0",
+	"type": "module",
+	"private": true,
+	"exports": {
+		".": "./index.ts"
+	},
+	"devDependencies": {
+		"@nextcloud/axios": "2.5.2",
+		"@nextcloud/router": "3.1.0"
+	}
+}

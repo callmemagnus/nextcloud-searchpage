@@ -4,8 +4,10 @@
 .idea
 *.iml
 /vendor/
+/vendor-bin/
 /build/
 node_modules/
+*.cache
 /.php_cs.cache
 js/*hot-update.*
 js
@@ -13,3 +15,16 @@ js
 .direnv
 .playwright
 test-results
+*.md
+!README.md
+!CHANGELOG.md
+.*
+!.editorconfig
+!.env.template
+!.gitignore
+!.gitattributes
+!.php_cs-fixer.dist.php
+!.reuse
+!.github
+!.husky
+

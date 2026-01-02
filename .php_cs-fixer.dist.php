@@ -17,5 +17,6 @@ $config
 	->notPath('src')
 	->notPath('node_modules')
 	->notPath('vendor')
+    ->notPath('vendor-bin')
 	->in(__DIR__);
 return $config;

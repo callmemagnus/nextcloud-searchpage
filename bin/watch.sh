@@ -16,11 +16,11 @@ missing_lib() {
 whereis entr || missing_lib entr
 whereis notify-send || missing_lib notify-send
 
-find src | entr -s "\
-  npx vite build -m dev \
-    && \
-    notify-send -t $SUCCESS_MS \"$SUCCESS_MSG\" \
-    || \
-    notify-send -t $FAILURE_MS \"$FAILURE_MSG\" \
+  find static | entr -s "\
+    npm run build -- -m dev \
+      && \
+      notify-send -t $SUCCESS_MS \"$SUCCESS_MSG\" \
+      || \
+      notify-send -t $FAILURE_MS \"$FAILURE_MSG\" \
 "
 
