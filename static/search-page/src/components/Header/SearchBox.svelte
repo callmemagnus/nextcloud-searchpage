@@ -7,7 +7,9 @@
 	import { APP_NAME } from '../../constants';
 	import availableProviders from '../../states/availableProviders.svelte';
 	import queryState from '../../states/query.svelte';
+	import userState from '../../states/userState.svelte';
 	import ProviderSelector from './ProviderSelector.svelte';
+	import AdminInfoTooltip from './AdminInfoTooltip.svelte';
 	import searchStore from '../../states/searchStore.svelte';
 	import { clog } from '@shared/libs';
 	import { preventDefault } from '../../lib/events';
@@ -119,19 +121,22 @@
 				{/if}
 			</button>
 		{/if}
+		{#if userState.isAdmin}
+			<AdminInfoTooltip />
+		{/if}
 	</div>
-	{#if showProviderSelection && availableProviders.providers}
-		<div class="mwb-line">
+	<div class="mwb-line">
+		{#if showProviderSelection && availableProviders.providers}
 			<ProviderSelector />
-		</div>
-	{/if}
+		{/if}
+	</div>
 </form>
 
 <style lang="postcss">
 	@reference "tailwindcss";
 
 	.mwb-line {
-		@apply flex flex-wrap gap-x-1 items-baseline;
+		@apply flex flex-wrap gap-x-1 items-center;
 	}
 
 	input[type='text'] {
