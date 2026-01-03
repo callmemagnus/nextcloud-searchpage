@@ -28,6 +28,11 @@ OC.L10N.register(
     "This is not a security configuration." : "這不是一個安全措施配置。",
     "Unable to save" : "無法保存",
     "Load more..." : "載入更多…",
-    "Loading..." : "加載中..."
+    "Loading..." : "加載中...",
+    "Note:" : "備註：",
+    "Provider" : "提供者",
+    "Save" : "保存",
+    "Saving..." : "儲存中...",
+    "User group" : "用戶群組"
 },
 "nplurals=1; plural=0;");

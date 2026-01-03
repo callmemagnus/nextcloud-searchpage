@@ -27,6 +27,11 @@ OC.L10N.register(
     "This is not a security configuration." : "See pole turvaseadistus",
     "Unable to save" : "Salvestamine ei õnnestunud",
     "Load more..." : "Laadi veel...",
-    "Loading..." : "Laadin..."
+    "Loading..." : "Laadin...",
+    "Note:" : "Märkus:",
+    "Provider" : "Teenusepakkuja",
+    "Save" : "Salvesta",
+    "Saving..." : "Salvestan...",
+    "User group" : "Kasutajagrupp"
 },
 "nplurals=2; plural=(n != 1);");

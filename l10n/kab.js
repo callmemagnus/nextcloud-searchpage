@@ -4,6 +4,7 @@ OC.L10N.register(
     "Back" : "Retour",
     "Loading…" : "Asali...",
     "No results" : "Ulac igmad",
-    "Search" : "Nadi"
+    "Search" : "Nadi",
+    "Save" : "Sekles"
 },
 "nplurals=2; plural=(n != 1);");

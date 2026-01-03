@@ -4,6 +4,8 @@ OC.L10N.register(
     "No results" : "შედეგები არაა",
     "Saved" : "შენახულია",
     "Search" : "ძიება",
-    "Loading..." : "იტვირთება…"
+    "Loading..." : "იტვირთება…",
+    "Save" : "შენახვა",
+    "Saving..." : "მიმხინარეობს შენახვა…"
 },
 "nplurals=2; plural=(n!=1);");

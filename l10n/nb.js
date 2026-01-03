@@ -28,6 +28,10 @@ OC.L10N.register(
     "This is not a security configuration." : "Dette er ikke en sikkerhetskonfigurasjon.",
     "Unable to save" : "Ikke i stand til å lagre",
     "Load more..." : "Last inn flere...",
-    "Loading..." : "Laster…"
+    "Loading..." : "Laster…",
+    "Note:" : "Merk:",
+    "Provider" : "Tilbyder",
+    "Save" : "Lagre",
+    "Saving..." : "Lagrer …"
 },
 "nplurals=2; plural=(n != 1);");

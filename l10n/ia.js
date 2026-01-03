@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Loading…" : "Cargante...",
     "Saved" : "Salveguardate",
-    "Search" : "Cercar"
+    "Search" : "Cercar",
+    "Save" : "Salveguardar",
+    "Saving..." : "Salveguardante..."
 },
 "nplurals=2; plural=(n != 1);");

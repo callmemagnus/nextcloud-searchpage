@@ -6,6 +6,8 @@ OC.L10N.register(
     "No results" : "Asnjë rezultat",
     "Saved" : "Ruajtur",
     "Search" : "Kërko",
-    "Loading..." : "Po ngarkohet"
+    "Loading..." : "Po ngarkohet",
+    "Save" : "Ruaje",
+    "Saving..." : "Duke ruajtur..."
 },
 "nplurals=2; plural=(n != 1);");

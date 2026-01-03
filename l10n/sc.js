@@ -6,6 +6,9 @@ OC.L10N.register(
     "Loading…" : "Carrighende…",
     "No results" : "Perunu resurtadu",
     "Saved" : "Sarvadu",
-    "Search" : "Chirca"
+    "Search" : "Chirca",
+    "Provider" : "Frunidore",
+    "Save" : "Sarva",
+    "Saving..." : "Sarvende..."
 },
 "nplurals=2; plural=(n != 1);");

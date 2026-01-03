@@ -14,6 +14,10 @@ OC.L10N.register(
     "Search Page" : "Bilatu orria",
     "Show only" : "Erakutsi soilik",
     "Load more..." : "Kargatu gehiago...",
-    "Loading..." : "Kargatzen..."
+    "Loading..." : "Kargatzen...",
+    "Note:" : "Oharra:",
+    "Provider" : "Hornitzailea",
+    "Save" : "Gorde",
+    "Saving..." : "Gordetzen..."
 },
 "nplurals=2; plural=(n != 1);");

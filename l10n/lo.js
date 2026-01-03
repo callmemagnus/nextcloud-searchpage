@@ -8,6 +8,10 @@ OC.L10N.register(
     "No results" : "ບໍ່ມີຜົນ",
     "Saved" : "Saved",
     "Search" : "ຄົ້ນຫາ",
-    "Loading..." : "ກຳລັງໂຫລດ..."
+    "Loading..." : "ກຳລັງໂຫລດ...",
+    "Note:" : "ໝາຍເຫດ:",
+    "Provider" : "Provider",
+    "Save" : "ບັນທຶກ",
+    "Saving..." : "ກຳລັງບັນທຶກ..."
 },
 "nplurals=1; plural=0;");

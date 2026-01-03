@@ -8,6 +8,10 @@ OC.L10N.register(
     "No results" : "Nincs eredmény",
     "Saved" : "Mentve",
     "Search" : "Keresés",
-    "Loading..." : "Betöltés..."
+    "Loading..." : "Betöltés...",
+    "Note:" : "Megjegyzés:",
+    "Provider" : "Szolgáltató",
+    "Save" : "Mentés",
+    "Saving..." : "Mentés…"
 },
 "nplurals=2; plural=(n != 1);");

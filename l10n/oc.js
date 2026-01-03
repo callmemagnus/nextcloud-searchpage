@@ -5,6 +5,8 @@ OC.L10N.register(
     "Loading…" : "Telecargament…",
     "No results" : "Cap de resultat",
     "Saved" : "Enregistrat",
-    "Search" : "Recercar"
+    "Search" : "Recercar",
+    "Save" : "Enregistrar",
+    "Saving..." : "Enregistrament..."
 },
 "nplurals=2; plural=(n > 1);");

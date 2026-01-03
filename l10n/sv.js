@@ -27,6 +27,11 @@ OC.L10N.register(
     "This is not a security configuration." : "Detta är inte en säkerhetskonfiguration.",
     "Unable to save" : "Kan inte spara",
     "Load more..." : "Ladda mer...",
-    "Loading..." : "Laddar..."
+    "Loading..." : "Laddar...",
+    "Note:" : "Notera:",
+    "Provider" : "Leverantör",
+    "Save" : "Spara",
+    "Saving..." : "Sparar...",
+    "User group" : "Användargrupp"
 },
 "nplurals=2; plural=(n != 1);");

@@ -28,6 +28,10 @@ OC.L10N.register(
     "This is not a security configuration." : "Huu sio usanidi wa usalama.",
     "Unable to save" : "Haiwezi kuhifadhi",
     "Load more..." : "Pakia zaidi...",
-    "Loading..." : "Inapakia..."
+    "Loading..." : "Inapakia...",
+    "Note:" : "Kumbuka:",
+    "Provider" : "Mtoa huduma",
+    "Save" : "Hifadhi",
+    "Saving..." : "Inahifadhi"
 },
 "nplurals=2; plural=(n != 1);");

@@ -19,6 +19,10 @@ OC.L10N.register(
     "Show only" : "仅显示",
     "There was an error loading the providers." : "加载提供者时出现错误。",
     "Load more..." : "加载更多...",
-    "Loading..." : "载入中..."
+    "Loading..." : "载入中...",
+    "Note:" : "备注：",
+    "Provider" : "服务商",
+    "Save" : "保存",
+    "Saving..." : "正在保存……"
 },
 "nplurals=1; plural=0;");

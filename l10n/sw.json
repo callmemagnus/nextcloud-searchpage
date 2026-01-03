@@ -26,6 +26,10 @@
     "This is not a security configuration." : "Huu sio usanidi wa usalama.",
     "Unable to save" : "Haiwezi kuhifadhi",
     "Load more..." : "Pakia zaidi...",
-    "Loading..." : "Inapakia..."
+    "Loading..." : "Inapakia...",
+    "Note:" : "Kumbuka:",
+    "Provider" : "Mtoa huduma",
+    "Save" : "Hifadhi",
+    "Saving..." : "Inahifadhi"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

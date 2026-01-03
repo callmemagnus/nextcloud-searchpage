@@ -6,6 +6,8 @@ OC.L10N.register(
     "Loading…" : "Loading…",
     "No results" : "No results",
     "Saved" : "Saved",
-    "Search" : "Search"
+    "Search" : "Search",
+    "Provider" : "Provider",
+    "Save" : "დამახსოვრება"
 },
 "nplurals=2; plural=(n!=1);");

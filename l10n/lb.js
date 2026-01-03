@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Loading…" : "Et gëtt gelueden",
     "Saved" : "Gespäichert",
-    "Search" : "Search"
+    "Search" : "Search",
+    "Save" : "Späicheren",
+    "Saving..." : "Speicheren..."
 },
 "nplurals=2; plural=(n != 1);");
