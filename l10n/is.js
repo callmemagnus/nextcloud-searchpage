@@ -19,6 +19,10 @@ OC.L10N.register(
     "Show only" : "Birta einungis",
     "There was an error loading the providers." : "Það kom upp villa við að hlaða inn þjónustunum.",
     "Load more..." : "Hlaða inn fleiru...",
-    "Loading..." : "Hleð..."
+    "Loading..." : "Hleð...",
+    "Note:" : "Athugaðu:",
+    "Provider" : "Þjónustuveita",
+    "Save" : "Vista",
+    "Saving..." : "Vista..."
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

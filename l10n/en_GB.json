@@ -26,6 +26,7 @@
     "This is not a security configuration." : "This is not a security configuration.",
     "Unable to save" : "Unable to save",
     "Load more..." : "Load more...",
-    "Loading..." : "Loading..."
+    "Loading..." : "Loading...",
+    "User group" : "User group"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

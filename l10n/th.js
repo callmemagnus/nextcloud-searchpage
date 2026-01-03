@@ -5,6 +5,9 @@ OC.L10N.register(
     "Loading…" : "กำลังโหลด…",
     "No results" : "ไม่มีผลลัพธ์",
     "Saved" : "บันทึกแล้ว",
-    "Search" : "ค้นหา"
+    "Search" : "ค้นหา",
+    "Provider" : "ผู้ให้บริการ",
+    "Save" : "บันทึก",
+    "Saving..." : "กำลังบันทึก..."
 },
 "nplurals=1; plural=0;");

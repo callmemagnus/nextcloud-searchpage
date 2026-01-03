@@ -5,6 +5,7 @@ OC.L10N.register(
     "Loading…" : "уншиж байна",
     "No results" : "Үр дүн байхгүй",
     "Saved" : "Хадгалах",
-    "Search" : "Хайх"
+    "Search" : "Хайх",
+    "Save" : "Хадгалах"
 },
 "nplurals=2; plural=(n != 1);");

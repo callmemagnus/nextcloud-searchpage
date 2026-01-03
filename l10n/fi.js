@@ -22,6 +22,10 @@ OC.L10N.register(
     "Show only" : "Näytä vain",
     "Unable to save" : "Tallentaminen ei onnistu",
     "Load more..." : "Lataa lisää...",
-    "Loading..." : "Ladataan..."
+    "Loading..." : "Ladataan...",
+    "Note:" : "Huomioi:",
+    "Provider" : "Tarjoaja",
+    "Save" : "Tallenna",
+    "Saving..." : "Tallennetaan..."
 },
 "nplurals=2; plural=(n != 1);");

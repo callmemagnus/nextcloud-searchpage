@@ -4,6 +4,7 @@ OC.L10N.register(
     "Back" : "Air ais",
     "Loading…" : "’Ga luchdadh…",
     "No results" : "Gun toradh",
-    "Search" : "Lorg"
+    "Search" : "Lorg",
+    "Save" : "Sàbhail"
 },
 "nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3;");

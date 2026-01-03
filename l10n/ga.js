@@ -28,6 +28,11 @@ OC.L10N.register(
     "This is not a security configuration." : "Ní cumraíocht slándála é seo.",
     "Unable to save" : "Ní féidir a shábháil",
     "Load more..." : "Luchtaigh níos mó...",
-    "Loading..." : "Á lódáil..."
+    "Loading..." : "Á lódáil...",
+    "Note:" : "Nóta:",
+    "Provider" : "Soláthraí",
+    "Save" : "Sábháil",
+    "Saving..." : "Shábháil...",
+    "User group" : "Grúpa úsáideoirí"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

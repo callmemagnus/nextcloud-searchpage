@@ -28,6 +28,11 @@ OC.L10N.register(
     "This is not a security configuration." : "بۇ بىخەتەرلىك سەپلىمىسى ئەمەس.",
     "Unable to save" : "ساقلاشقا ئامالسىز",
     "Load more..." : "تېخىمۇ كۆپ يۈك ...",
-    "Loading..." : "Loading ..."
+    "Loading..." : "Loading ...",
+    "Note:" : "ئەسكەرتىش:",
+    "Provider" : "تەمىنلىگۈچى",
+    "Save" : "ساقلا",
+    "Saving..." : "ساقلاۋاتىدۇ…",
+    "User group" : "ئىشلەتكۈچى گۇرۇپپىسى"
 },
 "nplurals=2; plural=(n != 1);");

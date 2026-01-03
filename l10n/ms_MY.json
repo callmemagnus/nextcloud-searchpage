@@ -1,5 +1,7 @@
 { "translations": {
     "Saved" : "Disimpan",
-    "Search" : "Search"
+    "Search" : "Search",
+    "Save" : "Simpan",
+    "Saving..." : "Sedang menyimpan..."
 },"pluralForm" :"nplurals=1; plural=0;"
 }

@@ -20,6 +20,10 @@
     "Show only" : "Näytä vain",
     "Unable to save" : "Tallentaminen ei onnistu",
     "Load more..." : "Lataa lisää...",
-    "Loading..." : "Ladataan..."
+    "Loading..." : "Ladataan...",
+    "Note:" : "Huomioi:",
+    "Provider" : "Tarjoaja",
+    "Save" : "Tallenna",
+    "Saving..." : "Tallennetaan..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

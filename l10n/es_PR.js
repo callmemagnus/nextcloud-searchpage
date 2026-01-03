@@ -5,6 +5,8 @@ OC.L10N.register(
     "No results" : "No hay resultados",
     "Saved" : "Guardado",
     "Search" : "Buscar",
-    "Loading..." : "Cargando..."
+    "Loading..." : "Cargando...",
+    "Save" : "Guardar",
+    "Saving..." : "Guardando..."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

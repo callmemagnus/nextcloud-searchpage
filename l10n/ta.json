@@ -1,5 +1,6 @@
 { "translations": {
     "Back" : "பின்னுக்கு",
-    "Search" : "தேடுதல்"
+    "Search" : "தேடுதல்",
+    "Save" : "சேமிக்க "
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

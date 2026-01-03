@@ -28,6 +28,11 @@ OC.L10N.register(
     "This is not a security configuration." : "Bu bir güvenlik yapılandırması değil.",
     "Unable to save" : "Kaydedilemedi",
     "Load more..." : "Diğerlerini yükle...",
-    "Loading..." : "Yükleniyor..."
+    "Loading..." : "Yükleniyor...",
+    "Note:" : "Not:",
+    "Provider" : "Hizmet sağlayıcı",
+    "Save" : "Kaydet",
+    "Saving..." : "Kaydediliyor...",
+    "User group" : "Kullanıcı grubu"
 },
 "nplurals=2; plural=(n > 1);");

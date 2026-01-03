@@ -1,5 +1,7 @@
 { "translations": {
     "Saved" : "Պահված",
-    "Search" : "Search"
+    "Search" : "Search",
+    "Save" : "Պահպանել",
+    "Saving..." : "Պահում եմ..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

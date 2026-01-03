@@ -6,6 +6,9 @@ OC.L10N.register(
     "Loading…" : "Се вчитува…",
     "No results" : "Нема резултати",
     "Saved" : "Зачувано",
-    "Search" : "Барај"
+    "Search" : "Барај",
+    "Note:" : "Белешка:",
+    "Save" : "Сними",
+    "Saving..." : "Зачувува ..."
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

@@ -8,6 +8,10 @@ OC.L10N.register(
     "No results" : "검색 결과 없음",
     "Saved" : "저장됨",
     "Search" : "검색",
-    "Loading..." : "불러오는 중..."
+    "Loading..." : "불러오는 중...",
+    "Note:" : "메모:",
+    "Provider" : "공급자",
+    "Save" : "저장",
+    "Saving..." : "저장 중..."
 },
 "nplurals=1; plural=0;");

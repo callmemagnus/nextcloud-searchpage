@@ -5,6 +5,8 @@ OC.L10N.register(
     "Loading…" : "Đang tải…",
     "No results" : "Không có kết quả",
     "Saved" : "Đã lưu",
-    "Search" : "Tìm kiếm"
+    "Search" : "Tìm kiếm",
+    "Save" : "Lưu",
+    "Saving..." : "Đang lưu..."
 },
 "nplurals=1; plural=0;");

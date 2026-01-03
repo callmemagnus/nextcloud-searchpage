@@ -28,6 +28,7 @@ OC.L10N.register(
     "This is not a security configuration." : "Esta no es una configuración de seguridad.",
     "Unable to save" : "No fue posible guardar",
     "Load more..." : "Cargar más...",
-    "Loading..." : "Cargando..."
+    "Loading..." : "Cargando...",
+    "Provider" : "Proveedor"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
