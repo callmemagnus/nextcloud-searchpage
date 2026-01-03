@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.0.0](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.15...v2.0.0)
+
+- add settings page allowing
+  - to define by user group which providers are available
+  - to define limits by providers
+- update page title on search
+- change Nextcloud compatibility to 30 ➙ 32
+- translation updates - Many thanks to all the translators
+
 ## [v1.2.16](https://github.com/callmemagnus/nextcloud-searchpage/compare/v1.2.15...v1.2.16)
 
 - add limit to provider's queries
