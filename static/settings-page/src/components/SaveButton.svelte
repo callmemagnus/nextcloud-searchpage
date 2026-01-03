@@ -2,7 +2,7 @@
 	// SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 	// SPDX-License-Identifier: AGPL-3.0-or-later
 
-	import { translate as t } from '@nextcloud/l10n';
+	import { translate } from '@nextcloud/l10n';
 	import { APP_NAME } from '../constants';
 	import { saveSettings } from '../lib/api';
 	import settingsStore from '../states/settingsStore.svelte';
@@ -23,14 +23,14 @@
 
 			if (result.success) {
 				saveSuccess = true;
-				saveMessage = result.message || t(APP_NAME, 'Settings saved successfully');
+				saveMessage = result.message || translate(APP_NAME, 'Settings saved successfully');
 			} else {
 				saveSuccess = false;
-				saveMessage = result.error || t(APP_NAME, 'Error saving settings');
+				saveMessage = result.error || translate(APP_NAME, 'Error saving settings');
 			}
 		} catch (e) {
 			saveSuccess = false;
-			saveMessage = t(APP_NAME, 'Error saving settings');
+			saveMessage = translate(APP_NAME, 'Error saving settings');
 			console.error('Error saving settings:', e);
 		} finally {
 			saving = false;
@@ -45,7 +45,7 @@
 
 <div class="mwb-save-section">
 	<button class="button primary" disabled={saving} onclick={handleSave} type="button">
-		{saving ? t(APP_NAME, 'Saving...') : t(APP_NAME, 'Save')}
+		{saving ? translate(APP_NAME, 'Saving...') : translate(APP_NAME, 'Save')}
 	</button>
 
 	{#if saveMessage}

@@ -25,8 +25,13 @@ async function run() {
       ]
 
   // Match both translate and t (or any alias), handle multi-line, capture the string
-  // Pattern: (translate|t)( APP_NAME, 'captured string'
-  const regexp = new RegExp("(?:translate|t)\\s*\\(\\s*APP_NAME\\s*,\\s*['\"]([^'\"]+)['\"]", "gms");
+  // Pattern: (translate|t)(APP_NAME, 'captured string' or "captured string")
+  // This regex separately matches single-quoted and double-quoted strings
+  // Handles escaped quotes (\' or \") and other escaped characters (\\n, \\t, etc.)
+  const regexp = new RegExp(
+    "(?:translate|t)\\s*\\(\\s*APP_NAME\\s*,\\s*(?:'((?:[^'\\\\]|\\\\.)*)'|\"((?:[^\"\\\\]|\\\\.)*)\")",
+    "gms"
+  );
 
   const translations = new Set(["All providers"]);
 
@@ -39,7 +44,17 @@ async function run() {
     let foundAny = false;
     for (const match of matches) {
       foundAny = true;
-      translations.add(match[1]);
+      // match[1] is single-quoted string, match[2] is double-quoted string
+      // One of them will be undefined, so use whichever one matched
+      let translation = match[1] || match[2];
+      if (translation) {
+        // Unescape escaped quotes and other escape sequences that might be in the string
+        translation = translation
+          .replace(/\\'/g, "'")
+          .replace(/\\"/g, '"')
+          .replace(/\\\\/g, '\\');
+        translations.add(translation);
+      }
     }
   });
 
@@ -52,7 +67,21 @@ async function run() {
   englishLabels.forEach(translation => {
     // Escape single quotes in the translation string
     const escaped = translation.replace(/'/g, "\\'");
-    result.push(`const label${counter} = t('thesearchpage', '${escaped}');`);
+
+    // Extract parameters from the translation (anything in {paramName})
+    const paramMatches = translation.matchAll(/\{([^}]+)\}/g);
+    const params = [];
+    for (const match of paramMatches) {
+      params.push(match[1]);
+    }
+
+    // If there are parameters, add them as a dummy object
+    if (params.length > 0) {
+      const paramObj = params.map(p => `${p}: ''`).join(', ');
+      result.push(`const label${counter} = t('thesearchpage', '${escaped}', { ${paramObj} });`);
+    } else {
+      result.push(`const label${counter} = t('thesearchpage', '${escaped}');`);
+    }
     counter++;
   });
 
