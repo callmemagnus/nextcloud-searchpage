@@ -41,83 +41,109 @@
 </script>
 
 {#if settingsStore.settings.enabled}
-	{#if settingsStore.newProviders.length > 0}
-		<div class="mwb-warning-box">
-			<div class="mwb-warning-icon">⚠️</div>
-			<div class="mwb-warning-content">
-				<p class="mwb-warning-title">
-					{translate(APP_NAME, 'New search providers detected')}
-				</p>
-				<p class="mwb-warning-message">
-					{translate(
-						APP_NAME,
-						'The following provider(s) were not available when settings were last saved: {providers}',
-						{ providers: settingsStore.newProviders.map((p) => p.name).join(', ') }
-					)}
-				</p>
-				<p class="mwb-warning-action">
-					{translate(
-						APP_NAME,
-						'Please review the visibility settings for these providers below and save your changes.'
-					)}
-				</p>
+	<div class="mwb-provider-restrictions-section">
+		<h3>{translate(APP_NAME, 'Provider visibility per group')}</h3>
+		<p class="mwb-settings-hint">
+			{translate(
+				APP_NAME,
+				'Control which search providers are visible to specific user groups.'
+			)}
+		</p>
+
+		{#if settingsStore.newProviders.length > 0}
+			<div class="mwb-warning-box">
+				<div class="mwb-warning-icon">⚠️</div>
+				<div class="mwb-warning-content">
+					<p class="mwb-warning-title">
+						{translate(APP_NAME, 'New search providers detected')}
+					</p>
+					<p class="mwb-warning-message">
+						{translate(
+							APP_NAME,
+							'The following provider(s) were not available when settings were last saved: {providers}',
+							{ providers: settingsStore.newProviders.map((p) => p.name).join(', ') }
+						)}
+					</p>
+					<p class="mwb-warning-action">
+						{translate(
+							APP_NAME,
+							'Please review the visibility settings for these providers below and save your changes.'
+						)}
+					</p>
+				</div>
 			</div>
-		</div>
-	{/if}
-	<div class="mwb-provider-group-table-container">
-		<table class="mwb-provider-group-table">
-			<thead>
-				<tr>
-					<th>{translate(APP_NAME, 'User group')}</th>
-					{#each settingsStore.providers as provider (provider.id)}
-						<th>{provider.name}</th>
-					{/each}
-				</tr>
-			</thead>
-			<tbody>
-				{#each orderedGroups as group (group.id)}
-					<tr class="mwb-group-row">
-						<td class="mwb-group-name">{group.displayName}</td>
+		{/if}
+		<div class="mwb-provider-restrictions-table-container">
+			<table class="mwb-provider-restrictions-table">
+				<thead>
+					<tr>
+						<th>{translate(APP_NAME, 'User group')}</th>
 						{#each settingsStore.providers as provider (provider.id)}
-							{@const checkboxId = `provider_${provider.id}_group_${group.id}`}
-							{@const labelText = translate(
-								APP_NAME,
-								'Enable {providerName} for {groupName}',
-								{
-									providerName: provider.name,
-									groupName: group.displayName
-								}
-							)}
-							{@const isChecked = settingsStore.isProviderEnabledForGroup(
-								provider.id,
-								group.id
-							)}
-							<td class="mwb-checkbox-cell">
-								<input
-									type="checkbox"
-									id={checkboxId}
-									class="checkbox"
-									checked={isChecked}
-									title={labelText}
-									onchange={(e) =>
-										handleCheckboxChange(
-											provider.id,
-											group.id,
-											e.currentTarget.checked
-										)} />
-								<label for={checkboxId}>
-									<span class="mwb-screenreader">{labelText}</span>
-								</label>
-							</td>
+							<th>{provider.name}</th>
 						{/each}
 					</tr>
-				{/each}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{#each orderedGroups as group (group.id)}
+						<tr class="mwb-group-row">
+							<td class="mwb-group-name">{group.displayName}</td>
+							{#each settingsStore.providers as provider (provider.id)}
+								{@const checkboxId = `provider_${provider.id}_group_${group.id}`}
+								{@const labelText = translate(
+									APP_NAME,
+									'Enable {providerName} for {groupName}',
+									{
+										providerName: provider.name,
+										groupName: group.displayName
+									}
+								)}
+								{@const isChecked = settingsStore.isProviderEnabledForGroup(
+									provider.id,
+									group.id
+								)}
+								<td class="mwb-checkbox-cell">
+									<input
+										type="checkbox"
+										id={checkboxId}
+										class="checkbox"
+										checked={isChecked}
+										title={labelText}
+										onchange={(e) =>
+											handleCheckboxChange(
+												provider.id,
+												group.id,
+												e.currentTarget.checked
+											)} />
+									<label for={checkboxId}>
+										<span class="mwb-screenreader">{labelText}</span>
+									</label>
+								</td>
+							{/each}
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	</div>
 {/if}
 
 <style>
+	.mwb-provider-restrictions-section {
+		margin-top: 16px;
+	}
+
+	.mwb-provider-restrictions-section h3 {
+		margin-top: 0;
+		margin-bottom: 8px;
+		font-size: 1.1em;
+		font-weight: 600;
+	}
+
+	.mwb-settings-hint {
+		color: var(--color-text-maxcontrast);
+		margin-top: 0;
+		margin-bottom: 8px;
+	}
 	.mwb-warning-box {
 		display: flex;
 		gap: 12px;
@@ -153,32 +179,31 @@
 		color: var(--color-text-maxcontrast);
 	}
 
-	.mwb-provider-group-table-container {
-		margin-top: 20px;
+	.mwb-provider-restrictions-table-container {
+		margin-top: 16px;
 	}
 
-	.mwb-provider-group-table {
+	.mwb-provider-restrictions-table {
 		width: 100%;
 		border-collapse: collapse;
 		margin-top: 8px;
 		border: 1px solid var(--color-border);
-		table-layout: fixed;
 	}
 
-	.mwb-provider-group-table th,
-	.mwb-provider-group-table td {
+	.mwb-provider-restrictions-table th,
+	.mwb-provider-restrictions-table td {
 		border: 1px solid var(--color-border);
 		padding: 8px;
 		text-align: left;
 	}
 
-	.mwb-provider-group-table th {
+	.mwb-provider-restrictions-table th {
 		font-weight: bold;
-		background-color: var(--color-main-background);
+		background-color: var(--color-background-dark);
 	}
 
-	.mwb-provider-group-table th:first-child,
-	.mwb-provider-group-table td:first-child {
+	.mwb-provider-restrictions-table th:first-child,
+	.mwb-provider-restrictions-table td:first-child {
 		width: 200px;
 	}
 

@@ -39,8 +39,8 @@
 		)}
 	</p>
 
-	<div class="mwb-table-container">
-		<table class="mwb-provider-limit-table">
+	<div class="mwb-provider-limits-table-container">
+		<table class="mwb-provider-limits-table">
 			<thead>
 				<tr>
 					<th>{translate(APP_NAME, 'Provider')}</th>
@@ -89,8 +89,17 @@
 		margin-top: 32px;
 	}
 
+	.mwb-provider-limits-section h3 {
+		margin-top: 0;
+		margin-bottom: 8px;
+		font-size: 1.1em;
+		font-weight: 600;
+	}
+
 	.mwb-settings-hint {
 		color: var(--color-text-maxcontrast);
+		margin-top: 0;
+		margin-bottom: 8px;
 	}
 
 	.mwb-settings-note {
@@ -101,11 +110,11 @@
 		border-left: 3px solid var(--color-primary-element);
 	}
 
-	.mwb-table-container {
+	.mwb-provider-limits-table-container {
 		margin-top: 16px;
 	}
 
-	.mwb-provider-limit-table {
+	.mwb-provider-limits-table {
 		width: 100%;
 		border-collapse: collapse;
 		margin-top: 8px;
@@ -113,20 +122,21 @@
 		border: 1px solid var(--color-border);
 	}
 
-	.mwb-provider-limit-table th,
-	.mwb-provider-limit-table td {
+	.mwb-provider-limits-table th,
+	.mwb-provider-limits-table td {
 		border: 1px solid var(--color-border);
 		padding: 8px;
 		text-align: left;
 	}
 
-	.mwb-provider-limit-table th {
+	.mwb-provider-limits-table th {
 		font-weight: bold;
 		background-color: var(--color-background-dark);
 	}
 
 	.mwb-limit-cell {
 		text-align: center;
+		width: 250px;
 	}
 
 	.mwb-limit-input {
