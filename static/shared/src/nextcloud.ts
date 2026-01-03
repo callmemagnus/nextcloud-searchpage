@@ -1,9 +1,10 @@
-import {generateOcsUrl} from '@nextcloud/router';
-import axios from '@nextcloud/axios';
+import { generateOcsUrl } from "@nextcloud/router";
+import axios from "@nextcloud/axios";
 
 export type Provider = {
 	id: string;
 	name: string;
+	limit?: number;
 };
 
 const disfunctionalProviders = [

@@ -11,6 +11,7 @@ use OCA\TheSearchPage\Service\ProviderService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
+use OCP\IAppConfig;
 use OCP\IGroupManager;
 use OCP\IRequest;
 use OCP\IUserSession;
@@ -23,7 +24,9 @@ class PageController extends Controller
         private readonly ProviderService $providerService,
         private readonly IGroupManager   $groupManager,
         private readonly IUserSession    $userSession,
-    ) {
+        private readonly IAppConfig      $appConfig
+    )
+    {
         parent::__construct(Application::APP_ID, $request);
     }
 
@@ -35,6 +38,7 @@ class PageController extends Controller
     {
         // Get providers available for the current user (with limits applied)
         $availableProviders = $this->providerService->getProvidersForCurrentUser();
+        $isEnabled = $this->appConfig->getValueBool(Application::APP_ID, 'restrict_providers_enabled');
 
         // Check if current user is an admin
         $user = $this->userSession->getUser();
@@ -43,6 +47,7 @@ class PageController extends Controller
         // Provide initial state to frontend - providers with their limits
         $this->initialState->provideInitialState('availableProviders', $availableProviders);
         $this->initialState->provideInitialState('isAdmin', $isAdmin);
+        $this->initialState->provideInitialState('isEnabled', $isEnabled);
 
         return new TemplateResponse(Application::APP_ID, 'main');
     }

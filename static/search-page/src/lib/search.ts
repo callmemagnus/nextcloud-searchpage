@@ -3,10 +3,9 @@
 
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
-import type { Provider } from '../states/availableProviders.svelte';
 import availableProviders from '../states/availableProviders.svelte';
 import TimedCache from './TimedCache';
-import { clog } from '@shared/libs';
+import { clog, type Provider } from '@shared/libs';
 
 // Build limits map from available providers
 function getLimit(providerId: string): number {

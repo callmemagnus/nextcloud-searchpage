@@ -25,19 +25,19 @@ class QueryState {
 
 	constructor() {
 		// Watch for providers to load and initialize providerIds if empty
-		// const checkInterval = setInterval(() => {
-		// 	const providers = availableProviders.providers;
-		// 	if (!providers.length) {
-		// 		return;
-		// 	}
-		// 	if (this.providerIds.length === 0) {
-		// 		this.providerIds = providers.map(({ id }) => id);
-		// 	}
-		// 	// Once initialized, clear the interval
-		// 	if (this.providerIds.length > 0 || providers.length > 0) {
-		// 		clearInterval(checkInterval);
-		// 	}
-		// }, 50);
+		const checkInterval = setInterval(() => {
+			const providers = availableProviders.providers;
+			if (!providers.length) {
+				return;
+			}
+			if (this.providerIds.length === 0) {
+				this.providerIds = providers.map(({ id }) => id);
+			}
+			// Once initialized, clear the interval
+			if (this.providerIds.length > 0 || providers.length > 0) {
+				clearInterval(checkInterval);
+			}
+		}, 50);
 	}
 }
 
