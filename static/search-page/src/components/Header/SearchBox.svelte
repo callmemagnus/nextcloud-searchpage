@@ -20,6 +20,13 @@
 
 	let showProviderSelection = $state(false);
 
+	let initialTitle = $state(document.title);
+	let title = $derived(
+		queryState.terms.trim() === ''
+			? initialTitle
+			: translate(APP_NAME, 'Search results for "{query}"', { query: queryState.terms })
+	);
+
 	onMount(() => {
 		if (queryState.terms !== '') {
 			clog('Auto-launching search', queryState.terms);
@@ -74,6 +81,9 @@
 </script>
 
 <svelte:body {onkeydown} />
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
 
 <form method="get" onsubmit={preventDefault(doSearch)}>
 	<div class="mwb-line">
