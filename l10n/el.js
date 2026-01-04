@@ -28,6 +28,10 @@ OC.L10N.register(
     "This is not a security configuration." : "Αυτή δεν είναι μια διαμόρφωση ασφαλείας.",
     "Unable to save" : "Αδυναμία αποθήκευσης",
     "Load more..." : "Φόρτωση περισσότερων...",
-    "Loading..." : "Γίνεται φόρτωση..."
+    "Loading..." : "Γίνεται φόρτωση...",
+    "Note:" : "Σημείωση:",
+    "Provider" : "Πάροχος",
+    "Save" : "Αποθήκευση",
+    "Saving..." : "Γίνεται αποθήκευση..."
 },
 "nplurals=2; plural=(n != 1);");

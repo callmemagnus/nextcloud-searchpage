@@ -8,6 +8,10 @@ OC.L10N.register(
     "No results" : "Sense resultats",
     "Saved" : "S'ha desat",
     "Search" : "Cercar",
-    "Loading..." : "Carregant..."
+    "Loading..." : "Carregant...",
+    "Note:" : "Nota:",
+    "Provider" : "Proveïdor",
+    "Save" : "Desar",
+    "Saving..." : "S'està desant..."
 },
 "nplurals=2; plural=(n != 1);");

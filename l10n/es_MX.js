@@ -9,6 +9,7 @@ OC.L10N.register(
     "Search" : "Buscar",
     "Loading..." : "Cargando...",
     "Note:" : "Nota:",
-    "Save" : "Guardar"
+    "Save" : "Guardar",
+    "Saving..." : "Guardando..."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

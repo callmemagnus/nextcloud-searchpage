@@ -8,6 +8,10 @@ OC.L10N.register(
     "No results" : "Ingen resultater",
     "Saved" : "Gemt",
     "Search" : "Søg",
-    "Loading..." : "Indlæser..."
+    "Loading..." : "Indlæser...",
+    "Note:" : "Bemærkning:",
+    "Provider" : "Udbyder",
+    "Save" : "Gem",
+    "Saving..." : "Gemmer..."
 },
 "nplurals=2; plural=(n != 1);");

@@ -1,6 +1,9 @@
 { "translations": {
     "Loading…" : "Laai…",
     "Saved" : "Bewaar",
-    "Search" : "Soek"
+    "Search" : "Soek",
+    "Provider" : "Verskaffer",
+    "Save" : "Stoor",
+    "Saving..." : "Stoor tans…"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
