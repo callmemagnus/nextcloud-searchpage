@@ -27,6 +27,11 @@ OC.L10N.register(
     "This is not a security configuration." : "Toto není nastavení zabezpečení.",
     "Unable to save" : "Není možné uložit",
     "Load more..." : "Načíst další …",
-    "Loading..." : "Načítání …"
+    "Loading..." : "Načítání …",
+    "Note:" : "Poznámka:",
+    "Provider" : "Poskytovatel",
+    "Save" : "Uložit",
+    "Saving..." : "Ukládá se …",
+    "User group" : "Skupina uživatele"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

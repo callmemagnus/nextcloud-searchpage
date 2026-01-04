@@ -19,6 +19,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Hebo un error al cargar los fornidores.",
     "Unable to save" : "Nun ye posible guardar",
     "Load more..." : "Cargar más…",
-    "Loading..." : "Cargando..."
+    "Loading..." : "Cargando...",
+    "Provider" : "Fornidor",
+    "Save" : "Guardar",
+    "Saving..." : "Guardando…"
 },
 "nplurals=2; plural=(n != 1);");

@@ -5,6 +5,9 @@
     "Loading…" : "Зареждане…",
     "No results" : "Няма резултат",
     "Saved" : "Записано",
-    "Search" : "Търсене"
+    "Search" : "Търсене",
+    "Provider" : "Доставчик",
+    "Save" : "Запиши",
+    "Saving..." : "Записване..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

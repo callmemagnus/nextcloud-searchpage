@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Loading…" : "Ŝargado...",
     "Saved" : "Konservita",
-    "Search" : "Serĉi"
+    "Search" : "Serĉi",
+    "Save" : "Konservi",
+    "Saving..." : "Konservado..."
 },
 "nplurals=2; plural=(n != 1);");
