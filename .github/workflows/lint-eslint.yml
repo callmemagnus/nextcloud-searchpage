@@ -10,6 +10,8 @@ name: Lint (browser)
 on:
   pull_request:
   push:
+    branches:
+      - '!main'
 
 jobs:
   lint:

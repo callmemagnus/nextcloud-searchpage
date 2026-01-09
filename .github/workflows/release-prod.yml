@@ -4,6 +4,10 @@
 name: Build and publish app release
 
 on:
+  workflow_run:
+    workflows: ["Version Bump"]
+    types:
+      - completed
   release:
     types: [published]
   push:
@@ -18,6 +22,7 @@ jobs:
   build_and_publish:
     environment: release
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: "Release: build, sign and upload the app"
     strategy:
       matrix:
@@ -26,7 +31,7 @@ jobs:
         database: ["sqlite"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

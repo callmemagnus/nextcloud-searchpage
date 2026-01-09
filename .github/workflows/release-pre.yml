@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: Build and publish app release
+name: Build and publish app pre-release
 
 on:
   release:
@@ -25,7 +25,7 @@ jobs:
         database: ["sqlite"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@2.26.0

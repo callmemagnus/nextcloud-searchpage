@@ -11,8 +11,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
-      - stable*
+      - '!main'
 
 jobs:
   lint:

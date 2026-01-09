@@ -6,8 +6,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
-      - stable*
+      - '!main'
 
 env:
   # Location of the phpunit.xml and phpunit.integration.xml files

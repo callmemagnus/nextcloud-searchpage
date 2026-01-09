@@ -1,0 +1,286 @@
+# SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: Version Bump
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+        default: 'patch'
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if last commit is from bot
+        if: github.event_name == 'push'
+        id: bot_check
+        run: |
+          LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
+          echo "Last commit author: $LAST_COMMIT_AUTHOR"
+          if [ "$LAST_COMMIT_AUTHOR" = "github-actions[bot]" ]; then
+            echo "Last commit was made by github-actions[bot], skipping workflow"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install XML tools
+        if: steps.bot_check.outputs.skip != 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xmlstarlet
+
+      - name: Configure Git
+        if: steps.bot_check.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get current version
+        if: steps.bot_check.outputs.skip != 'true'
+        id: current_version
+        run: |
+          # Validate XML file first
+          if ! xmlstarlet val -q appinfo/info.xml; then
+            echo "Error: appinfo/info.xml is not valid XML"
+            exit 1
+          fi
+
+          # Extract version using xmlstarlet
+          VERSION=$(xmlstarlet sel -t -v "//version" appinfo/info.xml)
+
+          if [ -z "$VERSION" ]; then
+            echo "Error: Could not extract version from appinfo/info.xml"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $VERSION"
+
+      - name: Get last tag
+        if: steps.bot_check.outputs.skip != 'true'
+        id: last_tag
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            echo "No previous tags found"
+            echo "tag=" >> $GITHUB_OUTPUT
+          else
+            echo "tag=$LAST_TAG" >> $GITHUB_OUTPUT
+            echo "Last tag: $LAST_TAG"
+          fi
+
+      - name: Determine version bump (automatic)
+        if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true'
+        id: auto_bump
+        run: |
+          LAST_TAG="${{ steps.last_tag.outputs.tag }}"
+
+          if [ -z "$LAST_TAG" ]; then
+            echo "No previous tag found, defaulting to patch bump"
+            echo "bump=patch" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Get commits since last tag, excluding commits made by the workflow itself
+          COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --author='^(?!github-actions\[bot\]).*' --perl-regexp)
+
+          if [ -z "$COMMITS" ]; then
+            echo "No new commits since last tag (excluding workflow commits)"
+            echo "bump=none" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Commits since last tag (excluding workflow commits):"
+          echo "$COMMITS"
+
+          # Check for feat commits (minor bump)
+          if echo "$COMMITS" | grep -qE "^feat(\(.*\))?:"; then
+            echo "Found feat commit(s), bumping minor version"
+            echo "bump=minor" >> $GITHUB_OUTPUT
+          # Check for fix commits (patch bump)
+          elif echo "$COMMITS" | grep -qE "^fix(\(.*\))?:"; then
+            echo "Found fix commit(s), bumping patch version"
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          # Check for chore commits only (patch bump)
+          elif echo "$COMMITS" | grep -qE "^chore(\(.*\))?:"; then
+            echo "Found only chore commit(s), bumping patch version"
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          else
+            echo "No conventional commits found, skipping version bump"
+            echo "bump=none" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set bump type
+        if: steps.bot_check.outputs.skip != 'true'
+        id: bump_type
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "bump=${{ github.event.inputs.bump_type }}" >> $GITHUB_OUTPUT
+          else
+            echo "bump=${{ steps.auto_bump.outputs.bump }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Calculate new version
+        id: new_version
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump != 'none'
+        run: |
+          CURRENT="${{ steps.current_version.outputs.version }}"
+          BUMP_TYPE="${{ steps.bump_type.outputs.bump }}"
+
+          IFS='.' read -ra VERSION_PARTS <<< "$CURRENT"
+          MAJOR="${VERSION_PARTS[0]}"
+          MINOR="${VERSION_PARTS[1]}"
+          PATCH="${VERSION_PARTS[2]}"
+
+          case "$BUMP_TYPE" in
+            major)
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            patch)
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "New version: $NEW_VERSION"
+
+      - name: Update version in info.xml
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump != 'none'
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+
+          # Validate XML before modification
+          if ! xmlstarlet val -q appinfo/info.xml; then
+            echo "Error: appinfo/info.xml is not valid XML"
+            exit 1
+          fi
+
+          # Update version using xmlstarlet (edit in place)
+          xmlstarlet ed --inplace -u "//version" -v "$NEW_VERSION" appinfo/info.xml
+
+          # Validate XML after modification
+          if ! xmlstarlet val -q appinfo/info.xml; then
+            echo "Error: appinfo/info.xml is invalid after modification"
+            exit 1
+          fi
+
+          # Verify the version was updated correctly
+          UPDATED_VERSION=$(xmlstarlet sel -t -v "//version" appinfo/info.xml)
+          if [ "$UPDATED_VERSION" != "$NEW_VERSION" ]; then
+            echo "Error: Version update failed. Expected: $NEW_VERSION, Got: $UPDATED_VERSION"
+            exit 1
+          fi
+
+          echo "Successfully updated info.xml to version $NEW_VERSION"
+
+      - name: Generate changelog entry
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump != 'none'
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+          LAST_TAG="${{ steps.last_tag.outputs.tag }}"
+
+          # Create changelog entry
+          CHANGELOG_ENTRY="## [v${NEW_VERSION}](https://github.com/callmemagnus/nextcloud-searchpage/compare/${LAST_TAG}...v${NEW_VERSION})"$'\n\n'
+
+          if [ -n "$LAST_TAG" ]; then
+            # Get commits since last tag and format them
+            # Exclude commits made by github-actions[bot] to avoid including version bump commits
+            while IFS= read -r commit; do
+              # Skip empty lines
+              [ -z "$commit" ] && continue
+
+              # Format: commit message without conventional commit prefix
+              MESSAGE=$(echo "$commit" | sed -E 's/^(feat|fix|chore|docs|style|refactor|perf|test|build|ci)(\([^)]*\))?:\s*//')
+              CHANGELOG_ENTRY="${CHANGELOG_ENTRY}- ${MESSAGE}"$'\n'
+            done < <(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges --author='^(?!github-actions\[bot\]).*' --perl-regexp)
+
+            # If no commits were found (all were from bot), add a note
+            if [ "$(echo -n "$CHANGELOG_ENTRY" | tail -c 1)" = $'\n' ] && [ "$(echo "$CHANGELOG_ENTRY" | wc -l)" -eq 3 ]; then
+              CHANGELOG_ENTRY="${CHANGELOG_ENTRY}- Version bump"$'\n'
+            fi
+          else
+            CHANGELOG_ENTRY="${CHANGELOG_ENTRY}- Initial version bump"$'\n'
+          fi
+
+          # Add empty line after entry
+          CHANGELOG_ENTRY="${CHANGELOG_ENTRY}"$'\n'
+
+          # Insert at the top of CHANGELOG.md after the "# Changelog" line
+          if [ -f CHANGELOG.md ]; then
+            # Create temp file with new entry
+            echo "# Changelog" > CHANGELOG.tmp
+            echo "" >> CHANGELOG.tmp
+            echo -n "$CHANGELOG_ENTRY" >> CHANGELOG.tmp
+            # Append rest of changelog (skip first 2 lines)
+            tail -n +3 CHANGELOG.md >> CHANGELOG.tmp
+            mv CHANGELOG.tmp CHANGELOG.md
+          else
+            # Create new CHANGELOG.md if it doesn't exist
+            echo "# Changelog" > CHANGELOG.md
+            echo "" >> CHANGELOG.md
+            echo -n "$CHANGELOG_ENTRY" >> CHANGELOG.md
+          fi
+
+          echo "Updated CHANGELOG.md with version $NEW_VERSION"
+
+      - name: Commit version bump
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump != 'none'
+        run: |
+          git add appinfo/info.xml CHANGELOG.md
+          git commit --no-verify -m "chore: bump version to ${{ steps.new_version.outputs.version }}"
+          git push --no-verify origin main
+          echo "Committed and pushed version bump"
+
+      - name: Create git tag
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump != 'none'
+        run: |
+          git tag "v${{ steps.new_version.outputs.version }}"
+          git push origin "v${{ steps.new_version.outputs.version }}"
+          echo "Created and pushed tag v${{ steps.new_version.outputs.version }}"
+
+      - name: Skip message (bot commit)
+        if: steps.bot_check.outputs.skip == 'true'
+        run: |
+          echo "Skipping workflow - last commit was made by github-actions[bot]"
+
+      - name: Skip message (no relevant commits)
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump == 'none'
+        run: |
+          echo "No version bump needed - no relevant commits found since last tag"
+
+      # - name: Trigger release
+      #   if: startsWith( github.ref, 'refs/tags' )
+      #   run: |
+      #     echo Trigger release on a tag
+      #     gh workflow run --ref ${{ github.ref_name }} "Build and publish app release"
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
