@@ -32,6 +32,79 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get release tag
+        id: get_tag
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Triggered by tag push
+            TAG="${GITHUB_REF#refs/tags/}"
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Release triggered by tag push: $TAG"
+          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
+            # Triggered by Version Bump workflow completion
+            # Get the most recent tag
+            TAG=$(git describe --tags --abbrev=0)
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Release triggered by workflow_run, using latest tag: $TAG"
+          elif [ "${{ github.event_name }}" = "release" ]; then
+            # Triggered by release publication
+            TAG="${{ github.event.release.tag_name }}"
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Release triggered by release event: $TAG"
+          else
+            echo "Unknown trigger event: ${{ github.event_name }}"
+            exit 1
+          fi
+
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get_tag.outputs.tag }}
+          fetch-depth: 0
+
+      - name: Install XML tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xmlstarlet
+
+      - name: Validate tag matches info.xml version
+        run: |
+          TAG="${{ steps.get_tag.outputs.tag }}"
+
+          # Validate XML file
+          if ! xmlstarlet val -q appinfo/info.xml; then
+            echo "Error: appinfo/info.xml is not valid XML"
+            exit 1
+          fi
+
+          # Extract version from info.xml
+          INFO_VERSION=$(xmlstarlet sel -t -v "//version" appinfo/info.xml)
+
+          if [ -z "$INFO_VERSION" ]; then
+            echo "Error: Could not extract version from appinfo/info.xml"
+            exit 1
+          fi
+
+          # Extract version from tag (remove 'v' prefix)
+          TAG_VERSION="${TAG#v}"
+
+          echo "Tag version: $TAG_VERSION"
+          echo "info.xml version: $INFO_VERSION"
+
+          # Compare versions
+          if [ "$TAG_VERSION" != "$INFO_VERSION" ]; then
+            echo "Error: Version mismatch!"
+            echo "  Tag version:      $TAG_VERSION"
+            echo "  info.xml version: $INFO_VERSION"
+            echo ""
+            echo "The git tag and appinfo/info.xml version must match for a release."
+            exit 1
+          fi
+
+          echo "Version validation passed: $INFO_VERSION"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -70,7 +143,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ../server/apps/${{ env.APP_NAME }}/build/artifacts/${{ env.APP_NAME }}.tar.gz
           asset_name: ${{ env.APP_NAME }}.tar.gz
-          tag: ${{ github.ref }}
+          tag: ${{ steps.get_tag.outputs.tag }}
+          release_name: ${{ steps.get_tag.outputs.tag }}
           overwrite: true
 
       - name: Upload app to Nextcloud appstore

@@ -26,6 +26,76 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get release tag
+        id: get_tag
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Triggered by tag push
+            TAG="${GITHUB_REF#refs/tags/}"
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Pre-release triggered by tag push: $TAG"
+          elif [ "${{ github.event_name }}" = "release" ]; then
+            # Triggered by release publication
+            TAG="${{ github.event.release.tag_name }}"
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
+            echo "Pre-release triggered by release event: $TAG"
+          else
+            echo "Unknown trigger event: ${{ github.event_name }}"
+            exit 1
+          fi
+
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.get_tag.outputs.tag }}
+          fetch-depth: 0
+
+      - name: Install XML tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xmlstarlet
+
+      - name: Validate tag matches info.xml version
+        run: |
+          TAG="${{ steps.get_tag.outputs.tag }}"
+
+          # Validate XML file
+          if ! xmlstarlet val -q appinfo/info.xml; then
+            echo "Error: appinfo/info.xml is not valid XML"
+            exit 1
+          fi
+
+          # Extract version from info.xml
+          INFO_VERSION=$(xmlstarlet sel -t -v "//version" appinfo/info.xml)
+
+          if [ -z "$INFO_VERSION" ]; then
+            echo "Error: Could not extract version from appinfo/info.xml"
+            exit 1
+          fi
+
+          # Extract version from tag (remove 'v' prefix and any pre-release suffix)
+          TAG_VERSION="${TAG#v}"
+          # For pre-release tags like v2.1.0-pre1, extract base version 2.1.0
+          TAG_BASE_VERSION="${TAG_VERSION%%-*}"
+
+          echo "Tag: $TAG"
+          echo "Tag base version: $TAG_BASE_VERSION"
+          echo "info.xml version: $INFO_VERSION"
+
+          # Compare versions - for pre-releases, the base version should match info.xml
+          if [ "$TAG_BASE_VERSION" != "$INFO_VERSION" ]; then
+            echo "Error: Version mismatch!"
+            echo "  Tag base version: $TAG_BASE_VERSION"
+            echo "  info.xml version: $INFO_VERSION"
+            echo ""
+            echo "The git tag base version and appinfo/info.xml version must match for a release."
+            exit 1
+          fi
+
+          echo "Version validation passed: $INFO_VERSION"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@2.26.0
@@ -64,7 +134,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ../server/apps/${{ env.APP_NAME }}/build/artifacts/${{ env.APP_NAME }}.tar.gz
           asset_name: ${{ env.APP_NAME }}.tar.gz
-          tag: ${{ github.ref }}
+          tag: ${{ steps.get_tag.outputs.tag }}
+          release_name: ${{ steps.get_tag.outputs.tag }}
           overwrite: true
 
       - name: Upload app to Nextcloud appstore
