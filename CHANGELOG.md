@@ -1,5 +1,12 @@
 # Changelog
 
+## [v2.0.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.1...v2.0.2)
+
+- change release workflow
+- Update translations from Transifex
+- Update translations from Transifex
+- Update translations from Transifex
+
 ## [v2.0.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.0..v2.0.1)
 
 - fix to make the search page work even if no configuration has been made
