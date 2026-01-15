@@ -91,10 +91,72 @@ jobs:
             echo "Last tag: $LAST_TAG"
           fi
 
+      - name: Check if last commit is from Nextcloud bot
+        if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true'
+        id: nextcloud_bot_check
+        run: |
+          LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
+          echo "Last commit author: $LAST_COMMIT_AUTHOR"
+          if [ "$LAST_COMMIT_AUTHOR" = "Nextcloud bot" ]; then
+            echo "is_nextcloud_bot=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check change threshold for Nextcloud bot commits
+        if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true' && steps.nextcloud_bot_check.outputs.is_nextcloud_bot == 'true'
+        id: threshold_check
+        run: |
+          THRESHOLD=300
+          LAST_TAG="${{ steps.last_tag.outputs.tag }}"
+
+          if [ -z "$LAST_TAG" ]; then
+            echo "No previous tag found, skipping threshold check"
+            echo "meets_threshold=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Calculate total line changes (insertions + deletions) since last tag
+          TOTAL_CHANGES=$(git log ${LAST_TAG}..HEAD --shortstat --pretty=format:"" | awk '
+            /files? changed/ {
+              ins=0; del=0
+              for(i=1;i<=NF;i++) {
+                if($(i+1)~/insertion/) ins=$(i)
+                if($(i+1)~/deletion/) del=$(i)
+              }
+              total += ins + del
+            }
+            END { print total }
+          ')
+
+          # Handle empty result
+          if [ -z "$TOTAL_CHANGES" ]; then
+            TOTAL_CHANGES=0
+          fi
+
+          echo "Total changes since last tag: $TOTAL_CHANGES lines"
+          echo "Threshold: $THRESHOLD lines"
+
+          if [ "$TOTAL_CHANGES" -ge "$THRESHOLD" ]; then
+            echo "Threshold met! Proceeding with version bump."
+            echo "meets_threshold=true" >> $GITHUB_OUTPUT
+          else
+            echo "Threshold not met. Skipping version bump."
+            echo "Remaining: $((THRESHOLD - TOTAL_CHANGES)) lines needed"
+            echo "meets_threshold=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Determine version bump (automatic)
         if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true'
         id: auto_bump
         run: |
+          # Check if this is a Nextcloud bot commit that doesn't meet the threshold
+          if [ "${{ steps.nextcloud_bot_check.outputs.is_nextcloud_bot }}" = "true" ] && [ "${{ steps.threshold_check.outputs.meets_threshold }}" = "false" ]; then
+            echo "Nextcloud bot commit does not meet threshold, skipping bump"
+            echo "bump=none" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
           LAST_TAG="${{ steps.last_tag.outputs.tag }}"
 
           if [ -z "$LAST_TAG" ]; then
@@ -272,8 +334,13 @@ jobs:
         run: |
           echo "Skipping workflow - last commit was made by github-actions[bot]"
 
+      - name: Skip message (threshold not met)
+        if: steps.bot_check.outputs.skip != 'true' && steps.nextcloud_bot_check.outputs.is_nextcloud_bot == 'true' && steps.threshold_check.outputs.meets_threshold == 'false'
+        run: |
+          echo "Skipping version bump - Nextcloud bot changes do not meet threshold"
+
       - name: Skip message (no relevant commits)
-        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump == 'none'
+        if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump == 'none' && (steps.nextcloud_bot_check.outputs.is_nextcloud_bot != 'true' || steps.threshold_check.outputs.meets_threshold != 'false')
         run: |
           echo "No version bump needed - no relevant commits found since last tag"
 
