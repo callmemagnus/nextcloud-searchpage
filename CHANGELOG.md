@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.0.6](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.5...v2.0.6)
+
+- update dependencies
+- update result style
+
 ## [v2.0.5](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.4...v2.0.5)
 
 
