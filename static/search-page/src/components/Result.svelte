@@ -84,14 +84,15 @@
 	@reference "tailwindcss";
 
 	.mwb-result {
-		@apply flex w-full items-start cursor-pointer;
+		@apply flex w-full items-center cursor-pointer;
+		min-height: 2rem;
 	}
 
 	.mwb-result__image {
-		@apply w-8 h-8 mt-1 ml-1 mr-1 grow-0 shrink-0;
+		@apply w-8 h-8 ml-1 mr-2 grow-0 shrink-0;
 
 		img {
-			@apply mt-2 w-full;
+			@apply w-full;
 		}
 	}
 
@@ -100,16 +101,18 @@
 	}
 
 	h3 {
-		@apply mt-0 mb-0;
+		@apply text-lg font-normal mt-0 mb-0;
+		padding: 0;
+		line-height: 1.25;
 	}
 
 	p {
 		@apply mt-1 text-sm;
+		line-height: 1.25;
 	}
 
 	.mwb-text {
-		@apply block overflow-hidden;
-		min-height: 2rem;
+		@apply flex flex-col justify-center overflow-hidden;
 	}
 
 	.mwb-ellipsis {
