@@ -42,3 +42,9 @@
 		{token.value}
 	{/if}
 {/each}
+
+<style lang="postcss">
+	b {
+		font-weight: 700;
+	}
+</style>
