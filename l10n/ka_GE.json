@@ -1,9 +1,8 @@
 { "translations": {
-    "No results" : "შედეგები არაა",
-    "Saved" : "შენახულია",
-    "Search" : "ძიება",
     "Loading..." : "იტვირთება…",
+    "No results" : "შედეგები არაა",
     "Save" : "შენახვა",
-    "Saving..." : "მიმხინარეობს შენახვა…"
+    "Saving..." : "მიმხინარეობს შენახვა…",
+    "Search" : "ძიება"
 },"pluralForm" :"nplurals=2; plural=(n!=1);"
 }

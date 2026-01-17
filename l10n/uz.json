@@ -1,10 +1,8 @@
 { "translations": {
     "Back" : "Orqaga",
-    "Loading…" : "Yuklanmoqda...",
     "No results" : "Natija yo'q",
-    "Saved" : "Saqlangan",
-    "Search" : "Qidirish",
     "Save" : "Saqlash",
-    "Saving..." : "Saqlanmoqda..."
+    "Saving..." : "Saqlanmoqda...",
+    "Search" : "Qidirish"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

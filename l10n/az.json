@@ -1,9 +1,8 @@
 { "translations": {
     "Back" : "Geri",
     "No results" : "Nəticə yoxdur",
-    "Saved" : "Saxlanıldı",
-    "Search" : "Axtarış",
     "Save" : "Saxla",
-    "Saving..." : "Saxlama..."
+    "Saving..." : "Saxlama...",
+    "Search" : "Axtarış"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

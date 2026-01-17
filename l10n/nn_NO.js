@@ -1,10 +1,8 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "Loading…" : "Lastar...",
-    "Saved" : "Lagra",
-    "Search" : "Søk",
     "Save" : "Lagre",
-    "Saving..." : "Lagrar …"
+    "Saving..." : "Lagrar …",
+    "Search" : "Søk"
 },
 "nplurals=2; plural=(n != 1);");

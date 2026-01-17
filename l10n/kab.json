@@ -1,8 +1,7 @@
 { "translations": {
     "Back" : "Retour",
-    "Loading…" : "Asali...",
     "No results" : "Ulac igmad",
-    "Search" : "Nadi",
-    "Save" : "Sekles"
+    "Save" : "Sekles",
+    "Search" : "Nadi"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

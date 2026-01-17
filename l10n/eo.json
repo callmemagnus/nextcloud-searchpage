@@ -1,8 +1,6 @@
 { "translations": {
-    "Loading…" : "Ŝargado...",
-    "Saved" : "Konservita",
-    "Search" : "Serĉi",
     "Save" : "Konservi",
-    "Saving..." : "Konservado..."
+    "Saving..." : "Konservado...",
+    "Search" : "Serĉi"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

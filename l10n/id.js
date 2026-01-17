@@ -3,11 +3,9 @@ OC.L10N.register(
     {
     "Back" : "Kembali",
     "Filters" : "Penyaring",
-    "Loading…" : "Memuat…",
     "No results" : "Tidak ada hasil",
-    "Saved" : "Disimpan",
-    "Search" : "Cari",
     "Save" : "Simpan",
-    "Saving..." : "Menyimpan..."
+    "Saving..." : "Menyimpan...",
+    "Search" : "Cari"
 },
 "nplurals=1; plural=0;");

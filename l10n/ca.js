@@ -3,15 +3,12 @@ OC.L10N.register(
     {
     "Back" : "Torna",
     "Filters" : "Filtres",
-    "Global settings" : "Paràmetres globals",
-    "Loading…" : "S'està carregant…",
-    "No results" : "Sense resultats",
-    "Saved" : "S'ha desat",
-    "Search" : "Cercar",
     "Loading..." : "Carregant...",
+    "No results" : "Sense resultats",
     "Note:" : "Nota:",
     "Provider" : "Proveïdor",
     "Save" : "Desar",
-    "Saving..." : "S'està desant..."
+    "Saving..." : "S'està desant...",
+    "Search" : "Cercar"
 },
 "nplurals=2; plural=(n != 1);");

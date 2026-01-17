@@ -2,20 +2,15 @@
     "All providers" : "Hornitzaile guztiak",
     "Back" : "Itzuli",
     "Filters" : "Iragazkiak",
-    "Global settings" : "Ezarpen orokorrak",
-    "Group settings" : "Taldearen ezarpenak",
-    "Load more…" : "Kargatu gehiago...",
-    "Loading…" : "Kargatzen…",
-    "No results" : "Emaitzarik ez",
-    "Saved" : "Gordeta",
-    "Search" : "Bilatu",
-    "Search Page" : "Bilatu orria",
-    "Show only" : "Erakutsi soilik",
     "Load more..." : "Kargatu gehiago...",
     "Loading..." : "Kargatzen...",
+    "No results" : "Emaitzarik ez",
     "Note:" : "Oharra:",
     "Provider" : "Hornitzailea",
     "Save" : "Gorde",
-    "Saving..." : "Gordetzen..."
+    "Saving..." : "Gordetzen...",
+    "Search" : "Bilatu",
+    "Search Page" : "Bilatu orria",
+    "Show only" : "Erakutsi soilik"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

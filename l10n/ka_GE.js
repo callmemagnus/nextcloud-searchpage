@@ -1,11 +1,10 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "No results" : "შედეგები არაა",
-    "Saved" : "შენახულია",
-    "Search" : "ძიება",
     "Loading..." : "იტვირთება…",
+    "No results" : "შედეგები არაა",
     "Save" : "შენახვა",
-    "Saving..." : "მიმხინარეობს შენახვა…"
+    "Saving..." : "მიმხინარეობს შენახვა…",
+    "Search" : "ძიება"
 },
 "nplurals=2; plural=(n!=1);");

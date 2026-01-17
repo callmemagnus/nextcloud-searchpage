@@ -3,9 +3,8 @@ OC.L10N.register(
     {
     "Back" : "Geri",
     "No results" : "Nəticə yoxdur",
-    "Saved" : "Saxlanıldı",
-    "Search" : "Axtarış",
     "Save" : "Saxla",
-    "Saving..." : "Saxlama..."
+    "Saving..." : "Saxlama...",
+    "Search" : "Axtarış"
 },
 "nplurals=2; plural=(n != 1);");
