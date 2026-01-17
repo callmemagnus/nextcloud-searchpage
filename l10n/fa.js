@@ -3,15 +3,12 @@ OC.L10N.register(
     {
     "Back" : "Back",
     "Filters" : "Filters",
-    "Global settings" : "تنظیمات عمومی",
-    "Loading…" : "درحال بارگیری…",
-    "No results" : "بدون نتیجه",
-    "Saved" : "ذخیره شد",
-    "Search" : "جستجو",
     "Loading..." : "در حال بارگذاری...",
+    "No results" : "بدون نتیجه",
     "Note:" : "یادداشت: ",
     "Provider" : "تامین کننده",
     "Save" : "ذخیره",
-    "Saving..." : "در حال ذخیره سازی..."
+    "Saving..." : "در حال ذخیره سازی...",
+    "Search" : "جستجو"
 },
 "nplurals=2; plural=(n > 1);");

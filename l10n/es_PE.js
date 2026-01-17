@@ -1,11 +1,10 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "No results" : "No hay resultados",
-    "Saved" : "Guardado",
-    "Search" : "Buscar",
     "Loading..." : "Cargando...",
+    "No results" : "No hay resultados",
     "Save" : "Guardar",
-    "Saving..." : "Guardando..."
+    "Saving..." : "Guardando...",
+    "Search" : "Buscar"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

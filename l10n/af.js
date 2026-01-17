@@ -1,11 +1,9 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "Loading…" : "Laai…",
-    "Saved" : "Bewaar",
-    "Search" : "Soek",
     "Provider" : "Verskaffer",
     "Save" : "Stoor",
-    "Saving..." : "Stoor tans…"
+    "Saving..." : "Stoor tans…",
+    "Search" : "Soek"
 },
 "nplurals=2; plural=(n != 1);");

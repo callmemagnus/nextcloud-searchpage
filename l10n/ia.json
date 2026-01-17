@@ -1,8 +1,6 @@
 { "translations": {
-    "Loading…" : "Cargante...",
-    "Saved" : "Salveguardate",
-    "Search" : "Cercar",
     "Save" : "Salveguardar",
-    "Saving..." : "Salveguardante..."
+    "Saving..." : "Salveguardante...",
+    "Search" : "Cercar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

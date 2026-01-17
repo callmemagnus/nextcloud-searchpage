@@ -1,7 +1,6 @@
 { "translations": {
-    "Saved" : "﻿ಉಳಿಸಿದ",
-    "Search" : "Search",
     "Save" : "﻿ಉಳಿಸಿ",
-    "Saving..." : "﻿ಉಳಿಸಲಾಗುತ್ತಿದೆ ..."
+    "Saving..." : "﻿ಉಳಿಸಲಾಗುತ್ತಿದೆ ...",
+    "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

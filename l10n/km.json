@@ -1,7 +1,6 @@
 { "translations": {
-    "Saved" : "បាន​រក្សាទុក",
-    "Search" : "ស្វែងរក",
     "Save" : "រក្សាទុក",
-    "Saving..." : "កំពុង​រក្សាទុក"
+    "Saving..." : "កំពុង​រក្សាទុក",
+    "Search" : "ស្វែងរក"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

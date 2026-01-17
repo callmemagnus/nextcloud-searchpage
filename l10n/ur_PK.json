@@ -1,6 +1,6 @@
 { "translations": {
-    "Search" : "Search",
     "Save" : "حفظ",
-    "Saving..." : "محفوظ ھو رہا ہے ..."
+    "Saving..." : "محفوظ ھو رہا ہے ...",
+    "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

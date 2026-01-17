@@ -3,15 +3,12 @@ OC.L10N.register(
     {
     "Back" : "뒤로",
     "Filters" : "필터",
-    "Global settings" : "전역 설정",
-    "Loading…" : "불러오는 중…",
-    "No results" : "검색 결과 없음",
-    "Saved" : "저장됨",
-    "Search" : "검색",
     "Loading..." : "불러오는 중...",
+    "No results" : "검색 결과 없음",
     "Note:" : "메모:",
     "Provider" : "공급자",
     "Save" : "저장",
-    "Saving..." : "저장 중..."
+    "Saving..." : "저장 중...",
+    "Search" : "검색"
 },
 "nplurals=1; plural=0;");

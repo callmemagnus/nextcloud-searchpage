@@ -3,15 +3,12 @@ OC.L10N.register(
     {
     "Back" : "Tilbage",
     "Filters" : "Filtre",
-    "Global settings" : "Globale indstillinger",
-    "Loading…" : "Indlæser…",
-    "No results" : "Ingen resultater",
-    "Saved" : "Gemt",
-    "Search" : "Søg",
     "Loading..." : "Indlæser...",
+    "No results" : "Ingen resultater",
     "Note:" : "Bemærkning:",
     "Provider" : "Udbyder",
     "Save" : "Gem",
-    "Saving..." : "Gemmer..."
+    "Saving..." : "Gemmer...",
+    "Search" : "Søg"
 },
 "nplurals=2; plural=(n != 1);");

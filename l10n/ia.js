@@ -1,10 +1,8 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "Loading…" : "Cargante...",
-    "Saved" : "Salveguardate",
-    "Search" : "Cercar",
     "Save" : "Salveguardar",
-    "Saving..." : "Salveguardante..."
+    "Saving..." : "Salveguardante...",
+    "Search" : "Cercar"
 },
 "nplurals=2; plural=(n != 1);");

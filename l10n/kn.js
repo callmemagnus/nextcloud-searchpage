@@ -1,9 +1,8 @@
 OC.L10N.register(
     "thesearchpage",
     {
-    "Saved" : "﻿ಉಳಿಸಿದ",
-    "Search" : "Search",
     "Save" : "﻿ಉಳಿಸಿ",
-    "Saving..." : "﻿ಉಳಿಸಲಾಗುತ್ತಿದೆ ..."
+    "Saving..." : "﻿ಉಳಿಸಲಾಗುತ್ತಿದೆ ...",
+    "Search" : "Search"
 },
 "nplurals=2; plural=(n > 1);");

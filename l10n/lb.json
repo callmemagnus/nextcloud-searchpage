@@ -1,8 +1,6 @@
 { "translations": {
-    "Loading…" : "Et gëtt gelueden",
-    "Saved" : "Gespäichert",
-    "Search" : "Search",
     "Save" : "Späicheren",
-    "Saving..." : "Speicheren..."
+    "Saving..." : "Speicheren...",
+    "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

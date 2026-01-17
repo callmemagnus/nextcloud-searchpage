@@ -2,16 +2,11 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Filters" : "Filtri",
-    "Global settings" : "Globālie iestatījumi",
-    "Loading…" : "Ielādē …",
-    "No results" : "Nav iznākuma",
-    "Saved" : "Saglabāts",
-    "Search" : "Meklēt",
-    "Security is applied by the search providers." : "Drošību piemēro meklēšanas nodrošinātāji.",
-    "This is not a security configuration." : "Šī nav drošības konfigurācija",
     "Loading..." : "Notiek ielāde...",
+    "No results" : "Nav iznākuma",
     "Provider" : "Nodrošinātājs",
     "Save" : "Saglabāt",
-    "Saving..." : "Saglabā..."
+    "Saving..." : "Saglabā...",
+    "Search" : "Meklēt"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

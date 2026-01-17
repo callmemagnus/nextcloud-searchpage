@@ -3,13 +3,10 @@ OC.L10N.register(
     {
     "Back" : "Назад",
     "Filters" : "Филтри",
-    "Global settings" : "Глобални настройки",
-    "Loading…" : "Зареждане…",
     "No results" : "Няма резултат",
-    "Saved" : "Записано",
-    "Search" : "Търсене",
     "Provider" : "Доставчик",
     "Save" : "Запиши",
-    "Saving..." : "Записване..."
+    "Saving..." : "Записване...",
+    "Search" : "Търсене"
 },
 "nplurals=2; plural=(n != 1);");
