@@ -1,5 +1,8 @@
 # Changelog
 
+## [v2.0.7](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.6...v2.0.7)
+
+
 ## [v2.0.6](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.5...v2.0.6)
 
 - update dependencies
