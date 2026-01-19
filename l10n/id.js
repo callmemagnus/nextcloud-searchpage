@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Kembali",
     "Filters" : "Penyaring",
+    "Loading..." : "Memuat...",
     "No results" : "Tidak ada hasil",
     "Save" : "Simpan",
     "Saving..." : "Menyimpan...",
