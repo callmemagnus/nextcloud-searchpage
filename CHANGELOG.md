@@ -2,6 +2,7 @@
 
 ## [v2.0.7](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.6...v2.0.7)
 
+- Update translations - Many thanks to the translators!
 
 ## [v2.0.6](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.5...v2.0.6)
 
@@ -10,19 +11,20 @@
 
 ## [v2.0.5](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.4...v2.0.5)
 
+- Update translations - Many thanks to the translators!
 
 ## [v2.0.4](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.3...v2.0.4)
 
+- Update translations - Many thanks to the translators!
 
 ## [v2.0.3](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.2...v2.0.3)
 
+- Update translations - Many thanks to the translators!
 
 ## [v2.0.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.1...v2.0.2)
 
 - change release workflow
-- Update translations from Transifex
-- Update translations from Transifex
-- Update translations from Transifex
+- Update translations - Many thanks to the translators!
 
 ## [v2.0.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.0..v2.0.1)
 

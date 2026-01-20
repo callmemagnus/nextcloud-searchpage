@@ -270,23 +270,63 @@ jobs:
           NEW_VERSION="${{ steps.new_version.outputs.version }}"
           LAST_TAG="${{ steps.last_tag.outputs.tag }}"
 
+          echo "::group::Debug: Changelog generation"
+          echo "New version: $NEW_VERSION"
+          echo "Last tag: $LAST_TAG"
+
           # Create changelog entry
           CHANGELOG_ENTRY="## [v${NEW_VERSION}](https://github.com/callmemagnus/nextcloud-searchpage/compare/${LAST_TAG}...v${NEW_VERSION})"$'\n\n'
 
           if [ -n "$LAST_TAG" ]; then
-            # Get commits since last tag and format them
+            # Get commits since last tag
             # Exclude commits made by github-actions[bot] to avoid including version bump commits
+            echo "Running: git log ${LAST_TAG}..HEAD --pretty=format:\"%s\" --no-merges --author='^(?!github-actions\[bot\]).*' --perl-regexp"
+            COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges --author='^(?!github-actions\[bot\]).*' --perl-regexp)
+
+            echo "Raw commits found:"
+            echo "---"
+            echo "$COMMITS"
+            echo "---"
+            echo "Number of commit lines: $(echo "$COMMITS" | grep -c . || echo 0)"
+
+            # Check if there are any translation commits (fix(l10n))
+            HAS_L10N_COMMITS=false
+            if echo "$COMMITS" | grep -qE "^fix\(l10n\):"; then
+              HAS_L10N_COMMITS=true
+            fi
+            echo "Has l10n commits: $HAS_L10N_COMMITS"
+
+            # Add consolidated translation line if there are l10n commits
+            if [ "$HAS_L10N_COMMITS" = true ]; then
+              CHANGELOG_ENTRY="${CHANGELOG_ENTRY}- Update translations - Many thanks to the translators!"$'\n'
+            fi
+
+            # Add other commits (excluding l10n commits)
+            COMMIT_COUNT=0
             while IFS= read -r commit; do
               # Skip empty lines
               [ -z "$commit" ] && continue
 
+              # Skip l10n commits (already handled above)
+              if echo "$commit" | grep -qE "^fix\(l10n\):"; then
+                echo "Skipping l10n commit: $commit"
+                continue
+              fi
+
+              COMMIT_COUNT=$((COMMIT_COUNT + 1))
+              echo "Processing commit #$COMMIT_COUNT: $commit"
+
               # Format: commit message without conventional commit prefix
               MESSAGE=$(echo "$commit" | sed -E 's/^(feat|fix|chore|docs|style|refactor|perf|test|build|ci)(\([^)]*\))?:\s*//')
+              echo "  -> Message: $MESSAGE"
               CHANGELOG_ENTRY="${CHANGELOG_ENTRY}- ${MESSAGE}"$'\n'
-            done < <(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges --author='^(?!github-actions\[bot\]).*' --perl-regexp)
+            done <<< "$COMMITS"
+
+            echo "Total non-l10n commits processed: $COMMIT_COUNT"
 
             # If no commits were found (all were from bot), add a note
             if [ "$(echo -n "$CHANGELOG_ENTRY" | tail -c 1)" = $'\n' ] && [ "$(echo "$CHANGELOG_ENTRY" | wc -l)" -eq 3 ]; then
+              echo "No commits found, adding 'Version bump' placeholder"
               CHANGELOG_ENTRY="${CHANGELOG_ENTRY}- Version bump"$'\n'
             fi
           else
@@ -295,6 +335,12 @@ jobs:
 
           # Add empty line after entry
           CHANGELOG_ENTRY="${CHANGELOG_ENTRY}"$'\n'
+
+          echo "Final changelog entry:"
+          echo "---"
+          echo "$CHANGELOG_ENTRY"
+          echo "---"
+          echo "::endgroup::"
 
           # Insert at the top of CHANGELOG.md after the "# Changelog" line
           if [ -f CHANGELOG.md ]; then
