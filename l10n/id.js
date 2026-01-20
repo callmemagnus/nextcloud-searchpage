@@ -5,6 +5,7 @@ OC.L10N.register(
     "Filters" : "Penyaring",
     "Loading..." : "Memuat...",
     "No results" : "Tidak ada hasil",
+    "Note:" : "Catatan:",
     "Save" : "Simpan",
     "Saving..." : "Menyimpan...",
     "Search" : "Cari"
