@@ -22,7 +22,7 @@ jobs:
   build_and_publish:
     environment: release
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     name: "Release: build, sign and upload the app"
     strategy:
       matrix:
@@ -47,8 +47,26 @@ jobs:
             # Triggered by Version Bump workflow completion
             # Get the most recent tag
             TAG=$(git describe --tags --abbrev=0)
-            echo "tag=$TAG" >> $GITHUB_OUTPUT
-            echo "Release triggered by workflow_run, using latest tag: $TAG"
+            TAG_COMMIT=$(git rev-list -n 1 "$TAG")
+            WORKFLOW_HEAD="${{ github.event.workflow_run.head_sha }}"
+
+            # Check if the tag was created AFTER the triggering commit
+            # If Version Bump created a tag, it will be on a new commit (descendant of workflow head)
+            # If no tag was created, the latest tag will be on an older commit
+            if [ "$TAG_COMMIT" = "$WORKFLOW_HEAD" ]; then
+              echo "Tag commit is the same as workflow head - no new tag was created"
+              echo "should_release=false" >> $GITHUB_OUTPUT
+            elif git merge-base --is-ancestor "$WORKFLOW_HEAD" "$TAG_COMMIT"; then
+              echo "Tag $TAG was created after workflow head - proceeding with release"
+              echo "should_release=true" >> $GITHUB_OUTPUT
+              echo "tag=$TAG" >> $GITHUB_OUTPUT
+            else
+              echo "Tag $TAG (commit ${TAG_COMMIT:0:7}) is older than workflow head (${WORKFLOW_HEAD:0:7})"
+              echo "Version Bump workflow did not create a new tag, skipping release"
+              echo "should_release=false" >> $GITHUB_OUTPUT
+            fi
+
+            echo "Release triggered by workflow_run, latest tag: $TAG"
           elif [ "${{ github.event_name }}" = "release" ]; then
             # Triggered by release publication
             TAG="${{ github.event.release.tag_name }}"
@@ -60,17 +78,20 @@ jobs:
           fi
 
       - name: Checkout tag
+        if: steps.get_tag.outputs.should_release != 'false'
         uses: actions/checkout@v4
         with:
           ref: ${{ steps.get_tag.outputs.tag }}
           fetch-depth: 0
 
       - name: Install XML tools
+        if: steps.get_tag.outputs.should_release != 'false'
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y xmlstarlet
 
       - name: Validate tag matches info.xml version
+        if: steps.get_tag.outputs.should_release != 'false'
         run: |
           TAG="${{ steps.get_tag.outputs.tag }}"
 
@@ -107,6 +128,7 @@ jobs:
           echo "Version validation passed: $INFO_VERSION"
 
       - name: Setup PHP
+        if: steps.get_tag.outputs.should_release != 'false'
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
@@ -114,6 +136,7 @@ jobs:
           coverage: none
 
       - name: Set up server non MySQL
+        if: steps.get_tag.outputs.should_release != 'false'
         uses: SMillerDev/nextcloud-actions/setup-nextcloud@fae87e29aa7cdf1ea0b8033c67f60e75b10be2cd
         with:
           cron: false
@@ -121,15 +144,18 @@ jobs:
           database-type: ${{ matrix.database }}
 
       - name: Prime app build
+        if: steps.get_tag.outputs.should_release != 'false'
         run: make
 
       - name: Configure server with app
+        if: steps.get_tag.outputs.should_release != 'false'
         uses: SMillerDev/nextcloud-actions/setup-nextcloud-app@fae87e29aa7cdf1ea0b8033c67f60e75b10be2cd
         with:
           app: ${{ env.APP_NAME }}
           check-code: false
 
       - name: Create signed release archive
+        if: steps.get_tag.outputs.should_release != 'false'
         run: |
           cd ../server/apps/${{ env.APP_NAME }} && make appstore
         env:
@@ -137,6 +163,7 @@ jobs:
           app_public_crt: ${{ secrets.APP_PUBLIC_CRT }}
 
       - name: Upload app tarball to release
+        if: steps.get_tag.outputs.should_release != 'false'
         uses: svenstaro/upload-release-action@v2
         id: attach_to_release
         with:
@@ -148,6 +175,7 @@ jobs:
           overwrite: true
 
       - name: Upload app to Nextcloud appstore
+        if: steps.get_tag.outputs.should_release != 'false'
         uses: R0Wi/nextcloud-appstore-push-action@v1
         with:
           app_name: ${{ env.APP_NAME }}
@@ -157,4 +185,5 @@ jobs:
           nightly: false
 
       - name: Delete crt and key from local storage
+        if: steps.get_tag.outputs.should_release != 'false'
         run: rm -f ~/.nextcloud/certificates/*
