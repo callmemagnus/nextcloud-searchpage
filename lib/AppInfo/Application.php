@@ -27,8 +27,7 @@ class Application extends App implements IBootstrap
 
     public function __construct(
         array $urlParams = [],
-    )
-    {
+    ) {
         parent::__construct(self::APP_ID, $urlParams);
     }
 
@@ -58,7 +57,12 @@ class Application extends App implements IBootstrap
                     return;
                 }
             }
-            $navigation->add($this->navigation());
+            $navigationEntry = $this->navigation();
+            if (count($navigationEntry) > 0) {
+                $navigation->add(function () use ($navigationEntry) {
+                    return $navigationEntry;
+                });
+            }
         });
     }
 
@@ -77,7 +81,7 @@ class Application extends App implements IBootstrap
                 'icon' => $urlGenerator->imagePath(self::APP_ID, 'app.svg'),
                 'name' => $l10n->t('The Search Page')
             ];
-        } catch (NotFoundExceptionInterface|ContainerExceptionInterface $e) {
+        } catch (NotFoundExceptionInterface | ContainerExceptionInterface $e) {
 
             return [];
         }
