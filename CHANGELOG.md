@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.0.9](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.8...v2.0.9)
+
+- Update translations - Many thanks to the translators!
+- avoid race condition with other app when adding navigation item
+- make sure not to release same version again [skip ci]
+
 ## [v2.0.8](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.7...v2.0.8)
 
 - Update translations - Many thanks to the translators!
