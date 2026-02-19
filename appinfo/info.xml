@@ -50,7 +50,7 @@ Don't hesitate to leave a comment here or a rating!
   <repository type="git">https://github.com/callmemagnus/nextcloud-searchpage.git</repository>
   <screenshot>https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/screenshots/main.png</screenshot>
   <dependencies>
-    <nextcloud min-version="30" max-version="32"/>
+    <nextcloud min-version="30" max-version="33"/>
   </dependencies>
   <settings>
     <admin>OCA\TheSearchPage\Settings\Admin</admin>
