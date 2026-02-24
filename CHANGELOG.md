@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.1.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.1.0...v2.1.1)
+
+- Update translations - Many thanks to the translators!
+- update dependencies
+
 ## [v2.1.0](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.0.9...v2.1.0)
 
 - add support for nextcloud 33 and fix security issues
