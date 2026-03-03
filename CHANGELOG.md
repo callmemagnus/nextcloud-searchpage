@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.1.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.1.1...v2.1.2)
+
+- security updates
+
 ## [v2.1.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.1.0...v2.1.1)
 
 - Update translations - Many thanks to the translators!
