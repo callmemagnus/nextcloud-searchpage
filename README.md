@@ -118,3 +118,33 @@ make test                                                    # Run all PHP tests
 vendor/phpunit/phpunit/phpunit -c tests/phpunit.xml          # Unit tests only
 vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml    # Integration tests only
 ```
+
+### E2E Tests (Playwright)
+
+The e2e tests run against a real Nextcloud instance in Docker. Use the local test script for development and dependency validation:
+
+```bash
+bin/e2e-local.sh                        # Full run: install, build, start NC, test, cleanup
+bin/e2e-local.sh --no-cleanup           # Keep container running before and after
+bin/e2e-local.sh --use-existing         # Skip container setup, reuse running instance
+```
+
+**Prerequisites:** `docker`, `gh` (GitHub CLI, authenticated), `jq`, `npm`
+
+The script automatically detects the target Nextcloud version from `appinfo/info.xml` and the Playwright version from `package.json`.
+
+#### Flags
+
+| Flag | Description |
+|------|-------------|
+| _(none)_ | Full run: install deps, build, stop any existing container, start a fresh one, wait for it to be ready, run tests, stop container. |
+| `--no-cleanup` | Skip stopping the container before and after the run. Useful when iterating and the container is already warmed up. |
+| `--use-existing` | Skip container lifecycle entirely (no start, no wait, no configure, no stop). Still installs deps and builds. Use when a Nextcloud instance is already running and configured. Implies `--no-cleanup`. |
+
+To run all supported Nextcloud versions in parallel (CI-style), use the existing scripts:
+
+```bash
+bin/test-envs.sh start       # Start containers for all supported versions
+bin/run-playwright.sh        # Run Playwright tests against all versions
+bin/test-envs.sh stop        # Stop all containers
+```
