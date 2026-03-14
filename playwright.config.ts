@@ -1,11 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
-import { authFileFromUrl } from './tests/e2e/helpers';
 
 const host = process.env.TARGET_HOST ? process.env.TARGET_HOST : 'localhost';
 
+function authFileFromUrl(url: string) {
+	const s = url.split(':');
+	return `.playwright/auth/user-${s[2]}.json`;
+}
+
 const setup = (id: number) => ({
 	name: `setup-${id}`,
-	testMatch: 'auth.setup.ts',
+	testMatch: '**/tests/e2e/auth.setup.ts',
 	use: {
 		baseURL: `http://${host}:80${id}`
 	}
@@ -22,10 +26,19 @@ const tests = (id: number) => ({
 	dependencies: [`setup-${id}`]
 });
 
+// Set TARGET_NC_VERSION=33 to run only that version (used by bin/e2e-local.sh)
+const versions = process.env.TARGET_NC_VERSION
+	? [parseInt(process.env.TARGET_NC_VERSION, 10)]
+	: [30, 31, 32, 33];
+
+if (versions.some(isNaN)) {
+	throw new Error(`Invalid TARGET_NC_VERSION: "${process.env.TARGET_NC_VERSION}"`);
+}
+
 export default defineConfig({
 	workers: 1,
-	testDir: './tests/e2e',
+	testDir: './static',
 	timeout: 30_000,
 
-	projects: [setup(30), tests(30), setup(31), tests(31), setup(32), tests(32)]
+	projects: versions.flatMap((id) => [setup(id), tests(id)])
 });
