@@ -9,6 +9,7 @@ OC.L10N.register(
     "Provider" : "プロバイダー",
     "Save" : "保存する",
     "Saving..." : "保存中...",
-    "Search" : "検索"
+    "Search" : "検索",
+    "Settings saved successfully" : "設定は正常に保存されました。"
 },
 "nplurals=1; plural=0;");
