@@ -20,6 +20,7 @@ OC.L10N.register(
     "Search Page" : "Página de búsqueda",
     "See all providers" : "Mostrar todos los proveedores",
     "See only results for this provider" : "Ver sólo los resultados de este proveedor",
+    "Settings saved successfully" : "Ajustes guardados con éxito",
     "Show only" : "Sólo mostrar",
     "There was an error loading the providers." : "Hubo un error cargando los proveedores."
 },
