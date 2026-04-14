@@ -138,7 +138,7 @@ if ! $USE_EXISTING; then
             echo "ERROR: Nextcloud did not become ready after $((MAX_ATTEMPTS * 5)) seconds"
             exit 1
         fi
-        echo "Not ready yet, retrying in 5s... ($ATTEMPTS/$MAX_ATTEMPTS)"
+        echo "Not ready yet, retrying in 10s... ($ATTEMPTS/$MAX_ATTEMPTS)"
         sleep 10
     done
 
