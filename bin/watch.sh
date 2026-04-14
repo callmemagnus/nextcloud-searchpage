@@ -13,8 +13,8 @@ missing_lib() {
 	exit 1
 }
 
-whereis entr || missing_lib entr
-whereis notify-send || missing_lib notify-send
+command -v entr >/dev/null 2>&1 || missing_lib entr
+command -v notify-send >/dev/null 2>&1 || missing_lib notify-send
 
   find static | entr -s "\
     npm run build -- -m dev \

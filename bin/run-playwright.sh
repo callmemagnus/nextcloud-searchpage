@@ -10,6 +10,7 @@ if test "$PLAYWRIGHT_VERSION" = "" || test "$PLAYWRIGHT_VERSION" = "null"; then
     exit 1
 else
     docker run \
+        --rm \
         -w /app \
         -e TARGET_HOST=$ip \
         -v "$root":/app \

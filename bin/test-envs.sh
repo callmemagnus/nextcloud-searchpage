@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if test "$1" = ""; then
 	echo "$0 start | stop"
@@ -30,7 +30,7 @@ start() {
 		sort -n -r \
 			>"$releases"
 
-	pwd=$(dirname $(readlink -f $0))
+	script_dir=$(dirname $(readlink -f $0))
 	ip=$(ip route get 1 | head -1 | cut -d' ' -f7)
 
 	if test "$ip" = ""; then
@@ -55,7 +55,7 @@ start() {
 			--name nextcloud$i \
 			-p 80$i:80 \
 			-v /tmp/nextcloud/$latest:/var/www/html \
-			-v $pwd/..:/var/www/html/apps-extra/thesearchpage \
+			-v $script_dir/..:/var/www/html/apps-extra/thesearchpage \
 			-e SERVER_BRANCH=$latest \
 			$image83
 	done
