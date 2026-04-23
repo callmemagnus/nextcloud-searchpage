@@ -5,6 +5,7 @@ OC.L10N.register(
     "No results" : "Natija yo'q",
     "Save" : "Saqlash",
     "Saving..." : "Saqlanmoqda...",
-    "Search" : "Qidirish"
+    "Search" : "Qidirish",
+    "User group" : "Foydalanuvchilar guruhi"
 },
 "nplurals=1; plural=0;");
