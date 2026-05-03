@@ -6,6 +6,7 @@ OC.L10N.register(
     "Loading..." : "Įkeliama...",
     "No results" : "Nieko nerasta",
     "Note:" : "Pastaba:",
+    "Provider" : "Tiekėjas",
     "Save" : "Įrašyti",
     "Saving..." : "Įrašoma...",
     "Search" : "Ieškoti",
