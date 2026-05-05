@@ -9,6 +9,7 @@ OC.L10N.register(
     "Provider" : "공급자",
     "Save" : "저장",
     "Saving..." : "저장 중...",
-    "Search" : "검색"
+    "Search" : "검색",
+    "User group" : "사용자 그룹"
 },
 "nplurals=1; plural=0;");
