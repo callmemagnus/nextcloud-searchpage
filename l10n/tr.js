@@ -48,6 +48,6 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Ayarların son kaydedilmesinde şu hizmet sağlayıcılar kullanılabilir değildi: {providers}",
     "There was an error loading the providers." : "Hizmet sağlayıcılar yüklenirken sorun çıktı.",
     "User group" : "Kullanıcı grubu",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Etkinleştirildiğinde, hangi arama hizmeti sağlayıcılarının belirli kullanıcı grupları tarafından görülebileceğini belirleyebilirsiniz. Varsayılan olarak, tüm hizmet sağlayıcılar tüm gruplarda kullanılabilir."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Açıldığında, hangi arama hizmeti sağlayıcılarının belirli kullanıcı grupları tarafından görülebileceğini belirleyebilirsiniz. Varsayılan olarak, tüm hizmet sağlayıcılar tüm gruplarda kullanılabilir."
 },
 "nplurals=2; plural=(n > 1);");
