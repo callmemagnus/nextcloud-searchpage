@@ -1,12 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { openAppFromMenu } from "./helpers";
 
-test("if menu leads to search app", async ({ page, baseURL }) => {
+test("if menu leads to search app", async ({ page }) => {
   await page.goto("/");
-  const button = page
-    .getByRole("navigation")
-    .getByRole("link", { name: "The Search Page" });
-  await expect(button).toBeVisible();
-  await button.click();
+  await openAppFromMenu(page, "The Search Page");
   await page.waitForURL(/\/apps\/thesearchpage/);
 
   await expect(

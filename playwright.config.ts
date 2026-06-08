@@ -29,7 +29,7 @@ const tests = (id: number) => ({
 // Set TARGET_NC_VERSION=33 to run only that version (used by bin/e2e-local.sh)
 const versions = process.env.TARGET_NC_VERSION
 	? [parseInt(process.env.TARGET_NC_VERSION, 10)]
-	: [30, 31, 32, 33];
+	: [30, 31, 32, 33, 34];
 
 if (versions.some(isNaN)) {
 	throw new Error(`Invalid TARGET_NC_VERSION: "${process.env.TARGET_NC_VERSION}"`);
