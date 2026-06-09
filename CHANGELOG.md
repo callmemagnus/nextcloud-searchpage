@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.2.0](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.1.2...v2.2.0)
+
+- Update translations - Many thanks to the translators!
+- update dependencies
+- add support for nextcloud 34
+- shell script updates
+- update dependencies
+- bring back the e2e tests [skip ci]
+
 ## [v2.1.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.1.1...v2.1.2)
 
 - security updates
