@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Retour",
+    "Filters" : "Imsizdigen",
     "No results" : "Ulac igmad",
     "Save" : "Sekles",
     "Search" : "Nadi"
