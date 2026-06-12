@@ -4,6 +4,7 @@ OC.L10N.register(
     "Back" : "Retour",
     "Filters" : "Imsizdigen",
     "No results" : "Ulac igmad",
+    "Note:" : "Tazmilt:",
     "Save" : "Sekles",
     "Search" : "Nadi"
 },
