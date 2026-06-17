@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Terug",
+    "Error saving settings" : "Fout bij opslaan van instellingen",
     "Filters" : "Filters",
     "Loading..." : "Laden....",
     "No results" : "Geen resultaten",
