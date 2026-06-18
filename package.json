@@ -1,29 +1,29 @@
 {
-	"name": "thesearchpage",
-	"description": "Provides a proper search page",
-	"version": "1.0.0",
-	"author": "Magnus Anderssen <magnus@magooweb.com>",
-	"contributors": [],
-	"bugs": {
-		"url": "https://github.com/callmemagnus/nextcloud-searchpage/issues"
-	},
-	"license": "agpl",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "npm run dev --workspaces --if-present",
-		"build": "npm run build --workspaces --if-present",
-		"lint": "npm run lint --workspaces --if-present",
-		"test": "./bin/e2e-local.sh --use-existing",
-		"prepare": "husky"
-	},
-	"workspaces": [
-		"static/search-page",
-		"static/settings-page",
-		"static/shared"
-	],
-	"devDependencies": {
-		"@playwright/test": "1.59.1",
-		"npm-check-updates": "19.6.6"
-	}
+  "name": "thesearchpage",
+  "description": "Provides a proper search page",
+  "version": "1.0.0",
+  "author": "Magnus Anderssen <magnus@magooweb.com>",
+  "contributors": [],
+  "bugs": {
+    "url": "https://github.com/callmemagnus/nextcloud-searchpage/issues"
+  },
+  "license": "agpl",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "./bin/e2e-local.sh --use-existing",
+    "prepare": "husky"
+  },
+  "workspaces": [
+    "static/search-page",
+    "static/settings-page",
+    "static/shared"
+  ],
+  "devDependencies": {
+    "@playwright/test": "1.59.1",
+    "npm-check-updates": "19.6.6"
+  }
 }
