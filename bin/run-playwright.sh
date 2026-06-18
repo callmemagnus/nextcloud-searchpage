@@ -5,6 +5,8 @@ root=$(git rev-parse --show-toplevel)
 ip=$(ip route get 1 | head -1 | cut -d' ' -f7)
 PLAYWRIGHT_VERSION=$(jq -r '.devDependencies["@playwright/test"]' "$root/package.json")
 
+echo "Playwright version: $PLAYWRIGHT_VERSION"
+
 if test "$PLAYWRIGHT_VERSION" = "" || test "$PLAYWRIGHT_VERSION" = "null"; then
     echo "Cannot get playwright version"
     exit 1
