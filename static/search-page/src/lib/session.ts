@@ -19,6 +19,12 @@ export function saveInSession(terms: string, providerIds: string[]) {
 			}
 		}
 	}
+	if (queryState.since) {
+		newState.append('since', queryState.since);
+	}
+	if (queryState.until) {
+		newState.append('until', queryState.until);
+	}
 
 	try {
 		history.pushState(
@@ -42,11 +48,15 @@ export function loadFromSession() {
 			providers = [];
 		}
 		const terms = decodeURI(state.get('terms') || '');
+		const since = state.get('since') || '';
+		const until = state.get('until') || '';
 		clog('Reading from session (url)', terms, providers);
 		return {
 			terms,
-			providers
+			providers,
+			since,
+			until
 		};
 	}
-	return { terms: '', providers: [] };
+	return { terms: '', providers: [], since: '', until: '' };
 }

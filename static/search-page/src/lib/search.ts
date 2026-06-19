@@ -4,6 +4,7 @@
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
 import availableProviders from '../states/availableProviders.svelte';
+import queryState from '../states/query.svelte';
 import TimedCache from './TimedCache';
 import { clog, type Provider } from '@shared/libs';
 
@@ -61,6 +62,15 @@ export async function searchOnProvider(
 	searchParam.append('limit', String(limit));
 	if (cursor) {
 		searchParam.append('cursor', String(cursor));
+	}
+
+	if (queryState.since) {
+		const d = new Date(queryState.since + 'T00:00:00');
+		searchParam.append('since', String(Math.floor(d.getTime() / 1000)));
+	}
+	if (queryState.until) {
+		const d = new Date(queryState.until + 'T23:59:59');
+		searchParam.append('until', String(Math.floor(d.getTime() / 1000)));
 	}
 
 	const url = generateOcsUrl(`search/providers/${providerId}/search?${searchParam}`);

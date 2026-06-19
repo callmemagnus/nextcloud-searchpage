@@ -8,6 +8,8 @@ const session = loadFromSession();
 
 class QueryState {
 	terms = $state(session.terms);
+	since = $state(session.since);
+	until = $state(session.until);
 	providerId = $state<string | null>(null);
 	providerIds = $state<string[]>(
 		(() => {
