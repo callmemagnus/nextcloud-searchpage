@@ -37,6 +37,7 @@ export async function fetchSettings(): Promise<Settings> {
 		}
 		return {
 			enabled: false,
+			hijackSearchEnabled: false,
 			providers: [],
 			providerGroupMap: {},
 			providerLimits: {}
@@ -45,6 +46,7 @@ export async function fetchSettings(): Promise<Settings> {
 		console.error('Error fetching settings:', e);
 		return {
 			enabled: false,
+			hijackSearchEnabled: false,
 			providers: [],
 			providerGroupMap: {},
 			providerLimits: {}

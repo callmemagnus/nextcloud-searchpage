@@ -10,6 +10,7 @@ class SettingsStore {
 	groups = $state<Group[]>([]);
 	settings = $state<Settings>({
 		enabled: false,
+		hijackSearchEnabled: false,
 		providers: [],
 		providerGroupMap: {},
 		providerLimits: {}
@@ -87,6 +88,10 @@ class SettingsStore {
 
 	updateEnabled(enabled: boolean) {
 		this.settings.enabled = enabled;
+	}
+
+	updateHijackSearchEnabled(value: boolean) {
+		this.settings.hijackSearchEnabled = value;
 	}
 
 	updateProviderGroupMap(providerGroupMap: Record<string, string[]>) {

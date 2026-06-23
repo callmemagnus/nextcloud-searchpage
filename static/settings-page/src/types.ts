@@ -14,6 +14,7 @@ export type Group = {
 
 export type Settings = {
 	enabled: boolean;
+	hijackSearchEnabled: boolean;
 	providers: Provider[];
 	providerGroupMap: Record<string, string[]> | null;
 	providerLimits: Record<string, number> | null;

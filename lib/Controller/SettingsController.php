@@ -58,12 +58,14 @@ class SettingsController extends Controller
     {
         try {
             $enabled = $this->appConfig->getValueBool(Application::APP_ID, 'restrict_providers_enabled');
+            $hijackSearchEnabled = $this->appConfig->getValueBool(Application::APP_ID, 'hijack_search_enabled');
             $providerGroupMap = $this->appConfig->getValueArray(Application::APP_ID, 'provider_group_map');
             $providerLimits = $this->appConfig->getValueArray(Application::APP_ID, 'provider_limits');
             $providers = $this->appConfig->getValueArray(Application::APP_ID, 'providers');
 
             return new JSONResponse([
                 'enabled' => $enabled,
+                'hijackSearchEnabled' => $hijackSearchEnabled,
                 'providers' => $providers,
                 'providerGroupMap' => $providerGroupMap ?: null,
                 'providerLimits' => $providerLimits ?: null
@@ -85,6 +87,7 @@ class SettingsController extends Controller
             $data = $this->request->getParams();
 
             $enabled = isset($data['enabled']) && $data['enabled'] === true;
+            $hijackSearchEnabled = isset($data['hijackSearchEnabled']) && $data['hijackSearchEnabled'] === true;
             $providerGroupMap = $data['providerGroupMap'] ?? [];
             $providerLimits = $data['providerLimits'] ?? [];
             $providers = $data['providers'] ?? [];
@@ -104,6 +107,7 @@ class SettingsController extends Controller
 
             // Save settings
             $this->appConfig->setValueBool(Application::APP_ID, 'restrict_providers_enabled', $enabled);
+            $this->appConfig->setValueBool(Application::APP_ID, 'hijack_search_enabled', $hijackSearchEnabled);
             $this->appConfig->setValueArray(Application::APP_ID, 'provider_group_map', $providerGroupMap);
             $this->appConfig->setValueArray(Application::APP_ID, 'provider_limits', $sanitizedLimits);
             $this->appConfig->setValueArray(Application::APP_ID, 'providers', $providers);

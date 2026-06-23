@@ -26,6 +26,11 @@
 		const target = event.target as HTMLInputElement;
 		settingsStore.updateEnabled(target.checked);
 	}
+
+	function handleHijackSearchChange(event: Event) {
+		const target = event.target as HTMLInputElement;
+		settingsStore.updateHijackSearchEnabled(target.checked);
+	}
 </script>
 
 <svelte:body onkeydown={onKeydown} />
@@ -70,6 +75,26 @@
 					{translate(
 						APP_NAME,
 						'When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups.'
+					)}
+				</p>
+			</div>
+
+			<div class="mwb-enable-restrictions">
+				<p>
+					<input
+						type="checkbox"
+						id="hijack-search-enabled"
+						class="checkbox"
+						checked={settingsStore.settings.hijackSearchEnabled}
+						onchange={handleHijackSearchChange} />
+					<label for="hijack-search-enabled">
+						<strong>{translate(APP_NAME, 'Enable inline search modal')}</strong>
+					</label>
+				</p>
+				<p class="mwb-settings-hint">
+					{translate(
+						APP_NAME,
+						'When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface.'
 					)}
 				</p>
 			</div>
