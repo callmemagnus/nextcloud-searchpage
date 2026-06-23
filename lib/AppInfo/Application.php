@@ -12,6 +12,8 @@ use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCA\Files\Event\LoadAdditionalScriptsEvent;
+use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IAppConfig;
 use OCP\IL10N;
 use OCP\INavigationManager;
@@ -64,6 +66,14 @@ class Application extends App implements IBootstrap
                 });
             }
         });
+        /** @var \OCP\IRequest $request */
+         $request = $context->getServerContainer()->get(\OCP\IRequest::class);
+
+        // Only inject on the Files app pages
+        // if (str_starts_with($request->getPathInfo() ?? '', '/apps/files')) {
+            \OCP\Util::addScript(self::APP_ID, 'files-addons.iife');
+        // }
+
     }
 
     /**
