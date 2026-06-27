@@ -1,14 +1,14 @@
 # SPDX-FileCopyrightText: Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: Build and publish app pre-release
+name: Build and publish app dev release
 
 on:
   release:
     types: [published]
   push:
     tags:
-      - v*-pre*
+      - v*-dev.*
 
 env:
   APP_NAME: thesearchpage
@@ -76,26 +76,32 @@ jobs:
             exit 1
           fi
 
-          # Extract version from tag (remove 'v' prefix and any pre-release suffix)
+          # Extract version from tag (remove 'v' prefix) and base version (strip dev suffix)
           TAG_VERSION="${TAG#v}"
-          # For pre-release tags like v2.1.0-pre1, extract base version 2.1.0
           TAG_BASE_VERSION="${TAG_VERSION%%-*}"
 
           echo "Tag: $TAG"
           echo "Tag base version: $TAG_BASE_VERSION"
           echo "info.xml version: $INFO_VERSION"
 
-          # Compare versions - for pre-releases, the base version should match info.xml
+          # Base version must match info.xml (dev suffix is injected at build time)
           if [ "$TAG_BASE_VERSION" != "$INFO_VERSION" ]; then
             echo "Error: Version mismatch!"
             echo "  Tag base version: $TAG_BASE_VERSION"
             echo "  info.xml version: $INFO_VERSION"
             echo ""
-            echo "The git tag base version and appinfo/info.xml version must match for a release."
+            echo "The git tag base version and appinfo/info.xml version must match for a dev release."
             exit 1
           fi
 
           echo "Version validation passed: $INFO_VERSION"
+
+      - name: Set dev version in info.xml for build
+        run: |
+          TAG="${{ steps.get_tag.outputs.tag }}"
+          VERSION="${TAG#v}"
+          xmlstarlet ed --inplace -u "//version" -v "$VERSION" appinfo/info.xml
+          echo "Set info.xml version to $VERSION for build (not committed)"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@2.26.0

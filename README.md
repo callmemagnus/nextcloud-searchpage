@@ -10,6 +10,7 @@ A dedicated search interface for Nextcloud that provides a proper search page wi
 Place this app in one of the application folders of your nextcloud server (e.g. **nextcloud/apps/**).
 
 - [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)
+- [Release process](RELEASE.md)
 - [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)
 
 ## Features

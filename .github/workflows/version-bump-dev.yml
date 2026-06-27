@@ -1,0 +1,136 @@
+# SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: Version Bump Pre-release
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  bump-pre-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if last commit is from bot
+        if: github.event_name == 'push'
+        id: bot_check
+        run: |
+          LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
+          echo "Last commit author: $LAST_COMMIT_AUTHOR"
+          if [ "$LAST_COMMIT_AUTHOR" = "github-actions[bot]" ]; then
+            echo "Last commit was made by github-actions[bot], skipping workflow"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install XML tools
+        if: steps.bot_check.outputs.skip != 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xmlstarlet
+
+      - name: Get current version
+        if: steps.bot_check.outputs.skip != 'true'
+        id: current_version
+        run: |
+          if ! xmlstarlet val -q appinfo/info.xml; then
+            echo "Error: appinfo/info.xml is not valid XML"
+            exit 1
+          fi
+
+          VERSION=$(xmlstarlet sel -t -v "//version" appinfo/info.xml)
+          if [ -z "$VERSION" ]; then
+            echo "Error: Could not extract version from appinfo/info.xml"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $VERSION"
+
+      - name: Find latest dev tag for this version
+        if: steps.bot_check.outputs.skip != 'true'
+        id: last_dev_tag
+        run: |
+          VERSION="${{ steps.current_version.outputs.version }}"
+          LATEST_NUM=$(git tag --list "v${VERSION}-dev.*" | sed -E 's/.*-dev\.([0-9]+)$/\1/' | sort -n | tail -1)
+          echo "num=${LATEST_NUM:-0}" >> $GITHUB_OUTPUT
+          echo "Latest dev num for v${VERSION}: ${LATEST_NUM:-none}"
+
+      - name: Determine reference tag for commit scanning
+        if: steps.bot_check.outputs.skip != 'true'
+        id: ref_tag
+        run: |
+          VERSION="${{ steps.current_version.outputs.version }}"
+          LATEST_NUM="${{ steps.last_dev_tag.outputs.num }}"
+
+          if [ -n "$LATEST_NUM" ] && [ "$LATEST_NUM" != "0" ]; then
+            echo "tag=v${VERSION}-dev.${LATEST_NUM}" >> $GITHUB_OUTPUT
+            echo "Reference tag: v${VERSION}-dev.${LATEST_NUM}"
+          else
+            LAST=$(git describe --tags --abbrev=0 --exclude='v*-dev.*' 2>/dev/null || echo "")
+            echo "tag=$LAST" >> $GITHUB_OUTPUT
+            echo "Reference tag: ${LAST:-none}"
+          fi
+
+      - name: Check for relevant commits
+        if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true'
+        id: commit_check
+        run: |
+          REF_TAG="${{ steps.ref_tag.outputs.tag }}"
+
+          if [ -z "$REF_TAG" ]; then
+            echo "No previous tag, proceeding with dev release"
+            echo "has_commits=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          ALL_COMMITS=$(git log ${REF_TAG}..HEAD --pretty=format:"%s" --no-merges \
+            --author='^(?!github-actions\[bot\]).*' --perl-regexp)
+
+          if [ -z "$ALL_COMMITS" ]; then
+            echo "No commits since $REF_TAG"
+            echo "has_commits=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Commits since $REF_TAG:"
+          echo "$ALL_COMMITS"
+
+          # Skip if all commits are translation updates
+          NON_L10N=$(echo "$ALL_COMMITS" | grep -vE "^fix\(l10n\):" || true)
+          if [ -z "$NON_L10N" ]; then
+            echo "Only l10n commits, skipping dev release"
+            echo "has_commits=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_commits=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create and push dev tag
+        if: steps.bot_check.outputs.skip != 'true' && (github.event_name == 'workflow_dispatch' || steps.commit_check.outputs.has_commits == 'true')
+        run: |
+          VERSION="${{ steps.current_version.outputs.version }}"
+          LATEST_NUM="${{ steps.last_dev_tag.outputs.num }}"
+          NEXT_NUM=$((LATEST_NUM + 1))
+          NEXT_TAG="v${VERSION}-dev.${NEXT_NUM}"
+
+          git tag "$NEXT_TAG"
+          git push origin "$NEXT_TAG"
+          echo "Created and pushed tag $NEXT_TAG"
+
+      - name: Skip (bot commit)
+        if: github.event_name == 'push' && steps.bot_check.outputs.skip == 'true'
+        run: echo "Skipping - last commit was by github-actions[bot]"
+
+      - name: Skip (no relevant commits)
+        if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true' && steps.commit_check.outputs.has_commits != 'true'
+        run: echo "No relevant commits since ${{ steps.ref_tag.outputs.tag }}, skipping dev release"

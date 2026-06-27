@@ -7,7 +7,7 @@ assignees: callmemagnus
 
 ---
 
-**Philosophy of this application**
+**Philosophy of this application REMOVE IT after reading**
 
 Please note the following before suggesting an idea:
 
