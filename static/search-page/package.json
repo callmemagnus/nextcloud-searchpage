@@ -12,12 +12,14 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"format": "eslint --fix src/**/*.ts src/**/*.svelte tests/**/*.ts",
 		"lint:eslint": "eslint src/**/*.ts src/**/*.svelte",
 		"lint": "run-p lint:eslint check",
 		"upgradeDeps:major": "ncu --doctor -u",
 		"upgradeDeps:minor": "ncu --doctor -u --target minor",
 		"upgradeDeps": "run-s upgradeDeps:minor upgradeDeps:major",
-		"pretest": "run-s lint build",
+		"test:unit": "vitest run",
+		"pretest": "run-s lint build test:unit",
 		"test": "../../bin/run-playwright.sh",
 		"prepare": "husky"
 	},
@@ -52,7 +54,8 @@
 		"typescript-eslint": "^8.61.1",
 		"vite": "8.0.16",
 		"vite-plugin-css-injected-by-js": "5.0.1",
-		"vite-plugin-html": "3.2.2"
+		"vite-plugin-html": "3.2.2",
+		"vitest": "3.0.0"
 	},
 	"dependencies": {
 		"@nextcloud/axios": "2.6.0",

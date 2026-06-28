@@ -1,8 +1,8 @@
-import { type Page, expect } from '@playwright/test'
+import { type Page, expect } from '@playwright/test';
 
 export function authFileFromUrl(url: string) {
-    const s = url.split(':')
-    return `.playwright/auth/user-${s[2]}.json`
+	const s = url.split(':');
+	return `.playwright/auth/user-${s[2]}.json`;
 }
 
 /**
@@ -19,20 +19,20 @@ export function authFileFromUrl(url: string) {
  *     the matching menuitem inside it.
  */
 export async function openAppFromMenu(page: Page, name: string) {
-    const navLink = page.getByRole('navigation').getByRole('link', { name })
-    const waffle = page.locator('.app-menu__waffle')
+	const navLink = page.getByRole('navigation').getByRole('link', { name });
+	const waffle = page.locator('.app-menu__waffle');
 
-    // Wait for the app menu to settle into one of its two possible layouts.
-    await expect(navLink.or(waffle)).toBeVisible()
+	// Wait for the app menu to settle into one of its two possible layouts.
+	await expect(navLink.or(waffle)).toBeVisible();
 
-    if (await navLink.isVisible()) {
-        await navLink.click()
-        return
-    }
+	if (await navLink.isVisible()) {
+		await navLink.click();
+		return;
+	}
 
-    // NC 34: reveal the overflow popover, then click the app entry inside it.
-    await waffle.click()
-    const link = page.getByRole('menuitem', { name }).first()
-    await expect(link).toBeVisible()
-    await link.click()
+	// NC 34: reveal the overflow popover, then click the app entry inside it.
+	await waffle.click();
+	const link = page.getByRole('menuitem', { name }).first();
+	await expect(link).toBeVisible();
+	await link.click();
 }

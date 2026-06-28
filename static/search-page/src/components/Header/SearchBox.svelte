@@ -9,6 +9,7 @@
 	import queryState from '../../states/query.svelte';
 	import userState from '../../states/userState.svelte';
 	import ProviderSelector from './ProviderSelector.svelte';
+	import DateFilter from './DateFilter.svelte';
 	import AdminInfoTooltip from './AdminInfoTooltip.svelte';
 	import searchStore from '../../states/searchStore.svelte';
 	import { clog } from '@shared/libs';
@@ -129,15 +130,23 @@
 						<span>)</span>
 					</span>
 				{/if}
+				{#if !showProviderSelection && (queryState.since || queryState.until)}
+					<span
+						class="mwb-date-active"
+						title="{queryState.since || '…'} → {queryState.until || '…'}">📅</span>
+				{/if}
 			</button>
 		{/if}
 		{#if userState.isAdmin}
 			<AdminInfoTooltip />
 		{/if}
 	</div>
-	<div class="mwb-line">
-		{#if showProviderSelection && availableProviders.providers}
-			<ProviderSelector />
+	<div class="mwb-line mwb-filter-panel">
+		{#if showProviderSelection}
+			{#if availableProviders.providers}
+				<ProviderSelector />
+			{/if}
+			<DateFilter />
 		{/if}
 	</div>
 </form>
@@ -179,6 +188,14 @@
 	.mwb-selected-provider-list {
 		@apply text-ellipsis inline-block overflow-hidden whitespace-nowrap;
 		max-width: 200px;
+	}
+
+	.mwb-date-active {
+		@apply text-sm;
+	}
+
+	.mwb-filter-panel {
+		@apply gap-x-6 gap-y-2;
 	}
 
 	.mwb-input {

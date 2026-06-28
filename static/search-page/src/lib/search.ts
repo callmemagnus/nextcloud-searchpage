@@ -4,10 +4,15 @@
 import axios from '@nextcloud/axios';
 import { generateOcsUrl } from '@nextcloud/router';
 import availableProviders from '../states/availableProviders.svelte';
+import queryState from '../states/query.svelte';
 import TimedCache from './TimedCache';
+import {
+	markFilterUnsupported,
+	getUnsupportedFilters,
+	parseUnsupportedFilterName
+} from './unsupportedFilters';
 import { clog, type Provider } from '@shared/libs';
 
-// Build limits map from available providers
 function getLimit(providerId: string): number {
 	const provider = availableProviders.providers.find((p) => p.id === providerId);
 	return provider?.limit ?? 10;
@@ -47,40 +52,67 @@ export function computeHasMore(results: SearchResult | null): boolean {
 	return true;
 }
 
+function buildSearchUrl(providerId: string, query: string, cursor: number): string {
+	const unsupported = getUnsupportedFilters(providerId);
+	const searchParam = new URLSearchParams();
+	searchParam.append('term', query);
+	searchParam.append('limit', String(getLimit(providerId)));
+	if (cursor) {
+		searchParam.append('cursor', String(cursor));
+	}
+	if (queryState.since && !unsupported.includes('since')) {
+		const d = new Date(queryState.since + 'T00:00:00');
+		searchParam.append('since', String(Math.floor(d.getTime() / 1000)));
+	}
+	if (queryState.until && !unsupported.includes('until')) {
+		const d = new Date(queryState.until + 'T23:59:59');
+		searchParam.append('until', String(Math.floor(d.getTime() / 1000)));
+	}
+	return generateOcsUrl(`search/providers/${providerId}/search?${searchParam}`);
+}
+
 const cache = new TimedCache<Promise<SearchResult | null>>(30_000);
+
+async function performSearch(
+	providerId: string,
+	url: string,
+	query: string,
+	cursor: number
+): Promise<SearchResult | null> {
+	try {
+		const result = await axios.get(url);
+		if (result.data.ocs?.meta?.statuscode === 200) {
+			clog(`${providerId} result search: count=${result.data.ocs.data.entries.length}`);
+			return { ...result.data.ocs.data, providerId } as SearchResult;
+		}
+		// OCS-level error in a 200 HTTP response
+		const filterName = parseUnsupportedFilterName(result.data.ocs?.data);
+		if (filterName) {
+			markFilterUnsupported(providerId, filterName);
+			return searchOnProvider(providerId, query, cursor);
+		}
+		return null;
+	} catch (error) {
+		// HTTP-level error (axios throws on 4xx/5xx)
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const filterName = parseUnsupportedFilterName((error as any)?.response?.data?.ocs?.data);
+		if (filterName) {
+			markFilterUnsupported(providerId, filterName);
+			return searchOnProvider(providerId, query, cursor);
+		}
+		return null;
+	}
+}
 
 export async function searchOnProvider(
 	providerId: string,
 	query: string,
 	cursor: number
 ): Promise<SearchResult | null> {
-	const searchParam = new URLSearchParams();
-	searchParam.append('term', query);
-	// Use provider-specific limit from settings, fallback to 10
-	const limit = getLimit(providerId);
-	searchParam.append('limit', String(limit));
-	if (cursor) {
-		searchParam.append('cursor', String(cursor));
-	}
-
-	const url = generateOcsUrl(`search/providers/${providerId}/search?${searchParam}`);
+	const url = buildSearchUrl(providerId, query, cursor);
 
 	if (!cache.has(url)) {
-		cache.set(
-			url,
-			axios.get(url).then((result) => {
-				if (result.data.ocs?.meta?.statuscode === 200) {
-					clog(
-						`${providerId} result search: count=${result.data.ocs.data.entries.length}`
-					);
-					return {
-						...result.data.ocs.data,
-						providerId
-					} as SearchResult;
-				}
-				return null;
-			})
-		);
+		cache.set(url, performSearch(providerId, url, query, cursor));
 	} else {
 		clog(`${providerId} result search in cache`);
 	}
