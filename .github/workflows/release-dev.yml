@@ -9,6 +9,7 @@ on:
   push:
     tags:
       - v*-dev.*
+  workflow_dispatch:
 
 env:
   APP_NAME: thesearchpage
@@ -20,8 +21,8 @@ jobs:
     name: "Release: build, sign and upload the app"
     strategy:
       matrix:
-        php-versions: ["8.2"]
-        nextcloud: ["stable31"]
+        php-versions: ["8.3"]
+        nextcloud: ["stable34"]
         database: ["sqlite"]
     steps:
       - name: Checkout
@@ -32,11 +33,10 @@ jobs:
       - name: Get release tag
         id: get_tag
         run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            # Triggered by tag push
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TAG="${GITHUB_REF#refs/tags/}"
             echo "tag=$TAG" >> $GITHUB_OUTPUT
-            echo "Pre-release triggered by tag push: $TAG"
+            echo "Pre-release triggered by ${{ github.event_name }}: $TAG"
           elif [ "${{ github.event_name }}" = "release" ]; then
             # Triggered by release publication
             TAG="${{ github.event.release.tag_name }}"

@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -117,6 +118,8 @@ jobs:
 
       - name: Create and push dev tag
         if: steps.bot_check.outputs.skip != 'true' && (github.event_name == 'workflow_dispatch' || steps.commit_check.outputs.has_commits == 'true')
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           VERSION="${{ steps.current_version.outputs.version }}"
           LATEST_NUM="${{ steps.last_dev_tag.outputs.num }}"
@@ -126,6 +129,9 @@ jobs:
           git tag "$NEXT_TAG"
           git push origin "$NEXT_TAG"
           echo "Created and pushed tag $NEXT_TAG"
+
+          gh workflow run release-dev.yml --ref "$NEXT_TAG"
+          echo "Triggered release-dev workflow for $NEXT_TAG"
 
       - name: Skip (bot commit)
         if: github.event_name == 'push' && steps.bot_check.outputs.skip == 'true'

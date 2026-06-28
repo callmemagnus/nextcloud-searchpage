@@ -370,10 +370,15 @@ jobs:
 
       - name: Create git tag
         if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump != 'none'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git tag "v${{ steps.new_version.outputs.version }}"
           git push origin "v${{ steps.new_version.outputs.version }}"
           echo "Created and pushed tag v${{ steps.new_version.outputs.version }}"
+
+          gh workflow run release-prod.yml --ref "v${{ steps.new_version.outputs.version }}"
+          echo "Triggered release-prod workflow for v${{ steps.new_version.outputs.version }}"
 
       - name: Skip message (bot commit)
         if: steps.bot_check.outputs.skip == 'true'
@@ -390,10 +395,3 @@ jobs:
         run: |
           echo "No version bump needed - no relevant commits found since last tag"
 
-      # - name: Trigger release
-      #   if: startsWith( github.ref, 'refs/tags' )
-      #   run: |
-      #     echo Trigger release on a tag
-      #     gh workflow run --ref ${{ github.ref_name }} "Build and publish app release"
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
