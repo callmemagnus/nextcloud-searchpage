@@ -28,6 +28,8 @@
     "No results" : "Sem resultados",
     "Not available to any group" : "Não disponível para nenhum grupo",
     "Note:" : "Nota:",
+    "Note: not all search providers support date filters." : "Observação: nem todos os provedores de pesquisa oferecem suporte a filtros de data.",
+    "Number of results for {providerName}" : "Número de resultados para {providerName}",
     "Please review the visibility settings for these providers below and save your changes." : "Verifique as configurações de visibilidade para esses provedores abaixo e salve suas alterações.",
     "Provider" : "Fornecedor",
     "Provider visibility per group" : "Visibilidade do provedor por grupo",
