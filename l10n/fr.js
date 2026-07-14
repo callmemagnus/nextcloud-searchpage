@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Retour",
     "Clear current query" : "Effacer la recherche courante",
     "Click to change providers" : "Cliquer pour changer les fournisseurs",
+    "Error saving settings" : "Erreur lors de l’enregistrement des paramètres",
     "Filters" : "Filtres",
     "Load more..." : "Charger plus...",
     "Loading..." : "Chargement...",
