@@ -7,6 +7,7 @@ OC.L10N.register(
     "Back" : "Tillbaka",
     "Clear current query" : "Rensa nuvarande fråga",
     "Click to change providers" : "Klicka för att byta källa",
+    "Error saving settings" : "Fel när inställningarna sparades",
     "Filters" : "Filter",
     "Load more..." : "Visa fler …",
     "Loading..." : "Läser in …",
@@ -17,8 +18,10 @@ OC.L10N.register(
     "Saving..." : "Sparar …",
     "Search" : "Sök",
     "Search Page" : "Söksidan",
+    "Search results for \"{query}\"" : "Sökresultat för ”{query}”",
     "See all providers" : "Se alla källor",
     "See only results for this provider" : "Se endast resultat för denna källa",
+    "Settings saved successfully" : "Inställningarna sparades",
     "Show only" : "Visa bara",
     "There was an error loading the providers." : "Det uppstod ett fel när källorna skulle laddas.",
     "User group" : "Användargrupp"
