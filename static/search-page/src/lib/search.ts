@@ -86,7 +86,8 @@ async function performSearch(
 			return { ...result.data.ocs.data, providerId } as SearchResult;
 		}
 		// OCS-level error in a 200 HTTP response
-		const filterName = parseUnsupportedFilterName(result.data.ocs?.meta?.message);
+		// NC puts the human-readable message in `ocs.data`, not `ocs.meta.message`
+		const filterName = parseUnsupportedFilterName(result.data.ocs?.data);
 		if (filterName) {
 			markFilterUnsupported(providerId, filterName);
 			return searchOnProvider(providerId, query, cursor);
@@ -96,7 +97,7 @@ async function performSearch(
 		// HTTP-level error (axios throws on 4xx/5xx)
 		const filterName = parseUnsupportedFilterName(
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			(error as any)?.response?.data?.ocs?.meta?.message
+			(error as any)?.response?.data?.ocs?.data
 		);
 		if (filterName) {
 			markFilterUnsupported(providerId, filterName);
