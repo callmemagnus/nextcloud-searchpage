@@ -6,7 +6,7 @@ OC.L10N.register(
     "No results" : "Няма резултат",
     "Provider" : "Доставчик",
     "Save" : "Запиши",
-    "Saving..." : "Записване...",
+    "Saving…" : "Записване…",
     "Search" : "Търсене"
 },
 "nplurals=2; plural=(n != 1);");

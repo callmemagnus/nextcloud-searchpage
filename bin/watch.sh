@@ -23,4 +23,3 @@ command -v notify-send >/dev/null 2>&1 || missing_lib notify-send
       || \
       notify-send -t $FAILURE_MS \"$FAILURE_MSG\" \
 "
-

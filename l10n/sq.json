@@ -1,9 +1,9 @@
 { "translations": {
     "Back" : "Mbrapsht",
-    "Loading..." : "Po ngarkohet",
+    "Loading…" : "Po ngarkohet",
     "No results" : "Asnjë rezultat",
     "Save" : "Ruaje",
-    "Saving..." : "Duke ruajtur...",
+    "Saving…" : "Duke ruajtur…",
     "Search" : "Kërko"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

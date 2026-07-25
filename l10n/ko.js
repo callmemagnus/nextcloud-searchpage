@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Back" : "뒤로",
     "Filters" : "필터",
-    "Loading..." : "불러오는 중...",
+    "Loading…" : "불러오는 중…",
     "No results" : "검색 결과 없음",
     "Note:" : "메모:",
     "Provider" : "공급자",
     "Save" : "저장",
-    "Saving..." : "저장 중...",
+    "Saving…" : "저장 중…",
     "Search" : "검색",
     "User group" : "사용자 그룹"
 },

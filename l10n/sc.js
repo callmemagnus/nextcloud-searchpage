@@ -5,7 +5,7 @@ OC.L10N.register(
     "No results" : "Perunu resurtadu",
     "Provider" : "Frunidore",
     "Save" : "Sarva",
-    "Saving..." : "Sarvende...",
+    "Saving…" : "Sarvende…",
     "Search" : "Chirca"
 },
 "nplurals=2; plural=(n != 1);");

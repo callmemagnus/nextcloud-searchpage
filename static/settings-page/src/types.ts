@@ -12,8 +12,21 @@ export type Group = {
 	displayName: string;
 };
 
+export type NavigationApp = {
+	id: string;
+	name: string;
+};
+
+export type AppSearchConfigEntry = {
+	enabled: boolean;
+	providerIds: string[] | null; // null or empty = all providers
+};
+
 export type Settings = {
 	enabled: boolean;
+	hijackSearchEnabled: boolean;
+	apps: NavigationApp[];
+	appSearchConfig: Record<string, AppSearchConfigEntry>;
 	providers: Provider[];
 	providerGroupMap: Record<string, string[]> | null;
 	providerLimits: Record<string, number> | null;

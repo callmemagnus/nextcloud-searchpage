@@ -112,14 +112,14 @@
 								disabled={searching}
 								onclick={() => searchStore.loadMore(providerId)}>
 								{searching
-									? translate(APP_NAME, 'Loading...')
-									: translate(APP_NAME, 'Load more...')}
+									? translate(APP_NAME, 'Loading…')
+									: translate(APP_NAME, 'Load more…')}
 							</button>
 						</div>
 					{/if}
 				</div>
 			{:else if searching}
-				<p class="mwb-loading">{translate(APP_NAME, 'Loading...')}</p>
+				<p class="mwb-loading">{translate(APP_NAME, 'Loading…')}</p>
 			{/if}
 		</div>
 	{/if}

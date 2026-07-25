@@ -4,7 +4,7 @@ OC.L10N.register(
     "Back" : "Geri",
     "No results" : "Nəticə yoxdur",
     "Save" : "Saxla",
-    "Saving..." : "Saxlama...",
+    "Saving…" : "Saxlama…",
     "Search" : "Axtarış"
 },
 "nplurals=2; plural=(n != 1);");

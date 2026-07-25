@@ -44,6 +44,9 @@
 	<div class="mwb-provider-restrictions-section">
 		<h3>{translate(APP_NAME, 'Provider visibility per group')}</h3>
 		<p class="mwb-settings-hint">
+			{translate(APP_NAME, 'Configure search provider visibility per group.')}
+		</p>
+		<p class="mwb-settings-hint">
 			{translate(
 				APP_NAME,
 				'Control which search providers are visible to specific user groups.'

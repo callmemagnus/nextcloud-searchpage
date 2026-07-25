@@ -4,7 +4,7 @@ OC.L10N.register(
     "Back" : "Orqaga",
     "No results" : "Natija yo'q",
     "Save" : "Saqlash",
-    "Saving..." : "Saqlanmoqda...",
+    "Saving…" : "Saqlanmoqda…",
     "Search" : "Qidirish",
     "User group" : "Foydalanuvchilar guruhi"
 },

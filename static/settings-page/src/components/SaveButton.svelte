@@ -45,7 +45,7 @@
 
 <div class="mwb-save-section">
 	<button class="button primary" disabled={saving} onclick={handleSave} type="button">
-		{saving ? translate(APP_NAME, 'Saving...') : translate(APP_NAME, 'Save')}
+		{saving ? translate(APP_NAME, 'Saving…') : translate(APP_NAME, 'Save')}
 	</button>
 
 	{#if saveMessage}

@@ -26,19 +26,27 @@ const tests = (id: number) => ({
 	dependencies: [`setup-${id}`]
 });
 
-// Set TARGET_NC_VERSION=33 to run only that version (used by bin/e2e-local.sh)
-const versions = process.env.TARGET_NC_VERSION
-	? [parseInt(process.env.TARGET_NC_VERSION, 10)]
-	: [30, 31, 32, 33, 34];
+const allVersions = [30, 31, 32, 33, 34];
 
-if (versions.some(isNaN)) {
-	throw new Error(`Invalid TARGET_NC_VERSION: "${process.env.TARGET_NC_VERSION}"`);
+// Set TARGET_NC_VERSION=33 to run only that version (used by bin/run-playwright.sh)
+// Set EXCLUDE_NC_VERSION=33 to skip that version (used by bin/run-playwright.sh --exclude)
+let versions: number[];
+if (process.env.TARGET_NC_VERSION) {
+	const v = parseInt(process.env.TARGET_NC_VERSION, 10);
+	if (isNaN(v)) throw new Error(`Invalid TARGET_NC_VERSION: "${process.env.TARGET_NC_VERSION}"`);
+	versions = [v];
+} else if (process.env.EXCLUDE_NC_VERSION) {
+	const v = parseInt(process.env.EXCLUDE_NC_VERSION, 10);
+	if (isNaN(v)) throw new Error(`Invalid EXCLUDE_NC_VERSION: "${process.env.EXCLUDE_NC_VERSION}"`);
+	versions = allVersions.filter((id) => id !== v);
+} else {
+	versions = allVersions;
 }
 
 export default defineConfig({
 	workers: 1,
 	testDir: './static',
-	timeout: 30_000,
+	timeout: 10_000,
 
 	projects: versions.flatMap((id) => [setup(id), tests(id)])
 });

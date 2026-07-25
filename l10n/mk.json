@@ -4,7 +4,7 @@
     "No results" : "Нема резултати",
     "Note:" : "Белешка:",
     "Save" : "Сними",
-    "Saving..." : "Зачувува ...",
+    "Saving…" : "Зачувува …",
     "Search" : "Барај"
 },"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
 }

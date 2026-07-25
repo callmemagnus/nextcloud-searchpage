@@ -12,12 +12,13 @@ use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCP\AppFramework\Services\IInitialState;
 use OCP\IAppConfig;
 use OCP\IL10N;
 use OCP\INavigationManager;
-use OCP\IServerContainer;
 use OCP\IURLGenerator;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Throwable;
 
@@ -45,7 +46,7 @@ class Application extends App implements IBootstrap
     public function boot(IBootContext $context): void
     {
         // TODO: Implement boot() method.
-        $context->injectFn(function (IServerContainer $container) {
+        $context->injectFn(function (ContainerInterface $container) {
             $appConfig = $container->get(IAppConfig::class);
             $enabled = $appConfig->getValueBool(Application::APP_ID, 'restrict_providers_enabled', false);
             $navigation = $container->get(INavigationManager::class);
@@ -53,7 +54,7 @@ class Application extends App implements IBootstrap
             if ($enabled) {
                 $providerService = $container->get(ProviderService::class);
                 $providers = $providerService->getProvidersForCurrentUser();
-                if (!sizeof($providers)) {
+                if (!count($providers)) {
                     return;
                 }
             }
@@ -64,6 +65,33 @@ class Application extends App implements IBootstrap
                 });
             }
         });
+        $context->injectFn(function (ContainerInterface $container) {
+            $appConfig = $container->get(IAppConfig::class);
+            if (!$appConfig->getValueBool(self::APP_ID, 'hijack_search_enabled', false)) {
+                return;
+            }
+            \OCP\Util::addScript(self::APP_ID, 'search-addons.iife');
+            $initialState = $this->getContainer()->get(IInitialState::class);
+            $appSearchConfig = $appConfig->getValueArray(self::APP_ID, 'app_search_config');
+            $initialState->provideInitialState('appSearchConfig', $appSearchConfig);
+            $providerLimits = $appConfig->getValueArray(self::APP_ID, 'provider_limits');
+            $initialState->provideInitialState('providerLimits', $providerLimits);
+            $userSession = $container->get(\OCP\IUserSession::class);
+            $groupManager = $container->get(\OCP\IGroupManager::class);
+            $user = $userSession->getUser();
+            $isAdmin = $user !== null && $groupManager->isAdmin($user->getUID());
+            $initialState->provideInitialState('isAdmin', $isAdmin);
+            $restrictEnabled = $appConfig->getValueBool(self::APP_ID, 'restrict_providers_enabled', false);
+            if ($restrictEnabled) {
+                $providerService = $container->get(ProviderService::class);
+                $availableProviders = $providerService->getProvidersForCurrentUser();
+                $availableProviderIds = array_column($availableProviders, 'id');
+            } else {
+                $availableProviderIds = null;
+            }
+            $initialState->provideInitialState('availableProviderIds', $availableProviderIds);
+        });
+
     }
 
     /**

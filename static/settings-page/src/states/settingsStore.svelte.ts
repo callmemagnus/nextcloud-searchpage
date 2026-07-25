@@ -10,6 +10,9 @@ class SettingsStore {
 	groups = $state<Group[]>([]);
 	settings = $state<Settings>({
 		enabled: false,
+		hijackSearchEnabled: false,
+		apps: [],
+		appSearchConfig: {},
 		providers: [],
 		providerGroupMap: {},
 		providerLimits: {}
@@ -35,7 +38,7 @@ class SettingsStore {
 			) {
 				const knownProviders = settings.providers.map((p) => p.id);
 				this.newProviders = providers.reduce((acc, provider) => {
-					if (knownProviders.includes(provider.id)) {
+					if (!knownProviders.includes(provider.id)) {
 						acc.push(provider);
 					}
 					return acc;
@@ -87,6 +90,26 @@ class SettingsStore {
 
 	updateEnabled(enabled: boolean) {
 		this.settings.enabled = enabled;
+	}
+
+	updateHijackSearchEnabled(value: boolean) {
+		this.settings.hijackSearchEnabled = value;
+	}
+
+	updateAppSearchConfig(
+		appId: string,
+		entry: { enabled?: boolean; providerIds?: string[] | null }
+	) {
+		this.settings.appSearchConfig = {
+			...this.settings.appSearchConfig,
+			[appId]: {
+				enabled: entry.enabled ?? this.settings.appSearchConfig[appId]?.enabled ?? true,
+				providerIds:
+					entry.providerIds !== undefined
+						? entry.providerIds
+						: (this.settings.appSearchConfig[appId]?.providerIds ?? null)
+			}
+		};
 	}
 
 	updateProviderGroupMap(providerGroupMap: Record<string, string[]>) {

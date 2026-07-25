@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Back" : "Torna",
     "Filters" : "Filtres",
-    "Loading..." : "Carregant...",
+    "Loading…" : "Carregant…",
     "No results" : "Sense resultats",
     "Note:" : "Nota:",
     "Provider" : "Proveïdor",
     "Save" : "Desar",
-    "Saving..." : "S'està desant...",
+    "Saving…" : "S'està desant…",
     "Search" : "Cercar"
 },
 "nplurals=2; plural=(n != 1);");

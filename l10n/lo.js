@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Back" : "ກັບຄືນ",
     "Filters" : "Filters",
-    "Loading..." : "ກຳລັງໂຫລດ...",
+    "Loading…" : "ກຳລັງໂຫລດ…",
     "No results" : "ບໍ່ມີຜົນ",
     "Note:" : "ໝາຍເຫດ:",
     "Provider" : "Provider",
     "Save" : "ບັນທຶກ",
-    "Saving..." : "ກຳລັງບັນທຶກ...",
+    "Saving…" : "ກຳລັງບັນທຶກ…",
     "Search" : "ຄົ້ນຫາ"
 },
 "nplurals=1; plural=0;");

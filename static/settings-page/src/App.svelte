@@ -8,6 +8,7 @@
 	import settingsStore from './states/settingsStore.svelte';
 	import ProviderRestrictionsTable from './components/ProviderRestrictionsTable.svelte';
 	import ProviderLimitsTable from './components/ProviderLimitsTable.svelte';
+	import AppSearchConfigTable from './components/AppSearchConfigTable.svelte';
 	import SaveButton from './components/SaveButton.svelte';
 
 	let hasTabbed = $state(false);
@@ -26,6 +27,11 @@
 		const target = event.target as HTMLInputElement;
 		settingsStore.updateEnabled(target.checked);
 	}
+
+	function handleHijackSearchChange(event: Event) {
+		const target = event.target as HTMLInputElement;
+		settingsStore.updateHijackSearchEnabled(target.checked);
+	}
 </script>
 
 <svelte:body onkeydown={onKeydown} />
@@ -35,7 +41,7 @@
 
 	{#if settingsStore.loading}
 		<div class="mwb-loading-state">
-			<p>{translate(APP_NAME, 'Loading settings...')}</p>
+			<p>{translate(APP_NAME, 'Loading settings…')}</p>
 		</div>
 	{:else if settingsStore.error}
 		<div class="mwb-error-state">
@@ -47,10 +53,6 @@
 		</div>
 	{:else}
 		<div class="mwb-settings-content">
-			<p class="mwb-settings-hint">
-				{translate(APP_NAME, 'Configure search provider visibility per group.')}
-			</p>
-
 			<div class="mwb-enable-restrictions">
 				<p>
 					<input
@@ -65,6 +67,10 @@
 				</p>
 			</div>
 
+			<div class="mwb-conditional-section">
+				<ProviderRestrictionsTable />
+			</div>
+
 			<div class="mwb-restrictions-info">
 				<p class="mwb-settings-hint">
 					{translate(
@@ -74,7 +80,39 @@
 				</p>
 			</div>
 
-			<ProviderRestrictionsTable />
+			<div class="mwb-enable-restrictions">
+				<p>
+					<input
+						type="checkbox"
+						id="hijack-search-enabled"
+						class="checkbox"
+						checked={settingsStore.settings.hijackSearchEnabled}
+						onchange={handleHijackSearchChange} />
+					<label for="hijack-search-enabled">
+						<strong>{translate(APP_NAME, 'Enable inline search modal')}</strong>
+					</label>
+					<span class="mwb-experimental-badge"
+						>{translate(APP_NAME, 'Experimental')}</span>
+				</p>
+				<p class="mwb-settings-hint">
+					{translate(
+						APP_NAME,
+						'When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface.'
+					)}
+				</p>
+				<p class="mwb-settings-hint">
+					{translate(
+						APP_NAME,
+						'Nextcloud 34 started hiding installed application in a menu, making it harder to reach The Search Page. This experimental feature hi-jacks the unified search of Nextcloud.'
+					)}
+				</p>
+			</div>
+
+			{#if settingsStore.settings.hijackSearchEnabled}
+				<div class="mwb-conditional-section">
+					<AppSearchConfigTable />
+				</div>
+			{/if}
 			<ProviderLimitsTable />
 			<SaveButton />
 		</div>
@@ -114,7 +152,25 @@
 		margin-top: 24px;
 	}
 
+	.mwb-conditional-section {
+		margin-left: 28px;
+		padding-left: 12px;
+		border-left: 2px solid var(--color-border);
+	}
+
 	.mwb-restrictions-info {
 		margin-top: 12px;
+	}
+
+	.mwb-experimental-badge {
+		margin-left: 8px;
+		padding: 1px 8px;
+		border-radius: var(--border-radius-pill, 10px);
+		background-color: var(--color-warning, #ffcc00);
+		color: var(--color-warning-text, #53481d);
+		font-size: 0.75em;
+		font-weight: 600;
+		text-transform: uppercase;
+		vertical-align: middle;
 	}
 </style>

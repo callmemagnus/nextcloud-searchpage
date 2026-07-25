@@ -9,6 +9,8 @@ namespace OCA\TheSearchPage\Controller;
 use OCA\TheSearchPage\AppInfo\Application;
 use OCA\TheSearchPage\Service\ProviderService;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IAppConfig;
@@ -30,10 +32,8 @@ class PageController extends Controller
         parent::__construct(Application::APP_ID, $request);
     }
 
-    /**
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     */
+    #[NoAdminRequired]
+    #[NoCSRFRequired]
     public function index(): TemplateResponse
     {
         // Get providers available for the current user (with limits applied)

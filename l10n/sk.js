@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Back" : "Späť",
     "Filters" : "Filtre",
-    "Loading..." : "Načítava sa…",
+    "Loading…" : "Načítava sa…",
     "No results" : "Žiadne výsledky",
     "Note:" : "Poznámka:",
     "Provider" : "Poskytovateľ",
     "Save" : "Uložiť",
-    "Saving..." : "Ukladá sa...",
+    "Saving…" : "Ukladá sa…",
     "Search" : "Hľadať",
     "Search Page" : "Hľadať stránku"
 },

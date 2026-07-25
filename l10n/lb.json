@@ -1,6 +1,6 @@
 { "translations": {
     "Save" : "Späicheren",
-    "Saving..." : "Speicheren...",
+    "Saving…" : "Speicheren…",
     "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

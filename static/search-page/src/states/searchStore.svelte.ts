@@ -45,7 +45,7 @@ class SearchStore {
 
 	async loadMore(providerId: string) {
 		if (!this.byProvider[providerId]) {
-			clog(`loadMore invoked when no prior searches for provider ${providerId}, ignoring...`);
+			clog(`loadMore invoked when no prior searches for provider ${providerId}, ignoring…`);
 			return;
 		}
 		if (!computeHasMore(this.byProvider[providerId].results)) {

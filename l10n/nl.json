@@ -2,12 +2,12 @@
     "Back" : "Terug",
     "Error saving settings" : "Fout bij opslaan van instellingen",
     "Filters" : "Filters",
-    "Loading..." : "Laden....",
+    "Loading…" : "Laden….",
     "No results" : "Geen resultaten",
     "Note:" : "Notitie:",
     "Provider" : "Provider",
     "Save" : "Opslaan",
-    "Saving..." : "Opslaan...",
+    "Saving…" : "Opslaan…",
     "Search" : "Zoeken",
     "User group" : "Gebruiker groep"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
