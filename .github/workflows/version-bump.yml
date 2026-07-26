@@ -10,14 +10,14 @@ on:
   workflow_dispatch:
     inputs:
       bump_type:
-        description: 'Version bump type'
+        description: "Version bump type"
         required: true
         type: choice
         options:
           - major
           - minor
           - patch
-        default: 'patch'
+        default: "patch"
 
 jobs:
   bump-version:
@@ -97,11 +97,13 @@ jobs:
         run: |
           LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
           echo "Last commit author: $LAST_COMMIT_AUTHOR"
-          if [ "$LAST_COMMIT_AUTHOR" = "Nextcloud bot" ]; then
-            echo "is_nextcloud_bot=true" >> $GITHUB_OUTPUT
-          else
-            echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
-          fi
+          echo "Disabled auto-release until Transifex updates the label list..."
+          echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
+          # if [ "$LAST_COMMIT_AUTHOR" = "Nextcloud bot" ]; then
+          #   echo "is_nextcloud_bot=true" >> $GITHUB_OUTPUT
+          # else
+          #   echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
+          # fi
 
       - name: Check change threshold for Nextcloud bot commits
         if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true' && steps.nextcloud_bot_check.outputs.is_nextcloud_bot == 'true'
@@ -394,4 +396,3 @@ jobs:
         if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump == 'none' && (steps.nextcloud_bot_check.outputs.is_nextcloud_bot != 'true' || steps.threshold_check.outputs.meets_threshold != 'false')
         run: |
           echo "No version bump needed - no relevant commits found since last tag"
-
