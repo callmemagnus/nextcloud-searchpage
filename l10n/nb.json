@@ -7,18 +7,18 @@
     "Clear current query" : "Tøm gjeldene spørring",
     "Click to change providers" : "Klikk for å endre tilbydere",
     "Filters" : "Filtere",
-    "Load more..." : "Last inn flere...",
-    "Loading..." : "Laster…",
     "No results" : "Ingen resultater",
     "Note:" : "Merk:",
     "Provider" : "Tilbyder",
     "Save" : "Lagre",
-    "Saving..." : "Lagrer …",
     "Search" : "Søk",
     "Search Page" : "Søkeside",
     "See all providers" : "Se alle tilbydere",
     "See only results for this provider" : "Se kun resultater for denne tilbyderen",
     "Show only" : "Vis bare",
-    "There was an error loading the providers." : "Det oppstod en feil ved innlasting av leverandørene."
+    "There was an error loading the providers." : "Det oppstod en feil ved innlasting av leverandørene.",
+    "Load more..." : "Last inn flere...",
+    "Loading..." : "Laster…",
+    "Saving..." : "Lagrer …"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

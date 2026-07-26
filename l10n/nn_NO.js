@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Filters" : "Filter",
     "Save" : "Lagre",
-    "Saving..." : "Lagrar …",
-    "Search" : "Søk"
+    "Search" : "Søk",
+    "Saving..." : "Lagrar …"
 },
 "nplurals=2; plural=(n != 1);");

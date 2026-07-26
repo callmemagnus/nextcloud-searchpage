@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Filter",
     "Go to admin settings" : "Gå till administratörsinställningarna",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Högre värden kan ge längre svarstider, särskilt för leverantörer med stora datamängder.",
-    "Load more..." : "Visa fler …",
-    "Loading settings..." : "Läser in inställningar …",
-    "Loading..." : "Läser in …",
     "Modified since" : "Ändrad efter",
     "Modified until" : "Ändrad före",
     "New search providers detected" : "Nya sökleverantörer upptäcktes",
@@ -38,7 +35,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Leverantörssynlighet per grupp",
     "Results per search" : "Resultat per sökning",
     "Save" : "Spara",
-    "Saving..." : "Sparar …",
     "Search" : "Sök",
     "Search Page" : "Söksidan",
     "Search results for \"{query}\"" : "Sökresultat för ”{query}”",
@@ -51,6 +47,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Följande leverantör eller leverantörer var inte tillgängliga när inställningarna senast sparades: {providers}",
     "There was an error loading the providers." : "Det uppstod ett fel när källorna skulle laddas.",
     "User group" : "Användargrupp",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "När detta är aktiverat kan du bestämma vilka sökleverantörer som är synliga för specifika användargrupper. Som standard är alla leverantörer aktiverade för alla grupper."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "När detta är aktiverat kan du bestämma vilka sökleverantörer som är synliga för specifika användargrupper. Som standard är alla leverantörer aktiverade för alla grupper.",
+    "Load more..." : "Visa fler …",
+    "Loading settings..." : "Läser in inställningar …",
+    "Loading..." : "Läser in …",
+    "Saving..." : "Sparar …"
 },
 "nplurals=2; plural=(n != 1);");

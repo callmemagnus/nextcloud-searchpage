@@ -21,9 +21,6 @@ OC.L10N.register(
     "Filters" : "Filtrid",
     "Go to admin settings" : "Ava haldusseadistused",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Suuremad väärtused võivad põhjustada aeglasemat reageerimisaega, eriti suurte andmekogudega teenusepakkujate puhul.",
-    "Load more..." : "Laadi veel...",
-    "Loading settings..." : "Laadin seadistusi…",
-    "Loading..." : "Laadin...",
     "Modified since" : "Muudetud alates",
     "Modified until" : "Muudetud kuni",
     "New search providers detected" : "Tuvastasin uusi teenusepakkujaid",
@@ -37,7 +34,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Teenusepakkuja nähtavus grupi kaupa",
     "Results per search" : "Tulemusi otsingu kohta",
     "Save" : "Salvesta",
-    "Saving..." : "Salvestan...",
     "Search" : "Otsi",
     "Search Page" : "Otsinguleht",
     "Search results for \"{query}\"" : "„{query}“ otsingu tulemused",
@@ -50,6 +46,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Kui seadistused viimati salvestati, siis polnud saadaval järgnevaid otsinguteenuse pakkujaid: {providers}",
     "There was an error loading the providers." : "Teenusepakkujate laadimisel tekkis viga.",
     "User group" : "Kasutajagrupp",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Selle eelistuse kasutamisel saad kontrollida missugused teenusepakkujad on kasutusel konkreetsetele kasutajagruppidele. Vaikimisi on kõik otsingud lubatud kõikidele gruppidele."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Selle eelistuse kasutamisel saad kontrollida missugused teenusepakkujad on kasutusel konkreetsetele kasutajagruppidele. Vaikimisi on kõik otsingud lubatud kõikidele gruppidele.",
+    "Load more..." : "Laadi veel...",
+    "Loading settings..." : "Laadin seadistusi…",
+    "Loading..." : "Laadin...",
+    "Saving..." : "Salvestan..."
 },
 "nplurals=2; plural=(n != 1);");

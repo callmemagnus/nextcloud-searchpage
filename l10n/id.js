@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Penyaring",
     "Go to admin settings" : "Buka pengaturan admin",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Nilai yang lebih tinggi dapat menyebabkan waktu respons lebih lambat, terutama untuk penyedia dengan kumpulan data besar.",
-    "Load more..." : "Muat lebih banyak...",
-    "Loading settings..." : "Memuat pengaturan...",
-    "Loading..." : "Memuat...",
     "New search providers detected" : "Penyedia pencarian baru terdeteksi",
     "No results" : "Tidak ada hasil",
     "Not available to any group" : "Tidak tersedia untuk grup mana pun",
@@ -35,7 +32,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Visibilitas penyedia per grup",
     "Results per search" : "Hasil per pencarian",
     "Save" : "Simpan",
-    "Saving..." : "Menyimpan...",
     "Search" : "Cari",
     "Search Page" : "Halaman Pencarian",
     "Search results for \"{query}\"" : "Hasil pencarian untuk \"{query}\"",
@@ -48,6 +44,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Penyedia berikut tidak tersedia saat pengaturan terakhir disimpan: {providers}",
     "There was an error loading the providers." : "Terjadi kesalahan saat memuat penyedia.",
     "User group" : "Grup pengguna",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Saat diaktifkan, Anda dapat mengontrol penyedia pencarian mana yang terlihat untuk grup pengguna tertentu. Secara default, semua penyedia diaktifkan untuk semua grup."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Saat diaktifkan, Anda dapat mengontrol penyedia pencarian mana yang terlihat untuk grup pengguna tertentu. Secara default, semua penyedia diaktifkan untuk semua grup.",
+    "Load more..." : "Muat lebih banyak...",
+    "Loading settings..." : "Memuat pengaturan...",
+    "Loading..." : "Memuat...",
+    "Saving..." : "Menyimpan..."
 },
 "nplurals=1; plural=0;");

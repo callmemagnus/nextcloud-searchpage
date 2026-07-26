@@ -2,7 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Save" : "Simpan",
-    "Saving..." : "Sedang menyimpan...",
-    "Search" : "Search"
+    "Search" : "Search",
+    "Saving..." : "Sedang menyimpan..."
 },
 "nplurals=1; plural=0;");

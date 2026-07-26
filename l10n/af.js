@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Provider" : "Verskaffer",
     "Save" : "Stoor",
-    "Saving..." : "Stoor tans…",
-    "Search" : "Soek"
+    "Search" : "Soek",
+    "Saving..." : "Stoor tans…"
 },
 "nplurals=2; plural=(n != 1);");

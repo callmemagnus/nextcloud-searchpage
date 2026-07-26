@@ -1,7 +1,7 @@
 { "translations": {
     "No results" : "Cap de resultat",
     "Save" : "Enregistrar",
-    "Saving..." : "Enregistrament...",
-    "Search" : "Recercar"
+    "Search" : "Recercar",
+    "Saving..." : "Enregistrament..."
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

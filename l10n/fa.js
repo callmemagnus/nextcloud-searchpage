@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "فیلترها",
     "Go to admin settings" : "رفتن به تنظیمات مدیر",
     "Higher values may result in slower response times, especially for providers with large datasets." : "مقادیر بالاتر ممکن است منجر به زمان پاسخ‌دهی کندتر شود، به ویژه برای ارائه‌دهندگان با مجموعه داده‌های بزرگ.",
-    "Load more..." : "بارگذاری بیشتر...",
-    "Loading settings..." : "در حال بارگذاری تنظیمات...",
-    "Loading..." : "در حال بارگذاری...",
     "New search providers detected" : "ارائه‌دهندگان جستجوی جدید شناسایی شدند",
     "No results" : "بدون نتیجه",
     "Not available to any group" : "برای هیچ گروهی در دسترس نیست",
@@ -35,7 +32,6 @@ OC.L10N.register(
     "Provider visibility per group" : "قابلیت مشاهده ارائه‌دهنده بر اساس گروه",
     "Results per search" : "نتایج در هر جستجو",
     "Save" : "ذخیره",
-    "Saving..." : "در حال ذخیره...",
     "Search" : "جستجو",
     "Search Page" : "صفحه جستجو",
     "Search results for \"{query}\"" : "نتایج جستجو برای \"{query}\"",
@@ -48,6 +44,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "ارائه‌دهنده(های) زیر در زمان آخرین ذخیره تنظیمات در دسترس نبودند: {providers}",
     "There was an error loading the providers." : "خطایی در بارگذاری ارائه‌دهندگان رخ داد.",
     "User group" : "گروه کاربری",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "وقتی فعال باشد، می‌توانید کنترل کنید کدام ارائه‌دهندگان جستجو برای گروه‌های کاربری خاص قابل مشاهده باشند. به طور پیش‌فرض، همه ارائه‌دهندگان برای همه گروه‌ها فعال هستند."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "وقتی فعال باشد، می‌توانید کنترل کنید کدام ارائه‌دهندگان جستجو برای گروه‌های کاربری خاص قابل مشاهده باشند. به طور پیش‌فرض، همه ارائه‌دهندگان برای همه گروه‌ها فعال هستند.",
+    "Load more..." : "بارگذاری بیشتر...",
+    "Loading settings..." : "در حال بارگذاری تنظیمات...",
+    "Loading..." : "در حال بارگذاری...",
+    "Saving..." : "در حال ذخیره..."
 },
 "nplurals=2; plural=(n > 1);");

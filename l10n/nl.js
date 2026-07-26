@@ -4,13 +4,13 @@ OC.L10N.register(
     "Back" : "Terug",
     "Error saving settings" : "Fout bij opslaan van instellingen",
     "Filters" : "Filters",
-    "Loading..." : "Laden....",
     "No results" : "Geen resultaten",
     "Note:" : "Notitie:",
     "Provider" : "Provider",
     "Save" : "Opslaan",
-    "Saving..." : "Opslaan...",
     "Search" : "Zoeken",
-    "User group" : "Gebruiker groep"
+    "User group" : "Gebruiker groep",
+    "Loading..." : "Laden....",
+    "Saving..." : "Opslaan..."
 },
 "nplurals=2; plural=(n != 1);");

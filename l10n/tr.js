@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Süzgeçler",
     "Go to admin settings" : "Yönetici ayarlarına git",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Daha yüksek değerler, özellikle büyük veri kümeleri olan hizmet sağlayıcılarda yanıt sürelerinin yavaş olmasına yol açabilir.",
-    "Load more..." : "Diğerlerini yükle...",
-    "Loading settings..." : "Ayarlar yükleniyor...",
-    "Loading..." : "Yükleniyor...",
     "New search providers detected" : "Yeni arama hizmeti sağlayıcıları bulundu",
     "No results" : "Herhangi bir sonuç bulunamadı",
     "Not available to any group" : "Hiç bir grupta kullanılmıyor",
@@ -35,7 +32,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Her grup için arama hizmeti sağlayıcı görünürlüğü",
     "Results per search" : "Bir aramadaki sonuç sayısı",
     "Save" : "Kaydet",
-    "Saving..." : "Kaydediliyor...",
     "Search" : "Ara",
     "Search Page" : "Arama sayfası",
     "Search results for \"{query}\"" : "\"{query}\" için arama sonuçları",
@@ -48,6 +44,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Ayarların son kaydedilmesinde şu hizmet sağlayıcılar kullanılabilir değildi: {providers}",
     "There was an error loading the providers." : "Hizmet sağlayıcılar yüklenirken sorun çıktı.",
     "User group" : "Kullanıcı grubu",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Açıldığında, hangi arama hizmeti sağlayıcılarının belirli kullanıcı grupları tarafından görülebileceğini belirleyebilirsiniz. Varsayılan olarak, tüm hizmet sağlayıcılar tüm gruplarda kullanılabilir."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Açıldığında, hangi arama hizmeti sağlayıcılarının belirli kullanıcı grupları tarafından görülebileceğini belirleyebilirsiniz. Varsayılan olarak, tüm hizmet sağlayıcılar tüm gruplarda kullanılabilir.",
+    "Load more..." : "Diğerlerini yükle...",
+    "Loading settings..." : "Ayarlar yükleniyor...",
+    "Loading..." : "Yükleniyor...",
+    "Saving..." : "Kaydediliyor..."
 },
 "nplurals=2; plural=(n > 1);");

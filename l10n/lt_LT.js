@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Filtrai",
     "Go to admin settings" : "Eiti į administratoriaus nustatymus",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Didesnės vertės gali lemti ilgesnį atsakymo laiką, ypač teikėjams, naudojantiems didelius duomenų rinkinius.",
-    "Load more..." : "Įkelti daugiau...",
-    "Loading settings..." : "Įkeliami nustatymai…",
-    "Loading..." : "Įkeliama...",
     "Modified since" : "Atnaujinta nuo",
     "Modified until" : "Atnaujinta iki",
     "New search providers detected" : "Aptikti nauji paieškos paslaugų teikėjai",
@@ -38,7 +35,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Paslaugų teikėjo matomumas pagal grupę",
     "Results per search" : "Rezultatai pagal paiešką",
     "Save" : "Įrašyti",
-    "Saving..." : "Įrašoma...",
     "Search" : "Ieškoti",
     "Search Page" : "Paieškos puslapis",
     "Search results for \"{query}\"" : "Paieškos rezultatai pagal „{query}“",
@@ -51,6 +47,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Šie teikėjai nebuvo pasiekiami, kai nustatymai buvo paskutinį kartą išsaugoti: {providers}",
     "There was an error loading the providers." : "Įkeliant teikėjus įvyko klaida.",
     "User group" : "Vartotojų grupė",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Kai įjungta, galite valdyti, kurie paieškos teikėjai yra matomi konkrečioms vartotojų grupėms. Pagal numatytuosius nustatymus visi teikėjai yra įjungti visoms grupėms."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Kai įjungta, galite valdyti, kurie paieškos teikėjai yra matomi konkrečioms vartotojų grupėms. Pagal numatytuosius nustatymus visi teikėjai yra įjungti visoms grupėms.",
+    "Load more..." : "Įkelti daugiau...",
+    "Loading settings..." : "Įkeliami nustatymai…",
+    "Loading..." : "Įkeliama...",
+    "Saving..." : "Įrašoma..."
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

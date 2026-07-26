@@ -1,6 +1,6 @@
 { "translations": {
     "Save" : "Konservi",
-    "Saving..." : "Konservado...",
-    "Search" : "Serĉi"
+    "Search" : "Serĉi",
+    "Saving..." : "Konservado..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Scagairí",
     "Go to admin settings" : "Téigh chuig socruithe riarthóra",
     "Higher values may result in slower response times, especially for providers with large datasets." : "D’fhéadfadh luachanna níos airde amanna freagartha níos moille a bheith mar thoradh orthu, go háirithe i gcás soláthraithe a bhfuil tacair sonraí móra acu.",
-    "Load more..." : "Luchtaigh níos mó...",
-    "Loading settings..." : "Ag lódáil socruithe...",
-    "Loading..." : "Á lódáil...",
     "Modified since" : "Athraithe ó shin",
     "Modified until" : "Modhnaithe go dtí",
     "New search providers detected" : "Soláthraithe cuardaigh nua braite",
@@ -38,7 +35,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Infheictheacht an tsoláthraí in aghaidh an ghrúpa",
     "Results per search" : "Torthaí in aghaidh an chuardaigh",
     "Save" : "Sábháil",
-    "Saving..." : "Shábháil...",
     "Search" : "Cuardach",
     "Search Page" : "Leathanach Cuardaigh",
     "Search results for \"{query}\"" : "Torthaí cuardaigh do \"{query}\"",
@@ -51,6 +47,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Ní raibh an soláthraí(í) seo a leanas ar fáil nuair a sábháladh na socruithe go deireanach: {providers}",
     "There was an error loading the providers." : "Tharla earráid agus na soláthraithe á lódáil.",
     "User group" : "Grúpa úsáideoirí",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Nuair a bhíonn sé cumasaithe, is féidir leat a rialú cé na soláthraithe cuardaigh atá le feiceáil ag grúpaí úsáideoirí sonracha. De réir réamhshocraithe, bíonn gach soláthraí cumasaithe do gach grúpa."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Nuair a bhíonn sé cumasaithe, is féidir leat a rialú cé na soláthraithe cuardaigh atá le feiceáil ag grúpaí úsáideoirí sonracha. De réir réamhshocraithe, bíonn gach soláthraí cumasaithe do gach grúpa.",
+    "Load more..." : "Luchtaigh níos mó...",
+    "Loading settings..." : "Ag lódáil socruithe...",
+    "Loading..." : "Á lódáil...",
+    "Saving..." : "Shábháil..."
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

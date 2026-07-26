@@ -3,11 +3,11 @@ OC.L10N.register(
     {
     "Back" : "Atrás",
     "Filters" : "Filtros",
-    "Loading..." : "Cargando...",
     "No results" : "Sin resultados",
     "Note:" : "Nota:",
     "Save" : "Guardar",
-    "Saving..." : "Guardando...",
-    "Search" : "Buscar"
+    "Search" : "Buscar",
+    "Loading..." : "Cargando...",
+    "Saving..." : "Guardando..."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

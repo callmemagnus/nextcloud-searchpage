@@ -19,9 +19,6 @@
     "Filters" : "Filtry",
     "Go to admin settings" : "Přejít do nastavení pro správu",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Vyšší hodnoty mohou vyústit v pomalejší odezva, hlavně v případě poskytovatelů s rozsáhlými sadami dat.",
-    "Load more..." : "Načíst další …",
-    "Loading settings..." : "Načítání nastavení…",
-    "Loading..." : "Načítání …",
     "New search providers detected" : "Zjištěni nový poskytovatelé vyhledávání",
     "No results" : "Žádné výsledky",
     "Not available to any group" : "Není k dispozici v žádné ze skupin",
@@ -32,7 +29,6 @@
     "Provider visibility per group" : "Viditelnost poskytovatele pro jednotlivé skupiny",
     "Results per search" : "Výsledků v rámci hledání",
     "Save" : "Uložit",
-    "Saving..." : "Ukládá se …",
     "Search" : "Hledat",
     "Search Page" : "Stránka hledání",
     "Search results for \"{query}\"" : "Výsledky hledání pro „{query}“",
@@ -45,6 +41,10 @@
     "The following provider(s) were not available when settings were last saved: {providers}" : "Následující poskytovatelé nebyly dostupní při posledním ukládání nastavení: {providers}",
     "There was an error loading the providers." : "Při načítání poskytovatelů došlo k chybě.",
     "User group" : "Skupina uživatele",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Pokud zapnuto, je možné ovládat kteří poskytovatelé hledání jsou viditelní konkrétním skupinám uživatelů. Ve výchozím stavu jsou pro všechny skupiny povoleni všechni poskytovatelé."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Pokud zapnuto, je možné ovládat kteří poskytovatelé hledání jsou viditelní konkrétním skupinám uživatelů. Ve výchozím stavu jsou pro všechny skupiny povoleni všechni poskytovatelé.",
+    "Load more..." : "Načíst další …",
+    "Loading settings..." : "Načítání nastavení…",
+    "Loading..." : "Načítání …",
+    "Saving..." : "Ukládá se …"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

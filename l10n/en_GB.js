@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Filters",
     "Go to admin settings" : "Go to admin settings",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Higher values may result in slower response times, especially for providers with large datasets.",
-    "Load more..." : "Load more...",
-    "Loading settings..." : "Loading settings...",
-    "Loading..." : "Loading...",
     "Modified since" : "Modified since",
     "Modified until" : "Modified until",
     "New search providers detected" : "New search providers detected",
@@ -38,7 +35,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Provider visibility per group",
     "Results per search" : "Results per search",
     "Save" : "Save",
-    "Saving..." : "Saving...",
     "Search" : "Search",
     "Search Page" : "Search Page",
     "Search results for \"{query}\"" : "Search results for \"{query}\"",
@@ -51,6 +47,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "The following provider(s) were not available when settings were last saved: {providers}",
     "There was an error loading the providers." : "There was an error loading the providers.",
     "User group" : "User group",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups.",
+    "Load more..." : "Load more...",
+    "Loading settings..." : "Loading settings...",
+    "Loading..." : "Loading...",
+    "Saving..." : "Saving..."
 },
 "nplurals=2; plural=(n != 1);");

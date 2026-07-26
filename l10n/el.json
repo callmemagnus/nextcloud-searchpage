@@ -20,9 +20,6 @@
     "Filters" : "Φίλτρα",
     "Go to admin settings" : "Μετάβαση στις ρυθμίσεις διαχειριστή",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Υψηλότερες τιμές ενδέχεται να οδηγήσουν σε πιο αργούς χρόνους απόκρισης, ειδικά για παρόχους με μεγάλα σύνολα δεδομένων.",
-    "Load more..." : "Φόρτωση περισσότερων...",
-    "Loading settings..." : "Φόρτωση ρυθμίσεων...",
-    "Loading..." : "Γίνεται φόρτωση...",
     "Modified since" : "Τροποποιήθηκε από",
     "Modified until" : "Τροποποιήθηκε έως",
     "New search providers detected" : "Εντοπίστηκαν νέοι πάροχοι αναζήτησης",
@@ -36,7 +33,6 @@
     "Provider visibility per group" : "Ορατότητα παρόχου ανά ομάδα",
     "Results per search" : "Αποτελέσματα ανά αναζήτηση",
     "Save" : "Αποθήκευση",
-    "Saving..." : "Γίνεται αποθήκευση...",
     "Search" : "Αναζήτηση",
     "Search Page" : "Σελίδα Αναζήτησης",
     "Search results for \"{query}\"" : "Αποτελέσματα αναζήτησης για \"{query}\"",
@@ -49,6 +45,10 @@
     "The following provider(s) were not available when settings were last saved: {providers}" : "Οι ακόλουθοι πάροχοι δεν ήταν διαθέσιμοι κατά την τελευταία αποθήκευση των ρυθμίσεων: {providers}",
     "There was an error loading the providers." : "Παρουσιάστηκε σφάλμα κατά τη φόρτωση των παρόχων.",
     "User group" : "Ομάδα χρηστών",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Όταν είναι ενεργοποιημένο, μπορείτε να ελέγχετε ποιοι πάροχοι αναζήτησης είναι ορατοί σε συγκεκριμένες ομάδες χρηστών. Από προεπιλογή, όλοι οι πάροχοι είναι ενεργοποιημένοι για όλες τις ομάδες."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Όταν είναι ενεργοποιημένο, μπορείτε να ελέγχετε ποιοι πάροχοι αναζήτησης είναι ορατοί σε συγκεκριμένες ομάδες χρηστών. Από προεπιλογή, όλοι οι πάροχοι είναι ενεργοποιημένοι για όλες τις ομάδες.",
+    "Load more..." : "Φόρτωση περισσότερων...",
+    "Loading settings..." : "Φόρτωση ρυθμίσεων...",
+    "Loading..." : "Γίνεται φόρτωση...",
+    "Saving..." : "Γίνεται αποθήκευση..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

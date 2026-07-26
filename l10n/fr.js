@@ -10,13 +10,10 @@ OC.L10N.register(
     "Click to change providers" : "Cliquer pour changer les fournisseurs",
     "Error saving settings" : "Erreur lors de l’enregistrement des paramètres",
     "Filters" : "Filtres",
-    "Load more..." : "Charger plus...",
-    "Loading..." : "Chargement...",
     "No results" : "Aucun résultat",
     "Note:" : "Remarque :",
     "Provider" : "Fournisseur",
     "Save" : "Enregistrer",
-    "Saving..." : "Enregistrement en cours…",
     "Search" : "Rechercher",
     "Search Page" : "Page de recherche",
     "Search results for \"{query}\"" : "Résultats de recherche pour \"{query}\"",
@@ -24,6 +21,9 @@ OC.L10N.register(
     "See only results for this provider" : "Voir seulement les résultats de ce fournisseur",
     "Show only" : "Isoler",
     "There was an error loading the providers." : "Il y a eu une erreur au chargement de la liste des fournisseurs",
-    "User group" : "Groupe d'utilisateurs"
+    "User group" : "Groupe d'utilisateurs",
+    "Load more..." : "Charger plus...",
+    "Loading..." : "Chargement...",
+    "Saving..." : "Enregistrement en cours…"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

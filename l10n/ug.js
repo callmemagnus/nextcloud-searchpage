@@ -9,19 +9,19 @@ OC.L10N.register(
     "Clear current query" : "نۆۋەتتىكى سوئالنى تازىلاش",
     "Click to change providers" : "تەمىنلىگۈچىلەرنى ئۆزگەرتىش ئۈچۈن چېكىڭ",
     "Filters" : "سۈزگۈچ",
-    "Load more..." : "تېخىمۇ كۆپ يۈك ...",
-    "Loading..." : "Loading ...",
     "No results" : "ھېچقانداق نەتىجە يوق",
     "Note:" : "ئەسكەرتىش:",
     "Provider" : "تەمىنلىگۈچى",
     "Save" : "ساقلا",
-    "Saving..." : "ساقلاۋاتىدۇ…",
     "Search" : "Search",
     "Search Page" : "ئىزدەش بېتى",
     "See all providers" : "بارلىق تەمىنلىگۈچىلەرنى كۆرۈڭ",
     "See only results for this provider" : "بۇ تەمىنلىگۈچىنىڭ نەتىجىسىنىلا كۆرۈڭ",
     "Show only" : "پەقەت كۆرسەت",
     "There was an error loading the providers." : "تەمىنلىگۈچىلەرنى يۈكلەشتە خاتالىق كۆرۈلدى.",
-    "User group" : "ئىشلەتكۈچى گۇرۇپپىسى"
+    "User group" : "ئىشلەتكۈچى گۇرۇپپىسى",
+    "Load more..." : "تېخىمۇ كۆپ يۈك ...",
+    "Loading..." : "Loading ...",
+    "Saving..." : "ساقلاۋاتىدۇ…"
 },
 "nplurals=2; plural=(n != 1);");
