@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Filter",
     "Go to admin settings" : "Zu den Administrationseinstellungen wechseln",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Höhere Werte können zu langsameren Reaktionszeiten führen, insbesondere bei Anbietern mit großen Datensätzen.",
-    "Load more…" : "Weitere laden…",
-    "Loading settings…" : "Lade Einstellungen …",
-    "Loading…" : "Lade…",
     "Modified since" : "Geändert seit",
     "Modified until" : "Geändert bis",
     "New search providers detected" : "Neue Suchanbieter erkannt",
@@ -38,7 +35,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Anbietersichtbarkeit je Gruppe",
     "Results per search" : "Ergebnisse pro Suche",
     "Save" : "Speichern",
-    "Saving…" : "Speichere …",
     "Search" : "Suche",
     "Search Page" : "Suchseite",
     "Search results for \"{query}\"" : "Suchergebnisse für \"{query}\"",
@@ -51,6 +47,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Die folgenden Anbieter waren beim letzten Speichern der Einstellungen nicht verfügbar: {providers}",
     "There was an error loading the providers." : "Beim Laden der Anbieter ist ein Fehler aufgetreten.",
     "User group" : "Benutzergruppe",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Wenn diese Option aktiviert ist, können Sie steuern, welche Suchanbieter für bestimmte Benutzergruppen sichtbar sind. Standardmäßig sind alle Anbieter für alle Gruppen aktiviert."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Wenn diese Option aktiviert ist, können Sie steuern, welche Suchanbieter für bestimmte Benutzergruppen sichtbar sind. Standardmäßig sind alle Anbieter für alle Gruppen aktiviert.",
+    "Load more..." : "Weitere laden…",
+    "Loading settings..." : "Lade Einstellungen …",
+    "Loading..." : "Lade…",
+    "Saving..." : "Speichere …"
 },
 "nplurals=2; plural=(n != 1);");

@@ -4,7 +4,7 @@ OC.L10N.register(
     "Back" : "Trở lại",
     "No results" : "Không có kết quả",
     "Save" : "Lưu",
-    "Saving…" : "Đang lưu…",
-    "Search" : "Tìm kiếm"
+    "Search" : "Tìm kiếm",
+    "Saving..." : "Đang lưu..."
 },
 "nplurals=1; plural=0;");

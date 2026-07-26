@@ -1,12 +1,12 @@
 { "translations": {
     "Back" : "Torna",
     "Filters" : "Filtres",
-    "Loading…" : "Carregant…",
     "No results" : "Sense resultats",
     "Note:" : "Nota:",
     "Provider" : "Proveïdor",
     "Save" : "Desar",
-    "Saving…" : "S'està desant…",
-    "Search" : "Cercar"
+    "Search" : "Cercar",
+    "Loading..." : "Carregant...",
+    "Saving..." : "S'està desant..."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

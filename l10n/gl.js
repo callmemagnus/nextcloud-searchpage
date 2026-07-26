@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "Filtros",
     "Go to admin settings" : "Ir aos axustes de administración",
     "Higher values may result in slower response times, especially for providers with large datasets." : "Valores máis altos poden resultar en tempos de resposta máis lentos, especialmente para provedores con grandes conxuntos de datos.",
-    "Load more…" : "Cargar máis…",
-    "Loading settings…" : "Cargando axustes…",
-    "Loading…" : "Cargando…",
     "New search providers detected" : "Detectáronse novos provedores de busca",
     "No results" : "Sen resultados",
     "Not available to any group" : "Non dispoñíbel para ningún grupo",
@@ -35,7 +32,6 @@ OC.L10N.register(
     "Provider visibility per group" : "Visibilidade do provedor por grupo",
     "Results per search" : "Resultados por busca",
     "Save" : "Gardar",
-    "Saving…" : "Gardando…",
     "Search" : "Buscar",
     "Search Page" : "Páxina de busca",
     "Search results for \"{query}\"" : "Resultados de busca para «{query}»",
@@ -48,6 +44,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "O(s) seguinte(s) provedor(es) non estaban dispoñíbeis cando se gardaron os axustes por última vez: {providers}",
     "There was an error loading the providers." : "Produciuse un erro ao cargar os provedores.",
     "User group" : "Grupo de usuarios",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Cando está activado, pode controlar que provedores de busca son visíbeis para grupos específicos de usuarios. De xeito predeterminado, todos os provedores están activados para todos os grupos."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Cando está activado, pode controlar que provedores de busca son visíbeis para grupos específicos de usuarios. De xeito predeterminado, todos os provedores están activados para todos os grupos.",
+    "Load more..." : "Cargar máis…",
+    "Loading settings..." : "Cargando axustes…",
+    "Loading..." : "Cargando...",
+    "Saving..." : "Gardando…"
 },
 "nplurals=2; plural=(n != 1);");

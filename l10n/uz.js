@@ -4,8 +4,8 @@ OC.L10N.register(
     "Back" : "Orqaga",
     "No results" : "Natija yo'q",
     "Save" : "Saqlash",
-    "Saving…" : "Saqlanmoqda…",
     "Search" : "Qidirish",
-    "User group" : "Foydalanuvchilar guruhi"
+    "User group" : "Foydalanuvchilar guruhi",
+    "Saving..." : "Saqlanmoqda..."
 },
 "nplurals=1; plural=0;");

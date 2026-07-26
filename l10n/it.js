@@ -5,12 +5,12 @@ OC.L10N.register(
     "Provides a proper search page" : "Fornisce una pagina di ricerca adeguata",
     "Back" : "Indietro",
     "Filters" : "Filtri",
-    "Loading…" : "Caricamento in corso…",
     "No results" : "Nessun risultato",
     "Note:" : "Nota:",
     "Provider" : "Fornitore",
     "Save" : "Salva",
-    "Saving…" : "Salvataggio…",
-    "Search" : "Cerca"
+    "Search" : "Cerca",
+    "Loading..." : "Caricamento in corso...",
+    "Saving..." : "Salvataggio…"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -9,13 +9,10 @@ OC.L10N.register(
     "Clear current query" : "Limpiar búsqueda actual",
     "Click to change providers" : "Haga clic para cambiar los proveedores",
     "Filters" : "Filtros",
-    "Load more…" : "Cargar más…",
-    "Loading…" : "Cargando…",
     "No results" : "Sin resultados",
     "Note:" : "Nota:",
     "Provider" : "Proveedor",
     "Save" : "Guardar",
-    "Saving…" : "Guardando…",
     "Search" : "Buscar",
     "Search Page" : "Página de búsqueda",
     "Search results for \"{query}\"" : "Resultados de búsqueda de \"{query}\"",
@@ -23,6 +20,9 @@ OC.L10N.register(
     "See only results for this provider" : "Ver sólo los resultados de este proveedor",
     "Settings saved successfully" : "Ajustes guardados con éxito",
     "Show only" : "Sólo mostrar",
-    "There was an error loading the providers." : "Hubo un error cargando los proveedores."
+    "There was an error loading the providers." : "Hubo un error cargando los proveedores.",
+    "Load more..." : "Cargar más...",
+    "Loading..." : "Cargando...",
+    "Saving..." : "Guardando..."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -1,6 +1,6 @@
 { "translations": {
     "Save" : "সংরক্ষণ",
-    "Saving…" : "সংরক্ষণ করা হচ্ছে..",
-    "Search" : "Search"
+    "Search" : "Search",
+    "Saving..." : "সংরক্ষণ করা হচ্ছে.."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

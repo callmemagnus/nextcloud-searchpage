@@ -9,18 +9,18 @@ OC.L10N.register(
     "Clear current query" : "Futa swali la sasa",
     "Click to change providers" : "Bofya ili kubadilisha watoa huduma",
     "Filters" : "Vichujio",
-    "Load more…" : "Pakia zaidi…",
-    "Loading…" : "Inapakia…",
     "No results" : "Hakuna matokeo",
     "Note:" : "Kumbuka:",
     "Provider" : "Mtoa huduma",
     "Save" : "Hifadhi",
-    "Saving…" : "Inahifadhi",
     "Search" : "Tafuta",
     "Search Page" : "Ukurasa wa utafutaji",
     "See all providers" : "Angalia watoa huduma wote",
     "See only results for this provider" : "Angalia matokeo pekee ya mtoa huduma huyu ",
     "Show only" : "Onesha tu",
-    "There was an error loading the providers." : "Kulikuwa na hitilafu katika kupakia watoa huduma."
+    "There was an error loading the providers." : "Kulikuwa na hitilafu katika kupakia watoa huduma.",
+    "Load more..." : "Pakia zaidi...",
+    "Loading..." : "Inapakia...",
+    "Saving..." : "Inahifadhi"
 },
 "nplurals=2; plural=(n != 1);");

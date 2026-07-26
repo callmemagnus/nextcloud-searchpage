@@ -22,9 +22,6 @@ OC.L10N.register(
     "Filters" : "過濾",
     "Go to admin settings" : "前往管理員設定",
     "Higher values may result in slower response times, especially for providers with large datasets." : "數值越高，回應時間可能越慢，尤其是資料集較大的提供者。",
-    "Load more…" : "載入更多…",
-    "Loading settings…" : "正在載入設定 …",
-    "Loading…" : "加載中…",
     "Modified since" : "最後修改於",
     "Modified until" : "修改直到",
     "New search providers detected" : "偵測到新的搜尋提供者",
@@ -38,7 +35,6 @@ OC.L10N.register(
     "Provider visibility per group" : "每個群組的提供者可見性",
     "Results per search" : "每次搜尋顯示的結果數量",
     "Save" : "保存",
-    "Saving…" : "儲存中…",
     "Search" : "搜尋",
     "Search Page" : "搜尋頁面",
     "Search results for \"{query}\"" : "「{query}」的搜尋結果",
@@ -51,6 +47,10 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "上次儲存設定時，以下提供者尚未可用：{providers}",
     "There was an error loading the providers." : "載入提供者時發生錯誤。",
     "User group" : "用戶群組",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "啟用後，你可以控制哪些搜尋提供者對特定使用者群組可見。預設情況下，所有提供者對所有群組均為啟用。"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "啟用後，你可以控制哪些搜尋提供者對特定使用者群組可見。預設情況下，所有提供者對所有群組均為啟用。",
+    "Load more..." : "載入更多…",
+    "Loading settings..." : "正在載入設定 …",
+    "Loading..." : "加載中...",
+    "Saving..." : "儲存中..."
 },
 "nplurals=1; plural=0;");

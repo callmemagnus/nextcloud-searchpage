@@ -3,12 +3,12 @@ OC.L10N.register(
     {
     "Back" : "Vissza",
     "Filters" : "Szűrők",
-    "Loading…" : "Betöltés…",
     "No results" : "Nincs eredmény",
     "Note:" : "Megjegyzés:",
     "Provider" : "Szolgáltató",
     "Save" : "Mentés",
-    "Saving…" : "Mentés…",
-    "Search" : "Keresés"
+    "Search" : "Keresés",
+    "Loading..." : "Betöltés...",
+    "Saving..." : "Mentés…"
 },
 "nplurals=2; plural=(n != 1);");
