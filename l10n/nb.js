@@ -19,8 +19,8 @@ OC.L10N.register(
     "See only results for this provider" : "Se kun resultater for denne tilbyderen",
     "Show only" : "Vis bare",
     "There was an error loading the providers." : "Det oppstod en feil ved innlasting av leverandørene.",
-    "Load more..." : "Last inn flere...",
-    "Loading..." : "Laster…",
-    "Saving..." : "Lagrer …"
+    "Load more…" : "Last inn flere…",
+    "Loading…" : "Laster…",
+    "Saving…" : "Lagrer …"
 },
 "nplurals=2; plural=(n != 1);");

@@ -8,7 +8,7 @@ OC.L10N.register(
     "Provider" : "Proveïdor",
     "Save" : "Desar",
     "Search" : "Cercar",
-    "Loading..." : "Carregant...",
-    "Saving..." : "S'està desant..."
+    "Loading…" : "Carregant…",
+    "Saving…" : "S'està desant…"
 },
 "nplurals=2; plural=(n != 1);");

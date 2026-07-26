@@ -7,6 +7,6 @@ OC.L10N.register(
     "Provider" : "Доставчик",
     "Save" : "Запиши",
     "Search" : "Търсене",
-    "Saving..." : "Записване..."
+    "Saving…" : "Записване…"
 },
 "nplurals=2; plural=(n != 1);");

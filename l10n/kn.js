@@ -3,6 +3,6 @@ OC.L10N.register(
     {
     "Save" : "﻿ಉಳಿಸಿ",
     "Search" : "Search",
-    "Saving..." : "﻿ಉಳಿಸಲಾಗುತ್ತಿದೆ ..."
+    "Saving…" : "﻿ಉಳಿಸಲಾಗುತ್ತಿದೆ …"
 },
 "nplurals=2; plural=(n > 1);");

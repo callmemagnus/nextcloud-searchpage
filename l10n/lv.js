@@ -6,7 +6,7 @@ OC.L10N.register(
     "Provider" : "Nodrošinātājs",
     "Save" : "Saglabāt",
     "Search" : "Meklēt",
-    "Loading..." : "Notiek ielāde...",
-    "Saving..." : "Saglabā..."
+    "Loading…" : "Notiek ielāde…",
+    "Saving…" : "Saglabā…"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

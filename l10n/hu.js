@@ -8,7 +8,7 @@ OC.L10N.register(
     "Provider" : "Szolgáltató",
     "Save" : "Mentés",
     "Search" : "Keresés",
-    "Loading..." : "Betöltés...",
-    "Saving..." : "Mentés…"
+    "Loading…" : "Betöltés…",
+    "Saving…" : "Mentés…"
 },
 "nplurals=2; plural=(n != 1);");

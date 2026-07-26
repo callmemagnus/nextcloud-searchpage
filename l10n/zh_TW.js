@@ -48,9 +48,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "載入提供者時發生錯誤。",
     "User group" : "使用者群組",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "啟用後，您可以控制哪些搜尋提供者對特定使用者群組可見。預設情況下，所有提供者均對所有群組啟用。",
-    "Load more..." : "載入更多……",
-    "Loading settings..." : "正在載入設定……",
-    "Loading..." : "正在載入……",
-    "Saving..." : "儲存中……"
+    "Load more…" : "載入更多……",
+    "Loading settings…" : "正在載入設定……",
+    "Loading…" : "正在載入……",
+    "Saving…" : "儲存中……"
 },
 "nplurals=1; plural=0;");

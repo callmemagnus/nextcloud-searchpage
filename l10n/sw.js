@@ -19,8 +19,8 @@ OC.L10N.register(
     "See only results for this provider" : "Angalia matokeo pekee ya mtoa huduma huyu ",
     "Show only" : "Onesha tu",
     "There was an error loading the providers." : "Kulikuwa na hitilafu katika kupakia watoa huduma.",
-    "Load more..." : "Pakia zaidi...",
-    "Loading..." : "Inapakia...",
-    "Saving..." : "Inahifadhi"
+    "Load more…" : "Pakia zaidi…",
+    "Loading…" : "Inapakia…",
+    "Saving…" : "Inahifadhi"
 },
 "nplurals=2; plural=(n != 1);");

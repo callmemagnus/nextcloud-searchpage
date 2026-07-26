@@ -8,7 +8,7 @@ OC.L10N.register(
     "Provider" : "Udbyder",
     "Save" : "Gem",
     "Search" : "Søg",
-    "Loading..." : "Indlæser...",
-    "Saving..." : "Gemmer..."
+    "Loading…" : "Indlæser…",
+    "Saving…" : "Gemmer…"
 },
 "nplurals=2; plural=(n != 1);");

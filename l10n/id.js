@@ -45,9 +45,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Terjadi kesalahan saat memuat penyedia.",
     "User group" : "Grup pengguna",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Saat diaktifkan, Anda dapat mengontrol penyedia pencarian mana yang terlihat untuk grup pengguna tertentu. Secara default, semua penyedia diaktifkan untuk semua grup.",
-    "Load more..." : "Muat lebih banyak...",
-    "Loading settings..." : "Memuat pengaturan...",
-    "Loading..." : "Memuat...",
-    "Saving..." : "Menyimpan..."
+    "Load more…" : "Muat lebih banyak…",
+    "Loading settings…" : "Memuat pengaturan…",
+    "Loading…" : "Memuat…",
+    "Saving…" : "Menyimpan…"
 },
 "nplurals=1; plural=0;");

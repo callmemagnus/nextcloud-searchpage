@@ -4,6 +4,6 @@ OC.L10N.register(
     "Filters" : "Filter",
     "Save" : "Lagre",
     "Search" : "Søk",
-    "Saving..." : "Lagrar …"
+    "Saving…" : "Lagrar …"
 },
 "nplurals=2; plural=(n != 1);");

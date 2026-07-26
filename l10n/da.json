@@ -6,7 +6,7 @@
     "Provider" : "Udbyder",
     "Save" : "Gem",
     "Search" : "Søg",
-    "Loading..." : "Indlæser...",
-    "Saving..." : "Gemmer..."
+    "Loading…" : "Indlæser…",
+    "Saving…" : "Gemmer…"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

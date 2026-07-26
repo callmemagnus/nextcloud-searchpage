@@ -48,9 +48,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Tharla earráid agus na soláthraithe á lódáil.",
     "User group" : "Grúpa úsáideoirí",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Nuair a bhíonn sé cumasaithe, is féidir leat a rialú cé na soláthraithe cuardaigh atá le feiceáil ag grúpaí úsáideoirí sonracha. De réir réamhshocraithe, bíonn gach soláthraí cumasaithe do gach grúpa.",
-    "Load more..." : "Luchtaigh níos mó...",
-    "Loading settings..." : "Ag lódáil socruithe...",
-    "Loading..." : "Á lódáil...",
-    "Saving..." : "Shábháil..."
+    "Load more…" : "Luchtaigh níos mó…",
+    "Loading settings…" : "Ag lódáil socruithe…",
+    "Loading…" : "Á lódáil…",
+    "Saving…" : "Shábháil…"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

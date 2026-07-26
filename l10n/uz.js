@@ -6,6 +6,6 @@ OC.L10N.register(
     "Save" : "Saqlash",
     "Search" : "Qidirish",
     "User group" : "Foydalanuvchilar guruhi",
-    "Saving..." : "Saqlanmoqda..."
+    "Saving…" : "Saqlanmoqda…"
 },
 "nplurals=1; plural=0;");

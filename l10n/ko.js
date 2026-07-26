@@ -9,7 +9,7 @@ OC.L10N.register(
     "Save" : "저장",
     "Search" : "검색",
     "User group" : "사용자 그룹",
-    "Loading..." : "불러오는 중...",
-    "Saving..." : "저장 중..."
+    "Loading…" : "불러오는 중…",
+    "Saving…" : "저장 중…"
 },
 "nplurals=1; plural=0;");

@@ -48,9 +48,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Παρουσιάστηκε σφάλμα κατά τη φόρτωση των παρόχων.",
     "User group" : "Ομάδα χρηστών",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Όταν είναι ενεργοποιημένο, μπορείτε να ελέγχετε ποιοι πάροχοι αναζήτησης είναι ορατοί σε συγκεκριμένες ομάδες χρηστών. Από προεπιλογή, όλοι οι πάροχοι είναι ενεργοποιημένοι για όλες τις ομάδες.",
-    "Load more..." : "Φόρτωση περισσότερων...",
-    "Loading settings..." : "Φόρτωση ρυθμίσεων...",
-    "Loading..." : "Γίνεται φόρτωση...",
-    "Saving..." : "Γίνεται αποθήκευση..."
+    "Load more…" : "Φόρτωση περισσότερων…",
+    "Loading settings…" : "Φόρτωση ρυθμίσεων…",
+    "Loading…" : "Γίνεται φόρτωση…",
+    "Saving…" : "Γίνεται αποθήκευση…"
 },
 "nplurals=2; plural=(n != 1);");

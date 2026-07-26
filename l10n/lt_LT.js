@@ -48,9 +48,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Įkeliant teikėjus įvyko klaida.",
     "User group" : "Vartotojų grupė",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Kai įjungta, galite valdyti, kurie paieškos teikėjai yra matomi konkrečioms vartotojų grupėms. Pagal numatytuosius nustatymus visi teikėjai yra įjungti visoms grupėms.",
-    "Load more..." : "Įkelti daugiau...",
-    "Loading settings..." : "Įkeliami nustatymai…",
-    "Loading..." : "Įkeliama...",
-    "Saving..." : "Įrašoma..."
+    "Load more…" : "Įkelti daugiau…",
+    "Loading settings…" : "Įkeliami nustatymai…",
+    "Loading…" : "Įkeliama…",
+    "Saving…" : "Įrašoma…"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

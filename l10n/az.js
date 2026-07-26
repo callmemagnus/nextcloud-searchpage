@@ -5,6 +5,6 @@ OC.L10N.register(
     "No results" : "Nəticə yoxdur",
     "Save" : "Saxla",
     "Search" : "Axtarış",
-    "Saving..." : "Saxlama..."
+    "Saving…" : "Saxlama…"
 },
 "nplurals=2; plural=(n != 1);");

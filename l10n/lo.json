@@ -6,7 +6,7 @@
     "Provider" : "Provider",
     "Save" : "ບັນທຶກ",
     "Search" : "ຄົ້ນຫາ",
-    "Loading..." : "ກຳລັງໂຫລດ...",
-    "Saving..." : "ກຳລັງບັນທຶກ..."
+    "Loading…" : "ກຳລັງໂຫລດ…",
+    "Saving…" : "ກຳລັງບັນທຶກ…"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

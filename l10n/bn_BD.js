@@ -3,6 +3,6 @@ OC.L10N.register(
     {
     "Save" : "সংরক্ষণ",
     "Search" : "Search",
-    "Saving..." : "সংরক্ষণ করা হচ্ছে.."
+    "Saving…" : "সংরক্ষণ করা হচ্ছে.."
 },
 "nplurals=2; plural=(n != 1);");

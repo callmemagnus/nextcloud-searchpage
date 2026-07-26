@@ -6,6 +6,6 @@ OC.L10N.register(
     "Provider" : "Frunidore",
     "Save" : "Sarva",
     "Search" : "Chirca",
-    "Saving..." : "Sarvende..."
+    "Saving…" : "Sarvende…"
 },
 "nplurals=2; plural=(n != 1);");

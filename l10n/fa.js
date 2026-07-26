@@ -45,9 +45,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "خطایی در بارگذاری ارائه‌دهندگان رخ داد.",
     "User group" : "گروه کاربری",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "وقتی فعال باشد، می‌توانید کنترل کنید کدام ارائه‌دهندگان جستجو برای گروه‌های کاربری خاص قابل مشاهده باشند. به طور پیش‌فرض، همه ارائه‌دهندگان برای همه گروه‌ها فعال هستند.",
-    "Load more..." : "بارگذاری بیشتر...",
-    "Loading settings..." : "در حال بارگذاری تنظیمات...",
-    "Loading..." : "در حال بارگذاری...",
-    "Saving..." : "در حال ذخیره..."
+    "Load more…" : "بارگذاری بیشتر…",
+    "Loading settings…" : "در حال بارگذاری تنظیمات…",
+    "Loading…" : "در حال بارگذاری…",
+    "Saving…" : "در حال ذخیره…"
 },
 "nplurals=2; plural=(n > 1);");

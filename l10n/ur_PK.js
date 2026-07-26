@@ -3,6 +3,6 @@ OC.L10N.register(
     {
     "Save" : "حفظ",
     "Search" : "Search",
-    "Saving..." : "محفوظ ھو رہا ہے ..."
+    "Saving…" : "محفوظ ھو رہا ہے …"
 },
 "nplurals=2; plural=(n != 1);");

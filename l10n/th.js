@@ -6,6 +6,6 @@ OC.L10N.register(
     "Provider" : "ผู้ให้บริการ",
     "Save" : "บันทึก",
     "Search" : "ค้นหา",
-    "Saving..." : "กำลังบันทึก..."
+    "Saving…" : "กำลังบันทึก…"
 },
 "nplurals=1; plural=0;");

@@ -5,6 +5,6 @@ OC.L10N.register(
     "No results" : "Không có kết quả",
     "Save" : "Lưu",
     "Search" : "Tìm kiếm",
-    "Saving..." : "Đang lưu..."
+    "Saving…" : "Đang lưu…"
 },
 "nplurals=1; plural=0;");

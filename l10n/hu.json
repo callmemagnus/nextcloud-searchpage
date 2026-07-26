@@ -6,7 +6,7 @@
     "Provider" : "Szolgáltató",
     "Save" : "Mentés",
     "Search" : "Keresés",
-    "Loading..." : "Betöltés...",
-    "Saving..." : "Mentés…"
+    "Loading…" : "Betöltés…",
+    "Saving…" : "Mentés…"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -4,6 +4,6 @@ OC.L10N.register(
     "Provider" : "Verskaffer",
     "Save" : "Stoor",
     "Search" : "Soek",
-    "Saving..." : "Stoor tans…"
+    "Saving…" : "Stoor tans…"
 },
 "nplurals=2; plural=(n != 1);");

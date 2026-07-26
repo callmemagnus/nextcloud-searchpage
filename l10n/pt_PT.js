@@ -47,9 +47,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Ocorreu um erro ao carregar os provedores.",
     "User group" : "Grupo de usuários",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Quando ativado, você pode controlar quais provedores de pesquisa ficam visíveis para grupos específicos de usuários. Por padrão, todos os provedores estão ativados para todos os grupos.",
-    "Load more..." : "Carregar mais…",
-    "Loading settings..." : "Carregando as configurações…",
-    "Loading..." : "Carregando…",
-    "Saving..." : "A guardar..."
+    "Load more…" : "Carregar mais…",
+    "Loading settings…" : "Carregando as configurações…",
+    "Loading…" : "Carregando…",
+    "Saving…" : "A guardar…"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

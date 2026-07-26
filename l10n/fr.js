@@ -22,8 +22,8 @@ OC.L10N.register(
     "Show only" : "Isoler",
     "There was an error loading the providers." : "Il y a eu une erreur au chargement de la liste des fournisseurs",
     "User group" : "Groupe d'utilisateurs",
-    "Load more..." : "Charger plus...",
-    "Loading..." : "Chargement...",
-    "Saving..." : "Enregistrement en cours…"
+    "Load more…" : "Charger plus…",
+    "Loading…" : "Chargement…",
+    "Saving…" : "Enregistrement en cours…"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -3,6 +3,6 @@ OC.L10N.register(
     {
     "Save" : "Պահպանել",
     "Search" : "Search",
-    "Saving..." : "Պահում եմ..."
+    "Saving…" : "Պահում եմ…"
 },
 "nplurals=2; plural=(n != 1);");

@@ -4,6 +4,6 @@ OC.L10N.register(
     "No results" : "Cap de resultat",
     "Save" : "Enregistrar",
     "Search" : "Recercar",
-    "Saving..." : "Enregistrament..."
+    "Saving…" : "Enregistrament…"
 },
 "nplurals=2; plural=(n > 1);");

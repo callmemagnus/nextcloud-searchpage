@@ -48,9 +48,9 @@ OC.L10N.register(
     "There was an error loading the providers." : "Beim Laden der Anbieter ist ein Fehler aufgetreten.",
     "User group" : "Benutzergruppe",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Wenn diese Option aktiviert ist, kannst du steuern, welche Suchanbieter für bestimmte Benutzergruppen sichtbar sind. Standardmäßig sind alle Anbieter für alle Gruppen aktiviert.",
-    "Load more..." : "Weitere laden…",
-    "Loading settings..." : "Lade Einstellungen …",
-    "Loading..." : "Lade…",
-    "Saving..." : "Speichere …"
+    "Load more…" : "Weitere laden…",
+    "Loading settings…" : "Lade Einstellungen …",
+    "Loading…" : "Lade…",
+    "Saving…" : "Speichere …"
 },
 "nplurals=2; plural=(n != 1);");
