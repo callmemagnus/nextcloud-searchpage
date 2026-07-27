@@ -44,10 +44,6 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "O(s) seguinte(s) provedor(es) non estaban dispoñíbeis cando se gardaron os axustes por última vez: {providers}",
     "There was an error loading the providers." : "Produciuse un erro ao cargar os provedores.",
     "User group" : "Grupo de usuarios",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Cando está activado, pode controlar que provedores de busca son visíbeis para grupos específicos de usuarios. De xeito predeterminado, todos os provedores están activados para todos os grupos.",
-    "Load more…" : "Cargar máis…",
-    "Loading settings…" : "Cargando axustes…",
-    "Loading…" : "Cargando…",
-    "Saving…" : "Gardando…"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Cando está activado, pode controlar que provedores de busca son visíbeis para grupos específicos de usuarios. De xeito predeterminado, todos os provedores están activados para todos os grupos."
 },
 "nplurals=2; plural=(n != 1);");

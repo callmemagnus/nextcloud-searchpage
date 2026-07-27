@@ -19,9 +19,6 @@ OC.L10N.register(
     "See only results for this provider" : "بۇ تەمىنلىگۈچىنىڭ نەتىجىسىنىلا كۆرۈڭ",
     "Show only" : "پەقەت كۆرسەت",
     "There was an error loading the providers." : "تەمىنلىگۈچىلەرنى يۈكلەشتە خاتالىق كۆرۈلدى.",
-    "User group" : "ئىشلەتكۈچى گۇرۇپپىسى",
-    "Load more…" : "تېخىمۇ كۆپ يۈك …",
-    "Loading…" : "Loading …",
-    "Saving…" : "ساقلاۋاتىدۇ…"
+    "User group" : "ئىشلەتكۈچى گۇرۇپپىسى"
 },
 "nplurals=2; plural=(n != 1);");

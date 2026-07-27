@@ -9,8 +9,6 @@ OC.L10N.register(
     "Provider" : "Provider",
     "Save" : "Opslaan",
     "Search" : "Zoeken",
-    "User group" : "Gebruiker groep",
-    "Loading…" : "Laden….",
-    "Saving…" : "Opslaan…"
+    "User group" : "Gebruiker groep"
 },
 "nplurals=2; plural=(n != 1);");

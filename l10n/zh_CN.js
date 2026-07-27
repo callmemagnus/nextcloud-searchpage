@@ -18,9 +18,6 @@ OC.L10N.register(
     "See all providers" : "查看所有提供者",
     "See only results for this provider" : "仅显示此提供者的搜索结果",
     "Show only" : "仅显示",
-    "There was an error loading the providers." : "加载提供者时出现错误。",
-    "Load more…" : "加载更多…",
-    "Loading…" : "载入中…",
-    "Saving…" : "正在保存……"
+    "There was an error loading the providers." : "加载提供者时出现错误。"
 },
 "nplurals=1; plural=0;");

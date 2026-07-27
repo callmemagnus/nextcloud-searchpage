@@ -10,9 +10,6 @@ OC.L10N.register(
     "Save" : "Gorde",
     "Search" : "Bilatu",
     "Search Page" : "Bilatu orria",
-    "Show only" : "Erakutsi soilik",
-    "Load more…" : "Kargatu gehiago…",
-    "Loading…" : "Kargatzen…",
-    "Saving…" : "Gordetzen…"
+    "Show only" : "Erakutsi soilik"
 },
 "nplurals=2; plural=(n != 1);");

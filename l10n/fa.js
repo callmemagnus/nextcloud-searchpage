@@ -44,10 +44,6 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "ارائه‌دهنده(های) زیر در زمان آخرین ذخیره تنظیمات در دسترس نبودند: {providers}",
     "There was an error loading the providers." : "خطایی در بارگذاری ارائه‌دهندگان رخ داد.",
     "User group" : "گروه کاربری",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "وقتی فعال باشد، می‌توانید کنترل کنید کدام ارائه‌دهندگان جستجو برای گروه‌های کاربری خاص قابل مشاهده باشند. به طور پیش‌فرض، همه ارائه‌دهندگان برای همه گروه‌ها فعال هستند.",
-    "Load more…" : "بارگذاری بیشتر…",
-    "Loading settings…" : "در حال بارگذاری تنظیمات…",
-    "Loading…" : "در حال بارگذاری…",
-    "Saving…" : "در حال ذخیره…"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "وقتی فعال باشد، می‌توانید کنترل کنید کدام ارائه‌دهندگان جستجو برای گروه‌های کاربری خاص قابل مشاهده باشند. به طور پیش‌فرض، همه ارائه‌دهندگان برای همه گروه‌ها فعال هستند."
 },
 "nplurals=2; plural=(n > 1);");

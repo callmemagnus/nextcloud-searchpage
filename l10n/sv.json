@@ -45,10 +45,6 @@
     "The following provider(s) were not available when settings were last saved: {providers}" : "Följande leverantör eller leverantörer var inte tillgängliga när inställningarna senast sparades: {providers}",
     "There was an error loading the providers." : "Det uppstod ett fel när källorna skulle laddas.",
     "User group" : "Användargrupp",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "När detta är aktiverat kan du bestämma vilka sökleverantörer som är synliga för specifika användargrupper. Som standard är alla leverantörer aktiverade för alla grupper.",
-    "Load more…" : "Visa fler …",
-    "Loading settings…" : "Läser in inställningar …",
-    "Loading…" : "Läser in …",
-    "Saving…" : "Sparar …"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "När detta är aktiverat kan du bestämma vilka sökleverantörer som är synliga för specifika användargrupper. Som standard är alla leverantörer aktiverade för alla grupper."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

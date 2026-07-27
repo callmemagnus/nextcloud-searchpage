@@ -42,10 +42,6 @@
     "The following provider(s) were not available when settings were last saved: {providers}" : "Penyedia berikut tidak tersedia saat pengaturan terakhir disimpan: {providers}",
     "There was an error loading the providers." : "Terjadi kesalahan saat memuat penyedia.",
     "User group" : "Grup pengguna",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Saat diaktifkan, Anda dapat mengontrol penyedia pencarian mana yang terlihat untuk grup pengguna tertentu. Secara default, semua penyedia diaktifkan untuk semua grup.",
-    "Load more…" : "Muat lebih banyak…",
-    "Loading settings…" : "Memuat pengaturan…",
-    "Loading…" : "Memuat…",
-    "Saving…" : "Menyimpan…"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Saat diaktifkan, Anda dapat mengontrol penyedia pencarian mana yang terlihat untuk grup pengguna tertentu. Secara default, semua penyedia diaktifkan untuk semua grup."
 },"pluralForm" :"nplurals=1; plural=0;"
 }
