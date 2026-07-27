@@ -15,9 +15,6 @@ OC.L10N.register(
     "Search Page" : "Hakusivu",
     "See all providers" : "Näytä kaikki palveluntarjoajat",
     "See only results for this provider" : "Näytä vain tämän palveluntarjoajan tulokset",
-    "Show only" : "Näytä vain",
-    "Load more…" : "Lataa lisää…",
-    "Loading…" : "Ladataan…",
-    "Saving…" : "Tallennetaan…"
+    "Show only" : "Näytä vain"
 },
 "nplurals=2; plural=(n != 1);");

@@ -46,10 +46,6 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "Kui seadistused viimati salvestati, siis polnud saadaval järgnevaid otsinguteenuse pakkujaid: {providers}",
     "There was an error loading the providers." : "Teenusepakkujate laadimisel tekkis viga.",
     "User group" : "Kasutajagrupp",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Selle eelistuse kasutamisel saad kontrollida missugused teenusepakkujad on kasutusel konkreetsetele kasutajagruppidele. Vaikimisi on kõik otsingud lubatud kõikidele gruppidele.",
-    "Load more…" : "Laadi veel…",
-    "Loading settings…" : "Laadin seadistusi…",
-    "Loading…" : "Laadin…",
-    "Saving…" : "Salvestan…"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Selle eelistuse kasutamisel saad kontrollida missugused teenusepakkujad on kasutusel konkreetsetele kasutajagruppidele. Vaikimisi on kõik otsingud lubatud kõikidele gruppidele."
 },
 "nplurals=2; plural=(n != 1);");

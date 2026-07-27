@@ -5,8 +5,6 @@
     "Note:" : "Megjegyzés:",
     "Provider" : "Szolgáltató",
     "Save" : "Mentés",
-    "Search" : "Keresés",
-    "Loading…" : "Betöltés…",
-    "Saving…" : "Mentés…"
+    "Search" : "Keresés"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

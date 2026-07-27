@@ -14,9 +14,6 @@ OC.L10N.register(
     "Search Page" : "Páxina de busca",
     "See all providers" : "Ver tolos fornidores",
     "Show only" : "Amosar namás",
-    "There was an error loading the providers." : "Hebo un error al cargar los fornidores.",
-    "Load more…" : "Cargar más…",
-    "Loading…" : "Cargando…",
-    "Saving…" : "Guardando…"
+    "There was an error loading the providers." : "Hebo un error al cargar los fornidores."
 },
 "nplurals=2; plural=(n != 1);");

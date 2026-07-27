@@ -20,9 +20,6 @@ OC.L10N.register(
     "See only results for this provider" : "Ver sólo los resultados de este proveedor",
     "Settings saved successfully" : "Ajustes guardados con éxito",
     "Show only" : "Sólo mostrar",
-    "There was an error loading the providers." : "Hubo un error cargando los proveedores.",
-    "Load more…" : "Cargar más…",
-    "Loading…" : "Cargando…",
-    "Saving…" : "Guardando…"
+    "There was an error loading the providers." : "Hubo un error cargando los proveedores."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

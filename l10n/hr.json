@@ -42,10 +42,6 @@
     "The following provider(s) were not available when settings were last saved: {providers}" : "Sljedeći davatelj(i) usluga nisu bili dostupni kada su postavke posljednji put spremljene: {providers}",
     "There was an error loading the providers." : "Došlo je do pogreške pri učitavanju davatelja usluga.",
     "User group" : "Korisnička grupa",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Kada je omogućeno, možete upravljati time koji su pružatelji pretraživanja vidljivi određenim korisničkim grupama. Prema zadanim postavkama, svi su pružatelji omogućeni za sve grupe.",
-    "Load more…" : "Učitaj više…",
-    "Loading settings…" : "Učitavanje postavki…",
-    "Loading…" : "Učitavanje…",
-    "Saving…" : "Spremanje…"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Kada je omogućeno, možete upravljati time koji su pružatelji pretraživanja vidljivi određenim korisničkim grupama. Prema zadanim postavkama, svi su pružatelji omogućeni za sve grupe."
 },"pluralForm" :"nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 }

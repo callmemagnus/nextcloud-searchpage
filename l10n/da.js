@@ -7,8 +7,6 @@ OC.L10N.register(
     "Note:" : "Bemærkning:",
     "Provider" : "Udbyder",
     "Save" : "Gem",
-    "Search" : "Søg",
-    "Loading…" : "Indlæser…",
-    "Saving…" : "Gemmer…"
+    "Search" : "Søg"
 },
 "nplurals=2; plural=(n != 1);");

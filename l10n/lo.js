@@ -7,8 +7,6 @@ OC.L10N.register(
     "Note:" : "ໝາຍເຫດ:",
     "Provider" : "Provider",
     "Save" : "ບັນທຶກ",
-    "Search" : "ຄົ້ນຫາ",
-    "Loading…" : "ກຳລັງໂຫລດ…",
-    "Saving…" : "ກຳລັງບັນທຶກ…"
+    "Search" : "ຄົ້ນຫາ"
 },
 "nplurals=1; plural=0;");

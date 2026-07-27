@@ -5,7 +5,6 @@ OC.L10N.register(
     "No results" : "ไม่มีผลลัพธ์",
     "Provider" : "ผู้ให้บริการ",
     "Save" : "บันทึก",
-    "Search" : "ค้นหา",
-    "Saving…" : "กำลังบันทึก…"
+    "Search" : "ค้นหา"
 },
 "nplurals=1; plural=0;");

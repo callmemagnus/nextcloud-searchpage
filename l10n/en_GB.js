@@ -47,10 +47,6 @@ OC.L10N.register(
     "The following provider(s) were not available when settings were last saved: {providers}" : "The following provider(s) were not available when settings were last saved: {providers}",
     "There was an error loading the providers." : "There was an error loading the providers.",
     "User group" : "User group",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups.",
-    "Load more…" : "Load more…",
-    "Loading settings…" : "Loading settings…",
-    "Loading…" : "Loading…",
-    "Saving…" : "Saving…"
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups."
 },
 "nplurals=2; plural=(n != 1);");
