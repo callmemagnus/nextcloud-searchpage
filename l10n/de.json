@@ -41,7 +41,7 @@
     "Move down" : "Nach unten",
     "Move up" : "Nach oben",
     "New search providers detected" : "Neue Suchanbieter erkannt",
-    "Nextcloud 34 started hiding installed application in a menu, making it harder to reach The Search Page. This experimental feature hi-jacks the unified search of Nextcloud." : "Nextcloud 34 versteckt installierte Anwendungen in einem Menü, wodurch die Suchseite schwerer zugänglich ist. Diese experimentelle Funktion beeinträchtigt die zentrale Suche von Nextcloud.",
+    "Nextcloud 34 started hiding installed application in a menu, making it harder to reach The Search Page. This experimental feature hi-jacks the unified search of Nextcloud." : "Nextcloud 34 versteckt installierte Anwendungen in einem Menü, wodurch die Suchseite schwerer zugänglich ist. Diese experimentelle Funktion benutzt die zentrale Suche von Nextcloud.",
     "No applications found." : "Keine Anwendungen gefunden.",
     "No results" : "Keine Ergebnisse",
     "Not all providers support date filters." : "Nicht alle Anbieter unterstützen Datumsfilter.",
@@ -77,7 +77,7 @@
     "Until" : "Bis",
     "Use all" : "Alles verwenden",
     "User group" : "Benutzergruppe",
-    "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Wenn diese Funktion aktiviert ist, öffnet ein Klick auf die Nextcloud-Suchschaltfläche ein Inline-Suchfenster anstelle der Standard-Suchoberfläche.",
+    "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Wenn diese Funktion aktiviert ist, öffnet ein Klick auf die Nextcloud-Suchschaltfläche ein Inline-Suchfenster anstatt der Standard-Suchoberfläche.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Wenn diese Option aktiviert ist, kannst du steuern, welche Suchanbieter für bestimmte Benutzergruppen sichtbar sind. Standardmäßig sind alle Anbieter für alle Gruppen aktiviert.",
     "in {folder}" : "in {folder}"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
