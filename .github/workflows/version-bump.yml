@@ -97,13 +97,11 @@ jobs:
         run: |
           LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
           echo "Last commit author: $LAST_COMMIT_AUTHOR"
-          echo "Disabled auto-release until Transifex updates the label list..."
-          echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
-          # if [ "$LAST_COMMIT_AUTHOR" = "Nextcloud bot" ]; then
-          #   echo "is_nextcloud_bot=true" >> $GITHUB_OUTPUT
-          # else
-          #   echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
-          # fi
+          if [ "$LAST_COMMIT_AUTHOR" = "Nextcloud bot" ]; then
+            echo "is_nextcloud_bot=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_nextcloud_bot=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Check change threshold for Nextcloud bot commits
         if: github.event_name == 'push' && steps.bot_check.outputs.skip != 'true' && steps.nextcloud_bot_check.outputs.is_nextcloud_bot == 'true'
