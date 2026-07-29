@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Back" : "Torna",
     "Filters" : "Filtres",
+    "Home" : "Inici",
     "No results" : "Sense resultats",
     "Note:" : "Nota:",
     "Provider" : "Proveïdor",
