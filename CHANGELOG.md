@@ -1,5 +1,30 @@
 # Changelog
 
+## [v2.4.3](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.2...v2.4.3)
+
+- Update translations - Many thanks to the translators!
+
+## [v2.4.2](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.1...v2.4.2)
+
+- Update translations - Many thanks to the translators!
+
+## [v2.4.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.0...v2.4.1)
+
+- Update translations - Many thanks to the translators!
+
+## [v2.4.0](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.3.1...v2.4.0)
+
+- Update translations - Many thanks to the translators!
+- disabled auto version bump on label changes
+- enforce … instead of ...
+- fix tests
+- update dependencies [skip ci]
+- drop Nextcloud lower than 33 in playwright [skip ci]
+- add experimental inline search modal with per-app configuration
+- update dependencies
+- add since/until query parameters
+- update dependencies
+
 ## [v2.3.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.3.0...v2.3.1)
 
 - Update translations - Many thanks to the translators!

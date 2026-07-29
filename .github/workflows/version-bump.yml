@@ -10,14 +10,14 @@ on:
   workflow_dispatch:
     inputs:
       bump_type:
-        description: 'Version bump type'
+        description: "Version bump type"
         required: true
         type: choice
         options:
           - major
           - minor
           - patch
-        default: 'patch'
+        default: "patch"
 
 jobs:
   bump-version:
@@ -394,4 +394,3 @@ jobs:
         if: steps.bot_check.outputs.skip != 'true' && steps.bump_type.outputs.bump == 'none' && (steps.nextcloud_bot_check.outputs.is_nextcloud_bot != 'true' || steps.threshold_check.outputs.meets_threshold != 'false')
         run: |
           echo "No version bump needed - no relevant commits found since last tag"
-
