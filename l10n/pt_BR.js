@@ -77,7 +77,7 @@ OC.L10N.register(
     "The provider restrictions configured above (if any) will be enforced in the mini-search." : "As restrições de provedores configuradas acima (se houver) serão aplicadas na caixinha de pesquisa.",
     "There was an error loading the providers." : "Ocorreu um erro ao carregar os provedores.",
     "Until" : "Até",
-    "Use all" : "Usar tudo",
+    "Use all" : "Usar todos",
     "User group" : "Grupo de usuários",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Quando ativada, clicar no botão de pesquisa do Nextcloud abre um modal de pesquisa embutido, em vez da visualização de pesquisa padrão.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Quando ativado, você pode controlar quais provedores de pesquisa ficam visíveis para grupos específicos de usuários. Por padrão, todos os provedores estão ativados para todos os grupos.",
