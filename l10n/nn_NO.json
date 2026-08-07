@@ -1,0 +1,9 @@
+{ "translations": {
+    "Back" : "Tilbake",
+    "Close" : "Lukk",
+    "Filters" : "Filter",
+    "Remove" : "Fjern",
+    "Save" : "Lagre",
+    "Search" : "Søk"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
