@@ -11,6 +11,7 @@ OC.L10N.register(
     "Back" : "Επιστροφή",
     "Clear current query" : "Καθαρισμός τρέχουσας ερώτησης",
     "Click to change providers" : "Κάντε κλικ για αλλαγή παρόχων",
+    "Close" : "Κλείσιμο",
     "Configure search provider visibility per group." : "Διαμόρφωση ορατότητας παρόχων αναζήτησης ανά ομάδα.",
     "Configure the number of search results to display for each provider (5-100)." : "Διαμόρφωση του αριθμού αποτελεσμάτων αναζήτησης προς εμφάνιση για κάθε πάροχο (5-100).",
     "Control which search providers are visible to specific user groups." : "Έλεγχος των παρόχων αναζήτησης που θα είναι ορατοί σε συγκεκριμένες ομάδες χρηστών.",
