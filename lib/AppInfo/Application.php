@@ -86,10 +86,8 @@ class Application extends App implements IBootstrap
                 $providerService = $container->get(ProviderService::class);
                 $availableProviders = $providerService->getProvidersForCurrentUser();
                 $availableProviderIds = array_column($availableProviders, 'id');
-            } else {
-                $availableProviderIds = null;
+                $initialState->provideInitialState('availableProviderIds', $availableProviderIds);
             }
-            $initialState->provideInitialState('availableProviderIds', $availableProviderIds);
         });
 
     }

@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.4.5](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.4...v2.4.5)
+
+- avoid provide initial state as null
+
+## [v2.4.4](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.3...v2.4.4)
+
+- Update translations - Many thanks to the translators!
+- minor correction [skip ci]
+
 ## [v2.4.3](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.2...v2.4.3)
 
 - Update translations - Many thanks to the translators!
