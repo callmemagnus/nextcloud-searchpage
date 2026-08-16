@@ -9,6 +9,7 @@ OC.L10N.register(
     "Provider" : "Provider",
     "Save" : "Opslaan",
     "Search" : "Zoeken",
+    "Settings saved successfully" : "Instellingen succesvol opgeslagen",
     "User group" : "Gebruiker groep"
 },
 "nplurals=2; plural=(n != 1);");
