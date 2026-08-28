@@ -1,12 +1,15 @@
 // SPDX-FileCopyrightText: Magnus Anderssen <magnus@magooweb.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page, type Locator } from '@playwright/test';
 
 const SETTINGS_URL = '/index.php/settings/admin/thesearchpage';
 const SETTINGS_API = '/index.php/apps/thesearchpage/api/v1/settings';
 const DASHBOARD_URL = '/index.php/apps/dashboard/';
 const FILES_URL = '/index.php/apps/files/';
+
+// The debounce in SearchResultsPanel.svelte is ~300ms.
+const DEBOUNCE_WAIT_MS = 500;
 
 async function setInlineSearch(page: Page, enabled: boolean) {
 	// Use the API to ensure a clean, isolated state: desired hijack setting + empty app config.
@@ -28,19 +31,38 @@ async function setInlineSearch(page: Page, enabled: boolean) {
 	}
 }
 
-async function clickSearchButton(page: Page) {
+function searchTriggerLocator(page: Page): Locator {
 	// NC 30: .unified-search-menu  |  NC 31-33: #unified-search  |  NC 34: .unified-search-input (button)
 	// NC 35+: same wrapper classes, but the trigger is an editable <input role="combobox">.
-	const btn = page
+	return page
 		.locator(
 			'.unified-search-menu button, .unified-search-menu input[role="combobox"], #unified-search button, #unified-search input[role="combobox"], .unified-search-input button, .unified-search-input input[role="combobox"]'
 		)
 		.first();
-	await expect(btn).toBeVisible({ timeout: 5000 });
-	await btn.click();
 }
 
-test.describe('inline search modal — setting', () => {
+/** Clicks/focuses the search trigger and returns the box to type into — the
+ * native input itself on NC35+, or the synthesized overlay input on older
+ * NC versions where the trigger is a plain button. */
+async function focusSearchBox(page: Page): Promise<Locator> {
+	const trigger = searchTriggerLocator(page);
+	await expect(trigger).toBeVisible({ timeout: 5000 });
+	await trigger.click();
+	const isNativeInput = await trigger.evaluate((el) => el.tagName === 'INPUT');
+	if (isNativeInput) return trigger;
+	const synthetic = page.locator('.mwb-search-synthetic-input');
+	await expect(synthetic).toBeVisible({ timeout: 5000 });
+	return synthetic;
+}
+
+async function typeIntoSearchBox(page: Page, text: string): Promise<Locator> {
+	const box = await focusSearchBox(page);
+	await box.pressSequentially(text, { delay: 20 });
+	await page.waitForTimeout(DEBOUNCE_WAIT_MS);
+	return box;
+}
+
+test.describe('inline search — setting', () => {
 	test('checkbox is shown in settings page', async ({ page }) => {
 		await page.goto(SETTINGS_URL);
 		await expect(page.getByLabel('Enable inline search modal')).toBeVisible();
@@ -64,19 +86,23 @@ test.describe('inline search modal — setting', () => {
 	});
 });
 
-test.describe('inline search modal — disabled', () => {
+test.describe('inline search — disabled', () => {
 	test.beforeEach(async ({ page }) => {
 		await setInlineSearch(page, false);
 	});
 
-	test('search button opens NC default search, not our modal', async ({ page }) => {
+	test('typing in the search box uses NC default search, not our panel', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-modal')).not.toBeVisible();
+		const trigger = searchTriggerLocator(page);
+		await expect(trigger).toBeVisible({ timeout: 5000 });
+		await trigger.click();
+		await page.waitForTimeout(DEBOUNCE_WAIT_MS);
+		await expect(page.locator('.mwb-mini-panel')).not.toBeVisible();
+		await expect(page.locator('.mwb-search-synthetic-input')).not.toBeVisible();
 	});
 });
 
-test.describe('inline search modal — enabled', () => {
+test.describe('inline search — enabled', () => {
 	test.beforeEach(async ({ page }) => {
 		await setInlineSearch(page, true);
 	});
@@ -85,53 +111,49 @@ test.describe('inline search modal — enabled', () => {
 		await setInlineSearch(page, false);
 	});
 
-	test('clicking search button on dashboard opens modal', async ({ page }) => {
+	test('focusing the search box alone does not show the panel', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-modal')).toBeVisible();
+		await focusSearchBox(page);
+		await page.waitForTimeout(DEBOUNCE_WAIT_MS);
+		await expect(page.locator('.mwb-mini-panel')).not.toBeVisible();
 	});
 
-	test('clicking search button on files page opens modal', async ({ page }) => {
+	test('typing a letter on dashboard shows the panel', async ({ page }) => {
+		await page.goto(DASHBOARD_URL);
+		await typeIntoSearchBox(page, 'p');
+		await expect(page.locator('.mwb-mini-panel')).toBeVisible();
+	});
+
+	test('typing a letter on files page shows the panel', async ({ page }) => {
 		await page.goto(FILES_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-modal')).toBeVisible();
+		await typeIntoSearchBox(page, 'p');
+		await expect(page.locator('.mwb-mini-panel')).toBeVisible();
 	});
 
-	test('modal can perform a search and show results', async ({ page }) => {
+	test('typing a query shows results without an explicit submit', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		const modal = page.locator('.mwb-mini-modal');
-		await expect(modal).toBeVisible();
-		await modal.getByRole('textbox').fill('personal');
-		await modal.getByRole('button', { name: 'Search', exact: true }).click();
+		await typeIntoSearchBox(page, 'personal');
+		const panel = page.locator('.mwb-mini-panel');
+		await expect(panel).toBeVisible();
 		// Wait for at least one result link to appear
-		await expect(modal.getByRole('link').first()).toBeVisible({ timeout: 10_000 });
+		await expect(panel.getByRole('link').first()).toBeVisible({ timeout: 10_000 });
 	});
 
-	test('modal closes on Escape key', async ({ page }) => {
+	test('panel closes on Escape key', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-modal')).toBeVisible();
-		await page.keyboard.press('Escape');
-		await expect(page.locator('.mwb-mini-modal')).not.toBeVisible();
+		const box = await typeIntoSearchBox(page, 'p');
+		await expect(page.locator('.mwb-mini-panel')).toBeVisible();
+		await box.press('Escape');
+		await expect(page.locator('.mwb-mini-panel')).not.toBeVisible();
 	});
 
-	test('modal closes on close button click', async ({ page }) => {
+	test('panel closes on backdrop click', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		const modal = page.locator('.mwb-mini-modal');
-		await expect(modal).toBeVisible();
-		await modal.getByRole('button', { name: 'Close' }).click();
-		await expect(modal).not.toBeVisible();
-	});
-
-	test('modal closes on backdrop click', async ({ page }) => {
-		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-modal')).toBeVisible();
-		// Click the backdrop (the element surrounding the modal)
+		await typeIntoSearchBox(page, 'p');
+		await expect(page.locator('.mwb-mini-panel')).toBeVisible();
+		// Click the backdrop (the element surrounding the panel)
 		await page.locator('.mwb-mini-backdrop').click({ position: { x: 10, y: 10 } });
-		await expect(page.locator('.mwb-mini-modal')).not.toBeVisible();
+		await expect(page.locator('.mwb-mini-panel')).not.toBeVisible();
 	});
 
 	test('files page pre-selects only the files provider when configured', async ({ page }) => {
@@ -144,7 +166,7 @@ test.describe('inline search modal — enabled', () => {
 		await expect(filesRow).toBeVisible();
 		// If specific providers are already configured, reset to all first
 		const useAllBtn = filesRow.getByRole('button', { name: 'Use all' });
-		if (await useAllBtn.count() > 0) {
+		if ((await useAllBtn.count()) > 0) {
 			await useAllBtn.click();
 		}
 		// Add only the files provider via the "Add provider…" dropdown
@@ -155,9 +177,6 @@ test.describe('inline search modal — enabled', () => {
 		await expect(page.getByText('Settings saved successfully')).toBeVisible();
 
 		await page.goto(FILES_URL);
-		await clickSearchButton(page);
-		const modal = page.locator('.mwb-mini-modal');
-		await expect(modal).toBeVisible();
 
 		// Intercept search API calls to verify only the files provider is queried
 		const searchedProviders: string[] = [];
@@ -167,32 +186,33 @@ test.describe('inline search modal — enabled', () => {
 			await route.continue();
 		});
 
-		await modal.getByRole('textbox').fill('admin');
-		await modal.getByRole('button', { name: 'Search', exact: true }).click();
-
-		// Wait for the files search response to arrive
-		await page.waitForResponse(
-			(res) => /\/search\/providers\/files\/search/.test(res.url()),
-			{ timeout: 10_000 }
-		);
+		// waitForResponse must be registered before typing starts (not after) —
+		// the debounced request can already have resolved by the time typing
+		// settles, so waiting for it afterwards would miss it.
+		await Promise.all([
+			page.waitForResponse((res) => /\/search\/providers\/files\/search/.test(res.url()), {
+				timeout: 10_000
+			}),
+			typeIntoSearchBox(page, 'admin')
+		]);
+		const panel = page.locator('.mwb-mini-panel');
+		await expect(panel).toBeVisible();
 
 		expect(searchedProviders).toEqual(['files']);
 	});
 
 	test('dashboard uses all providers (multiple provider sections visible)', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		const modal = page.locator('.mwb-mini-modal');
-		await expect(modal).toBeVisible();
-		await modal.getByRole('textbox').fill('personal');
-		await modal.getByRole('button', { name: 'Search', exact: true }).click();
-		await expect(modal.getByRole('link').first()).toBeVisible({ timeout: 10_000 });
+		await typeIntoSearchBox(page, 'personal');
+		const panel = page.locator('.mwb-mini-panel');
+		await expect(panel).toBeVisible();
+		await expect(panel.getByRole('link').first()).toBeVisible({ timeout: 10_000 });
 		// More than one provider section should appear
-		await expect(modal.locator('.mwb-mini-provider-name').nth(1)).toBeVisible();
+		await expect(panel.locator('.mwb-mini-provider-name').nth(1)).toBeVisible();
 	});
 });
 
-test.describe('inline search modal — files path scope', () => {
+test.describe('inline search — files path scope', () => {
 	const SCOPE_TEST_FOLDER = 'ScopeE2ETest';
 	const SCOPE_TEST_FOLDER_URL = `${FILES_URL}files?dir=/${SCOPE_TEST_FOLDER}`;
 
@@ -216,20 +236,20 @@ test.describe('inline search modal — files path scope', () => {
 
 	test('scope toggle is not shown on dashboard', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-modal')).toBeVisible();
+		await typeIntoSearchBox(page, 'p');
+		await expect(page.locator('.mwb-mini-panel')).toBeVisible();
 		await expect(page.locator('.mwb-mini-scope-bar')).not.toBeVisible();
 	});
 
 	test('scope toggle appears on files page after providers load', async ({ page }) => {
 		await page.goto(FILES_URL);
-		await clickSearchButton(page);
+		await typeIntoSearchBox(page, 'p');
 		await expect(page.locator('.mwb-mini-scope-bar')).toBeVisible({ timeout: 5000 });
 	});
 
 	test('scope bar shows "Home" and "Everywhere" at root', async ({ page }) => {
 		await page.goto(FILES_URL);
-		await clickSearchButton(page);
+		await typeIntoSearchBox(page, 'p');
 		const bar = page.locator('.mwb-mini-scope-bar');
 		await expect(bar.getByRole('button', { name: 'Home' })).toBeVisible({ timeout: 5000 });
 		await expect(bar.getByRole('button', { name: 'Everywhere' })).toBeVisible();
@@ -237,8 +257,8 @@ test.describe('inline search modal — files path scope', () => {
 
 	test('default scoped search sends path param to files API', async ({ page }) => {
 		await page.goto(FILES_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-scope-bar')).toBeVisible({ timeout: 5000 });
+		const box = await focusSearchBox(page);
+		await expect(page.locator('.mwb-mini-scope-bar')).not.toBeVisible();
 
 		const capturedUrls: string[] = [];
 		await page.route('**/ocs/v2.php/search/providers/files/search*', async (route, request) => {
@@ -246,13 +266,13 @@ test.describe('inline search modal — files path scope', () => {
 			await route.continue();
 		});
 
-		const modal = page.locator('.mwb-mini-modal');
-		await modal.getByRole('textbox').fill('admin');
-		await modal.getByRole('button', { name: 'Search', exact: true }).click();
-		await page.waitForResponse(
-			(res) => /\/search\/providers\/files\/search/.test(res.url()),
-			{ timeout: 10_000 }
-		);
+		await Promise.all([
+			page.waitForResponse((res) => /\/search\/providers\/files\/search/.test(res.url()), {
+				timeout: 10_000
+			}),
+			box.pressSequentially('admin', { delay: 20 })
+		]);
+		await expect(page.locator('.mwb-mini-scope-bar')).toBeVisible({ timeout: 5000 });
 
 		expect(capturedUrls.length).toBeGreaterThan(0);
 		expect(capturedUrls[0]).toContain('path=');
@@ -260,16 +280,13 @@ test.describe('inline search modal — files path scope', () => {
 
 	test('switching to Everywhere removes path param from files API', async ({ page }) => {
 		await page.goto(FILES_URL);
-		await clickSearchButton(page);
+		await Promise.all([
+			page.waitForResponse((res) => /\/search\/providers\/files\/search/.test(res.url()), {
+				timeout: 10_000
+			}),
+			typeIntoSearchBox(page, 'admin')
+		]);
 		await expect(page.locator('.mwb-mini-scope-bar')).toBeVisible({ timeout: 5000 });
-
-		const modal = page.locator('.mwb-mini-modal');
-		await modal.getByRole('textbox').fill('admin');
-		await modal.getByRole('button', { name: 'Search', exact: true }).click();
-		await page.waitForResponse(
-			(res) => /\/search\/providers\/files\/search/.test(res.url()),
-			{ timeout: 10_000 }
-		);
 
 		// Capture only the re-search triggered by the toggle
 		const everywhereUrls: string[] = [];
@@ -278,11 +295,12 @@ test.describe('inline search modal — files path scope', () => {
 			await route.continue();
 		});
 
-		await page.locator('.mwb-mini-scope-bar').getByRole('button', { name: 'Everywhere' }).click();
-		await page.waitForResponse(
-			(res) => /\/search\/providers\/files\/search/.test(res.url()),
-			{ timeout: 10_000 }
-		);
+		await Promise.all([
+			page.waitForResponse((res) => /\/search\/providers\/files\/search/.test(res.url()), {
+				timeout: 10_000
+			}),
+			page.locator('.mwb-mini-scope-bar').getByRole('button', { name: 'Everywhere' }).click()
+		]);
 
 		expect(everywhereUrls.length).toBeGreaterThan(0);
 		expect(everywhereUrls[0]).not.toContain('path=');
@@ -292,10 +310,12 @@ test.describe('inline search modal — files path scope', () => {
 		await ensureFolder(page, SCOPE_TEST_FOLDER);
 
 		await page.goto(SCOPE_TEST_FOLDER_URL);
-		await clickSearchButton(page);
+		await typeIntoSearchBox(page, 'p');
 
 		const bar = page.locator('.mwb-mini-scope-bar');
-		await expect(bar.getByRole('button', { name: SCOPE_TEST_FOLDER })).toBeVisible({ timeout: 5000 });
+		await expect(bar.getByRole('button', { name: SCOPE_TEST_FOLDER })).toBeVisible({
+			timeout: 5000
+		});
 		await expect(bar.getByRole('button', { name: 'Everywhere' })).toBeVisible();
 
 		await deleteFolder(page, SCOPE_TEST_FOLDER);
@@ -305,8 +325,8 @@ test.describe('inline search modal — files path scope', () => {
 		await ensureFolder(page, SCOPE_TEST_FOLDER);
 
 		await page.goto(SCOPE_TEST_FOLDER_URL);
-		await clickSearchButton(page);
-		await expect(page.locator('.mwb-mini-scope-bar')).toBeVisible({ timeout: 5000 });
+		const box = await focusSearchBox(page);
+		await expect(page.locator('.mwb-mini-scope-bar')).not.toBeVisible();
 
 		const capturedUrls: string[] = [];
 		await page.route('**/ocs/v2.php/search/providers/files/search*', async (route, request) => {
@@ -314,13 +334,13 @@ test.describe('inline search modal — files path scope', () => {
 			await route.continue();
 		});
 
-		const modal = page.locator('.mwb-mini-modal');
-		await modal.getByRole('textbox').fill('admin');
-		await modal.getByRole('button', { name: 'Search', exact: true }).click();
-		await page.waitForResponse(
-			(res) => /\/search\/providers\/files\/search/.test(res.url()),
-			{ timeout: 10_000 }
-		);
+		await Promise.all([
+			page.waitForResponse((res) => /\/search\/providers\/files\/search/.test(res.url()), {
+				timeout: 10_000
+			}),
+			box.pressSequentially('admin', { delay: 20 })
+		]);
+		await expect(page.locator('.mwb-mini-scope-bar')).toBeVisible({ timeout: 5000 });
 
 		expect(capturedUrls.length).toBeGreaterThan(0);
 		expect(decodeURIComponent(capturedUrls[0])).toContain(`path=/${SCOPE_TEST_FOLDER}`);
