@@ -29,7 +29,7 @@ echo "Host IP: $HOST_IP"
 cleanup() {
     # shellcheck disable=SC2317
     if $CLEANUP; then
-        "$BINDIR/nc-stop.sh" "$NC_VERSION"
+        nc-stop.sh "$NC_VERSION"
     fi
 }
 trap cleanup EXIT
@@ -38,10 +38,10 @@ trap cleanup EXIT
 
 if ! $USE_EXISTING; then
     if $CLEANUP; then
-        "$BINDIR/nc-stop.sh" "$NC_VERSION"
+        nc-stop.sh "$NC_VERSION"
     fi
-    "$BINDIR/nc-start.sh" "$NC_VERSION"
-    "$BINDIR/nc-enable-app.sh" "$NC_VERSION"
+    nc-start.sh "$NC_VERSION"
+    nc-enable-app.sh "$NC_VERSION"
 fi
 
 echo "Running Playwright tests against NC${NC_VERSION}..."

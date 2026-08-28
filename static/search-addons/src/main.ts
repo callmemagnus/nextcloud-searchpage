@@ -105,53 +105,71 @@ function setButtonLabel(el: Element, text: string) {
 	el.appendChild(document.createTextNode(text));
 }
 
-function isNextcloud34(): boolean {
-	const version = (window as unknown as { OC?: { config?: { version?: string } } }).OC?.config
-		?.version;
-	return !!version && version.startsWith('34.');
-}
-
-function attachSearchButtonListener(button: Element) {
-	// The button's label markup only reliably has a dedicated, safely
-	// replaceable label span on NC 34 (`.unified-search-input__label`).
-	// Older versions structure the button differently, so leave their text
-	// untouched rather than risk mangling it.
-	if (isNextcloud34()) {
-		setButtonLabel(button, translate(APP_NAME, 'Search…'));
-	}
-
-	button.addEventListener(
-		'click',
-		(e) => {
-			const { enabled, providerIds } = getConfigForCurrentUrl();
-			if (!enabled) return;
-
-			let effectiveProviderIds = providerIds;
-			if (availableProviderIds !== null) {
-				effectiveProviderIds = providerIds
-					? providerIds.filter((id) => availableProviderIds.includes(id))
-					: availableProviderIds;
-				if (effectiveProviderIds.length === 0) return;
-			}
-
-			e.stopImmediatePropagation();
-			e.stopPropagation();
-			e.preventDefault();
-			openModal(effectiveProviderIds);
-		},
-		{ capture: true }
+function findLabelTarget(trigger: Element): Element | null {
+	// On NC 34 the label span sits inside the button itself. On NC 35+ the
+	// trigger is an <input> (which can't hold child elements as a visible
+	// label), and the label span is a sibling within the shared
+	// `.unified-search-input` wrapper instead. Feature-detect rather than
+	// branch on version so this keeps working on future NC releases that
+	// reuse the same wrapper/label classes.
+	return (
+		trigger.closest('.unified-search-input')?.querySelector('.unified-search-input__label') ??
+		null
 	);
 }
 
+function attachSearchButtonListener(trigger: Element) {
+	// Older NC versions structure the trigger differently and have no
+	// dedicated label span, so leave their text untouched rather than risk
+	// mangling it.
+	const labelTarget = findLabelTarget(trigger);
+	if (labelTarget) {
+		setButtonLabel(labelTarget, translate(APP_NAME, 'Search…'));
+	}
+
+	const onTrigger = (e: Event) => {
+		const { enabled, providerIds } = getConfigForCurrentUrl();
+		if (!enabled) return;
+
+		let effectiveProviderIds = providerIds;
+		if (availableProviderIds !== null) {
+			effectiveProviderIds = providerIds
+				? providerIds.filter((id) => availableProviderIds.includes(id))
+				: availableProviderIds;
+			if (effectiveProviderIds.length === 0) return;
+		}
+
+		e.stopImmediatePropagation();
+		e.stopPropagation();
+		e.preventDefault();
+		if (trigger instanceof HTMLElement) trigger.blur();
+		openModal(effectiveProviderIds);
+	};
+
+	if (trigger instanceof HTMLInputElement) {
+		// NC 35+: the trigger is now an editable combobox input rather than a
+		// plain button. Intercept on mousedown (before the input can gain
+		// focus/open NC's own dropdown) and on focus (covers keyboard
+		// activation — Tab, or NC's own Ctrl+K shortcut, which both focus the
+		// input without a preceding mousedown here).
+		trigger.addEventListener('mousedown', onTrigger, { capture: true });
+		trigger.addEventListener('focus', onTrigger, { capture: true });
+	} else {
+		trigger.addEventListener('click', onTrigger, { capture: true });
+	}
+}
+
 function findSearchButton(): Element | null {
-	// NC 30: .unified-search-menu  |  NC 31-33: #unified-search  |  NC 34: .unified-search-input
-	// Select the <button> itself, not a child span: the button's content is
-	// split across an icon span and a label span, and only the button is a
-	// common ancestor of both (needed for click capture and label lookup).
+	// NC 30: .unified-search-menu  |  NC 31-33: #unified-search  |  NC 34: .unified-search-input (button)
+	// NC 35+: same wrapper classes, but the trigger is an editable
+	// <input role="combobox"> instead of a <button>.
 	return (
 		document.querySelector('.unified-search-menu button') ??
+		document.querySelector('.unified-search-menu input[role="combobox"]') ??
 		document.querySelector('#unified-search button') ??
-		document.querySelector('.unified-search-input button')
+		document.querySelector('#unified-search input[role="combobox"]') ??
+		document.querySelector('.unified-search-input button') ??
+		document.querySelector('.unified-search-input input[role="combobox"]')
 	);
 }
 

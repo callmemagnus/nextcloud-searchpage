@@ -29,8 +29,13 @@ async function setInlineSearch(page: Page, enabled: boolean) {
 }
 
 async function clickSearchButton(page: Page) {
-	// NC 30: .unified-search-menu  |  NC 31-33: #unified-search  |  NC 34: .unified-search-input
-	const btn = page.locator('.unified-search-menu button, #unified-search button, .unified-search-input button').first();
+	// NC 30: .unified-search-menu  |  NC 31-33: #unified-search  |  NC 34: .unified-search-input (button)
+	// NC 35+: same wrapper classes, but the trigger is an editable <input role="combobox">.
+	const btn = page
+		.locator(
+			'.unified-search-menu button, .unified-search-menu input[role="combobox"], #unified-search button, #unified-search input[role="combobox"], .unified-search-input button, .unified-search-input input[role="combobox"]'
+		)
+		.first();
 	await expect(btn).toBeVisible({ timeout: 5000 });
 	await btn.click();
 }
