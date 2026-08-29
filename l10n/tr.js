@@ -4,7 +4,7 @@ OC.L10N.register(
     "The Search Page" : "Arama sayfası",
     "Provides a proper search page" : "Düzgün bir arama sayfası sağlar",
     "🔎 A Search Page for your Nextcloud instance\n\n- [Changelog](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)\n- [Help translate this application](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)\n\nIt works like the existing search widget, uses the same sources to query BUT\ndisplays the results in a more readable and browsable fashion.\n\nThe content of the results depends on the other applications installed on\nyour Nextcloud instance. Every Nextcloud application can become a search\nprovider and get its results displayed by this application.\n\nOut of the Nextcloud box, you usually get the following providers:\n\n- Apps -- searches for match for in installed application names\n- Files -- searches on path and filename\n- Tags\n- Comments\n- Settings\n\nBecause of its design, the results depend on the implementation of the providers\nin respective application.\n\nKnown issues with other applications:\n\n- users -- [by design(?), it always returns an empty array](https://github.com/nextcloud/server/issues/41274) (it is hidden/disabled in this application)\n- fulltextsearch -- does not seem to AND the query terms, OR is usually less relevant\n- news -- does not provide a direct link to a feed item.\n\n\nDon't hesitate to leave a comment here or a rating!" : "🔎 Nextcloud kopyanız için bir arama sayfası\n\n- [Değişiklik günlüğü](https://raw.githubusercontent.com/callmemagnus/nextcloud-searchpage/main/CHANGELOG.md)\n- [Uygulamanın çevrilmesine yardımcı olun](https://app.transifex.com/nextcloud/nextcloud/thesearchpage/)\n\nVar olan arama pano bileşeni gibi çalışır, sorgulamak için aynı kaynakları kullanır ANCAK\nsonuçları daha okunaklı ve göz atılabilir bir şekilde görüntüler.\n\nSonuçların içeriği, Nextcloud kopyanızda kurulu olan diğer uygulamalara bağlıdır.\nHer Nextcloud uygulaması bir arama sağlayıcısı olabilir ve sonuçlarının \nbu uygulama tarafından görüntülenmesini sağlayabilir.\n\nNextcloud ile genellikle şu arama hizmeti sağlayıcıları gelir:\n\n- Uygulamalar -- Kurulu uygulama adlarını arar\n- Dosyalar - Yol ve dosya adlarını arar\n- Etiketler\n- Yorumlar\n- Ayarlar\n\nTasarımı nedeniyle sonuçlar, arama hizmeti sağlayıcılarının \nilgili uygulamadaki kullanımına bağlıdır.\n\nDiğer uygulamalarla ilgili bilinen sorunlar:\n\n- Kullanıcılar -- [tasarım gereği(?), her zaman boş bir dizi döndürür](https://github.com/nextcloud/server/issues/41274) (bu uygulamada gizli/kapalı)\n- Tam yazı arama -- VE sorgu terimleri görünmez, VEYA genellikle daha az ilgili\n- Haberler -- Bir akış ögesine doğrudan bağlantı sağlamaz.\n\n\nBuraya bir yorum veya değerlendirme yapmaktan çekinmeyin!",
-    "Add provider…" : "Hİzmet sağlayıcı ekle…",
+    "Add provider…" : "Hizmet sağlayıcı ekle…",
     "Admin configuration available" : "Yönetici yapılandırması kullanılabilir",
     "Admin information" : "Yönetici bilgileri",
     "All providers" : "Tüm hizmet sağlayıcıları",
@@ -15,7 +15,6 @@ OC.L10N.register(
     "Clear" : "Temizle",
     "Clear current query" : "Geçerli sorguyu temizle",
     "Click to change providers" : "Hizmet sağlayıcıları değiştirmek için tıklayın",
-    "Close" : "Kapat",
     "Configure search provider visibility per group." : "Her grup için arama hizmeti sağlayıcı görünürlüğünü yapılandırın.",
     "Configure the number of search results to display for each provider (5-100)." : "Her hizmet sağlayıcı için görüntülenecek arama sonuçlarının sayısını yapılandırın (5-100).",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "Hangi uygulamaların kendi arama düğmelerinin geçersiz kılınacağı ve satır içi arama kipi açıldığında hangi arama hizmeti sağlayıcılarının (ve hangi sırayla) kullanılacağını yapılandırın.",
@@ -63,6 +62,7 @@ OC.L10N.register(
     "Search Page" : "Arama sayfası",
     "Search override per application" : "Her uygulama için aramayı geçersiz kılma",
     "Search providers (in order)" : "Arama hizmeti sağlayıcıları (sıralı)",
+    "Search results" : "Arama sonuçları",
     "Search results for \"{query}\"" : "\"{query}\" için arama sonuçları",
     "Search results per provider" : "Her hizmet sağlayıcı için arama sonuçları",
     "Search…" : "Ara…",
@@ -81,6 +81,7 @@ OC.L10N.register(
     "User group" : "Kullanıcı grubu",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Açıldığında, Nextcloud arama düğmesine tıklandığında, varsayılan arama arayüzü yerine bir satır içi arama kipi açılır.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Açıldığında, hangi arama hizmeti sağlayıcılarının belirli kullanıcı grupları tarafından görülebileceğini belirleyebilirsiniz. Varsayılan olarak, tüm hizmet sağlayıcılar tüm gruplarda kullanılabilir.",
-    "in {folder}" : "{folder} içinde"
+    "in {folder}" : "{folder} içinde",
+    "Close" : "Kapat"
 },
 "nplurals=2; plural=(n > 1);");

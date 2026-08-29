@@ -15,7 +15,6 @@ OC.L10N.register(
     "Clear" : "清除",
     "Clear current query" : "清除目前的查詢",
     "Click to change providers" : "點擊以變更提供者",
-    "Close" : "關閉",
     "Configure search provider visibility per group." : "按群組設定搜尋提供者的可見性。",
     "Configure the number of search results to display for each provider (5-100)." : "設定每個提供者顯示的搜尋結果數量 (5-100)。",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "設定哪些應用程式的搜尋按鈕將被覆寫，以及當行內搜尋互動視窗開啟時，應使用哪些搜尋提供者（以及其排序順序）。",
@@ -63,6 +62,7 @@ OC.L10N.register(
     "Search Page" : "搜尋頁面",
     "Search override per application" : "按應用程式進行搜尋覆寫",
     "Search providers (in order)" : "搜尋提供者（按順序排列）",
+    "Search results" : "搜尋結果",
     "Search results for \"{query}\"" : "「{query}」的搜尋結果",
     "Search results per provider" : "每個提供者的搜尋結果數量",
     "Search…" : "搜尋⋯⋯",
@@ -81,6 +81,7 @@ OC.L10N.register(
     "User group" : "使用者群組",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "啟用此功能後，點擊 Nextcloud 的搜尋按鈕將開啟行內式搜尋互動視窗，而非預設的搜尋介面。",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "啟用後，您可以控制哪些搜尋提供者對特定使用者群組可見。預設情況下，所有提供者均對所有群組啟用。",
-    "in {folder}" : "在 {folder}"
+    "in {folder}" : "在 {folder}",
+    "Close" : "關閉"
 },
 "nplurals=1; plural=0;");

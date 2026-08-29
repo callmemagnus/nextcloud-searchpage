@@ -2,7 +2,6 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Terug",
-    "Close" : "Sluiten",
     "Error saving settings" : "Fout bij opslaan van instellingen",
     "Filters" : "Filters",
     "No results" : "Geen resultaten",
@@ -10,7 +9,9 @@ OC.L10N.register(
     "Provider" : "Provider",
     "Save" : "Opslaan",
     "Search" : "Zoeken",
+    "Search results" : "Zoekresultaten",
     "Settings saved successfully" : "Instellingen succesvol opgeslagen",
-    "User group" : "Gebruiker groep"
+    "User group" : "Gebruiker groep",
+    "Close" : "Sluiten"
 },
 "nplurals=2; plural=(n != 1);");

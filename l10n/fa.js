@@ -34,6 +34,7 @@ OC.L10N.register(
     "Save" : "ذخیره",
     "Search" : "جستجو",
     "Search Page" : "صفحه جستجو",
+    "Search results" : "نتایج جستجو",
     "Search results for \"{query}\"" : "نتایج جستجو برای \"{query}\"",
     "Search results per provider" : "نتایج جستجو به ازای هر ارائه‌دهنده",
     "See all providers" : "مشاهده همه ارائه‌دهندگان",

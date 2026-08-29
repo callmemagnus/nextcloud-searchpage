@@ -15,7 +15,6 @@ OC.L10N.register(
     "Clear" : "Clear",
     "Clear current query" : "Clear current query",
     "Click to change providers" : "Click to change providers",
-    "Close" : "Close",
     "Configure search provider visibility per group." : "Configure search provider visibility per group.",
     "Configure the number of search results to display for each provider (5-100)." : "Configure the number of search results to display for each provider (5-100).",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens.",
@@ -63,6 +62,7 @@ OC.L10N.register(
     "Search Page" : "Search Page",
     "Search override per application" : "Search override per application",
     "Search providers (in order)" : "Search providers (in order)",
+    "Search results" : "Search results",
     "Search results for \"{query}\"" : "Search results for \"{query}\"",
     "Search results per provider" : "Search results per provider",
     "Search…" : "Search…",
@@ -81,6 +81,7 @@ OC.L10N.register(
     "User group" : "User group",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups.",
-    "in {folder}" : "in {folder}"
+    "in {folder}" : "in {folder}",
+    "Close" : "Close"
 },
 "nplurals=2; plural=(n != 1);");
