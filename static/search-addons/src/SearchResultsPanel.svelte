@@ -43,6 +43,8 @@
 	let until = $state('');
 	let showDateFilter = $state(false);
 	let dateFilterContainer = $state<HTMLDivElement | undefined>();
+	let selectedIndex = $state(-1);
+	let resultsBody = $state<HTMLDivElement | undefined>();
 
 	let hasDateFilter = $derived(!!since || !!until);
 
@@ -144,6 +146,26 @@
 
 	let hasAnyResults = $derived(activeResults.length > 0);
 
+	// Flat, render-order list of the entries actually shown, so arrow-key
+	// navigation can index across providers with a single counter.
+	let flatEntries = $derived(
+		activeResults.flatMap(({ provider, state }) =>
+			(state.result?.entries ?? []).slice(0, getProviderLimit(provider.id))
+		)
+	);
+
+	// Cumulative offset of each provider's first entry within flatEntries, so
+	// the per-provider #each block can compute a global index for each row.
+	let providerOffsets = $derived.by(() => {
+		const offsets: Record<string, number> = {};
+		let offset = 0;
+		for (const { provider, state } of activeResults) {
+			offsets[provider.id] = offset;
+			offset += (state.result?.entries ?? []).slice(0, getProviderLimit(provider.id)).length;
+		}
+		return offsets;
+	});
+
 	let noResults = $derived(
 		!searching &&
 			Object.keys(results).length > 0 &&
@@ -156,8 +178,36 @@
 	}
 
 	function onKeydown(e: KeyboardEvent) {
-		if (e.key === 'Escape') onclose();
+		if (e.key === 'Escape') {
+			onclose();
+			return;
+		}
+		if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+			if (!flatEntries.length) return;
+			e.preventDefault();
+			const delta = e.key === 'ArrowDown' ? 1 : -1;
+			selectedIndex = (selectedIndex + delta + flatEntries.length) % flatEntries.length;
+			return;
+		}
+		if (e.key === 'Enter' && selectedIndex >= 0 && flatEntries[selectedIndex]) {
+			e.preventDefault();
+			window.open(flatEntries[selectedIndex].resourceUrl, '_blank');
+		}
 	}
+
+	// Any change to the search term invalidates the current selection,
+	// including keystrokes before the debounced re-search fires.
+	$effect(() => {
+		void session.term;
+		selectedIndex = -1;
+	});
+
+	$effect(() => {
+		if (selectedIndex < 0 || !resultsBody) return;
+		resultsBody
+			.querySelector(`[data-mwb-index="${selectedIndex}"]`)
+			?.scrollIntoView({ block: 'nearest' });
+	});
 
 	function boldTerms(text: string, terms: string): Array<{ bold: boolean; value: string }> {
 		const separator = '|##|';
@@ -248,7 +298,7 @@
 
 <svelte:window onclick={onAdminTooltipClickOutside} onkeydown={onKeydown} />
 
-<div class="mwb-mini-backdrop" onclick={onBackdropClick} onkeydown={onKeydown} role="presentation">
+<div class="mwb-mini-backdrop" onclick={onBackdropClick} role="presentation">
 	<div
 		aria-label={translate(APP_NAME, 'Search results')}
 		aria-modal="true"
@@ -372,7 +422,7 @@
 			</div>
 		{/if}
 
-		<div class="mwb-mini-body">
+		<div bind:this={resultsBody} class="mwb-mini-body">
 			{#if noResults}
 				<p class="mwb-mini-empty">{translate(APP_NAME, 'No results')}</p>
 			{:else if hasAnyResults || searching}
@@ -394,8 +444,14 @@
 						{#if state.searching && !state.result?.entries?.length}
 							<p class="mwb-mini-loading">{translate(APP_NAME, 'Loading…')}</p>
 						{:else}
-							{#each (state.result?.entries ?? []).slice(0, getProviderLimit(provider.id)) as entry (entry.resourceUrl)}
-								<a class="mwb-mini-result" href={entry.resourceUrl} target="_blank">
+							{#each (state.result?.entries ?? []).slice(0, getProviderLimit(provider.id)) as entry, i (entry.resourceUrl)}
+								<a
+									class="mwb-mini-result"
+									class:mwb-mini-result--selected={selectedIndex ===
+										providerOffsets[provider.id] + i}
+									data-mwb-index={providerOffsets[provider.id] + i}
+									href={entry.resourceUrl}
+									target="_blank">
 									<div class="mwb-mini-result-icon">
 										{#if iconIsClass(entry.icon)}
 											<div class="{entry.icon} mwb-mini-icon-class"></div>
@@ -693,6 +749,12 @@
 		&:hover {
 			background: var(--color-background-hover);
 		}
+	}
+
+	.mwb-mini-result--selected {
+		background: var(--color-background-hover);
+		outline: 2px solid var(--color-primary-element);
+		outline-offset: -2px;
 	}
 
 	.mwb-mini-result-icon {
