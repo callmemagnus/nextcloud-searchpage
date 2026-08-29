@@ -9,7 +9,6 @@
     "Back" : "Επιστροφή",
     "Clear current query" : "Καθαρισμός τρέχουσας ερώτησης",
     "Click to change providers" : "Κάντε κλικ για αλλαγή παρόχων",
-    "Close" : "Κλείσιμο",
     "Configure search provider visibility per group." : "Διαμόρφωση ορατότητας παρόχων αναζήτησης ανά ομάδα.",
     "Configure the number of search results to display for each provider (5-100)." : "Διαμόρφωση του αριθμού αποτελεσμάτων αναζήτησης προς εμφάνιση για κάθε πάροχο (5-100).",
     "Control which search providers are visible to specific user groups." : "Έλεγχος των παρόχων αναζήτησης που θα είναι ορατοί σε συγκεκριμένες ομάδες χρηστών.",
@@ -36,6 +35,7 @@
     "Save" : "Αποθήκευση",
     "Search" : "Αναζήτηση",
     "Search Page" : "Σελίδα Αναζήτησης",
+    "Search results" : "Αποτελέσματα αναζήτησης",
     "Search results for \"{query}\"" : "Αποτελέσματα αναζήτησης για \"{query}\"",
     "Search results per provider" : "Αποτελέσματα αναζήτησης ανά πάροχο",
     "See all providers" : "Προβολή όλων των παρόχων",
@@ -46,6 +46,7 @@
     "The following provider(s) were not available when settings were last saved: {providers}" : "Οι ακόλουθοι πάροχοι δεν ήταν διαθέσιμοι κατά την τελευταία αποθήκευση των ρυθμίσεων: {providers}",
     "There was an error loading the providers." : "Παρουσιάστηκε σφάλμα κατά τη φόρτωση των παρόχων.",
     "User group" : "Ομάδα χρηστών",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Όταν είναι ενεργοποιημένο, μπορείτε να ελέγχετε ποιοι πάροχοι αναζήτησης είναι ορατοί σε συγκεκριμένες ομάδες χρηστών. Από προεπιλογή, όλοι οι πάροχοι είναι ενεργοποιημένοι για όλες τις ομάδες."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Όταν είναι ενεργοποιημένο, μπορείτε να ελέγχετε ποιοι πάροχοι αναζήτησης είναι ορατοί σε συγκεκριμένες ομάδες χρηστών. Από προεπιλογή, όλοι οι πάροχοι είναι ενεργοποιημένοι για όλες τις ομάδες.",
+    "Close" : "Κλείσιμο"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -15,7 +15,6 @@ OC.L10N.register(
     "Clear" : "Glan",
     "Clear current query" : "Glan an cheist reatha",
     "Click to change providers" : "Cliceáil chun soláthraithe a athrú",
-    "Close" : "Dún",
     "Configure search provider visibility per group." : "Cumraigh infheictheacht an tsoláthraí cuardaigh in aghaidh an ghrúpa.",
     "Configure the number of search results to display for each provider (5-100)." : "Cumraigh líon na dtorthaí cuardaigh le taispeáint do gach soláthraí (5-100).",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "Cumraigh cé na feidhmchláir a bhfuil a gcnaipe cuardaigh sáraithe acu, agus cé na soláthraithe cuardaigh le húsáid (agus cén t-ord ina n-úsáidfear iad) nuair a osclaítear an modúl cuardaigh inlíne.",
@@ -63,6 +62,7 @@ OC.L10N.register(
     "Search Page" : "Leathanach Cuardaigh",
     "Search override per application" : "Sárú cuardaigh in aghaidh an fheidhmchláir",
     "Search providers (in order)" : "Soláthraithe cuardaigh (in ord)",
+    "Search results" : "Torthaí cuardaigh",
     "Search results for \"{query}\"" : "Torthaí cuardaigh do \"{query}\"",
     "Search results per provider" : "Torthaí cuardaigh de réir soláthraí",
     "Search…" : "Cuardaigh…",
@@ -81,6 +81,7 @@ OC.L10N.register(
     "User group" : "Grúpa úsáideoirí",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Nuair a bhíonn sé cumasaithe, osclaítear modúl cuardaigh inlíne le cliceáil ar an gcnaipe cuardaigh Nextcloud in ionad an chomhéadain chuardaigh réamhshocraithe.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Nuair a bhíonn sé cumasaithe, is féidir leat a rialú cé na soláthraithe cuardaigh atá le feiceáil ag grúpaí úsáideoirí sonracha. De réir réamhshocraithe, bíonn gach soláthraí cumasaithe do gach grúpa.",
-    "in {folder}" : "i {folder}"
+    "in {folder}" : "i {folder}",
+    "Close" : "Dún"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

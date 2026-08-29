@@ -14,7 +14,6 @@ OC.L10N.register(
     "Clear" : "Eemalda",
     "Clear current query" : "Kustuta praegune päring",
     "Click to change providers" : "Klõpsi teenusepakkujate muutmiseks",
-    "Close" : "Sulge",
     "Configure search provider visibility per group." : "Seadista otsinguteenuse pakkuja nähtavust grupi kaupa.",
     "Configure the number of search results to display for each provider (5-100)." : "Seadista iga teenusepakkuja puhul kuvatavate otsingutulemuste arvu (5-100).",
     "Control which search providers are visible to specific user groups." : "Võid seadistada otsinguteenuse pakkujate nähtavust konkreetsete kasutajagruppide kaupa.",
@@ -58,6 +57,7 @@ OC.L10N.register(
     "Search Page" : "Otsinguleht",
     "Search override per application" : "Otsingu rakendusekohane sürjutamine",
     "Search providers (in order)" : "Otsinguteenuse pakkujas (järjestus)",
+    "Search results" : "Otsingutulemused",
     "Search results for \"{query}\"" : "„{query}“ otsingu tulemused",
     "Search results per provider" : "Tulemusi teenusepakkuja kohta",
     "Search…" : "Otsi…",
@@ -74,6 +74,7 @@ OC.L10N.register(
     "Use all" : "Kasuta kõiki",
     "User group" : "Kasutajagrupp",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Selle eelistuse kasutamisel saad kontrollida missugused teenusepakkujad on kasutusel konkreetsetele kasutajagruppidele. Vaikimisi on kõik otsingud lubatud kõikidele gruppidele.",
-    "in {folder}" : "{folder} kaustas"
+    "in {folder}" : "{folder} kaustas",
+    "Close" : "Sulge"
 },
 "nplurals=2; plural=(n != 1);");

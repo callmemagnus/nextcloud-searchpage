@@ -13,7 +13,6 @@ OC.L10N.register(
     "Clear" : "Vyčistit",
     "Clear current query" : "Vymazat stávající dotaz",
     "Click to change providers" : "Poskytovatele změníte kliknutím",
-    "Close" : "Zavřít",
     "Configure search provider visibility per group." : "Nastavit viditelnost poskytovatele vyhledávání pro jednotlivé skupiny.",
     "Configure the number of search results to display for each provider (5-100)." : "Nastavte počet výsledků hledání, které zobrazit pro každého z poskytovatelů (5-100).",
     "Control which search providers are visible to specific user groups." : "Ovládá kteří poskytovatelé hledání jsou viditelní konkrétním skupinám uživatelů.",
@@ -57,6 +56,7 @@ OC.L10N.register(
     "There was an error loading the providers." : "Při načítání poskytovatelů došlo k chybě.",
     "Until" : "Do",
     "User group" : "Skupina uživatele",
-    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Pokud zapnuto, je možné ovládat kteří poskytovatelé hledání jsou viditelní konkrétním skupinám uživatelů. Ve výchozím stavu jsou pro všechny skupiny povoleni všechni poskytovatelé."
+    "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Pokud zapnuto, je možné ovládat kteří poskytovatelé hledání jsou viditelní konkrétním skupinám uživatelů. Ve výchozím stavu jsou pro všechny skupiny povoleni všechni poskytovatelé.",
+    "Close" : "Zavřít"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

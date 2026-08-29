@@ -37,6 +37,7 @@ OC.L10N.register(
     "Save" : "Spara",
     "Search" : "Sök",
     "Search Page" : "Söksidan",
+    "Search results" : "Sökresultat",
     "Search results for \"{query}\"" : "Sökresultat för ”{query}”",
     "Search results per provider" : "Sökresultat per leverantör",
     "See all providers" : "Se alla källor",

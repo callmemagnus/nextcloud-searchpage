@@ -13,7 +13,6 @@
     "Clear" : "Effacer",
     "Clear current query" : "Effacer la recherche courante",
     "Click to change providers" : "Cliquer pour changer les fournisseurs",
-    "Close" : "Fermer",
     "Configure search provider visibility per group." : "Configurez la visibilité des fournisseurs de recherche pour chaque groupe.",
     "Configure the number of search results to display for each provider (5-100)." : "Configurez le nombre de résultats de recherche à afficher pour chaque fournisseur (de 5 à 100).",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "Configurez les applications dont le bouton de recherche doit être remplacé, ainsi que les fournisseurs de recherche à utiliser et leur ordre lors de l’ouverture de la fenêtre de recherche intégrée.",
@@ -61,6 +60,7 @@
     "Search Page" : "Page de recherche",
     "Search override per application" : "Remplacement de la recherche par application",
     "Search providers (in order)" : "Fournisseurs de recherche (dans l’ordre)",
+    "Search results" : "Résultats de la recherche",
     "Search results for \"{query}\"" : "Résultats de recherche pour \"{query}\"",
     "Search results per provider" : "Résultats de recherche par fournisseur",
     "Search…" : "Rechercher…",
@@ -79,6 +79,7 @@
     "User group" : "Groupe d'utilisateurs",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Lorsque cette option est activée, un clic sur le bouton de recherche de Nextcloud ouvre une fenêtre de recherche intégrée à la place de l’interface de recherche par défaut.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Lorsque cette option est activée, vous pouvez choisir les fournisseurs de recherche visibles par certains groupes d’utilisateurs. Par défaut, tous les fournisseurs sont activés pour tous les groupes.",
-    "in {folder}" : "dans {folder}"
+    "in {folder}" : "dans {folder}",
+    "Close" : "Fermer"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

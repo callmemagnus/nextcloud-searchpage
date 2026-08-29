@@ -15,7 +15,6 @@ OC.L10N.register(
     "Clear" : "Leeren",
     "Clear current query" : "Aktuelle Abfrage löschen",
     "Click to change providers" : "Hier klicken, um Anbieter zu wechseln",
-    "Close" : "Schließen",
     "Configure search provider visibility per group." : "Die Sichtbarkeit des Suchanbieters pro Gruppe einrichten.",
     "Configure the number of search results to display for each provider (5-100)." : "Anzahl der Suchergebnisse, die für jeden Anbieter angezeigt werden sollen einrichten (5-100).",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "Einrichten, für welche Anwendungen die Suchschaltfläche überschrieben wird und welche Suchanbieter (und in welcher Reihenfolge) beim Öffnen des Inline-Suchdialogs verwendet werden sollen.",
@@ -63,6 +62,7 @@ OC.L10N.register(
     "Search Page" : "Suchseite",
     "Search override per application" : "Suchüberschreibung pro Anwendung",
     "Search providers (in order)" : "Suchanbieter (in der Reihenfolge)",
+    "Search results" : "Suchergebnisse anzeigen",
     "Search results for \"{query}\"" : "Suchergebnisse für \"{query}\"",
     "Search results per provider" : "Suchergebnisse pro Anbieter",
     "Search…" : "Suche …",
@@ -81,6 +81,7 @@ OC.L10N.register(
     "User group" : "Benutzergruppe",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Wenn diese Funktion aktiviert ist, öffnet ein Klick auf die Nextcloud-Suchschaltfläche ein Inline-Suchfenster anstelle der Standard-Suchoberfläche.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Wenn diese Option aktiviert ist, können Sie steuern, welche Suchanbieter für bestimmte Benutzergruppen sichtbar sind. Standardmäßig sind alle Anbieter für alle Gruppen aktiviert.",
-    "in {folder}" : "in {folder}"
+    "in {folder}" : "in {folder}",
+    "Close" : "Schließen"
 },
 "nplurals=2; plural=(n != 1);");

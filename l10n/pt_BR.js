@@ -15,7 +15,6 @@ OC.L10N.register(
     "Clear" : "Limpar",
     "Clear current query" : "Limpar consulta atual",
     "Click to change providers" : "Clique para mudar de provedor",
-    "Close" : "Fechar",
     "Configure search provider visibility per group." : "Configure a visibilidade do provedor de pesquisa por grupo.",
     "Configure the number of search results to display for each provider (5-100)." : "Configure o número de resultados de pesquisa a serem exibidos para cada provedor (5-100).",
     "Configure which applications have their search button overridden, and which search providers to use (and in which order) when the inline search modal opens." : "Configure quais aplicativos terão seu botão de pesquisa sobrescrito e quais provedores de pesquisa devem ser usados (e em que ordem) quando o modal de pesquisa embutido for aberto.",
@@ -63,6 +62,7 @@ OC.L10N.register(
     "Search Page" : "Página de pesquisa",
     "Search override per application" : "Sobrescrita de pesquisa por aplicativo",
     "Search providers (in order)" : "Provedores de pesquisa (em ordem)",
+    "Search results" : "Resultados da pesquisa",
     "Search results for \"{query}\"" : "Resultados da pesquisa para \"{query}\"",
     "Search results per provider" : "Resultados de pesquisa por provedor",
     "Search…" : "Pesquisar…",
@@ -81,6 +81,7 @@ OC.L10N.register(
     "User group" : "Grupo de usuários",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Quando ativada, clicar no botão de pesquisa do Nextcloud abre um modal de pesquisa embutido, em vez da visualização de pesquisa padrão.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Quando ativado, você pode controlar quais provedores de pesquisa ficam visíveis para grupos específicos de usuários. Por padrão, todos os provedores estão ativados para todos os grupos.",
-    "in {folder}" : "em {folder}"
+    "in {folder}" : "em {folder}",
+    "Close" : "Fechar"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
