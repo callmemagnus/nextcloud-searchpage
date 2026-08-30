@@ -66,6 +66,7 @@ OC.L10N.register(
     "Search results for \"{query}\"" : "Torthaí cuardaigh do \"{query}\"",
     "Search results per provider" : "Torthaí cuardaigh de réir soláthraí",
     "Search…" : "Cuardaigh…",
+    "See all in {provider}" : "Féach ar gach rud i {provider}",
     "See all providers" : "Féach ar gach soláthraí",
     "See only results for this provider" : "Féach ar na torthaí don soláthraí seo amháin",
     "Settings pages" : "Leathanaigh socruithe",

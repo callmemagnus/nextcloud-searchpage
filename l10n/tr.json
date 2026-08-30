@@ -64,6 +64,7 @@
     "Search results for \"{query}\"" : "\"{query}\" için arama sonuçları",
     "Search results per provider" : "Her hizmet sağlayıcı için arama sonuçları",
     "Search…" : "Ara…",
+    "See all in {provider}" : "{provider} içindekileri görüntüle",
     "See all providers" : "Tüm hizmet sağlayıcıları görüntüle",
     "See only results for this provider" : "Yalnızca bu hizmet sağlayıcının sonuçlarını görüntüle",
     "Settings pages" : "Ayarlar sayfası",
