@@ -64,6 +64,7 @@
     "Search results for \"{query}\"" : "「{query}」的搜尋結果",
     "Search results per provider" : "每個提供者的搜尋結果數量",
     "Search…" : "搜尋⋯⋯",
+    "See all in {provider}" : "在 {provider} 中檢視全部",
     "See all providers" : "檢視所有提供者",
     "See only results for this provider" : "僅檢視該提供者的結果",
     "Settings pages" : "設定頁面",
