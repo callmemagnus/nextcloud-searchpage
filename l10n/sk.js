@@ -8,6 +8,8 @@ OC.L10N.register(
     "Provider" : "Poskytovateľ",
     "Save" : "Uložiť",
     "Search" : "Hľadať",
-    "Search Page" : "Hľadať stránku"
+    "Search Page" : "Hľadať stránku",
+    "Search results" : "Výsledky vyhľadávania",
+    "Close" : "Zavrieť"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");
