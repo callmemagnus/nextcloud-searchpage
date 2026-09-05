@@ -66,6 +66,7 @@ OC.L10N.register(
     "Search results for \"{query}\"" : "Search results for \"{query}\"",
     "Search results per provider" : "Search results per provider",
     "Search…" : "Search…",
+    "See all in {provider}" : "See all in {provider}",
     "See all providers" : "See all providers",
     "See only results for this provider" : "See only results for this provider",
     "Settings pages" : "Settings pages",
