@@ -283,6 +283,9 @@ jobs:
             echo "Running: git log ${LAST_TAG}..HEAD --pretty=format:\"%s\" --no-merges --author='^(?!github-actions\[bot\]).*' --perl-regexp"
             COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"%s" --no-merges --author='^(?!github-actions\[bot\]).*' --perl-regexp)
 
+            # Exclude commits marked [skip ci] from the changelog
+            COMMITS=$(echo "$COMMITS" | grep -v '\[skip ci\]' || true)
+
             echo "Raw commits found:"
             echo "---"
             echo "$COMMITS"
