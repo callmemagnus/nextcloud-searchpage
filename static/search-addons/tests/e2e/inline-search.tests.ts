@@ -203,7 +203,10 @@ test.describe('inline search — enabled', () => {
 
 	test('dashboard uses all providers (multiple provider sections visible)', async ({ page }) => {
 		await page.goto(DASHBOARD_URL);
-		await typeIntoSearchBox(page, 'personal');
+		// 'admin' matches both the Apps and Settings providers out of the box
+		// (unlike 'personal', whose match depends on core settings label
+		// wording, which isn't stable across Nextcloud versions).
+		await typeIntoSearchBox(page, 'admin');
 		const panel = page.locator('.mwb-mini-panel');
 		await expect(panel).toBeVisible();
 		await expect(panel.getByRole('link').first()).toBeVisible({ timeout: 10_000 });
