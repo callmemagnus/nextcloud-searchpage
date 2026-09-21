@@ -5,6 +5,7 @@
     "Note:" : "Megjegyzés:",
     "Provider" : "Szolgáltató",
     "Save" : "Mentés",
-    "Search" : "Keresés"
+    "Search" : "Keresés",
+    "Settings saved successfully" : "A beállítások mentése sikeres"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
