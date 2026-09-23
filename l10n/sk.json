@@ -40,7 +40,7 @@
     "Move down" : "Posunúť nadol",
     "Move up" : "Posunúť nahor",
     "New search providers detected" : "Zistení noví poskytovatelia vyhľadávania",
-    "Nextcloud 34 started hiding installed application in a menu, making it harder to reach The Search Page. This experimental feature hi-jacks the unified search of Nextcloud." : "Nextcloud 34 začal skrývať nainštalované aplikácie v ponuke, čím sťažil prístup k aplikácii Vyhľadávacia stránka. Táto experimentálna funkcia preberá jednotné vyhľadávanie Nextcloud.",
+    "Nextcloud 34 started hiding installed application in a menu, making it harder to reach The Search Page. This experimental feature hi-jacks the unified search of Nextcloud." : "Nextcloud 34 začal skrývať nainštalovanú aplikáciu v ponuke, čím sťažil prístup k Vyhľadávacej stránke. Táto experimentálna funkcia preberá jednotné vyhľadávanie Nextcloud.",
     "No applications found." : "Nenašli sa žiadne aplikácie.",
     "No results" : "Žiadne výsledky",
     "Not all providers support date filters." : "Nie všetci poskytovatelia podporujú filtre dátumu.",
