@@ -2,6 +2,7 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "אחורה",
+    "Filters" : "מסננים",
     "No results" : "אין תוצאות",
     "Note:" : "הערה:",
     "Provider" : "ספק",
