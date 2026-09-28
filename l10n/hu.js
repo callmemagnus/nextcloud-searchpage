@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Back" : "Vissza",
     "Filters" : "Szűrők",
+    "Move down" : "Lentebb helyezés",
+    "Move up" : "Fentebb helyezés",
     "No results" : "Nincs eredmény",
     "Note:" : "Megjegyzés:",
     "Provider" : "Szolgáltató",
