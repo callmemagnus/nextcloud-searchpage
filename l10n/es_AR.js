@@ -2,6 +2,8 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Back" : "Volver",
+    "Move down" : "Mover hacia abajo",
+    "Move up" : "Mover hacia arriba",
     "No results" : "No hay resultados",
     "Note:" : "Nota:",
     "Save" : "Guardar",
