@@ -9,6 +9,9 @@ OC.L10N.register(
     "Provider" : "Udbyder",
     "Save" : "Gem",
     "Saving…" : "Gemmer...",
-    "Search" : "Søg"
+    "Search" : "Søg",
+    "Search results" : "Søgeresultater",
+    "Settings saved successfully" : "Indstillingerne er gemt",
+    "Close" : "Luk"
 },
 "nplurals=2; plural=(n != 1);");
