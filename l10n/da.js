@@ -4,6 +4,7 @@ OC.L10N.register(
     "Back" : "Tilbage",
     "Error saving settings" : "Fejl ved at gemme indstillinger",
     "Filters" : "Filtre",
+    "Loading…" : "Indlæser …",
     "No results" : "Ingen resultater",
     "Note:" : "Bemærkning:",
     "Provider" : "Udbyder",
