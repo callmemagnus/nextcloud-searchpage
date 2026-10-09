@@ -11,43 +11,42 @@ use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
-class AdminSection implements IIconSection
-{
-    public function __construct(
-        private IL10N $l,
-        private IURLGenerator $urlGenerator
-    ) {
-    }
+class AdminSection implements IIconSection {
+	public function __construct(
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+	) {
+	}
 
-    /**
-     * Returns the ID of the section
-     */
-    public function getID(): string
-    {
-        return Application::APP_ID;
-    }
+	/**
+	 * Returns the ID of the section
+	 */
+	#[\Override]
+	public function getID(): string {
+		return Application::APP_ID;
+	}
 
-    /**
-     * Returns the name/title of the section
-     */
-    public function getName(): string
-    {
-        return $this->l->t('The Search Page');
-    }
+	/**
+	 * Returns the name/title of the section
+	 */
+	#[\Override]
+	public function getName(): string {
+		return $this->l->t('The Search Page');
+	}
 
-    /**
-     * Returns the priority for ordering (lower = higher in the list)
-     */
-    public function getPriority(): int
-    {
-        return 75;
-    }
+	/**
+	 * Returns the priority for ordering (lower = higher in the list)
+	 */
+	#[\Override]
+	public function getPriority(): int {
+		return 75;
+	}
 
-    /**
-     * Returns the icon for the section
-     */
-    public function getIcon(): string
-    {
-        return $this->urlGenerator->imagePath(Application::APP_ID, 'app-currentColor.svg');
-    }
+	/**
+	 * Returns the icon for the section
+	 */
+	#[\Override]
+	public function getIcon(): string {
+		return $this->urlGenerator->imagePath(Application::APP_ID, 'app-currentColor.svg');
+	}
 }

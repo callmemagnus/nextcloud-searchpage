@@ -11,6 +11,7 @@ use OCA\TheSearchPage\Controller\PageController;
 use OCA\TheSearchPage\Service\ProviderService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
+use OCP\IAppConfig;
 use OCP\IGroupManager;
 use OCP\IRequest;
 use OCP\IUser;
@@ -18,156 +19,160 @@ use OCP\IUserSession;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class PageControllerTest extends TestCase
-{
-    private PageController $controller;
-    private MockObject|IRequest $request;
-    private MockObject|IInitialState $initialState;
-    private MockObject|ProviderService $providerService;
-    private MockObject|IGroupManager $groupManager;
-    private MockObject|IUserSession $userSession;
+class PageControllerTest extends TestCase {
+	private PageController $controller;
+	private MockObject|IRequest $request;
+	private MockObject|IInitialState $initialState;
+	private MockObject|ProviderService $providerService;
+	private MockObject|IGroupManager $groupManager;
+	private MockObject|IUserSession $userSession;
+	private MockObject|IAppConfig $appConfig;
 
-    public function setUp(): void
-    {
-        $this->request = $this->createMock(IRequest::class);
-        $this->initialState = $this->createMock(IInitialState::class);
-        $this->providerService = $this->createMock(ProviderService::class);
-        $this->groupManager = $this->createMock(IGroupManager::class);
-        $this->userSession = $this->createMock(IUserSession::class);
+	public function setUp(): void {
+		$this->request = $this->createMock(IRequest::class);
+		$this->initialState = $this->createMock(IInitialState::class);
+		$this->providerService = $this->createMock(ProviderService::class);
+		$this->groupManager = $this->createMock(IGroupManager::class);
+		$this->userSession = $this->createMock(IUserSession::class);
+		$this->appConfig = $this->createMock(IAppConfig::class);
 
-        $this->controller = new PageController(
-            $this->request,
-            $this->initialState,
-            $this->providerService,
-            $this->groupManager,
-            $this->userSession,
-        );
-    }
+		$this->controller = new PageController(
+			$this->request,
+			$this->initialState,
+			$this->providerService,
+			$this->groupManager,
+			$this->userSession,
+			$this->appConfig,
+		);
+	}
 
-    public function testIndexReturnsTemplateResponse(): void
-    {
-        $user = $this->createMock(IUser::class);
-        $user->method('getUID')->willReturn('testuser');
+	public function testIndexReturnsTemplateResponse(): void {
+		$user = $this->createMock(IUser::class);
+		$user->method('getUID')->willReturn('testuser');
 
-        $this->userSession->expects($this->once())
-            ->method('getUser')
-            ->willReturn($user);
+		$this->userSession->expects($this->once())
+			->method('getUser')
+			->willReturn($user);
 
-        $this->groupManager->expects($this->once())
-            ->method('isAdmin')
-            ->with('testuser')
-            ->willReturn(false);
+		$this->groupManager->expects($this->once())
+			->method('isAdmin')
+			->with('testuser')
+			->willReturn(false);
 
-        $this->providerService->expects($this->once())
-            ->method('getProvidersForCurrentUser')
-            ->willReturn([]);
+		$this->providerService->expects($this->once())
+			->method('getProvidersForCurrentUser')
+			->willReturn([]);
 
-        $this->initialState->expects($this->exactly(2))
-            ->method('provideInitialState')
-            ->willReturnCallback(function ($key, $value) {
-                if ($key === 'availableProviders') {
-                    $this->assertEquals([], $value);
-                } elseif ($key === 'isAdmin') {
-                    $this->assertEquals(false, $value);
-                }
-            });
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->with('thesearchpage', 'restrict_providers_enabled')
+			->willReturn(true);
 
-        $result = $this->controller->index();
+		$this->initialState->expects($this->exactly(3))
+			->method('provideInitialState')
+			->willReturnCallback(function ($key, $value) {
+				if ($key === 'availableProviders') {
+					$this->assertEquals([], $value);
+				} elseif ($key === 'isAdmin') {
+					$this->assertEquals(false, $value);
+				} elseif ($key === 'isEnabled') {
+					$this->assertEquals(true, $value);
+				}
+			});
 
-        $this->assertInstanceOf(TemplateResponse::class, $result);
-        $this->assertEquals('main', $result->getTemplateName());
-    }
+		$result = $this->controller->index();
 
-    public function testIndexProvidesProvidersToInitialState(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 10],
-            ['id' => 'contacts', 'name' => 'Contacts', 'limit' => 25],
-        ];
+		$this->assertInstanceOf(TemplateResponse::class, $result);
+		$this->assertEquals('main', $result->getTemplateName());
+	}
 
-        $user = $this->createMock(IUser::class);
-        $user->method('getUID')->willReturn('testuser');
+	public function testIndexProvidesProvidersToInitialState(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 10],
+			['id' => 'contacts', 'name' => 'Contacts', 'limit' => 25],
+		];
 
-        $this->userSession->expects($this->once())
-            ->method('getUser')
-            ->willReturn($user);
+		$user = $this->createMock(IUser::class);
+		$user->method('getUID')->willReturn('testuser');
 
-        $this->groupManager->expects($this->once())
-            ->method('isAdmin')
-            ->with('testuser')
-            ->willReturn(false);
+		$this->userSession->expects($this->once())
+			->method('getUser')
+			->willReturn($user);
 
-        $this->providerService->expects($this->once())
-            ->method('getProvidersForCurrentUser')
-            ->willReturn($providers);
+		$this->groupManager->expects($this->once())
+			->method('isAdmin')
+			->with('testuser')
+			->willReturn(false);
 
-        $this->initialState->expects($this->exactly(2))
-            ->method('provideInitialState')
-            ->willReturnCallback(function ($key, $value) use ($providers) {
-                if ($key === 'availableProviders') {
-                    $this->assertEquals($providers, $value);
-                } elseif ($key === 'isAdmin') {
-                    $this->assertEquals(false, $value);
-                }
-            });
+		$this->providerService->expects($this->once())
+			->method('getProvidersForCurrentUser')
+			->willReturn($providers);
 
-        $this->controller->index();
-    }
+		$this->initialState->expects($this->exactly(3))
+			->method('provideInitialState')
+			->willReturnCallback(function ($key, $value) use ($providers) {
+				if ($key === 'availableProviders') {
+					$this->assertEquals($providers, $value);
+				} elseif ($key === 'isAdmin') {
+					$this->assertEquals(false, $value);
+				}
+			});
 
-    public function testIndexSetsIsAdminTrueForAdminUser(): void
-    {
-        $user = $this->createMock(IUser::class);
-        $user->method('getUID')->willReturn('adminuser');
+		$this->controller->index();
+	}
 
-        $this->userSession->expects($this->once())
-            ->method('getUser')
-            ->willReturn($user);
+	public function testIndexSetsIsAdminTrueForAdminUser(): void {
+		$user = $this->createMock(IUser::class);
+		$user->method('getUID')->willReturn('adminuser');
 
-        $this->groupManager->expects($this->once())
-            ->method('isAdmin')
-            ->with('adminuser')
-            ->willReturn(true);
+		$this->userSession->expects($this->once())
+			->method('getUser')
+			->willReturn($user);
 
-        $this->providerService->expects($this->once())
-            ->method('getProvidersForCurrentUser')
-            ->willReturn([]);
+		$this->groupManager->expects($this->once())
+			->method('isAdmin')
+			->with('adminuser')
+			->willReturn(true);
 
-        $this->initialState->expects($this->exactly(2))
-            ->method('provideInitialState')
-            ->willReturnCallback(function ($key, $value) {
-                if ($key === 'availableProviders') {
-                    $this->assertEquals([], $value);
-                } elseif ($key === 'isAdmin') {
-                    $this->assertEquals(true, $value);
-                }
-            });
+		$this->providerService->expects($this->once())
+			->method('getProvidersForCurrentUser')
+			->willReturn([]);
 
-        $this->controller->index();
-    }
+		$this->initialState->expects($this->exactly(3))
+			->method('provideInitialState')
+			->willReturnCallback(function ($key, $value) {
+				if ($key === 'availableProviders') {
+					$this->assertEquals([], $value);
+				} elseif ($key === 'isAdmin') {
+					$this->assertEquals(true, $value);
+				}
+			});
 
-    public function testIndexSetsIsAdminFalseWhenNoUser(): void
-    {
-        $this->userSession->expects($this->once())
-            ->method('getUser')
-            ->willReturn(null);
+		$this->controller->index();
+	}
 
-        $this->groupManager->expects($this->never())
-            ->method('isAdmin');
+	public function testIndexSetsIsAdminFalseWhenNoUser(): void {
+		$this->userSession->expects($this->once())
+			->method('getUser')
+			->willReturn(null);
 
-        $this->providerService->expects($this->once())
-            ->method('getProvidersForCurrentUser')
-            ->willReturn([]);
+		$this->groupManager->expects($this->never())
+			->method('isAdmin');
 
-        $this->initialState->expects($this->exactly(2))
-            ->method('provideInitialState')
-            ->willReturnCallback(function ($key, $value) {
-                if ($key === 'availableProviders') {
-                    $this->assertEquals([], $value);
-                } elseif ($key === 'isAdmin') {
-                    $this->assertEquals(false, $value);
-                }
-            });
+		$this->providerService->expects($this->once())
+			->method('getProvidersForCurrentUser')
+			->willReturn([]);
 
-        $this->controller->index();
-    }
+		$this->initialState->expects($this->exactly(3))
+			->method('provideInitialState')
+			->willReturnCallback(function ($key, $value) {
+				if ($key === 'availableProviders') {
+					$this->assertEquals([], $value);
+				} elseif ($key === 'isAdmin') {
+					$this->assertEquals(false, $value);
+				}
+			});
+
+		$this->controller->index();
+	}
 }

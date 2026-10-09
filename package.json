@@ -25,7 +25,7 @@
     "static/search-addons"
   ],
   "devDependencies": {
-    "@playwright/test": "1.59.1",
-    "npm-check-updates": "19.6.6"
+    "@playwright/test": "1.64.0",
+    "npm-check-updates": "23.1.0"
   }
 }

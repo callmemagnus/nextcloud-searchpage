@@ -23,7 +23,7 @@ test-results
 !.env.template
 !.gitignore
 !.gitattributes
-!.php_cs-fixer.dist.php
+!.php-cs-fixer.dist.php
 !.reuse
 !.github
 !.husky

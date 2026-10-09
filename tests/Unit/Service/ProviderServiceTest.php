@@ -16,293 +16,282 @@ use OCP\IUserSession;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class ProviderServiceTest extends TestCase
-{
-    private ProviderService $service;
-    private MockObject|IAppConfig $appConfig;
-    private MockObject|IGroupManager $groupManager;
-    private MockObject|IUserSession $userSession;
+class ProviderServiceTest extends TestCase {
+	private ProviderService $service;
+	private MockObject|IAppConfig $appConfig;
+	private MockObject|IGroupManager $groupManager;
+	private MockObject|IUserSession $userSession;
 
-    public function setUp(): void
-    {
-        $this->appConfig = $this->createMock(IAppConfig::class);
-        $this->groupManager = $this->createMock(IGroupManager::class);
-        $this->userSession = $this->createMock(IUserSession::class);
+	public function setUp(): void {
+		$this->appConfig = $this->createMock(IAppConfig::class);
+		$this->groupManager = $this->createMock(IGroupManager::class);
+		$this->userSession = $this->createMock(IUserSession::class);
 
-        $this->service = new ProviderService(
-            $this->appConfig,
-            $this->groupManager,
-            $this->userSession,
-        );
-    }
+		$this->service = new ProviderService(
+			$this->appConfig,
+			$this->groupManager,
+			$this->userSession,
+		);
+	}
 
-    public function testGetProvidersForCurrentUserWithNoUser(): void
-    {
-        $this->userSession->expects($this->once())
-            ->method('getUser')
-            ->willReturn(null);
+	public function testGetProvidersForCurrentUserWithNoUser(): void {
+		$this->userSession->expects($this->once())
+			->method('getUser')
+			->willReturn(null);
 
-        $result = $this->service->getProvidersForCurrentUser();
+		$result = $this->service->getProvidersForCurrentUser();
 
-        $this->assertEquals([], $result);
-    }
+		$this->assertEquals([], $result);
+	}
 
-    public function testGetProvidersForCurrentUserWithRestrictionsDisabled(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files'],
-            ['id' => 'contacts', 'name' => 'Contacts'],
-        ];
+	public function testGetProvidersForCurrentUserWithRestrictionsDisabled(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files'],
+			['id' => 'contacts', 'name' => 'Contacts'],
+		];
 
-        $user = $this->setupUserMock(['admin']);
-        $this->setupUserSessionMock($user);
+		$user = $this->setupUserMock(['admin']);
+		$this->setupUserSessionMock($user);
 
-        $this->appConfig->expects($this->once())
-            ->method('getValueBool')
-            ->willReturn(false); // Restrictions disabled
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->willReturn(false); // Restrictions disabled
 
-        $this->appConfig->expects($this->exactly(3))
-            ->method('getValueArray')
-            ->willReturnCallback(function ($appId, $key) use ($providers) {
-                if ($key === 'providers') {
-                    return $providers;
-                }
-                return [];
-            });
+		$this->appConfig->expects($this->exactly(3))
+			->method('getValueArray')
+			->willReturnCallback(function ($appId, $key) use ($providers) {
+				if ($key === 'providers') {
+					return $providers;
+				}
+				return [];
+			});
 
-        $result = $this->service->getProvidersForCurrentUser();
+		$result = $this->service->getProvidersForCurrentUser();
 
-        $expectedProviders = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 10],
-            ['id' => 'contacts', 'name' => 'Contacts', 'limit' => 10],
-        ];
+		$expectedProviders = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 10],
+			['id' => 'contacts', 'name' => 'Contacts', 'limit' => 10],
+		];
 
-        $this->assertEquals($expectedProviders, $result);
-    }
+		$this->assertEquals($expectedProviders, $result);
+	}
 
-    public function testGetProvidersForCurrentUserWithRestrictionsEnabled(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files'],
-            ['id' => 'contacts', 'name' => 'Contacts'],
-        ];
+	public function testGetProvidersForCurrentUserWithRestrictionsEnabled(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files'],
+			['id' => 'contacts', 'name' => 'Contacts'],
+		];
 
-        $user = $this->setupUserMock(['admin']);
-        $this->setupUserSessionMock($user);
+		$user = $this->setupUserMock(['admin']);
+		$this->setupUserSessionMock($user);
 
-        $this->appConfig->expects($this->once())
-            ->method('getValueBool')
-            ->willReturn(true);
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->willReturn(true);
 
-        $this->appConfig->expects($this->exactly(3))
-            ->method('getValueArray')
-            ->willReturnCallback(function ($appId, $key) use ($providers) {
-                if ($key === 'providers') {
-                    return $providers;
-                }
-                if ($key === 'provider_group_map') {
-                    return [
-                        'files' => ['admin'],
-                        'contacts' => ['admin'],
-                    ];
-                }
-                return [];
-            });
+		$this->appConfig->expects($this->exactly(3))
+			->method('getValueArray')
+			->willReturnCallback(function ($appId, $key) use ($providers) {
+				if ($key === 'providers') {
+					return $providers;
+				}
+				if ($key === 'provider_group_map') {
+					return [
+						'files' => ['admin'],
+						'contacts' => ['admin'],
+					];
+				}
+				return [];
+			});
 
-        $result = $this->service->getProvidersForCurrentUser();
+		$result = $this->service->getProvidersForCurrentUser();
 
-        $expectedProviders = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 10],
-            ['id' => 'contacts', 'name' => 'Contacts', 'limit' => 10],
-        ];
+		$expectedProviders = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 10],
+			['id' => 'contacts', 'name' => 'Contacts', 'limit' => 10],
+		];
 
-        $this->assertEquals($expectedProviders, $result);
-    }
+		$this->assertEquals($expectedProviders, $result);
+	}
 
-    public function testGetProvidersForUserWithUserInAllowedGroup(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files'],
-            ['id' => 'contacts', 'name' => 'Contacts'],
-            ['id' => 'calendar', 'name' => 'Calendar'],
-        ];
+	public function testGetProvidersForUserWithUserInAllowedGroup(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files'],
+			['id' => 'contacts', 'name' => 'Contacts'],
+			['id' => 'calendar', 'name' => 'Calendar'],
+		];
 
-        $user = $this->setupUserMock(['admin', 'users']);
+		$user = $this->setupUserMock(['admin', 'users']);
 
-        $this->appConfig->expects($this->once())
-            ->method('getValueBool')
-            ->willReturn(true); // Restrictions enabled
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->willReturn(true); // Restrictions enabled
 
-        $this->appConfig->expects($this->exactly(3))
-            ->method('getValueArray')
-            ->willReturnCallback(function ($appId, $key) use ($providers) {
-                if ($key === 'providers') {
-                    return $providers;
-                }
-                if ($key === 'provider_group_map') {
-                    return [
-                        'files' => ['admin', 'users'],
-                        'contacts' => ['admin'],
-                        'calendar' => ['developers'], // User not in this group
-                    ];
-                }
-                return [];
-            });
+		$this->appConfig->expects($this->exactly(3))
+			->method('getValueArray')
+			->willReturnCallback(function ($appId, $key) use ($providers) {
+				if ($key === 'providers') {
+					return $providers;
+				}
+				if ($key === 'provider_group_map') {
+					return [
+						'files' => ['admin', 'users'],
+						'contacts' => ['admin'],
+						'calendar' => ['developers'], // User not in this group
+					];
+				}
+				return [];
+			});
 
-        $result = $this->service->getProvidersForUser($user);
+		$result = $this->service->getProvidersForUser($user);
 
-        $expectedProviders = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 10],
-            ['id' => 'contacts', 'name' => 'Contacts', 'limit' => 10],
-        ];
+		$expectedProviders = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 10],
+			['id' => 'contacts', 'name' => 'Contacts', 'limit' => 10],
+		];
 
-        $this->assertEquals($expectedProviders, $result);
-    }
+		$this->assertEquals($expectedProviders, $result);
+	}
 
-    public function testGetProvidersForUserWithProviderAvailableToAll(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files'],
-            ['id' => 'contacts', 'name' => 'Contacts'],
-        ];
+	public function testGetProvidersForUserWithProviderAvailableToAll(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files'],
+			['id' => 'contacts', 'name' => 'Contacts'],
+		];
 
-        $user = $this->setupUserMock(['users']);
+		$user = $this->setupUserMock(['users']);
 
-        $this->appConfig->expects($this->once())
-            ->method('getValueBool')
-            ->willReturn(true);
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->willReturn(true);
 
-        $this->appConfig->expects($this->exactly(3))
-            ->method('getValueArray')
-            ->willReturnCallback(function ($appId, $key) use ($providers) {
-                if ($key === 'providers') {
-                    return $providers;
-                }
-                if ($key === 'provider_group_map') {
-                    return [
-                        'files' => ['__all__'],
-                        'contacts' => ['admin'],
-                    ];
-                }
-                return [];
-            });
+		$this->appConfig->expects($this->exactly(3))
+			->method('getValueArray')
+			->willReturnCallback(function ($appId, $key) use ($providers) {
+				if ($key === 'providers') {
+					return $providers;
+				}
+				if ($key === 'provider_group_map') {
+					return [
+						'files' => ['__all__'],
+						'contacts' => ['admin'],
+					];
+				}
+				return [];
+			});
 
-        $result = $this->service->getProvidersForUser($user);
+		$result = $this->service->getProvidersForUser($user);
 
-        $expectedProviders = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 10],
-        ];
+		$expectedProviders = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 10],
+		];
 
-        $this->assertEquals($expectedProviders, $result);
-    }
+		$this->assertEquals($expectedProviders, $result);
+	}
 
-    public function testGetProvidersForUserWithProviderNotInMap(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files'],
-            ['id' => 'contacts', 'name' => 'Contacts'],
-        ];
+	public function testGetProvidersForUserWithProviderNotInMap(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files'],
+			['id' => 'contacts', 'name' => 'Contacts'],
+		];
 
-        $user = $this->setupUserMock(['admin']);
+		$user = $this->setupUserMock(['admin']);
 
-        $this->appConfig->expects($this->once())
-            ->method('getValueBool')
-            ->willReturn(true);
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->willReturn(true);
 
-        $this->appConfig->expects($this->exactly(3))
-            ->method('getValueArray')
-            ->willReturnCallback(function ($appId, $key) use ($providers) {
-                if ($key === 'providers') {
-                    return $providers;
-                }
-                if ($key === 'provider_group_map') {
-                    return [
-                        'files' => ['admin'],
-                        // 'contacts' not in map (all checkboxes unchecked)
-                    ];
-                }
-                return [];
-            });
+		$this->appConfig->expects($this->exactly(3))
+			->method('getValueArray')
+			->willReturnCallback(function ($appId, $key) use ($providers) {
+				if ($key === 'providers') {
+					return $providers;
+				}
+				if ($key === 'provider_group_map') {
+					return [
+						'files' => ['admin'],
+						// 'contacts' not in map (all checkboxes unchecked)
+					];
+				}
+				return [];
+			});
 
-        $result = $this->service->getProvidersForUser($user);
+		$result = $this->service->getProvidersForUser($user);
 
-        $expectedProviders = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 10],
-        ];
+		$expectedProviders = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 10],
+		];
 
-        $this->assertEquals($expectedProviders, $result);
-    }
+		$this->assertEquals($expectedProviders, $result);
+	}
 
-    public function testGetProvidersForUserWithCustomLimits(): void
-    {
-        $providers = [
-            ['id' => 'files', 'name' => 'Files'],
-            ['id' => 'contacts', 'name' => 'Contacts'],
-            ['id' => 'calendar', 'name' => 'Calendar'],
-        ];
+	public function testGetProvidersForUserWithCustomLimits(): void {
+		$providers = [
+			['id' => 'files', 'name' => 'Files'],
+			['id' => 'contacts', 'name' => 'Contacts'],
+			['id' => 'calendar', 'name' => 'Calendar'],
+		];
 
-        $user = $this->setupUserMock(['admin']);
+		$user = $this->setupUserMock(['admin']);
 
-        $this->appConfig->expects($this->once())
-            ->method('getValueBool')
-            ->willReturn(true);
+		$this->appConfig->expects($this->once())
+			->method('getValueBool')
+			->willReturn(true);
 
-        $this->appConfig->expects($this->exactly(3))
-            ->method('getValueArray')
-            ->willReturnCallback(function ($appId, $key) use ($providers) {
-                if ($key === 'providers') {
-                    return $providers;
-                }
-                if ($key === 'provider_group_map') {
-                    return [
-                        'files' => ['admin'],
-                        'contacts' => ['admin'],
-                        'calendar' => ['admin'],
-                    ];
-                }
-                if ($key === 'provider_limits') {
-                    return [
-                        'files' => 50,
-                        'contacts' => 25,
-                        // 'calendar' not configured, should use default
-                    ];
-                }
-                return [];
-            });
+		$this->appConfig->expects($this->exactly(3))
+			->method('getValueArray')
+			->willReturnCallback(function ($appId, $key) use ($providers) {
+				if ($key === 'providers') {
+					return $providers;
+				}
+				if ($key === 'provider_group_map') {
+					return [
+						'files' => ['admin'],
+						'contacts' => ['admin'],
+						'calendar' => ['admin'],
+					];
+				}
+				if ($key === 'provider_limits') {
+					return [
+						'files' => 50,
+						'contacts' => 25,
+						// 'calendar' not configured, should use default
+					];
+				}
+				return [];
+			});
 
-        $result = $this->service->getProvidersForUser($user);
+		$result = $this->service->getProvidersForUser($user);
 
-        $expectedProviders = [
-            ['id' => 'files', 'name' => 'Files', 'limit' => 50],
-            ['id' => 'contacts', 'name' => 'Contacts', 'limit' => 25],
-            ['id' => 'calendar', 'name' => 'Calendar', 'limit' => 10],
-        ];
+		$expectedProviders = [
+			['id' => 'files', 'name' => 'Files', 'limit' => 50],
+			['id' => 'contacts', 'name' => 'Contacts', 'limit' => 25],
+			['id' => 'calendar', 'name' => 'Calendar', 'limit' => 10],
+		];
 
-        $this->assertEquals($expectedProviders, $result);
-    }
+		$this->assertEquals($expectedProviders, $result);
+	}
 
-    private function setupUserMock(array $groupIds): MockObject|IUser
-    {
-        $user = $this->createMock(IUser::class);
+	private function setupUserMock(array $groupIds): MockObject|IUser {
+		$user = $this->createMock(IUser::class);
 
-        $groups = array_map(function ($groupId) {
-            $group = $this->createMock(IGroup::class);
-            $group->method('getGID')->willReturn($groupId);
-            return $group;
-        }, $groupIds);
+		$groups = array_map(function ($groupId) {
+			$group = $this->createMock(IGroup::class);
+			$group->method('getGID')->willReturn($groupId);
+			return $group;
+		}, $groupIds);
 
-        $this->groupManager->expects($this->once())
-            ->method('getUserGroups')
-            ->with($user)
-            ->willReturn($groups);
+		$this->groupManager->expects($this->once())
+			->method('getUserGroups')
+			->with($user)
+			->willReturn($groups);
 
-        return $user;
-    }
+		return $user;
+	}
 
-    private function setupUserSessionMock(MockObject|IUser $user): void
-    {
-        $this->userSession->expects($this->once())
-            ->method('getUser')
-            ->willReturn($user);
-    }
+	private function setupUserSessionMock(MockObject|IUser $user): void {
+		$this->userSession->expects($this->once())
+			->method('getUser')
+			->willReturn($user);
+	}
 }

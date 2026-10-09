@@ -18,6 +18,8 @@ const setup = (id: number) => ({
 const tests = (id: number) => ({
 	name: `tests-${id}`,
 	testMatch: /.*\.tests\.ts/,
+	// Test files share one Nextcloud instance per version and mutate its app settings
+	workers: 1,
 	use: {
 		...devices['Desktop Chrome'],
 		baseURL: baseURL(id),

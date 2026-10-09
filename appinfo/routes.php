@@ -13,10 +13,10 @@ declare(strict_types=1);
  * it's instantiated in there
  */
 return [
-    'routes' => [
-        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-        ['name' => 'settings#getGroups', 'url' => '/api/v1/settings/groups', 'verb' => 'GET'],
-        ['name' => 'settings#getSettings', 'url' => '/api/v1/settings', 'verb' => 'GET'],
-        ['name' => 'settings#saveSettings', 'url' => '/api/v1/settings', 'verb' => 'POST'],
-    ]
+	'routes' => [
+		['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+		['name' => 'settings#getGroups', 'url' => '/api/v1/settings/groups', 'verb' => 'GET'],
+		['name' => 'settings#getSettings', 'url' => '/api/v1/settings', 'verb' => 'GET'],
+		['name' => 'settings#saveSettings', 'url' => '/api/v1/settings', 'verb' => 'POST'],
+	]
 ];
