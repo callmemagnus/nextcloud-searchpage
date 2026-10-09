@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import {defineConfig, devices} from '@playwright/test';
 
 const host = process.env.TARGET_HOST ? process.env.TARGET_HOST : 'localhost';
 
@@ -26,7 +26,7 @@ const tests = (id: number) => ({
 	dependencies: [`setup-${id}`]
 });
 
-const allVersions = [33, 34];
+const allVersions = [33, 34, 35];
 
 // Set TARGET_NC_VERSION=33 to run only that version (used by bin/run-playwright.sh)
 // Set EXCLUDE_NC_VERSION=33 to skip that version (used by bin/run-playwright.sh --exclude)

@@ -19,6 +19,7 @@ test('if search is performed', async ({ page }) => {
 	const container = page.locator('.mwb-thesearchpage-results');
 
 	await expect(container).toBeVisible();
+	// NC 35+ merged the separate "Personal info" settings section into
+	// "Personal settings", so it no longer appears as its own search result.
 	await expect(container.getByRole('link', { name: 'Personal settings' })).toBeVisible();
-	await expect(container.getByRole('link', { name: 'Personal info' })).toBeVisible();
 });

@@ -136,6 +136,10 @@ endif
 	--exclude="composer.*" \
 	--exclude="build" \
 	--exclude="bin" \
+	--exclude="docs" \
+	--exclude="static" \
+	--exclude="tmp" \
+	--exclude="vendor-bin" \
 	--exclude="tests" \
 	--exclude="Makefile" \
 	--exclude="*.log" \
@@ -143,21 +147,19 @@ endif
 	--exclude="composer.*" \
 	--exclude="node_modules" \
 	--exclude="src" \
-	--exclude="js/tests" \
-	--exclude="js/test" \
-	--exclude="js/*.log" \
-	--exclude="js/package.json" \
-	--exclude="js/bower.json" \
-	--exclude="js/karma.*" \
-	--exclude="js/protractor.*" \
-	--exclude="vendor" \
-	--exclude="Makefile" \
+	--include="/js/*.js" \
+	--exclude="/js/*" \
+	--exclude="/vendor" \
+	--exclude="/Makefile" \
 	--exclude="package*.json" \
-	--exclude="karma.*" \
-	--exclude="protractor\.*" \
 	--exclude=".*" \
 	--exclude="tsconfig*" \
 	--exclude="*.config.*s" \
+	--exclude="phpunit.xml" \
+	--include="README.md" \
+	--include="CHANGELOG.md" \
+	--exclude="*.md" \
+	--exclude="*.nix" \
 	$(project_dir)/  $(sign_dir)/$(app_name)
 	@if [ -f $(cert_dir)/$(app_name).key ]; then \
 		echo "Signing app files…"; \
