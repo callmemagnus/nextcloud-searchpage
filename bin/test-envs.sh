@@ -10,6 +10,8 @@ if test "$1" = ""; then
     exit 1
 fi
 
+. "$(dirname "$0")/lib/require-nc-tools.sh"
+
 start() {
     for i in 35 34 33; do
         nc-start.sh "$i" || echo "WARNING: could not start NC${i}, skipping"

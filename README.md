@@ -141,11 +141,13 @@ The script automatically detects the target Nextcloud version from `appinfo/info
 | _(none)_ | Full run: install deps, build, stop any existing container, start a fresh one, wait for it to be ready, run tests, stop container. |
 | `--no-cleanup` | Skip stopping the container before and after the run. Useful when iterating and the container is already warmed up. |
 | `--use-existing` | Skip container lifecycle entirely (no start, no wait, no configure, no stop). Still installs deps and builds. Use when a Nextcloud instance is already running and configured. Implies `--no-cleanup`. |
+| `--by-name` | Reach the container as `nextcloud-XX:80` on the `nextcloud` docker network instead of `<host ip>:80XX`. |
 
 To run all supported Nextcloud versions in parallel (CI-style), use the existing scripts:
 
 ```bash
 bin/test-envs.sh start       # Start containers for all supported versions
 bin/run-playwright.sh        # Run Playwright tests against all versions
+bin/run-playwright.sh --by-name  # Same, but reach containers as nextcloud-XX:80 on the `nextcloud` docker network
 bin/test-envs.sh stop        # Stop all containers
 ```

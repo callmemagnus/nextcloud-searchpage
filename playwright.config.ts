@@ -1,17 +1,17 @@
 import {defineConfig, devices} from '@playwright/test';
+import {authFileFromUrl} from './static/search-page/tests/e2e/helpers';
 
 const host = process.env.TARGET_HOST ? process.env.TARGET_HOST : 'localhost';
 
-function authFileFromUrl(url: string) {
-	const s = url.split(':');
-	return `.playwright/auth/user-${s[2]}.json`;
-}
+// TARGET_BY_NAME=1: reach containers by name (nextcloud-XX:80) on a shared docker network
+// instead of via host:80XX (set by bin/run-playwright.sh --by-name)
+const baseURL = (id: number) => (process.env.TARGET_BY_NAME ? `http://nextcloud-${id}` : `http://${host}:80${id}`);
 
 const setup = (id: number) => ({
 	name: `setup-${id}`,
 	testMatch: '**/tests/e2e/auth.setup.ts',
 	use: {
-		baseURL: `http://${host}:80${id}`
+		baseURL: baseURL(id)
 	}
 });
 
@@ -20,8 +20,8 @@ const tests = (id: number) => ({
 	testMatch: /.*\.tests\.ts/,
 	use: {
 		...devices['Desktop Chrome'],
-		baseURL: `http://${host}:80${id}`,
-		storageState: authFileFromUrl(`http://${host}:80${id}`)
+		baseURL: baseURL(id),
+		storageState: authFileFromUrl(baseURL(id))
 	},
 	dependencies: [`setup-${id}`]
 });
@@ -44,7 +44,7 @@ if (process.env.TARGET_NC_VERSION) {
 }
 
 export default defineConfig({
-	workers: 1,
+	workers: 3,
 	testDir: './static',
 	timeout: 10_000,
 

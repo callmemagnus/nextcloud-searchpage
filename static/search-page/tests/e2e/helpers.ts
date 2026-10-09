@@ -1,8 +1,8 @@
 import { type Page, expect } from '@playwright/test';
 
 export function authFileFromUrl(url: string) {
-	const s = url.split(':');
-	return `.playwright/auth/user-${s[2]}.json`;
+	// host is "nextcloud-33" (by name) or "1.2.3.4:8033" (by IP)
+	return `.playwright/auth/user-${new URL(url).host.replace(':', '-')}.json`;
 }
 
 /**
