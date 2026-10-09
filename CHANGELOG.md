@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.5.0](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.8...v2.5.0)
+
+- Update translations - Many thanks to the translators!
+- update dependencies
+- enhance testing scripts
+- allow user to move through results with arrow up and down
+- change how the hijacking modal appears
+- add support for Nextcloud 35
+
 ## [v2.4.8](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.7...v2.4.8)
 
 - Update translations - Many thanks to the translators!
