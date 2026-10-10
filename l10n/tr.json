@@ -80,7 +80,6 @@
     "User group" : "Kullanıcı grubu",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Açıldığında, Nextcloud arama düğmesine tıklandığında, varsayılan arama arayüzü yerine bir satır içi arama kipi açılır.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Açıldığında, hangi arama hizmeti sağlayıcılarının belirli kullanıcı grupları tarafından görülebileceğini belirleyebilirsiniz. Varsayılan olarak, tüm hizmet sağlayıcılar tüm gruplarda kullanılabilir.",
-    "in {folder}" : "{folder} içinde",
-    "Close" : "Kapat"
+    "in {folder}" : "{folder} içinde"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

@@ -82,7 +82,6 @@ OC.L10N.register(
     "User group" : "Grúpa úsáideoirí",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Nuair a bhíonn sé cumasaithe, osclaítear modúl cuardaigh inlíne le cliceáil ar an gcnaipe cuardaigh Nextcloud in ionad an chomhéadain chuardaigh réamhshocraithe.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Nuair a bhíonn sé cumasaithe, is féidir leat a rialú cé na soláthraithe cuardaigh atá le feiceáil ag grúpaí úsáideoirí sonracha. De réir réamhshocraithe, bíonn gach soláthraí cumasaithe do gach grúpa.",
-    "in {folder}" : "i {folder}",
-    "Close" : "Dún"
+    "in {folder}" : "i {folder}"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");
