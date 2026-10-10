@@ -80,7 +80,6 @@
     "User group" : "Användargrupp",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "När funktionen är aktiverad öppnas en inbäddad sökdialog när du klickar på Nextclouds sökknapp i stället för standardsökgränssnittet.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "När detta är aktiverat kan du bestämma vilka sökleverantörer som är synliga för specifika användargrupper. Som standard är alla leverantörer aktiverade för alla grupper.",
-    "in {folder}" : "i {folder}",
-    "Close" : "Stäng"
+    "in {folder}" : "i {folder}"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

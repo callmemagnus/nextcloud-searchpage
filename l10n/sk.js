@@ -82,7 +82,6 @@ OC.L10N.register(
     "User group" : "Skupina používateľov",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Ak je táto možnosť povolená, kliknutím na tlačidlo vyhľadávania Nextcloud sa namiesto predvoleného rozhrania vyhľadávania otvorí modálne okno inline vyhľadávania.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Ak je táto možnosť povolená, môžete určiť, ktorí poskytovatelia vyhľadávania sú viditeľní pre konkrétne skupiny používateľov. Predvolene sú všetci poskytovatelia povolení pre všetky skupiny.",
-    "in {folder}" : "v {folder}",
-    "Close" : "Zavrieť"
+    "in {folder}" : "v {folder}"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

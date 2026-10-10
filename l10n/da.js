@@ -82,7 +82,6 @@ OC.L10N.register(
     "User group" : "Brugergruppe",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Når det er slået til, åbner et klik på Nextclouds søgeknap en indlejret søgedialog i stedet for den almindelige søgning.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Når det er slået til, kan du bestemme, hvilke søgeudbydere der er synlige for bestemte brugergrupper. Som standard er alle udbydere slået til for alle grupper.",
-    "in {folder}" : "i {folder}",
-    "Close" : "Luk"
+    "in {folder}" : "i {folder}"
 },
 "nplurals=2; plural=(n != 1);");

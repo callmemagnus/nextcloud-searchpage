@@ -82,7 +82,6 @@ OC.L10N.register(
     "User group" : "用戶群組",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "啟用此功能後，點擊 Nextcloud 的搜尋按鈕將開啟行內式搜尋互動視窗，而非預設的搜尋介面。",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "啟用後，你可以控制哪些搜尋提供者對特定使用者群組可見。預設情況下，所有提供者對所有群組均為啟用。",
-    "in {folder}" : "在 {folder} 中",
-    "Close" : "關閉"
+    "in {folder}" : "在 {folder} 中"
 },
 "nplurals=1; plural=0;");

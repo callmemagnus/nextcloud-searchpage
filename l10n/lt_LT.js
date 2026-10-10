@@ -81,7 +81,6 @@ OC.L10N.register(
     "User group" : "Vartotojų grupė",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Kai ši funkcija įjungta, spustelėjus „Nextcloud“ paieškos mygtuką, vietoj numatytosios paieškos sąsajos atidaromas įterptasis paieškos langas.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Kai įjungta, galite valdyti, kurie paieškos teikėjai yra matomi konkrečioms vartotojų grupėms. Pagal numatytuosius nustatymus visi teikėjai yra įjungti visoms grupėms.",
-    "in {folder}" : "aplanke {folder}",
-    "Close" : "Užverti"
+    "in {folder}" : "aplanke {folder}"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");

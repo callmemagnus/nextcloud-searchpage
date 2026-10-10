@@ -16,7 +16,6 @@ OC.L10N.register(
     "Search" : "Search",
     "Search…" : "Sich …",
     "Since" : "Zanter",
-    "Until" : "Bis",
-    "Close" : "Zoumaachen"
+    "Until" : "Bis"
 },
 "nplurals=2; plural=(n != 1);");

@@ -80,7 +80,6 @@
     "User group" : "Grup pengguna",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Jika diaktifkan, mengklik tombol pencarian Nextcloud akan membuka modal pencarian inline alih-alih antarmuka pencarian default.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Saat diaktifkan, Anda dapat mengontrol penyedia pencarian mana yang terlihat untuk grup pengguna tertentu. Secara default, semua penyedia diaktifkan untuk semua grup.",
-    "in {folder}" : "di {folder}",
-    "Close" : "Tutup"
+    "in {folder}" : "di {folder}"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

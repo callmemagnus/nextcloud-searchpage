@@ -11,7 +11,6 @@ OC.L10N.register(
     "Search" : "Zoeken",
     "Search results" : "Zoekresultaten",
     "Settings saved successfully" : "Instellingen succesvol opgeslagen",
-    "User group" : "Gebruiker groep",
-    "Close" : "Sluiten"
+    "User group" : "Gebruiker groep"
 },
 "nplurals=2; plural=(n != 1);");
