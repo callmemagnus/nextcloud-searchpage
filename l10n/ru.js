@@ -23,7 +23,7 @@ OC.L10N.register(
     "Default configuration" : "Конфигурация по умолчанию",
     "Enable inline search modal" : "Включить встроенное модальное окно поиска",
     "Enable provider restrictions" : "Включить ограничения источников",
-    "Enable {providerName} for {groupName}" : "Включить {providerName} для {groupName}",
+    "Enable {providerName} for {groupName}" : "Включить {providerName} для группы «{groupName}»",
     "Error loading settings: {error}" : "Ошибка при загрузке параметров: {error}",
     "Error saving settings" : "Ошибка сохранения параметров",
     "Everywhere" : "Везде",
@@ -66,7 +66,7 @@ OC.L10N.register(
     "Search results for \"{query}\"" : "Результаты поиска по запросу «{query}»",
     "Search results per provider" : "Результаты поиска по источникам",
     "Search…" : "Поиск…",
-    "See all in {provider}" : "Показать все в {provider}",
+    "See all in {provider}" : "Показать все: {provider}",
     "See all providers" : "Показать все источники",
     "See only results for this provider" : "Показать только результаты этого источника",
     "Settings pages" : "Страницы параметров",
@@ -82,6 +82,6 @@ OC.L10N.register(
     "User group" : "Группа пользователей",
     "When enabled, clicking the Nextcloud search button opens an inline search modal instead of the default search interface." : "Если включено, при нажатии кнопки поиска Nextcloud открывается встроенное окно поиска вместо стандартного интерфейса поиска.",
     "When enabled, you can control which search providers are visible to specific user groups. By default, all providers are enabled for all groups." : "Если включено, можно управлять тем, какие источники поиска показываются определённым группам пользователей. По умолчанию все источники включены для всех групп.",
-    "in {folder}" : "в {folder}"
+    "in {folder}" : "в папке {folder}"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");
