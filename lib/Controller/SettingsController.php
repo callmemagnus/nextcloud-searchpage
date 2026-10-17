@@ -113,6 +113,27 @@ class SettingsController extends Controller {
 				];
 			}
 
+			// Validate and sanitize provider/group map: provider id => list of group ids
+			$sanitizedGroupMap = [];
+			foreach (is_array($providerGroupMap) ? $providerGroupMap : [] as $providerId => $groupIds) {
+				if (!is_array($groupIds)) {
+					continue;
+				}
+				$sanitizedGroupMap[(string)$providerId] = array_values(array_filter($groupIds, 'is_string'));
+			}
+
+			// Validate and sanitize providers: list of {id, name}
+			$sanitizedProviders = [];
+			foreach (is_array($providers) ? $providers : [] as $provider) {
+				if (!is_array($provider) || !isset($provider['id']) || !is_string($provider['id'])) {
+					continue;
+				}
+				$sanitizedProviders[] = [
+					'id' => $provider['id'],
+					'name' => is_string($provider['name'] ?? null) ? $provider['name'] : $provider['id'],
+				];
+			}
+
 			// Validate and sanitize provider limits
 			$sanitizedLimits = [];
 			foreach ($providerLimits as $providerId => $limit) {
@@ -130,9 +151,9 @@ class SettingsController extends Controller {
 			$this->appConfig->setValueBool(Application::APP_ID, 'restrict_providers_enabled', $enabled);
 			$this->appConfig->setValueBool(Application::APP_ID, 'hijack_search_enabled', $hijackSearchEnabled);
 			$this->appConfig->setValueArray(Application::APP_ID, 'app_search_config', $appSearchConfig);
-			$this->appConfig->setValueArray(Application::APP_ID, 'provider_group_map', $providerGroupMap);
+			$this->appConfig->setValueArray(Application::APP_ID, 'provider_group_map', $sanitizedGroupMap);
 			$this->appConfig->setValueArray(Application::APP_ID, 'provider_limits', $sanitizedLimits);
-			$this->appConfig->setValueArray(Application::APP_ID, 'providers', $providers);
+			$this->appConfig->setValueArray(Application::APP_ID, 'providers', $sanitizedProviders);
 
 			return new JSONResponse([
 				'success' => true,

@@ -42,6 +42,8 @@ class SearchStore {
 	byProvider = $state<Record<string, ByProvider>>({});
 	asList = $state<ByProvider[]>([]);
 	providerHavingResultsCount = $state(0);
+	// bumped on every new/cleared search so late responses of an older one are dropped
+	private generation = 0;
 
 	async loadMore(providerId: string) {
 		if (!this.byProvider[providerId]) {
@@ -56,21 +58,28 @@ class SearchStore {
 	}
 
 	async startSearch(terms: string) {
+		const generation = ++this.generation;
 		this.searching = true;
 		this.byProvider = {};
 		this.asList = [];
 		this.providerHavingResultsCount = 0;
 
 		await this.waitForProviders();
+		if (generation !== this.generation) {
+			return;
+		}
 		const enabledProviderIds = queryState.providerIds;
 
 		saveInSession(terms, enabledProviderIds);
 
 		await Promise.all(enabledProviderIds.map((id) => this.handleSearchForProvider(id, terms)));
-		this.searching = false;
+		if (generation === this.generation) {
+			this.searching = false;
+		}
 	}
 
 	clearSearch() {
+		this.generation++;
 		this.searching = INITIAL_VALUE.searching;
 		this.byProvider = INITIAL_VALUE.byProvider;
 		this.asList = INITIAL_VALUE.asList;
@@ -182,9 +191,13 @@ class SearchStore {
 			cursor = this.byProvider[providerId].results?.entries.length || 0;
 		}
 
+		const generation = this.generation;
 		this.markProviderAsSearching(providerId, terms);
 
 		const results = await searchOnProvider(providerId, terms, cursor);
+		if (generation !== this.generation) {
+			return;
+		}
 		this.addResults(providerId, terms, results);
 	}
 }

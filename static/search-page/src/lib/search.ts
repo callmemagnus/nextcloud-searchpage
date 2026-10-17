@@ -87,24 +87,37 @@ async function performSearch(
 		}
 		// OCS-level error in a 200 HTTP response
 		// NC puts the human-readable message in `ocs.data`, not `ocs.meta.message`
-		const filterName = parseUnsupportedFilterName(result.data.ocs?.data);
-		if (filterName) {
-			markFilterUnsupported(providerId, filterName);
-			return searchOnProvider(providerId, query, cursor);
-		}
-		return null;
+		return retryWithoutUnsupportedFilter(providerId, url, query, cursor, result.data.ocs?.data);
 	} catch (error) {
 		// HTTP-level error (axios throws on 4xx/5xx)
-		const filterName = parseUnsupportedFilterName(
+		return retryWithoutUnsupportedFilter(
+			providerId,
+			url,
+			query,
+			cursor,
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(error as any)?.response?.data?.ocs?.data
 		);
-		if (filterName) {
-			markFilterUnsupported(providerId, filterName);
-			return searchOnProvider(providerId, query, cursor);
-		}
+	}
+}
+
+function retryWithoutUnsupportedFilter(
+	providerId: string,
+	url: string,
+	query: string,
+	cursor: number,
+	errorData: unknown
+): Promise<SearchResult | null> | null {
+	const filterName = parseUnsupportedFilterName(errorData);
+	if (!filterName) {
 		return null;
 	}
+	markFilterUnsupported(providerId, filterName);
+	// unchanged URL (filter not sent, or sessionStorage unavailable) would hit the cache and await this very request
+	if (buildSearchUrl(providerId, query, cursor) === url) {
+		return null;
+	}
+	return searchOnProvider(providerId, query, cursor);
 }
 
 export async function searchOnProvider(

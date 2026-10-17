@@ -6,3 +6,5 @@ bin/extract_translations.cjs
 git add src/fakeLabels.ts
 
 npm run lint
+
+npm run test:unit

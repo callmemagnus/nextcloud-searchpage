@@ -7,11 +7,11 @@ import { mount, unmount } from 'svelte';
 import { APP_NAME } from '@shared/libs';
 import SearchResultsPanel from './SearchResultsPanel.svelte';
 import { session } from './session.svelte';
-
-type AppSearchConfigEntry = {
-	enabled: boolean;
-	providerIds: string[] | null; // null or empty = all providers
-};
+import {
+	computeEffectiveProviderIds,
+	getAppIdFromPath,
+	type AppSearchConfigEntry
+} from './providerSelection';
 
 const appSearchConfig = loadState<Record<string, AppSearchConfigEntry>>(
 	'thesearchpage',
@@ -28,47 +28,18 @@ const availableProviderIds = loadState<string[] | null>(
 	null
 );
 
-function getAppIdFromPath(pathname: string): string | null {
-	const match = pathname.match(/\/apps\/([^/]+)/);
-	return match ? match[1] : null;
-}
-
 function getCurrentFilesDir(): string | null {
 	const appId = getAppIdFromPath(window.location.pathname);
 	if (appId !== 'files') return null;
 	return new URLSearchParams(window.location.search).get('dir') ?? '/';
 }
 
-function getConfigForCurrentUrl(): { enabled: boolean; providerIds: string[] | null } {
-	const pathname = window.location.pathname;
-
-	const key = /\/settings(\/|$)/.test(pathname) ? '__settings__' : getAppIdFromPath(pathname);
-	if (!key) return { enabled: false, providerIds: null };
-
-	const entry = appSearchConfig[key];
-	if (!entry) return { enabled: true, providerIds: null };
-
-	return {
-		enabled: entry.enabled,
-		providerIds: entry.providerIds?.length ? entry.providerIds : null
-	};
-}
-
-// undefined = feature disabled or no providers available for this user/page — caller
-// should let the native trigger behave normally. null = all providers.
-function computeEffectiveProviderIds(): string[] | null | undefined {
-	const { enabled, providerIds } = getConfigForCurrentUrl();
-	if (!enabled) return undefined;
-
-	if (availableProviderIds !== null) {
-		const effective = providerIds
-			? providerIds.filter((id) => availableProviderIds.includes(id))
-			: availableProviderIds;
-		if (effective.length === 0) return undefined;
-		return effective;
-	}
-
-	return providerIds;
+function getEffectiveProviderIds(): string[] | null | undefined {
+	return computeEffectiveProviderIds(
+		window.location.pathname,
+		appSearchConfig,
+		availableProviderIds
+	);
 }
 
 // --- Live search session -----------------------------------------------
@@ -244,7 +215,7 @@ function activate(trigger: HTMLElement, providerIds: string[] | null) {
 function attachNativeInputTrigger(trigger: HTMLInputElement) {
 	const onMouseDown = (e: MouseEvent) => {
 		if (activeTrigger) return;
-		const providerIds = computeEffectiveProviderIds();
+		const providerIds = getEffectiveProviderIds();
 		if (providerIds === undefined) return;
 		e.preventDefault();
 		e.stopImmediatePropagation();
@@ -254,7 +225,7 @@ function attachNativeInputTrigger(trigger: HTMLInputElement) {
 
 	const onFocus = (e: FocusEvent) => {
 		if (activeTrigger) return;
-		const providerIds = computeEffectiveProviderIds();
+		const providerIds = getEffectiveProviderIds();
 		if (providerIds === undefined) return;
 		e.stopImmediatePropagation();
 		e.stopPropagation();
@@ -268,7 +239,7 @@ function attachNativeInputTrigger(trigger: HTMLInputElement) {
 function attachButtonTrigger(button: HTMLElement) {
 	const onClick = (e: Event) => {
 		if (activeTrigger) return;
-		const providerIds = computeEffectiveProviderIds();
+		const providerIds = getEffectiveProviderIds();
 		if (providerIds === undefined) return;
 		e.preventDefault();
 		e.stopImmediatePropagation();

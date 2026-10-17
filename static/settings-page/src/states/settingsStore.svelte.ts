@@ -32,18 +32,11 @@ class SettingsStore {
 				fetchSettings()
 			]);
 
-			if (
-				settings.providers?.length !== 0 &&
-				providers.length !== settings.providers?.length
-			) {
-				const knownProviders = settings.providers.map((p) => p.id);
-				this.newProviders = providers.reduce((acc, provider) => {
-					if (!knownProviders.includes(provider.id)) {
-						acc.push(provider);
-					}
-					return acc;
-				}, [] as Provider[]);
-			}
+			// nothing saved yet means first setup, not new providers
+			const knownProviders = (settings.providers ?? []).map((p) => p.id);
+			this.newProviders = knownProviders.length
+				? providers.filter((provider) => !knownProviders.includes(provider.id))
+				: [];
 
 			this.providers = providers.map(({ id, name }) => ({ id, name }));
 			this.groups = groups;
