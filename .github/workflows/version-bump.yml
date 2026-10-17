@@ -275,7 +275,7 @@ jobs:
           echo "Last tag: $LAST_TAG"
 
           # Create changelog entry
-          CHANGELOG_ENTRY="## [v${NEW_VERSION}](https://github.com/callmemagnus/nextcloud-searchpage/compare/${LAST_TAG}...v${NEW_VERSION})"$'\n\n'
+          CHANGELOG_ENTRY="## [v${NEW_VERSION}](${{ github.server_url }}/${{ github.repository }}/compare/${LAST_TAG}...v${NEW_VERSION})"$'\n\n'
 
           if [ -n "$LAST_TAG" ]; then
             # Get commits since last tag
