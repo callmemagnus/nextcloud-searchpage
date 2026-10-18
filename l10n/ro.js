@@ -4,7 +4,10 @@ OC.L10N.register(
     "Back" : "Înapoi",
     "Filters" : "Filtre",
     "No results" : "Niciun rezultat",
+    "Note:" : "Notă:",
+    "Remove" : "Elimină",
     "Save" : "Salvează",
+    "Saving…" : "Se salvează…",
     "Search" : "Căutare"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");
