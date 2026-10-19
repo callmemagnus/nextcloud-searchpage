@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Back" : "Înapoi",
     "Filters" : "Filtre",
+    "Home" : "Acasă",
+    "Move up" : "Mută în sus",
     "No results" : "Niciun rezultat",
     "Note:" : "Notă:",
     "Remove" : "Elimină",
