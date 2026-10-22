@@ -14,6 +14,8 @@ OC.L10N.register(
     "Save" : "Salvează",
     "Saving…" : "Se salvează…",
     "Search" : "Căutare",
-    "Search results" : "Rezultatele căutării"
+    "Search results" : "Rezultatele căutării",
+    "Since" : "De la",
+    "Until" : "Până la"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

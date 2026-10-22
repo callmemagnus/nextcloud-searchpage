@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Atrás",
     "Clear current query" : "Limpiar búsqueda actual",
     "Click to change providers" : "Haga clic para cambiar los proveedores",
+    "Error saving settings" : "Error al guardar los ajustes",
     "Filters" : "Filtros",
     "No results" : "Sin resultados",
     "Note:" : "Nota:",
