@@ -4,6 +4,7 @@ OC.L10N.register(
     "Application" : "Aplicație",
     "Back" : "Înapoi",
     "Clear" : "Golește",
+    "Files:" : "Fișiere:",
     "Filters" : "Filtre",
     "Home" : "Acasă",
     "Loading…" : "Se încarcă…",
@@ -15,6 +16,7 @@ OC.L10N.register(
     "Saving…" : "Se salvează…",
     "Search" : "Căutare",
     "Search results" : "Rezultatele căutării",
+    "Settings saved successfully" : "Setările au fost salvate cu succes",
     "Since" : "De la",
     "Until" : "Până la"
 },
