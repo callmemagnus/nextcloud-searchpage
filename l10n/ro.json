@@ -2,6 +2,7 @@
     "Application" : "Aplicație",
     "Back" : "Înapoi",
     "Clear" : "Golește",
+    "Files:" : "Fișiere:",
     "Filters" : "Filtre",
     "Home" : "Acasă",
     "Loading…" : "Se încarcă…",
@@ -13,6 +14,7 @@
     "Saving…" : "Se salvează…",
     "Search" : "Căutare",
     "Search results" : "Rezultatele căutării",
+    "Settings saved successfully" : "Setările au fost salvate cu succes",
     "Since" : "De la",
     "Until" : "Până la"
 },"pluralForm" :"nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));"
