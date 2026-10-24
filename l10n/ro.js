@@ -11,6 +11,7 @@ OC.L10N.register(
     "Move up" : "Mută în sus",
     "No results" : "Niciun rezultat",
     "Note:" : "Notă:",
+    "Provider" : "Furnizor",
     "Remove" : "Elimină",
     "Save" : "Salvează",
     "Saving…" : "Se salvează…",
@@ -18,6 +19,7 @@ OC.L10N.register(
     "Search results" : "Rezultatele căutării",
     "Settings saved successfully" : "Setările au fost salvate cu succes",
     "Since" : "De la",
-    "Until" : "Până la"
+    "Until" : "Până la",
+    "User group" : "Grup de utilizatori"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");
