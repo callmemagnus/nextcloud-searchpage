@@ -2,6 +2,8 @@ OC.L10N.register(
     "thesearchpage",
     {
     "Filters" : "Filtri",
+    "Move down" : "Pārvietot lejup",
+    "Move up" : "Pārvietot augšup",
     "No results" : "Nav iznākuma",
     "Provider" : "Nodrošinātājs",
     "Save" : "Saglabāt",
