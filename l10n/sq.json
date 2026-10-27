@@ -1,0 +1,9 @@
+{ "translations": {
+    "Back" : "Mbrapsht",
+    "Move down" : "Lëviz poshtë",
+    "Move up" : "Lëviz lart",
+    "No results" : "Asnjë rezultat",
+    "Save" : "Ruaje",
+    "Search" : "Kërko"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

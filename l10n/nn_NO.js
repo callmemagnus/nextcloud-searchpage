@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Back" : "Tilbake",
     "Filters" : "Filter",
+    "Move down" : "Flytt ned",
+    "Move up" : "Flytt opp",
     "Remove" : "Fjern",
     "Save" : "Lagre",
     "Search" : "Søk"
