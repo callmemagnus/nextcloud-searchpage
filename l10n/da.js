@@ -57,7 +57,7 @@ OC.L10N.register(
     "Remove" : "Fjern",
     "Results per search" : "Resultater pr. søgning",
     "Save" : "Gem",
-    "Saving…" : "Gemmer...",
+    "Saving…" : "Gemmer…",
     "Search" : "Søg",
     "Search Page" : "Søgesiden",
     "Search override per application" : "Erstatning af søgning pr. app",
