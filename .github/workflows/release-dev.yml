@@ -104,7 +104,7 @@ jobs:
           echo "Set info.xml version to $VERSION for build (not committed)"
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.26.0
+        uses: shivammathur/setup-php@2.37.1
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: pdo_sqlite,pdo_mysql,pdo_pgsql,gd,zip

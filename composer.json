@@ -18,7 +18,7 @@
 		"phpunit/phpunit": "^9",
 		"psalm/phar": "^4.10",
 		"nextcloud/coding-standard": "^v1.1",
-		"nextcloud/ocp": "v31.0.9",
+		"nextcloud/ocp": "v34.0.0",
 		"psr/container": "^2",
 		"psr/log": "^3",
 		"bamarni/composer-bin-plugin": "^1.8"
