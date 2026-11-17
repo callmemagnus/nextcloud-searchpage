@@ -1,5 +1,9 @@
 # Changelog
 
+## [v2.5.1](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.5.0...v2.5.1)
+
+- Update translations - Many thanks to the translators!
+
 ## [v2.5.0](https://github.com/callmemagnus/nextcloud-searchpage/compare/v2.4.8...v2.5.0)
 
 - Update translations - Many thanks to the translators!
