@@ -26,7 +26,7 @@ jobs:
         database: ["sqlite"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -48,7 +48,7 @@ jobs:
           fi
 
       - name: Checkout tag
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ steps.get_tag.outputs.tag }}
           fetch-depth: 0
