@@ -12,7 +12,6 @@ node_modules/
 js/*hot-update.*
 js
 /.php-cs-fixer.cache
-.direnv
 .playwright
 test-results
 *.md

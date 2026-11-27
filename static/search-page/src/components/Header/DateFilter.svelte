@@ -80,8 +80,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 					font-weight="600"
 					text-anchor="middle"
 					x="10"
-					y="14"
-					>i
+					y="14">
+					i
 				</text>
 			</svg>
 		</button>

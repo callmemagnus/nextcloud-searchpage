@@ -119,11 +119,12 @@
 					<span class="mwb-flex">
 						<span>(</span>
 						{#if !queryState.isAllSelected}
-							<span class="mwb-selected-provider-list"
-								>{availableProviders.providers
+							<span class="mwb-selected-provider-list">
+								{availableProviders.providers
 									.filter(({ id }) => queryState.providerIds.includes(id))
 									.map(({ name }) => name)
-									.join(', ')}</span>
+									.join(', ')}
+							</span>
 						{:else}
 							{translate(APP_NAME, 'All providers')}
 						{/if}
@@ -133,7 +134,9 @@
 				{#if !showProviderSelection && (queryState.since || queryState.until)}
 					<span
 						class="mwb-date-active"
-						title="{queryState.since || '…'} → {queryState.until || '…'}">📅</span>
+						title="{queryState.since || '…'} → {queryState.until || '…'}">
+						📅
+					</span>
 				{/if}
 			</button>
 		{/if}

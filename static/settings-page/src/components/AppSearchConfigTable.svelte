@@ -125,8 +125,9 @@
 							</td>
 							<td class="mwb-providers-cell">
 								{#if isAllProviders(row.id)}
-									<span class="mwb-all-providers-label"
-										>{translate(APP_NAME, 'All providers')}</span>
+									<span class="mwb-all-providers-label">
+										{translate(APP_NAME, 'All providers')}
+									</span>
 								{:else}
 									<ol class="mwb-provider-order-list">
 										{#each selectedIds as pid, i (pid)}
@@ -134,8 +135,9 @@
 												settingsStore.providers.find((p) => p.id === pid)
 													?.name ?? pid}
 											<li class="mwb-provider-order-item">
-												<span class="mwb-provider-order-name"
-													>{providerName}</span>
+												<span class="mwb-provider-order-name">
+													{providerName}
+												</span>
 												{#if entry.enabled}
 													<div class="mwb-provider-order-actions">
 														{#if i > 0}
@@ -147,7 +149,9 @@
 																class="mwb-btn-move"
 																onclick={() =>
 																	moveProvider(row.id, i, -1)}
-																type="button">&uarr;</button>
+																type="button">
+																&uarr;
+															</button>
 														{:else}
 															<span class="mwb-btn-placeholder"
 															></span>
@@ -161,7 +165,9 @@
 																class="mwb-btn-move"
 																onclick={() =>
 																	moveProvider(row.id, i, 1)}
-																type="button">&darr;</button>
+																type="button">
+																&darr;
+															</button>
 														{:else}
 															<span class="mwb-btn-placeholder"
 															></span>
@@ -174,7 +180,9 @@
 															class="mwb-btn-remove"
 															onclick={() =>
 																removeProvider(row.id, pid)}
-															type="button">&cross;</button>
+															type="button">
+															&cross;
+														</button>
 													</div>
 												{/if}
 											</li>
@@ -192,8 +200,9 @@
 													);
 													(e.target as HTMLSelectElement).value = '';
 												}}>
-												<option value=""
-													>{translate(APP_NAME, 'Add provider…')}</option>
+												<option value="">
+													{translate(APP_NAME, 'Add provider…')}
+												</option>
 												{#each unselected as p (p.id)}
 													<option value={p.id}>{p.name}</option>
 												{/each}
@@ -203,8 +212,9 @@
 											<button
 												class="mwb-reset-all-btn"
 												onclick={() => resetToAll(row.id)}
-												type="button"
-												>{translate(APP_NAME, 'Use all')}</button>
+												type="button">
+												{translate(APP_NAME, 'Use all')}
+											</button>
 										{/if}
 									</div>
 								{/if}

@@ -67,7 +67,9 @@
 				font-weight="600"
 				text-anchor="middle"
 				x="10"
-				y="14">i</text>
+				y="14">
+				i
+			</text>
 		</svg>
 	</button>
 

@@ -91,8 +91,9 @@
 					<label for="hijack-search-enabled">
 						<strong>{translate(APP_NAME, 'Enable inline search modal')}</strong>
 					</label>
-					<span class="mwb-experimental-badge"
-						>{translate(APP_NAME, 'Experimental')}</span>
+					<span class="mwb-experimental-badge">
+						{translate(APP_NAME, 'Experimental')}
+					</span>
 				</p>
 				<p class="mwb-settings-hint">
 					{translate(

@@ -356,8 +356,9 @@
 						</svg>
 						<span aria-hidden="true" class="mwb-mini-date-brackets">
 							<span style:visibility={since ? 'visible' : 'hidden'}>[</span>
-							<span style:visibility={since || until ? 'visible' : 'hidden'}
-								>&rarr;</span>
+							<span style:visibility={since || until ? 'visible' : 'hidden'}>
+								&rarr;
+							</span>
 							<span style:visibility={until ? 'visible' : 'hidden'}>]</span>
 						</span>
 					</button>
@@ -462,15 +463,17 @@
 									<div class="mwb-mini-result-text">
 										<span class="mwb-mini-result-title">
 											{#each boldTerms(entry.title, session.term) as token, i (`${i}-${token.value}`)}
-												{#if token.bold}<b>{token.value}</b
-													>{:else}{token.value}{/if}
+												{#if token.bold}<b>
+														{token.value}
+													</b>{:else}{token.value}{/if}
 											{/each}
 										</span>
 										{#if entry.subline}
 											<span class="mwb-mini-result-sub">
 												{#each boldTerms(entry.subline, session.term) as token, i (`${i}-${token.value}`)}
-													{#if token.bold}<b>{token.value}</b
-														>{:else}{token.value}{/if}
+													{#if token.bold}<b>
+															{token.value}
+														</b>{:else}{token.value}{/if}
 												{/each}
 											</span>
 										{/if}
@@ -518,7 +521,9 @@
 								font-weight="600"
 								text-anchor="middle"
 								x="10"
-								y="14">i</text>
+								y="14">
+								i
+							</text>
 						</svg>
 					</button>
 					{#if showAdminTooltip}

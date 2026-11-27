@@ -82,8 +82,9 @@
 						<button
 							type="button"
 							onclick={() => onlyMe()}
-							title={translate(APP_NAME, 'See only results for this provider')}
-							>{translate(APP_NAME, 'Show only')}</button>
+							title={translate(APP_NAME, 'See only results for this provider')}>
+							{translate(APP_NAME, 'Show only')}
+						</button>
 					</span>
 				{/if}
 				{#if flags().showBack}
@@ -91,8 +92,9 @@
 						<button
 							type="button"
 							onclick={() => back()}
-							title={translate(APP_NAME, 'See all providers')}
-							>{translate(APP_NAME, 'Back')}</button>
+							title={translate(APP_NAME, 'See all providers')}>
+							{translate(APP_NAME, 'Back')}
+						</button>
 					</span>
 				{/if}
 			</div>
