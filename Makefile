@@ -159,7 +159,7 @@ endif
 	--include="README.md" \
 	--include="CHANGELOG.md" \
 	--exclude="*.md" \
-	--exclude="*.nix" \
+	--exclude="mise.toml" \
 	$(project_dir)/  $(sign_dir)/$(app_name)
 	@if [ -f $(cert_dir)/$(app_name).key ]; then \
 		echo "Signing app files…"; \

@@ -1,0 +1,13 @@
+[plugins]
+php = "https://github.com/verzly/mise-php"
+
+[tools]
+# 8.3: the lowest PHP that can run the tests against both nextcloud/ocp 34 and 35 (composer is bundled by the plugin)
+php = "8.3"
+node = "24"
+
+[env]
+MWB_NC_APP_NAME = "thesearchpage"
+MWB_NC_APP_DIR = "{{config_root}}"
+MWB_NC_APPS_ROOT = "{{config_root | dirname}}"
+_.path = ["{{config_root}}/bin"]
